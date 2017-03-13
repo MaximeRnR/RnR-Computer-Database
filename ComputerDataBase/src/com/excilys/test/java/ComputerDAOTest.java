@@ -57,7 +57,7 @@ public class ComputerDAOTest {
 	public void updateTest(){
 		cp.setName("Test");
 		cp.setdIntroduced(LocalDate.now());
-		cp.setdDiscontinued(LocalDate.now());
+		cp.setdDiscontinued(null);
 		cp.setManufacturer(1);
 		int generateKey = cpDAO.createComputer(cp);
 		cp.setId(generateKey);

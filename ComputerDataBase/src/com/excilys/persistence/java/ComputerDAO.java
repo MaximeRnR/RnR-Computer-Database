@@ -27,8 +27,14 @@ public class ComputerDAO {
 			String query = "insert into computer"+"(name,introduced,discontinued,company_id)"+"values (?,?,?,?)";
 			PreparedStatement preparedStmt = this.conn.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
 			preparedStmt.setString(1,cp.getName());
-			preparedStmt.setTimestamp(2,new Timestamp(Date.valueOf(cp.getdIntroduced()).getTime()));
-			preparedStmt.setTimestamp(3,new Timestamp(Date.valueOf(cp.getdDiscontinued()).getTime()));
+			if(cp.getdIntroduced()!=null){
+				preparedStmt.setTimestamp(2,new Timestamp(Date.valueOf(cp.getdIntroduced()).getTime()));
+			}else
+				preparedStmt.setNull(2, java.sql.Types.TIMESTAMP);
+			if(cp.getdDiscontinued()!=null){
+				preparedStmt.setTimestamp(3,new Timestamp(Date.valueOf(cp.getdDiscontinued()).getTime()));
+			}else
+				preparedStmt.setNull(3, java.sql.Types.TIMESTAMP);
 			preparedStmt.setInt(4,cp.getManufacturer());
 			preparedStmt.execute();
 			rs = preparedStmt.getGeneratedKeys();
@@ -66,8 +72,14 @@ public class ComputerDAO {
 		try {
 			preparedStmt = this.conn.prepareStatement(query);
 			preparedStmt.setString(1, cp.getName());
-			preparedStmt.setTimestamp(2,new Timestamp(Date.valueOf(cp.getdIntroduced()).getTime()));
-			preparedStmt.setTimestamp(3,new Timestamp(Date.valueOf(cp.getdDiscontinued()).getTime()));
+			if(cp.getdIntroduced()!=null){
+				preparedStmt.setTimestamp(2,new Timestamp(Date.valueOf(cp.getdIntroduced()).getTime()));
+			}else
+				preparedStmt.setNull(2, java.sql.Types.TIMESTAMP);
+			if(cp.getdDiscontinued()!=null){
+				preparedStmt.setTimestamp(3,new Timestamp(Date.valueOf(cp.getdDiscontinued()).getTime()));
+			}else
+				preparedStmt.setNull(3, java.sql.Types.TIMESTAMP);
 			preparedStmt.setInt(4,cp.getManufacturer());
 			preparedStmt.setInt(5,cp.getId());
 			preparedStmt.executeUpdate();
