@@ -7,19 +7,20 @@ public class Computer {
 	private String name;
 	private LocalDate dIntroduced;
 	private LocalDate dDiscontinued;
-	private String manufacturer;
-	
-	
+	private int manufacturer;
+
+
 	public Computer(){};
-	
-	public Computer(int id, String name, LocalDate dIntroduced, String manufacturer) {
+
+	public Computer(int id, String name, LocalDate dIntroduced, LocalDate dDiscontinued, int manufacturer) {
 		this.id = id;
 		this.name = name;
 		this.dIntroduced = dIntroduced;
+		this.dDiscontinued = dDiscontinued;
 		this.manufacturer = manufacturer;
 	}
-	
-	
+
+
 	@Override
 	public String toString() {
 		return "Computer [id=" + id + ", name=" + name + ", dIntroduced=" + dIntroduced + ", dDiscontinued="
@@ -51,12 +52,12 @@ public class Computer {
 	public void setdDiscontinued(LocalDate dDiscontinued) {
 		this.dDiscontinued = dDiscontinued;
 	}
-	public String getManufacturer() {
+	public int getManufacturer() {
 		return manufacturer;
 	}
-	public void setManufacturer(String manufacturer) {
+	public void setManufacturer(int manufacturer) {
 		this.manufacturer = manufacturer;
 	}
-	
+
 
 }

@@ -1,54 +1,108 @@
 package com.excilys.persistence.java;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 
 import com.excilys.connection.java.ConnectionDB;
 import com.excilys.model.java.Computer;
 
 public class ComputerDAO {
-	  private Connection conn;
-		
-	  public ComputerDAO() {
-	    
-	    this.conn = ConnectionDB.getInstance().getConn();
-	    
-	  }
-	
-	  public boolean create(Computer cp) {
-	    return false;
-	  }
+	private Connection conn;
 
-	  public boolean delete(Computer cp) {
-	    return false;
-	  }
-	   
-	  public boolean update(Computer cp) {
-	    return false;
-	  }
-	   
-	  public Computer find(int id) {
-	    Computer computer = new Computer();      
-	      
-	    try {
-	      String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, e.name FROM computer c Left join company e ON c.company_id=e.id WHERE c.id='"+id+"';";
-	      System.out.println(sql);
-	      ResultSet result = this.conn.createStatement(
-	        ResultSet.TYPE_SCROLL_INSENSITIVE,
-	        ResultSet.CONCUR_READ_ONLY).executeQuery(sql);
-	        
-	      if(result.first())
-	        computer = new Computer(
-	          result.getInt("c.id"),
-	          result.getString("c.name"),
-	          result.getDate("c.introduced").toLocalDate(),
-	          result.getString("e.name")
-	          );         
-	    } catch (SQLException e) {
-	      e.printStackTrace();
-	    }
-	    System.out.println(computer.toString());
-	    return computer;
-	  }
+	public ComputerDAO() {
+
+		this.conn = ConnectionDB.getInstance().getConn();
+
 	}
+
+	public int createComputer(Computer cp) {
+		ResultSet rs = null;
+		try{
+
+			String query = "insert into computer"+"(name,introduced,discontinued,company_id)"+"values (?,?,?,?)";
+			PreparedStatement preparedStmt = this.conn.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+			preparedStmt.setString(1,cp.getName());
+			preparedStmt.setTimestamp(2,new Timestamp(Date.valueOf(cp.getdIntroduced()).getTime()));
+			preparedStmt.setTimestamp(3,new Timestamp(Date.valueOf(cp.getdDiscontinued()).getTime()));
+			preparedStmt.setInt(4,cp.getManufacturer());
+			preparedStmt.execute();
+			rs = preparedStmt.getGeneratedKeys();
+
+			if(rs.next()){
+				return rs.getInt(1);
+			}
+
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}return -1;
+
+	}       
+
+	public boolean delete(Computer cp) {
+		try {
+			String query = "DELETE FROM computer WHERE id = ?";
+
+			PreparedStatement preparedStmt = this.conn.prepareStatement(query);
+			preparedStmt.setInt(1, cp.getId());
+			preparedStmt.execute();
+
+			return true;
+		}catch(SQLException e){
+
+			e.printStackTrace();
+
+		}return false;
+	}
+
+	public boolean update(Computer cp) {
+
+		String query = "UPDATE computer SET name = ?, introduced = ?, discontinued = ?, company_id = ? WHERE id = ?";
+		PreparedStatement preparedStmt;
+		try {
+			preparedStmt = this.conn.prepareStatement(query);
+			preparedStmt.setString(1, cp.getName());
+			preparedStmt.setTimestamp(2,new Timestamp(Date.valueOf(cp.getdIntroduced()).getTime()));
+			preparedStmt.setTimestamp(3,new Timestamp(Date.valueOf(cp.getdDiscontinued()).getTime()));
+			preparedStmt.setInt(4,cp.getManufacturer());
+			preparedStmt.setInt(5,cp.getId());
+			preparedStmt.executeUpdate();
+			return true;
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}return false;
+	}
+
+	public Computer find(int id) {
+		Computer computer = new Computer();      
+
+		try {
+			String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c WHERE c.id='"+id+"';";
+			ResultSet result = this.conn.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery(sql);
+			if(result.first())
+				computer = new Computer(
+						result.getInt("c.id"),
+						result.getString("c.name"),
+						null,
+						null,
+						result.getInt("c.company_id")
+						); 
+
+			if(result.getDate("c.introduced")!=null)
+				computer.setdIntroduced(result.getDate("c.introduced").toLocalDate());
+			if(result.getDate("c.discontinued")!=null)
+				computer.setdDiscontinued(result.getDate("c.discontinued").toLocalDate());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return computer;
+	}
+
+}
