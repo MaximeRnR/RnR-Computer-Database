@@ -2,7 +2,7 @@ package com.excilys.test.java;
 
 import org.junit.*;
 
-import com.excilys.main.java.Computer;
+import com.excilys.model.java.Computer;
 
 
 
