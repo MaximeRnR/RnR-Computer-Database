@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.excilys.connection.java.ConnectionDB;
 import com.excilys.model.java.Company;
@@ -87,6 +89,28 @@ public class CompanyDAO {
 			e.printStackTrace();
 		}
 		return company;
+	}
+	
+	public List<Company>  findAll() {
+		List<Company> lcp = new ArrayList<Company>();    
+		Company cp;
+		try {
+			String sql = "SELECT c.id, c.name FROM company c;";
+			ResultSet result = this.conn.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery(sql);
+			while(result.next()){
+				cp = new Company(
+						result.getInt("c.id"),
+						result.getString("c.name")
+						); 
+				lcp.add(cp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return lcp;
 	}
 
 

@@ -19,6 +19,13 @@ public class Computer {
 		this.dDiscontinued = dDiscontinued;
 		this.manufacturer = manufacturer;
 	}
+	
+	public Computer(String name, LocalDate dIntroduced, LocalDate dDiscontinued, int manufacturer) {
+		this.name = name;
+		this.dIntroduced = dIntroduced;
+		this.dDiscontinued = dDiscontinued;
+		this.manufacturer = manufacturer;
+	}
 
 
 	@Override

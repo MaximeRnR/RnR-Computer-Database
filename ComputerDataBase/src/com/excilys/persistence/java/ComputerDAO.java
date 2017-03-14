@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.excilys.connection.java.ConnectionDB;
 import com.excilys.model.java.Computer;
@@ -113,8 +115,40 @@ public class ComputerDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return computer;
 	}
+
+	public List<Computer>  findAll() {
+		List<Computer> lcp = new ArrayList<Computer>();    
+		Computer cp;
+		try {
+			String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c ORDER BY c.company_id ASC;";
+			ResultSet result = this.conn.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY).executeQuery(sql);
+			while(result.next()){
+				cp = new Computer(
+						result.getInt("c.id"),
+						result.getString("c.name"),
+						null,
+						null,
+						result.getInt("c.company_id")
+						); 
+
+				if(result.getDate("c.introduced")!=null)
+					cp.setdIntroduced(result.getDate("c.introduced").toLocalDate());
+				if(result.getDate("c.discontinued")!=null)
+					cp.setdDiscontinued(result.getDate("c.discontinued").toLocalDate());
+
+				lcp.add(cp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return lcp;
+	}
+
 
 }
