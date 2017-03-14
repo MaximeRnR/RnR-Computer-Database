@@ -13,8 +13,8 @@ public class App {
 	public App() {}
 
 	public static void main(String args[]){
-			
-			menu();
+
+		menu();
 
 	}
 
@@ -31,29 +31,42 @@ public class App {
 		System.out.println("\t 7 - Show a Page of 10 computers");
 		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
-		int choice = scan.nextInt();
+		int choice = 0;
+		try{
+				choice = scan.nextInt();
+				
+		}catch(Exception e){
+			System.out.println("Pick a menu number");
+			App.menu();
+		}
+
+		if(choice > 7 || choice < 1 ){
+			System.out.println("Pick a menu number");
+			App.menu();
+		}
+		
 		switch (choice){
 		case 1:
 			List<Company> lcy = cyui.FindAllCompany();
 			for(int i=0; i<lcy.size();i++){
-	
+
 				System.out.println(lcy.get(i).toString());
-	
+
 			}
 			break;
 		case 2:
 			List<Computer> lcp = cpui.FindAllComputer();
 			for(int i=0; i<lcp.size();i++){
-	
+
 				System.out.println(lcp.get(i).toString());
-	
+
 			}
 			break;
 		case 3:
 			Computer cp = cpui.FindComputer();
 			Company cy = cyui.FindAssociatedCompany(cp.getManufacturer());
 			System.out.println(cp.getId() +" "+ cp.getName() +" "+ cp.getdIntroduced() +" "+ cp .getdDiscontinued() +" "+ cy.getName() );
-	
+
 			break;
 		case 4:
 			try {
@@ -77,12 +90,12 @@ public class App {
 			}
 			break;
 		case 7:
-			
+
 			List<Computer> lcpP = cpui.PageComputer();
 			for(int i=0; i<lcpP.size();i++){
-	
+
 				System.out.println(lcpP.get(i).toString());
-	
+
 			}
 			break;
 		}
@@ -91,16 +104,16 @@ public class App {
 	}
 
 
-	 public static void pressAnyKeyToContinue()
-	 { 
-	        System.out.println("Press any key to continue...");
-	        try
-	        {
-	            System.in.read();
-	            menu();
-	        }  
-	        catch(Exception e)
-	        {}  
-	 }
+	public static void pressAnyKeyToContinue()
+	{ 
+		System.out.println("Press Enter to continue...");
+		try
+		{
+			System.in.read();
+			menu();
+		}  
+		catch(Exception e)
+		{}  
+	}
 
 }

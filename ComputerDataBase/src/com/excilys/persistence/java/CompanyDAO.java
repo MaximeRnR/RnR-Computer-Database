@@ -8,12 +8,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.excilys.connection.java.ConnectionDB;
+import com.excilys.main.java.App;
 import com.excilys.model.java.Company;
 
 public class CompanyDAO {
 	private Connection conn;
-
+	static Logger logger = LogManager.getLogger();
 	public CompanyDAO() {
 
 		this.conn = ConnectionDB.getInstance().getConn();
@@ -34,12 +38,14 @@ public class CompanyDAO {
 
 			rs = preparedStmt.getGeneratedKeys();
 			if(rs.next()){
+				logger.info("Company "+ rs.getInt(1) +" created");
 			return rs.getInt(1);
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();
-		}return -1;
-
+			logger.error("Company create SQL ERROR" );
+		}logger.error("Company did'nt get created" );
+		return -1;
 	}       
 
 	public boolean delete(Company cp) {
@@ -49,7 +55,7 @@ public class CompanyDAO {
 	      PreparedStatement preparedStmt = this.conn.prepareStatement(query);
 	      preparedStmt.setInt(1, cp.getId());
 	      preparedStmt.execute();
-	      
+	      logger.info("Company "+ cp.getId() +" created");
 	      return true;
 		}catch(SQLException e){
 			
@@ -66,6 +72,7 @@ public class CompanyDAO {
 			preparedStmt.setString(1, cp.getName());
 			preparedStmt.setInt(2,cp.getId());
 			preparedStmt.executeUpdate();
+			logger.info("Company "+ cp.getId() +" updated");
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -85,8 +92,14 @@ public class CompanyDAO {
 						result.getInt("c.id"),
 						result.getString("c.name")
 						); 
-		} catch (SQLException e) {
-			e.printStackTrace();
+			if(company.getId()==0){
+				throw new IllegalArgumentException();
+			}
+			logger.info("Company "+ company.getId() +" selected");
+		} catch (Exception e) {
+			logger.error("Company not selected ");
+			System.out.println("This company does'nt exist");
+			App.menu();
 		}
 		return company;
 	}
@@ -99,6 +112,8 @@ public class CompanyDAO {
 			ResultSet result = this.conn.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery(sql);
+			if(!result.first())
+				throw new IllegalArgumentException();
 			while(result.next()){
 				cp = new Company(
 						result.getInt("c.id"),
@@ -106,8 +121,10 @@ public class CompanyDAO {
 						); 
 				lcp.add(cp);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.info("Companies selected");
+		} catch (Exception e) {
+			logger.error("Companies not selected ");
+			App.menu();
 		}
 
 		return lcp;
