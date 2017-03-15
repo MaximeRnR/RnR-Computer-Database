@@ -1,14 +1,16 @@
-package com.excilys.connection.java;
+package com.excilys.persistence.java;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
-public class ConnectionDB {
-	private static ConnectionDB connDB;
+//Singleton Connection
+public enum ConnectionDB {
+	CONNECTION;
 	private Connection conn;
-
+	
+	//Constructor privé
 	private ConnectionDB(){
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -29,18 +31,5 @@ public class ConnectionDB {
 	public Connection getConn() {
 		return conn;
 	}	
-
-	public static ConnectionDB getInstance(){
-		if(connDB == null){
-			connDB = new ConnectionDB();
-
-		}
-		return connDB;
-
-
-	}
-
-
-
-
+	
 }

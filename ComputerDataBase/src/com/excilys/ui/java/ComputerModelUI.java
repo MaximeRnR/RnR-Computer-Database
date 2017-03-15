@@ -1,29 +1,34 @@
-package com.excilys.model.java;
+package com.excilys.ui.java;
 
 import java.time.LocalDate;
+
 //Model Computer
-public class Computer {
+public class ComputerModelUI {
 	private int id;
 	private String name;
 	private LocalDate dIntroduced;
 	private LocalDate dDiscontinued;
-	private int manufacturer;
+	private CompanyModelUI cymui;
 
-
-	//Constructor with id
-	private Computer(int id, String name, LocalDate dIntroduced, LocalDate dDiscontinued, int manufacturer) {
+	
+	//Constructor
+	private ComputerModelUI(int id, String name, LocalDate dIntroduced, LocalDate dDiscontinued, CompanyModelUI cymui) {
 		this.id = id;
 		this.name = name;
 		this.dIntroduced = dIntroduced;
 		this.dDiscontinued = dDiscontinued;
-		this.manufacturer = manufacturer;
+		this.cymui = cymui;
 	}
 
 	@Override
 	public String toString() {
-		return "Computer [id=" + id + ", name=" + name + ", dIntroduced=" + dIntroduced + ", dDiscontinued="
-				+ dDiscontinued + ", manufacturer=" + manufacturer + "]";
+		return "ComputerModelUI [id=" + id + ", name=" + name + ", dIntroduced=" + dIntroduced + ", dDiscontinued="
+				+ dDiscontinued + ", cymui=" + cymui + "]";
 	}
+
+
+
+
 
 	public int getId() {
 		return id;
@@ -50,19 +55,20 @@ public class Computer {
 	public void setdDiscontinued(LocalDate dDiscontinued) {
 		this.dDiscontinued = dDiscontinued;
 	}
-	public int getManufacturer() {
-		return manufacturer;
+	public CompanyModelUI getCymui() {
+		return cymui;
 	}
-	public void setManufacturer(int manufacturer) {
-		this.manufacturer = manufacturer;
+	public void setCymui(CompanyModelUI cymui) {
+		this.cymui = cymui;
 	}
+	
 
 	public static class Builder{
 		private int id;
 		private String name;
 		private LocalDate dIntroduced;
 		private LocalDate dDiscontinued;
-		private int manufacturer;
+		private CompanyModelUI cymui;
 	
 		public Builder(){
 			
@@ -91,14 +97,14 @@ public class Computer {
 			
 		}
 		
-		public Builder manufacturer(int manu){
-			this.manufacturer=manu;
+		public Builder cymui(CompanyModelUI cymui){
+			this.cymui=cymui;
 			return this;
 			
 		}
 		
-		public Computer build(){
-			return new Computer(this.id,this.name,this.dIntroduced,this.dDiscontinued,this.manufacturer);
+		public ComputerModelUI build(){
+			return new ComputerModelUI(this.id,this.name,this.dIntroduced,this.dDiscontinued,this.cymui);
 			
 		}
 	}

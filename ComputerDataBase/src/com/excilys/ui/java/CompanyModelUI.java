@@ -1,16 +1,15 @@
-package com.excilys.model.java;
+package com.excilys.ui.java;
 //Model company
-public class Company {
+public class CompanyModelUI {
 	private int id;
 	private String name;
 
-
-	public Company(){}
-
-
-	public Company(int id, String name) {
+	public CompanyModelUI(int id, String name) {
 		this.id = id;
 		this.name = name;
+	}
+	public CompanyModelUI(int id) {
+		this.id = id;
 	}
 
 	@Override

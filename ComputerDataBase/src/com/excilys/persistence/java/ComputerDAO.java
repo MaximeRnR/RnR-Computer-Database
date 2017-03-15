@@ -6,25 +6,28 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
+/*import java.util.ArrayList;
+import java.util.List;*/
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.excilys.connection.java.ConnectionDB;
-import com.excilys.main.java.App;
 import com.excilys.model.java.Computer;
+import com.excilys.ui.java.App;
 
-public class ComputerDAO {
+//DAO of Computer
+public enum ComputerDAO implements ComputerDAOInterface{
+	COMPUTERDAO;
 	private Connection conn;
+	private Computer cp;
 	static Logger logger = LogManager.getLogger();
-	public ComputerDAO() {
+	
+	private ComputerDAO() {
 
-		this.conn = ConnectionDB.getInstance().getConn();
+		this.conn = ConnectionDB.CONNECTION.getConn();
 	}
 
-	public int createComputer(Computer cp) {
+	public long createComputer(Computer cp) {
 		ResultSet rs = null;
 		try{
 
@@ -45,7 +48,7 @@ public class ComputerDAO {
 
 			if(rs.next()){
 
-			     logger.info("Computer "+ rs.getInt(1) +" created");
+				logger.info("Computer "+ rs.getInt(1) +" created");
 				return rs.getInt(1);
 			}
 
@@ -57,11 +60,11 @@ public class ComputerDAO {
 
 	}       
 
-	public boolean delete(Computer cp) {
+	public boolean delete(int id) {
 		try {
-			
-			cp = find(cp.getId());
-			
+
+			this.cp = find(id);
+
 			String query = "DELETE FROM computer WHERE id = ?";
 
 			PreparedStatement preparedStmt = this.conn.prepareStatement(query);
@@ -78,7 +81,7 @@ public class ComputerDAO {
 	public boolean update(Computer cp) {
 
 		find(cp.getId());
-		
+
 		String query = "UPDATE computer SET name = ?, introduced = ?, discontinued = ?, company_id = ? WHERE id = ?";
 		PreparedStatement preparedStmt;
 		try {
@@ -103,41 +106,42 @@ public class ComputerDAO {
 	}
 
 	public Computer find(int id) {
-		Computer computer = new Computer();      
-
+		cp = new Computer.Builder().build();
 		try {
-			String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c WHERE c.id='"+id+"';";
-			ResultSet result = this.conn.createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery(sql);
+			String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c WHERE c.id=?;";
+			PreparedStatement preparedStmt;
+			preparedStmt = this.conn.prepareStatement(sql);
+			preparedStmt.setInt(1, id);
+			preparedStmt.execute();
+			ResultSet result = preparedStmt.getResultSet();
 			if(result.first())
-				computer = new Computer(
-						result.getInt("c.id"),
-						result.getString("c.name"),
-						null,
-						null,
-						result.getInt("c.company_id")
-						); 
+				cp = new Computer.Builder()
+				.id(result.getInt("c.id"))
+				.name(result.getString("c.name"))
+				.di(null)
+				.dd(null)
+				.manufacturer(result.getInt("c.company_id"))
+				.build();
 
 			if(result.getDate("c.introduced")!=null)
-				computer.setdIntroduced(result.getDate("c.introduced").toLocalDate());
+				cp.setdIntroduced(result.getDate("c.introduced").toLocalDate());
 			if(result.getDate("c.discontinued")!=null)
-				computer.setdDiscontinued(result.getDate("c.discontinued").toLocalDate());
-			if(computer.getId()==0){
+				cp.setdDiscontinued(result.getDate("c.discontinued").toLocalDate());
+			if(cp.getId()==0){
 				throw new IllegalArgumentException();
 			}
-			
-			logger.info("Computer "+ computer.getId() +" selected ");
-			
+
+			logger.info("Computer "+ cp.getId() +" selected ");
+			return cp;
 		} catch (Exception e) {
 			logger.error("Computer not selected ");
 			System.out.println("This computer does'nt exist");
 			App.menu();
 		}
-		
-		return computer;
-	}
+		return cp;
 
+	}
+	/* A MODIFIER
 	public List<Computer>  findAll() {
 		List<Computer> lcp = new ArrayList<Computer>();    
 		Computer cp;
@@ -171,7 +175,7 @@ public class ComputerDAO {
 		}
 
 		return lcp;
-	}
+	}*/
 
 
 }

@@ -3,7 +3,7 @@ package com.excilys.test.java;
 import org.junit.After;
 import org.junit.Before;
 
-import com.excilys.connection.java.ConnectionDB;
+import com.excilys.persistence.java.ConnectionDB;
 
 public class ConnectionDBTest {
 	public ConnectionDB connDB;

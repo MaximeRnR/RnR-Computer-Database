@@ -1,12 +1,8 @@
-package com.excilys.main.java;
+package com.excilys.ui.java;
 
 import java.util.List;
 import java.util.Scanner;
 
-import com.excilys.model.java.Company;
-import com.excilys.model.java.Computer;
-import com.excilys.ui.java.CompanyUI;
-import com.excilys.ui.java.ComputerUI;
 
 public class App {
 
@@ -29,7 +25,6 @@ public class App {
 		System.out.println("\t 5 - Update a Computer");
 		System.out.println("\t 6 - Delete a Computer");
 		System.out.println("\t 7 - Show a Page of 10 computers");
-		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
 		int choice = 0;
 		try{
@@ -47,7 +42,7 @@ public class App {
 		
 		switch (choice){
 		case 1:
-			List<Company> lcy = cyui.FindAllCompany();
+			List<CompanyModelUI> lcy = cyui.FindAllCompany();
 			for(int i=0; i<lcy.size();i++){
 
 				System.out.println(lcy.get(i).toString());
@@ -55,17 +50,16 @@ public class App {
 			}
 			break;
 		case 2:
-			List<Computer> lcp = cpui.FindAllComputer();
+			/*List<Computer> lcp = cpui.FindAllComputer();
 			for(int i=0; i<lcp.size();i++){
 
 				System.out.println(lcp.get(i).toString());
 
-			}
+			}*/
 			break;
 		case 3:
-			Computer cp = cpui.FindComputer();
-			Company cy = cyui.FindAssociatedCompany(cp.getManufacturer());
-			System.out.println(cp.getId() +" "+ cp.getName() +" "+ cp.getdIntroduced() +" "+ cp .getdDiscontinued() +" "+ cy.getName() );
+			ComputerModelUI cp = cpui.FindComputer();
+			System.out.println(cp.getId() +" "+ cp.getName() +" "+ cp.getdIntroduced() +" "+ cp .getdDiscontinued() +" "+ cp.getCymui().getName() );
 
 			break;
 		case 4:
@@ -90,13 +84,14 @@ public class App {
 			}
 			break;
 		case 7:
-
+			/*
 			List<Computer> lcpP = cpui.PageComputer();
 			for(int i=0; i<lcpP.size();i++){
 
 				System.out.println(lcpP.get(i).toString());
 
 			}
+			*/
 			break;
 		}
 		pressAnyKeyToContinue();
