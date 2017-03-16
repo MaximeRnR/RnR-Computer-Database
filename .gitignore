@@ -15,6 +15,7 @@ local.properties
 .recommenders
 .classpath
 .log
+.MF
 
 # Eclipse Core
 .project
