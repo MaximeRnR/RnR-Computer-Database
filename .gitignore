@@ -16,6 +16,8 @@ local.properties
 .classpath
 .log
 .MF
+WebContent/
+target/
 
 # Eclipse Core
 .project
