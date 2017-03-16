@@ -1,14 +1,14 @@
 package com.excilys.ui.java;
 //Model company
 public class CompanyModelUI {
-	private int id;
+	private long id;
 	private String name;
 
-	public CompanyModelUI(int id, String name) {
+	public CompanyModelUI(long id, String name) {
 		this.id = id;
 		this.name = name;
 	}
-	public CompanyModelUI(int id) {
+	public CompanyModelUI(long id) {
 		this.id = id;
 	}
 
@@ -17,11 +17,11 @@ public class CompanyModelUI {
 		return "Company [id=" + id + ", name=" + name + "]";
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

@@ -17,6 +17,7 @@ public class App {
 	public static void menu(){
 		CompanyUI cyui = new CompanyUI();
 		ComputerUI cpui = new ComputerUI();
+		Page page = new Page();
 		System.out.println("CDB - What do you want to do ?");
 		System.out.println("\t 1 - Show all Companies");
 		System.out.println("\t 2 - Show all Computers");
@@ -50,38 +51,23 @@ public class App {
 			}
 			break;
 		case 2:
-			/*List<Computer> lcp = cpui.FindAllComputer();
-			for(int i=0; i<lcp.size();i++){
-
-				System.out.println(lcp.get(i).toString());
-
-			}*/
+				page.getCurrent();				
 			break;
 		case 3:
 			ComputerModelUI cp = cpui.FindComputer();
-			System.out.println(cp.getId() +" "+ cp.getName() +" "+ cp.getdIntroduced() +" "+ cp .getdDiscontinued() +" "+ cp.getCymui().getName() );
+			System.out.println(cp.getId() +" "+ cp.getName() +" "+ cp.getdIntroduced() +" "+ cp.getdDiscontinued() +" "+ cp.getCymui().getName() );
 
 			break;
 		case 4:
-			try {
 				cpui.AddComputer();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			
 			break;
 		case 5:
-			try {
 				cpui.UpdateComputer();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			
 			break;
 		case 6:
-			try {
 				cpui.RemoveComputer();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 			break;
 		case 7:
 			/*

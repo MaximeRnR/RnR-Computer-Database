@@ -11,16 +11,17 @@ import com.excilys.model.java.Company;
 import com.excilys.persistence.java.CompanyDAO;
 import com.excilys.persistence.java.CompanyDAOInterface;
 import com.excilys.ui.java.CompanyModelUI;
+import com.excilys.util.java.ComputerDBException;
 
 public class CompanyService {
 	static Logger logger = LogManager.getLogger();
 	private CompanyDAOInterface cydaoi = CompanyDAO.COMPANYDAO;
 	
-	public  CompanyService(){
+	public  CompanyService() throws ComputerDBException{
 			
 	}
 
-	public CompanyModelUI find(int id) {
+	public CompanyModelUI find(long id){
 		
 		return new CompanyMapper(cydaoi.find(id)).getCymui();
 	}

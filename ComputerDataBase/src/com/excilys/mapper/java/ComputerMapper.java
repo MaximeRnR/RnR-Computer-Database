@@ -4,13 +4,14 @@ import com.excilys.model.java.Company;
 import com.excilys.model.java.Computer;
 import com.excilys.persistence.java.CompanyDAO;
 import com.excilys.ui.java.ComputerModelUI;
+import com.excilys.util.java.ComputerDBException;
 
-public class ComputerMapper {
+public class ComputerMapper{
 	private Computer cp;
 	private ComputerModelUI cpmui;
 	private Company cy;
 	
-	public ComputerMapper(Computer cp){
+	public ComputerMapper(Computer cp) throws ComputerDBException{
 		
 		this.cp = cp;
 		this.cy = CompanyDAO.COMPANYDAO.find(cp.getManufacturer());
@@ -24,7 +25,7 @@ public class ComputerMapper {
 		
 	}
 	
-	public ComputerMapper(ComputerModelUI cpmui){
+	public ComputerMapper(ComputerModelUI cpmui) throws ComputerDBException {
 		
 		this.cpmui = cpmui;
 		this.cy = new CompanyMapper(cpmui.getCymui()).getCy();

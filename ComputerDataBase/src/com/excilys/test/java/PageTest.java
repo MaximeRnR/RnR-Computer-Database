@@ -5,9 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.excilys.model.java.Computer;
-import com.excilys.model.java.Page;
 import com.excilys.persistence.java.ComputerDAO;
 import com.excilys.ui.java.ComputerUI;
+import com.excilys.ui.java.Page;
 
 
 public class PageTest {

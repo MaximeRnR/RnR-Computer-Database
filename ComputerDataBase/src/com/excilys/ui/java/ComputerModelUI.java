@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 //Model Computer
 public class ComputerModelUI {
-	private int id;
+	private long id;
 	private String name;
 	private LocalDate dIntroduced;
 	private LocalDate dDiscontinued;
@@ -12,7 +12,7 @@ public class ComputerModelUI {
 
 	
 	//Constructor
-	private ComputerModelUI(int id, String name, LocalDate dIntroduced, LocalDate dDiscontinued, CompanyModelUI cymui) {
+	private ComputerModelUI(long id, String name, LocalDate dIntroduced, LocalDate dDiscontinued, CompanyModelUI cymui) {
 		this.id = id;
 		this.name = name;
 		this.dIntroduced = dIntroduced;
@@ -30,10 +30,10 @@ public class ComputerModelUI {
 
 
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -64,7 +64,7 @@ public class ComputerModelUI {
 	
 
 	public static class Builder{
-		private int id;
+		private long id;
 		private String name;
 		private LocalDate dIntroduced;
 		private LocalDate dDiscontinued;
@@ -75,7 +75,7 @@ public class ComputerModelUI {
 			
 		}
 		
-		public Builder id(int id){
+		public Builder id(long id){
 			this.id = id;
 			return this;
 		}
@@ -92,7 +92,7 @@ public class ComputerModelUI {
 		}
 		
 		public Builder dd(LocalDate dd){
-			this.dIntroduced=dd;
+			this.dDiscontinued=dd;
 			return this;
 			
 		}

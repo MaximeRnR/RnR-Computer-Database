@@ -9,7 +9,7 @@ public class CompanyUI {
 	private CompanyModelUI cy;
 	private CompanyService cyS;
 
-	public CompanyModelUI FindAssociatedCompany(int id){
+	public CompanyModelUI FindAssociatedCompany(long id){
 		cyS = new CompanyService();
 		cy = cyS.find(id);
 		return cy;	      

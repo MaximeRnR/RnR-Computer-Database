@@ -4,26 +4,28 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.excilys.util.java.ComputerDBException;
+
 
 //Singleton Connection
 public enum ConnectionDB {
 	CONNECTION;
 	private Connection conn;
+	Logger logger = LogManager.getLogger();
 	
 	//Constructor privé
-	private ConnectionDB(){
+	private ConnectionDB() throws ComputerDBException{
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			String url = new String("jdbc:mysql://localhost:3306/computer-database-db-test"+"?zeroDateTimeBehavior=convertToNull");
-			this.conn=DriverManager.getConnection(url, "root", "root");
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
+			this.conn=DriverManager.getConnection(url, "admincdb", "qwerty1234");
+			logger.info("ConnectionDB instantiated");
+		}catch( ComputerDBException | InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e){
+			logger.error("ConnectionDB can not be instantiated " );
+			throw new ComputerDBException("ConnectionDB can not be instantiated", e);
 		}
 	}
 

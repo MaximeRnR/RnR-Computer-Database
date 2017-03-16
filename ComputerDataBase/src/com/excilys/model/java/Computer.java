@@ -3,15 +3,15 @@ package com.excilys.model.java;
 import java.time.LocalDate;
 //Model Computer
 public class Computer {
-	private int id;
+	private long id;
 	private String name;
 	private LocalDate dIntroduced;
 	private LocalDate dDiscontinued;
-	private int manufacturer;
+	private long manufacturer;
 
 
 	//Constructor with id
-	private Computer(int id, String name, LocalDate dIntroduced, LocalDate dDiscontinued, int manufacturer) {
+	private Computer(long id, String name, LocalDate dIntroduced, LocalDate dDiscontinued, long manufacturer) {
 		this.id = id;
 		this.name = name;
 		this.dIntroduced = dIntroduced;
@@ -25,10 +25,10 @@ public class Computer {
 				+ dDiscontinued + ", manufacturer=" + manufacturer + "]";
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -50,26 +50,26 @@ public class Computer {
 	public void setdDiscontinued(LocalDate dDiscontinued) {
 		this.dDiscontinued = dDiscontinued;
 	}
-	public int getManufacturer() {
+	public long getManufacturer() {
 		return manufacturer;
 	}
-	public void setManufacturer(int manufacturer) {
+	public void setManufacturer(long manufacturer) {
 		this.manufacturer = manufacturer;
 	}
 
 	public static class Builder{
-		private int id;
+		private long id;
 		private String name;
 		private LocalDate dIntroduced;
 		private LocalDate dDiscontinued;
-		private int manufacturer;
+		private long manufacturer;
 	
 		public Builder(){
 			
 			
 		}
 		
-		public Builder id(int id){
+		public Builder id(long id){
 			this.id = id;
 			return this;
 		}
@@ -91,7 +91,7 @@ public class Computer {
 			
 		}
 		
-		public Builder manufacturer(int manu){
+		public Builder manufacturer(long manu){
 			this.manufacturer=manu;
 			return this;
 			
