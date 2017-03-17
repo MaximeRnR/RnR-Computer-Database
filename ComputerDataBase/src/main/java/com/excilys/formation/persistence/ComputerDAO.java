@@ -55,35 +55,32 @@ public enum ComputerDAO implements ComputerDAOInterface{
 					return rs.getInt(1);
 				}
 			}
-		}catch (ComputerDBException | SQLException e) {
+		}catch (SQLException e) {
 			logger.error("Computer not created" );
+			e.printStackTrace();
 			throw new ComputerDBException("Computer not created", e);
 		}
 		return -1;
 
 	}       
 
-	public boolean delete(long id) throws ComputerDBException {
+	public void delete(long id) throws ComputerDBException {
 		String query = "DELETE FROM computer WHERE id = ?";
 
 
 		try(PreparedStatement preparedStmt = this.conn.prepareStatement(query);) {
 
 			this.cp = find(id);
-
-
 			preparedStmt.setLong(1, cp.getId());
 			preparedStmt.execute();
 			logger.info("Computer "+ cp.getId() +" deleted");
-			preparedStmt.close();
-			return true;
-		}catch (ComputerDBException | SQLException e) {
+		}catch (SQLException e) {
 			logger.error("Computer not deleted " );
 			throw new ComputerDBException("Computer not deleted ", e);
 		}
 	}
 
-	public boolean update(Computer cp) throws ComputerDBException {
+	public void update(Computer cp) throws ComputerDBException {
 
 		find(cp.getId());
 
@@ -103,9 +100,7 @@ public enum ComputerDAO implements ComputerDAOInterface{
 			preparedStmt.setLong(5,cp.getId());
 			preparedStmt.executeUpdate();
 			logger.info("Computer "+ cp.getId() +" updated ");
-			preparedStmt.close();
-			return true;
-		}catch (ComputerDBException | SQLException e) {
+		}catch (SQLException e) {
 			logger.error("Computer not updated " );
 			throw new ComputerDBException("Computer not updated ", e);
 		}
@@ -120,7 +115,7 @@ public enum ComputerDAO implements ComputerDAOInterface{
 			preparedStmt.setLong(1, id);
 			preparedStmt.execute();
 			try(ResultSet result = preparedStmt.getResultSet();){
-				if(result.first())
+				while(result.next()){
 					cp = new Computer.Builder()
 					.id(result.getLong("c.id"))
 					.name(result.getString("c.name"))
@@ -134,26 +129,27 @@ public enum ComputerDAO implements ComputerDAOInterface{
 				if(result.getDate("c.discontinued")!=null)
 					cp.setdDiscontinued(result.getTimestamp("c.discontinued").toLocalDateTime().toLocalDate());
 				logger.info("Computer "+ cp.getId() +" selected ");
-				preparedStmt.close();
 				return cp;
+				}
 			}
-		}catch (ComputerDBException | SQLException e) {
+		}catch (SQLException e) {
 			logger.error("Computer not found " );
 			throw new ComputerDBException("Computer not found ", e);
 		}
+		return cp;
 
 	}
 
-	public List<Computer> page(int index) {
+	public List<Computer> page() throws ComputerDBException {
 
 		List<Computer> lcp = new ArrayList<Computer>();    
 		Computer cp;
-		String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c ORDER BY c.company_id ASC LIMIT ? OFFSET ?;";
+		String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c LIMIT ? OFFSET ?;";
 		
 		try(PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
 			
 			preparedStmt.setInt(1, Page.MAX_NUMBER_OF_OBJECT);
-			preparedStmt.setInt(2, index*Page.MAX_NUMBER_OF_OBJECT);
+			preparedStmt.setInt(2, (Page.PAGE.getIndex())*10);
 			preparedStmt.execute();
 			
 			try(ResultSet result = preparedStmt.getResultSet();){
@@ -175,7 +171,7 @@ public enum ComputerDAO implements ComputerDAOInterface{
 			}
 			logger.info("Computers selected ");
 			}
-		}catch (ComputerDBException | SQLException e) {
+		}catch (SQLException e) {
 			logger.error("Computers not found " );
 			throw new ComputerDBException("Computers not found ", e);
 		}
@@ -183,42 +179,28 @@ public enum ComputerDAO implements ComputerDAOInterface{
 		return lcp;
 	}
 
+	@Override
+	public int pageNumber() throws ComputerDBException {
+		
+		String sql = "SELECT count(*) FROM computer c;";
+		try(PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
 
-	/* A MODIFIER
-	public List<Computer>  findAll() {
-		List<Computer> lcp = new ArrayList<Computer>();    
-		Computer cp;
-		try {
-			String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c ORDER BY c.company_id ASC;";
-			ResultSet result = this.conn.createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery(sql);
-			if(!result.first())
-				throw new IllegalArgumentException();
-			while(result.next()){
-				cp = new Computer(
-						result.getInt("c.id"),
-						result.getString("c.name"),
-						null,
-						null,
-						result.getInt("c.company_id")
-						); 
-
-				if(result.getDate("c.introduced")!=null)
-					cp.setdIntroduced(result.getDate("c.introduced").toLocalDate());
-				if(result.getDate("c.discontinued")!=null)
-					cp.setdDiscontinued(result.getDate("c.discontinued").toLocalDate());
-
-				lcp.add(cp);
+			preparedStmt.execute();
+			try(ResultSet result = preparedStmt.getResultSet();){
+				while(result.next()){
+					
+				return result.getInt(1)/Page.MAX_NUMBER_OF_OBJECT;
+				}
 			}
-			logger.info("Computers selected ");
-		} catch (Exception e) {
-			logger.error("Computers not selected ");
-			App.menu();
+		}catch (SQLException e) {
+			logger.error("Computer not found " );
+			throw new ComputerDBException("Computer not found ", e);
 		}
+		return -1;
+	}
 
-		return lcp;
-	}*/
+
+	
 
 
 }

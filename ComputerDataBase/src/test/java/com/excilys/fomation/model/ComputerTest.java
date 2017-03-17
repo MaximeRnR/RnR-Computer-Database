@@ -1,4 +1,4 @@
-package com.excilys.test.java;
+package com.excilys.fomation.model;
 
 
 public class ComputerTest {

@@ -56,6 +56,50 @@ public class Computer {
 	public void setManufacturer(long manufacturer) {
 		this.manufacturer = manufacturer;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dDiscontinued == null) ? 0 : dDiscontinued.hashCode());
+		result = prime * result + ((dIntroduced == null) ? 0 : dIntroduced.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + (int) (manufacturer ^ (manufacturer >>> 32));
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Computer other = (Computer) obj;
+		if (dDiscontinued == null) {
+			if (other.dDiscontinued != null)
+				return false;
+		} else if (!dDiscontinued.equals(other.dDiscontinued))
+			return false;
+		if (dIntroduced == null) {
+			if (other.dIntroduced != null)
+				return false;
+		} else if (!dIntroduced.equals(other.dIntroduced))
+			return false;
+		if (id != other.id)
+			return false;
+		if (manufacturer != other.manufacturer)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+	
 
 	public static class Builder{
 		private long id;

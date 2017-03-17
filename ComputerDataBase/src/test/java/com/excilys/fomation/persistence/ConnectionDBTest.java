@@ -1,17 +1,17 @@
-package com.excilys.test.java;
+package com.excilys.fomation.persistence;
 
 import org.junit.After;
 import org.junit.Before;
 
-import com.excilys.persistence.java.ConnectionDB;
+import com.excilys.formation.persistence.ConnectionDB;
+
 
 public class ConnectionDBTest {
 	public ConnectionDB connDB;
 	
 	@Before
 	public void beforeEachTest(){
-		
-		connDB = ConnectionDB.getInstance();
+		connDB = connDB.CONNECTION;
 		
 		
 	}

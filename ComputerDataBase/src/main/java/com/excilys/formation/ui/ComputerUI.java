@@ -2,6 +2,7 @@ package com.excilys.formation.ui;
 
 import java.time.LocalDate;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import com.excilys.formation.service.ComputerService;
@@ -15,6 +16,7 @@ public class ComputerUI {
 	private ComputerService cpS;
 	private ComputerModelUI cp;
 	private CompanyModelUI cy;
+	private Page page;
 
 
 	public void AddComputer() throws ComputerDBException{
@@ -46,8 +48,7 @@ public class ComputerUI {
 		} catch (ComputerDBException | InputMismatchException e) {
 			throw new ComputerDBException("Not a Number", e);
 		}
-		if(cpS.delete(id))
-			System.out.println("Deleted");
+		cpS.delete(id);
 
 	}
 
@@ -121,34 +122,30 @@ public class ComputerUI {
 		return cp;	      
 
 	}
-	/*  A MODIFIER 
-	public List<Computer> PageComputer(){
+	public List<ComputerModelUI> FirstPage() throws ComputerDBException{
 
-	
-		ComputerService cpS = new ComputerService();
-		Page<Computer> p= new Page<Computer>(cpS.findAll());
-		System.out.println("Their are "+ (p.getPages().size()-1)+" pages");
+		cpS = new ComputerService();
+		page = Page.PAGE;
+		System.out.println("There are "+ cpS.pageNumber() + ".");
 		System.out.print("Enter a page : ");
-		Scanner scan= new Scanner(System.in);
-		int id=1;
-		try {
-			id = scan.nextInt();
-		} catch (Exception e) {
-			System.out.println("Not a page number");
-			App.menu();
-		}
-		if(id> (p.getPages().size()-1) || id<1){
-
-			System.out.println("Not a page number");
-			App.menu();
-
-		}
 		System.out.println();
-		return p.getPages().get(id);
-
-	
+		Scanner scan= new Scanner(System.in);
+		int index = 0; 
+		try {
+			index = scan.nextInt();
+		} catch ( InputMismatchException e) {
+			throw new ComputerDBException("Not a Number", e);
+		}
+		page.setIndex(index);
+		
+		return cpS.Page();
 	}
-	*/
+	
+	public List<ComputerModelUI> Page() throws ComputerDBException{
+
+		
+		return cpS.Page();
+	}
 
 }
 

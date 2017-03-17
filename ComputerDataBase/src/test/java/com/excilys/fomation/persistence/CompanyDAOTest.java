@@ -1,4 +1,4 @@
-package com.excilys.test.java;
+package com.excilys.fomation.persistence;
 
 import static org.junit.Assert.*;
 
@@ -7,20 +7,20 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.excilys.model.java.Company;
-import com.excilys.persistence.java.CompanyDAO;
+import com.excilys.formation.model.Company;
+import com.excilys.formation.persistence.CompanyDAO;
+import com.excilys.formation.persistence.CompanyDAOInterface;
+
 
 public class CompanyDAOTest {
 	private Company cp;
-	private CompanyDAO cpDAO;
-
+	private CompanyDAOInterface cydaoi;
 
 	@Before
 	public void beforeEachTest(){
 
 		cp = new Company();
-		cpDAO = new CompanyDAO();
-
+		cydaoi = CompanyDAO.COMPANYDAO;
 
 	}
 
@@ -28,7 +28,7 @@ public class CompanyDAOTest {
 	public void afterEachTest(){
 
 		cp = null;
-		cpDAO = null;
+		cydaoi = null;
 
 	}
 
@@ -36,37 +36,18 @@ public class CompanyDAOTest {
 	public void findTest(){
 		cp.setId(1);
 		cp.setName("Apple Inc.");
-		assertEquals(cp.getId(), cpDAO.find(1).getId());
-		assertEquals(cp.getName(), cpDAO.find(1).getName());
+		assertEquals(cp.getId(), cydaoi.find(1).getId());
+		assertEquals(cp.getName(), cydaoi.find(1).getName());
 
 	}
-	
 	
 	@Test
-	public void updateTest(){
-		cp.setName("Test");
-		int generateKey = cpDAO.createCompany(cp);
-		cp.setId(generateKey);
-		cp.setName("Test1");
-		cpDAO.update(cp);
-		cp = cpDAO.find(generateKey);
-		assertEquals("Test1",cp.getName());
+	public void findAllTest(){
+		
+		assertEquals(41, cydaoi.findAll().size());
+
 	}
 	
 	
-	@Test
-	public void deleteTest(){
-		cp.setId(48);
-		assertTrue( cpDAO.delete(cp));
-	}
-
-
-	@Test
-	public void createCompanyTest(){
-		cp.setName("Test");
-		int generateKey = cpDAO.createCompany(cp);
-		assertEquals(generateKey, cpDAO.find(generateKey).getId());
-
-	}
 
 }

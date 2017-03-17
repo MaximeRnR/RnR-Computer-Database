@@ -7,10 +7,13 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.excilys.formation.mapper.CompanyMapper;
 import com.excilys.formation.mapper.ComputerMapper;
+import com.excilys.formation.model.Company;
 import com.excilys.formation.model.Computer;
 import com.excilys.formation.persistence.ComputerDAO;
 import com.excilys.formation.persistence.ComputerDAOInterface;
+import com.excilys.formation.ui.CompanyModelUI;
 import com.excilys.formation.ui.ComputerModelUI;
 
 
@@ -29,14 +32,14 @@ public class ComputerService {
 		
 	}       
 
-	public boolean delete(long id) {
+	public void delete(long id) {
 		
-		return cpdaoi.delete(id);
+		cpdaoi.delete(id);
 	}
 
-	public boolean update(ComputerModelUI cpmui) {
+	public void update(ComputerModelUI cpmui) {
 
-		return cpdaoi.update(new ComputerMapper(cpmui).getCp());
+		cpdaoi.update(new ComputerMapper(cpmui).getCp());
 	}
 
 	public ComputerModelUI find(long id) {
@@ -44,13 +47,17 @@ public class ComputerService {
 		return new ComputerMapper(cpdaoi.find(id)).getCpmui();
 	}
 
-	public List<ComputerModelUI>  page(int index){
-		List<Computer> lcp = cpdaoi.page(index);
-		List<ComputerModelUI> lcpui = new ArrayList<ComputerModelUI>();
+	public int pageNumber(){
+		return cpdaoi.pageNumber();
+	}
+
+	public List<ComputerModelUI> Page() {
+		List<Computer> lcp = cpdaoi.page();
+		List<ComputerModelUI> lcpmui = new ArrayList<ComputerModelUI>();
 		for(int i=0;i<lcp.size();i++){
-			lcpui.add(new ComputerMapper(lcp.get(i)).getCpmui());
+			lcpmui.add(new ComputerMapper(lcp.get(i)).getCpmui());
 		}
-		return lcpui;
+		return lcpmui;
 	}
 	
 

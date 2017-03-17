@@ -1,4 +1,4 @@
-package com.excilys.test.java;
+package com.excilys.fomation.persistence;
 
 import static org.junit.Assert.*;
 
@@ -8,8 +8,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.excilys.model.java.Computer;
-import com.excilys.persistence.java.ComputerDAO;
+import com.excilys.formation.model.Computer;
+import com.excilys.formation.persistence.ComputerDAO;
+
 
 public class ComputerDAOTest {
 	private Computer cp;
@@ -19,8 +20,8 @@ public class ComputerDAOTest {
 	@Before
 	public void beforeEachTest(){
 
-		cp = new Computer();
-		cpDAO = new ComputerDAO();
+		cp = new Computer.Builder().build();
+		cpDAO = ComputerDAO.COMPUTERDAO;
 
 
 	}
@@ -49,8 +50,11 @@ public class ComputerDAOTest {
 
 	@Test
 	public void deleteTest(){
-		cp.setId(575);
-		assertTrue( cpDAO.delete(cp));
+		cp.setName("Test_delete");
+		cp.setManufacturer(1);
+		cp.setId(cpDAO.createComputer(cp));
+		cpDAO.delete(cp.getId());
+		assertTrue(cpDAO.find(cp.getId()) == null);
 	}
 	
 	@Test
@@ -59,12 +63,13 @@ public class ComputerDAOTest {
 		cp.setdIntroduced(LocalDate.now());
 		cp.setdDiscontinued(null);
 		cp.setManufacturer(1);
-		int generateKey = cpDAO.createComputer(cp);
+		long generateKey = cpDAO.createComputer(cp);
 		cp.setId(generateKey);
 		cp.setName("Test1");
 		cpDAO.update(cp);
 		cp = cpDAO.find(generateKey);
 		assertEquals("Test1",cp.getName());
+		cpDAO.delete(generateKey);
 	}
 	
 	@Test
@@ -73,8 +78,9 @@ public class ComputerDAOTest {
 		cp.setdIntroduced(LocalDate.now());
 		cp.setdDiscontinued(LocalDate.now());
 		cp.setManufacturer(1);
-		int generateKey = cpDAO.createComputer(cp);
+		long generateKey = cpDAO.createComputer(cp);
 		assertEquals(generateKey, cpDAO.find(generateKey).getId());
+		cpDAO.delete(generateKey);
 
 	}
 
