@@ -3,7 +3,6 @@ package com.excilys.formation.persistence;
 import java.util.List;
 
 import com.excilys.formation.model.Computer;
-import com.excilys.formation.ui.ComputerModelUI;
 
 
 public interface ComputerDAOInterface {
