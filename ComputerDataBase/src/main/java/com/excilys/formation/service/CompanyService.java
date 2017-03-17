@@ -13,30 +13,26 @@ import com.excilys.formation.persistence.CompanyDAOInterface;
 import com.excilys.formation.ui.CompanyModelUI;
 import com.excilys.formation.util.ComputerDBException;
 
-
 public class CompanyService {
-	static Logger logger = LogManager.getLogger();
-	private CompanyDAOInterface cydaoi = CompanyDAO.COMPANYDAO;
-	
-	public  CompanyService() throws ComputerDBException{
-			
-	}
+    static Logger logger = LogManager.getLogger();
+    private CompanyDAOInterface cydaoi = CompanyDAO.COMPANYDAO;
 
-	public CompanyModelUI find(long id){
-		
-		return new CompanyMapper(cydaoi.find(id)).getCymui();
-	}
+    public CompanyService() throws ComputerDBException {
 
-	public List<CompanyModelUI>  findAll(){
-		List<Company> lcp = cydaoi.findAll();
-		List<CompanyModelUI> lcy = new ArrayList<CompanyModelUI>();
-		for(int i=0;i<lcp.size();i++){
-			lcy.add(new CompanyMapper(lcp.get(i)).getCymui());
-		}
-		return lcy;
-	}
-	
-	
-	
-	
+    }
+
+    public CompanyModelUI find(long id) {
+
+        return new CompanyMapper(cydaoi.find(id)).getCymui();
+    }
+
+    public List<CompanyModelUI> findAll() {
+        List<Company> lcp = cydaoi.findAll();
+        List<CompanyModelUI> lcy = new ArrayList<CompanyModelUI>();
+        for (int i = 0; i < lcp.size(); i++) {
+            lcy.add(new CompanyMapper(lcp.get(i)).getCymui());
+        }
+        return lcy;
+    }
+
 }

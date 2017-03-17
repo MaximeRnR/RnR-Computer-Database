@@ -1,6 +1,5 @@
 package com.excilys.formation.service;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,49 +15,46 @@ import com.excilys.formation.persistence.ComputerDAOInterface;
 import com.excilys.formation.ui.CompanyModelUI;
 import com.excilys.formation.ui.ComputerModelUI;
 
-
 public class ComputerService {
-	static Logger logger = LogManager.getLogger();
-	private ComputerDAOInterface cpdaoi = ComputerDAO.COMPUTERDAO;
-	
-	
-	public ComputerService() {
+    static Logger logger = LogManager.getLogger();
+    private ComputerDAOInterface cpdaoi = ComputerDAO.COMPUTERDAO;
 
-	}
+    public ComputerService() {
 
-	public long createComputer(ComputerModelUI cpmui) {
-		
-		return cpdaoi.createComputer(new ComputerMapper(cpmui).getCp());
-		
-	}       
+    }
 
-	public void delete(long id) {
-		
-		cpdaoi.delete(id);
-	}
+    public long createComputer(ComputerModelUI cpmui) {
 
-	public void update(ComputerModelUI cpmui) {
+        return cpdaoi.createComputer(new ComputerMapper(cpmui).getCp());
 
-		cpdaoi.update(new ComputerMapper(cpmui).getCp());
-	}
+    }
 
-	public ComputerModelUI find(long id) {
-		
-		return new ComputerMapper(cpdaoi.find(id)).getCpmui();
-	}
+    public void delete(long id) {
 
-	public int pageNumber(){
-		return cpdaoi.pageNumber();
-	}
+        cpdaoi.delete(id);
+    }
 
-	public List<ComputerModelUI> Page() {
-		List<Computer> lcp = cpdaoi.page();
-		List<ComputerModelUI> lcpmui = new ArrayList<ComputerModelUI>();
-		for(int i=0;i<lcp.size();i++){
-			lcpmui.add(new ComputerMapper(lcp.get(i)).getCpmui());
-		}
-		return lcpmui;
-	}
-	
+    public void update(ComputerModelUI cpmui) {
+
+        cpdaoi.update(new ComputerMapper(cpmui).getCp());
+    }
+
+    public ComputerModelUI find(long id) {
+
+        return new ComputerMapper(cpdaoi.find(id)).getCpmui();
+    }
+
+    public int pageNumber() {
+        return cpdaoi.pageNumber();
+    }
+
+    public List<ComputerModelUI> Page() {
+        List<Computer> lcp = cpdaoi.page();
+        List<ComputerModelUI> lcpmui = new ArrayList<ComputerModelUI>();
+        for (int i = 0; i < lcp.size(); i++) {
+            lcpmui.add(new ComputerMapper(lcp.get(i)).getCpmui());
+        }
+        return lcpmui;
+    }
 
 }
