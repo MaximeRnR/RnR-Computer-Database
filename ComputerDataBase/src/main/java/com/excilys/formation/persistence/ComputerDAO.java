@@ -8,8 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-/*import java.util.ArrayList;
-import java.util.List;*/
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -24,7 +22,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
     COMPUTERDAO;
     private Connection conn;
     private Computer cp;
-    static Logger logger = LogManager.getLogger();
+    static Logger logger = LogManager.getRootLogger();
 
     private ComputerDAO() throws ComputerDBException {
 

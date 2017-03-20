@@ -17,7 +17,7 @@ import com.excilys.formation.util.ComputerDBException;
 public enum CompanyDAO implements CompanyDAOInterface {
     COMPANYDAO;
     private Connection conn;
-    static Logger logger = LogManager.getLogger();
+    static Logger logger = LogManager.getRootLogger();
     private Company company;
 
     private CompanyDAO() throws ComputerDBException {

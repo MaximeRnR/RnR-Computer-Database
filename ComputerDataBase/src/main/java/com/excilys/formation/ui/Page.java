@@ -1,14 +1,14 @@
 package com.excilys.formation.ui;
 
-import com.excilys.formation.service.ComputerService;
 
 //Class Pagination 
 public enum Page {
     PAGE;
     public static int MAX_NUMBER_OF_OBJECT = 10;
-    private int index = 0;
+    private int index;
 
     private Page() {
+        this.index=0;
     }
 
     public int getIndex() {
@@ -20,12 +20,12 @@ public enum Page {
     }
 
     public void next() {
-        this.index++;
+        this.index=this.index+1;
     }
 
     public void previous() {
 
-        this.index--;
+        this.index=this.index-1;
 
     }
 

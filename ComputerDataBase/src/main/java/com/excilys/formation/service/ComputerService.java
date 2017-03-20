@@ -3,20 +3,13 @@ package com.excilys.formation.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import com.excilys.formation.mapper.CompanyMapper;
 import com.excilys.formation.mapper.ComputerMapper;
-import com.excilys.formation.model.Company;
 import com.excilys.formation.model.Computer;
 import com.excilys.formation.persistence.ComputerDAO;
 import com.excilys.formation.persistence.ComputerDAOInterface;
-import com.excilys.formation.ui.CompanyModelUI;
 import com.excilys.formation.ui.ComputerModelUI;
 
 public class ComputerService {
-    static Logger logger = LogManager.getLogger();
     private ComputerDAOInterface cpdaoi = ComputerDAO.COMPUTERDAO;
 
     public ComputerService() {
