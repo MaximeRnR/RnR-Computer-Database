@@ -8,6 +8,7 @@ import com.excilys.formation.model.Computer;
 import com.excilys.formation.persistence.ComputerDAO;
 import com.excilys.formation.persistence.ComputerDAOInterface;
 import com.excilys.formation.ui.ComputerModelUI;
+import com.excilys.formation.ui.Page;
 
 public class ComputerService {
     private ComputerDAOInterface cpdaoi = ComputerDAO.COMPUTERDAO;
@@ -38,7 +39,11 @@ public class ComputerService {
     }
 
     public int pageNumber() {
-        return cpdaoi.pageNumber();
+        return cpdaoi.count()/Page.MAX_NUMBER_OF_OBJECT;
+    }
+    
+    public int count() {
+        return cpdaoi.count();
     }
 
     public List<ComputerModelUI> Page() {

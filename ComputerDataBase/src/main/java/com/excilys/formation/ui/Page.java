@@ -28,5 +28,8 @@ public enum Page {
         this.index=this.index-1;
 
     }
+    public static void setMAX_NUMBER_OF_OBJECT(int mAX_NUMBER_OF_OBJECT) {
+        MAX_NUMBER_OF_OBJECT = mAX_NUMBER_OF_OBJECT;
+    }
 
 }

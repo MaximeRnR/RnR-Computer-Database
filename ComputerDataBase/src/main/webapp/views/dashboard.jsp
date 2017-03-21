@@ -19,14 +19,14 @@
 <body>
 	<header class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="dashboard.html"> Application -
+			<a class="navbar-brand" href="dashboard"> Application -
 				Computer Database </a>
 		</div>
 	</header>
 
 	<section id="main">
 		<div class="container">
-			<h1 id="homeTitle">121 Computers found</h1>
+			<h1 id="homeTitle">${count} Computers found</h1>
 			<div id="actions" class="form-horizontal">
 				<div class="pull-left">
 					<form id="searchForm" action="#" method="GET" class="form-inline">
@@ -38,7 +38,7 @@
 					</form>
 				</div>
 				<div class="pull-right">
-					<a class="btn btn-success" id="addComputer" href="/add">Add
+					<a class="btn btn-success" id="addComputer" href="add">Add
 						Computer</a> <a class="btn btn-default" id="editComputer" href="#"
 						onclick="$.fn.toggleEditMode();">Edit</a>
 				</div>
@@ -77,6 +77,7 @@
 
 					<c:forEach items="${lcpui}" var="cpui">
 						<tr>
+							<td class="editMode" style="display:none"><input type="checkbox" class="cb" value="<c:out value="${cpui.id}"/>"/></td>
 							<td><c:out value="${cpui.name}" /></td>
 							<td><c:out value="${cpui.dIntroduced}" /></td>
 							<td><c:out value="${cpui.dDiscontinued}" /></td>
@@ -92,22 +93,29 @@
 	<footer class="navbar-fixed-bottom">
 		<div class="container text-center">
 			<ul class="pagination">
-				<li><a href="#" aria-label="Previous"> <span
+			<c:if test="${index != 0}">
+				<li id="previous"><a href="#" aria-label="Previous"> <span
 						aria-hidden="true">&laquo;</span>
-				</a></li>
+				</a></li></c:if>
 				<c:forEach var="i" begin="0" end='${nbpage}'>
-					<li class="pages" position="${i}"
-					<c:if test="${i > 5}">style="display:none"</c:if>>
-  						<a position="${i}" ><c:out value="${i}"/></a></li>
-				</c:forEach>
+					<c:if test="${i==index}"><c:set value="active" var="cssClass"></c:set></c:if>
+					<c:if test="${i!=index}"><c:set value="" var="cssClass"></c:set></c:if>
+					<c:if test="${i > index - 3 && i < index+3}">
+					<li class="pages ${cssClass}" position="${i}">
+   						<a position="${i}" ><c:out value="${i + 1}"/></a></li>
+   					</c:if>   					
+ 				</c:forEach>
+
+				<c:if test="${index != nbpage}">
 				<li id="next"><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 				</a></li>
+				</c:if>
 			</ul>
 
 			<div class="btn-group btn-group-sm pull-right" role="group">
-				<button type="button" class="btn btn-default">10</button>
-				<button type="button" class="btn btn-default">50</button>
-				<button type="button" class="btn btn-default">100</button>
+				<button  type="button" class="max_obj btn btn-default">10</button>
+				<button type="button" class="max_obj btn btn-default">50</button>
+				<button type="button" class="max_obj btn btn-default">100</button>
 			</div>
 		</div>
 	</footer>

@@ -13,7 +13,7 @@ public interface ComputerDAOInterface {
 
     public abstract void update(Computer cp);
 
-    public abstract int pageNumber();
+    public abstract int count();
 
     public abstract List<Computer> page();
 

@@ -137,7 +137,7 @@ public class Computer {
         }
 
         public Builder dd(LocalDate dd) {
-            this.dIntroduced = dd;
+            this.dDiscontinued = dd;
             return this;
 
         }

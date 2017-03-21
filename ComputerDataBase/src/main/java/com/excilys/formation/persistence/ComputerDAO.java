@@ -42,7 +42,10 @@ public enum ComputerDAO implements ComputerDAOInterface {
                 preparedStmt.setTimestamp(3, new Timestamp(Date.valueOf(cp.getdDiscontinued()).getTime()));
             } else
                 preparedStmt.setNull(3, java.sql.Types.TIMESTAMP);
-            preparedStmt.setLong(4, cp.getManufacturer());
+            if (cp.getManufacturer() != 0) {
+                preparedStmt.setLong(4, cp.getManufacturer());
+            } else
+            preparedStmt.setNull(4, java.sql.Types.BIGINT);
             preparedStmt.execute();
             try (ResultSet rs = preparedStmt.getGeneratedKeys();) {
                 if (rs.next()) {
@@ -137,7 +140,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
         try (PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
 
             preparedStmt.setInt(1, Page.MAX_NUMBER_OF_OBJECT);
-            preparedStmt.setInt(2, (Page.PAGE.getIndex()) * 10);
+            preparedStmt.setInt(2, (Page.PAGE.getIndex()) * Page.MAX_NUMBER_OF_OBJECT);
             preparedStmt.execute();
 
             try (ResultSet result = preparedStmt.getResultSet();) {
@@ -163,7 +166,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
     }
 
     @Override
-    public int pageNumber() throws ComputerDBException {
+    public int count() throws ComputerDBException {
 
         String sql = "SELECT count(*) FROM computer c;";
         try (PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
@@ -172,7 +175,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
             try (ResultSet result = preparedStmt.getResultSet();) {
                 while (result.next()) {
 
-                    return result.getInt(1) / Page.MAX_NUMBER_OF_OBJECT;
+                    return result.getInt(1);
                 }
             }
         } catch (SQLException e) {

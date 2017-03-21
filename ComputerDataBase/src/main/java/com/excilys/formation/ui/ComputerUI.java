@@ -29,7 +29,7 @@ public class ComputerUI {
             throw new ComputerDBException("Missing Name");
         }
         cy = new CompanyModelUI(44);
-        cp = new ComputerModelUI.Builder().name(name).di(LocalDate.now()).di(null).cymui(cy).build();
+        cp = new ComputerModelUI.Builder().name(name).di(LocalDate.now()).dd(null).cymui(cy).build();
         cpS.createComputer(cp);
     }
 
