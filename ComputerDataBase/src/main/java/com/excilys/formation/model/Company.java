@@ -5,9 +5,16 @@ public class Company {
     private long id;
     private String name;
 
+    /**
+     * Default.
+     */
     public Company() {
     }
 
+    /**
+     * @param id Id
+     * @param name Name
+     */
     public Company(long id, String name) {
         this.id = id;
         this.name = name;

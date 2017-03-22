@@ -4,17 +4,27 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import com.excilys.formation.dto.CompanyDTO;
+import com.excilys.formation.dto.ComputerDTO;
+
 public class App {
 
+    /**
+     */
     public App() {
     }
 
-    public static void main(String args[]) {
+    /**
+     * @param args args
+     */
+    public static void main(String[] args) {
 
         menu();
 
     }
 
+    /**
+     */
     public static void menu() {
         CompanyUI cyui = new CompanyUI();
         ComputerUI cpui = new ComputerUI();
@@ -42,93 +52,96 @@ public class App {
         }
 
         switch (choice) {
-        case 1:
-            List<CompanyModelUI> lcy = cyui.FindAllCompany();
-            for (int i = 0; i < lcy.size(); i++) {
+            case 1:
+                List<CompanyDTO> lcy = cyui.findAllCompany();
+                for (int i = 0; i < lcy.size(); i++) {
 
-                System.out.println(lcy.get(i).toString());
+                    System.out.println(lcy.get(i).toString());
 
-            }
-            break;
-        case 2:
-            List<ComputerModelUI> lcp = cpui.FirstPage();
-            for (int i = 0; i < lcp.size(); i++) {
-
-                System.out.println(lcp.get(i).toString());
-
-            }
-            int quit = 0;
-            while (quit == 0) {
-                System.out.println("Page menu");
-                System.out.println("\t 1 - Previous");
-                System.out.println("\t 2 - Next");
-                System.out.println("\t 0 - Quit");
-                int page_test = 0;
-                try {
-                    page_test = scan.nextInt();
-
-                } catch (InputMismatchException e) {
-                    System.out.println("Pick a menu number");
-                    App.menu();
                 }
+                break;
+            case 2:
+                List<ComputerDTO> lcp = cpui.firstPage();
+                for (int i = 0; i < lcp.size(); i++) {
 
-                if (page_test > 2 || page_test < 0) {
-                    System.out.println("Pick a menu number");
-                    App.menu();
+                    System.out.println(lcp.get(i).toString());
+
                 }
-                switch (page_test) {
-                case 1:
-                    Page.PAGE.previous();
-                    lcp = cpui.Page();
-                    for (int i = 0; i < lcp.size(); i++) {
+                int quit = 0;
+                while (quit == 0) {
+                    System.out.println("Page menu");
+                    System.out.println("\t 1 - Previous");
+                    System.out.println("\t 2 - Next");
+                    System.out.println("\t 0 - Quit");
+                    int pageTest = 0;
+                    try {
+                        pageTest = scan.nextInt();
 
-                        System.out.println(lcp.get(i).toString());
-
+                    } catch (InputMismatchException e) {
+                        System.out.println("Pick a menu number");
+                        App.menu();
                     }
-                    break;
-                case 2:
-                    Page.PAGE.next();
-                    lcp = cpui.Page();
-                    for (int i = 0; i < lcp.size(); i++) {
 
-                        System.out.println(lcp.get(i).toString());
-
+                    if (pageTest > 2 || pageTest < 0) {
+                        System.out.println("Pick a menu number");
+                        App.menu();
                     }
-                    break;
-                case 0:
-                    quit = 1;
-                    break;
+                    switch (pageTest) {
+                        case 1:
+                            Page.PAGE.previous();
+                            lcp = cpui.page();
+                            for (int i = 0; i < lcp.size(); i++) {
+
+                                System.out.println(lcp.get(i).toString());
+
+                            }
+                            break;
+                        case 2:
+                            Page.PAGE.next();
+                            lcp = cpui.page();
+                            for (int i = 0; i < lcp.size(); i++) {
+
+                                System.out.println(lcp.get(i).toString());
+
+                            }
+                            break;
+                        case 0:
+                            quit = 1;
+                            break;
+                    }
                 }
-            }
-            break;
-        case 3:
-            ComputerModelUI cp = cpui.FindComputer();
-            System.out.println(cp.getId() + " " + cp.getName() + " " + cp.getdIntroduced() + " " + cp.getdDiscontinued()
-                    + " " + cp.getCymui().getName());
+                break;
+            case 3:
+                ComputerDTO cp = cpui.findComputer();
+                System.out.println(cp.getId() + " " + cp.getName() + " " + cp.getdIntroduced() + " "
+                        + cp.getdDiscontinued() + " " + cp.getCydto().getName());
 
-            break;
-        case 4:
-            cpui.AddComputer();
+                break;
+            case 4:
+                cpui.addComputer();
 
-            break;
-        case 5:
-            cpui.UpdateComputer();
+                break;
+            case 5:
+                cpui.updateComputer();
 
-            break;
-        case 6:
-            cpui.RemoveComputer();
-            break;
-        case 7:
-            /*
-             * List<Computer> lcpP = cpui.PageComputer(); for(int i=0;
-             * i<lcpP.size();i++){ System.out.println(lcpP.get(i).toString()); }
-             */
-            break;
+                break;
+            case 6:
+                cpui.removeComputer();
+                break;
+            case 7:
+                /*
+                 * List<Computer> lcpP = cpui.PageComputer(); for(int i=0;
+                 * i<lcpP.size();i++){
+                 * System.out.println(lcpP.get(i).toString()); }
+                 */
+                break;
         }
         pressAnyKeyToContinue();
 
     }
 
+    /**
+     */
     public static void pressAnyKeyToContinue() {
         System.out.println("Press Enter to continue...");
         try {

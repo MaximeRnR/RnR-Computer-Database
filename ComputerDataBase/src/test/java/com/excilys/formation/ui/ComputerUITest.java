@@ -4,18 +4,19 @@ import org.junit.After;
 import org.junit.Before;
 
 public class ComputerUITest {
-	
 
-	@Before
-	public void beforeEachTest(){
+    /**
+     */
+    @Before
+    public void beforeEachTest() {
 
-	}
+    }
 
-	@After
-	public void afterEachTest(){
+    /**
+     */
+    @After
+    public void afterEachTest() {
 
-	}
+    }
 
-
-	
 }

@@ -5,7 +5,14 @@ import java.util.List;
 import com.excilys.formation.model.Company;
 
 public interface CompanyDAOInterface {
-    public abstract Company find(long id);
+    /**
+     * @param id Id
+     * @return Company
+     */
+    Company find(long id);
 
-    public abstract List<Company> findAll();
+    /**
+     * @return List<Company>
+     */
+    List<Company> findAll();
 }

@@ -1,33 +1,40 @@
 package com.excilys.formation.mapper;
 
+import com.excilys.formation.dto.ComputerDTO;
 import com.excilys.formation.model.Company;
 import com.excilys.formation.model.Computer;
 import com.excilys.formation.persistence.CompanyDAO;
-import com.excilys.formation.ui.ComputerModelUI;
 import com.excilys.formation.util.ComputerDBException;
 
 public class ComputerMapper {
     private Computer cp;
-    private ComputerModelUI cpmui;
+    private ComputerDTO cpdto;
     private Company cy;
 
+    /**
+     * @param cp Computer
+     * @throws ComputerDBException cdbex
+     */
     public ComputerMapper(Computer cp) throws ComputerDBException {
 
         this.cp = cp;
         this.cy = CompanyDAO.COMPANYDAO.find(cp.getManufacturer());
-        this.cpmui = new ComputerModelUI.Builder().id(this.cp.getId()).name(this.cp.getName())
-                .di(this.cp.getdIntroduced()).dd(this.cp.getdDiscontinued())
-                .cymui(new CompanyMapper(this.cy).getCymui()).build();
+        this.cpdto = new ComputerDTO.Builder().id(this.cp.getId()).name(this.cp.getName()).di(this.cp.getdIntroduced())
+                .dd(this.cp.getdDiscontinued()).cydto(new CompanyMapper(this.cy).getCydto()).build();
 
     }
 
-    public ComputerMapper(ComputerModelUI cpmui) throws ComputerDBException {
+    /**
+     * @param cpdto ComputerDTO
+     * @throws ComputerDBException cdbex
+     */
+    public ComputerMapper(ComputerDTO cpdto) throws ComputerDBException {
 
-        this.cpmui = cpmui;
-        this.cy = new CompanyMapper(cpmui.getCymui()).getCy();
-        this.cp = new Computer.Builder().id(this.cpmui.getId()).name(this.cpmui.getName())
-                .di(this.cpmui.getdIntroduced()).dd(this.cpmui.getdDiscontinued())
-                .manufacturer(cpmui.getCymui().getId()).build();
+        this.cpdto = cpdto;
+        this.cy = new CompanyMapper(cpdto.getCydto()).getCy();
+        this.cp = new Computer.Builder().id(this.cpdto.getId()).name(this.cpdto.getName())
+                .di(this.cpdto.getdIntroduced()).dd(this.cpdto.getdDiscontinued())
+                .manufacturer(cpdto.getCydto().getId()).build();
 
     }
 
@@ -39,12 +46,12 @@ public class ComputerMapper {
         this.cp = cp;
     }
 
-    public ComputerModelUI getCpmui() {
-        return cpmui;
+    public ComputerDTO getCpdto() {
+        return cpdto;
     }
 
-    public void setCpmui(ComputerModelUI cpmui) {
-        this.cpmui = cpmui;
+    public void setCpdto(ComputerDTO cpdto) {
+        this.cpdto = cpdto;
     }
 
 }

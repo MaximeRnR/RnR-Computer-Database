@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="ex" uri="page"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
@@ -19,14 +20,15 @@
 <body>
 	<header class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="dashboard"> Application -
-				Computer Database </a>
+			<a class="navbar-brand" href="dashboard"> Application - Computer
+				Database </a>
 		</div>
 	</header>
 
 	<section id="main">
 		<div class="container">
-			<h1 id="homeTitle">${count} Computers found</h1>
+			<h1 id="homeTitle">${count}Computers found</h1>
+			
 			<div id="actions" class="form-horizontal">
 				<div class="pull-left">
 					<form id="searchForm" action="#" method="GET" class="form-inline">
@@ -75,13 +77,14 @@
 				<!-- Browse attribute computers -->
 				<tbody id="results">
 
-					<c:forEach items="${lcpui}" var="cpui">
+					<c:forEach items="${lcpdto}" var="cpdto">
 						<tr>
-							<td class="editMode" style="display:none"><input type="checkbox" class="cb" value="<c:out value="${cpui.id}"/>"/></td>
-							<td><c:out value="${cpui.name}" /></td>
-							<td><c:out value="${cpui.dIntroduced}" /></td>
-							<td><c:out value="${cpui.dDiscontinued}" /></td>
-							<td><c:out value="${cpui.cymui.name}" /></td>
+							<td class="editMode" style="display: none"><input
+								type="checkbox" class="cb" value="<c:out value="${cpdto.id}"/>" /></td>
+							<td><c:out value="${cpdto.name}" /></td>
+							<td><c:out value="${cpdto.dIntroduced}" /></td>
+							<td><c:out value="${cpdto.dDiscontinued}" /></td>
+							<td><c:out value="${cpdto.cydto.name}" /></td>
 						</tr>
 					</c:forEach>
 
@@ -93,27 +96,12 @@
 	<footer class="navbar-fixed-bottom">
 		<div class="container text-center">
 			<ul class="pagination">
-			<c:if test="${index != 0}">
-				<li id="previous"><a href="#" aria-label="Previous"> <span
-						aria-hidden="true">&laquo;</span>
-				</a></li></c:if>
-				<c:forEach var="i" begin="0" end='${nbpage}'>
-					<c:if test="${i==index}"><c:set value="active" var="cssClass"></c:set></c:if>
-					<c:if test="${i!=index}"><c:set value="" var="cssClass"></c:set></c:if>
-					<c:if test="${i > index - 3 && i < index+3}">
-					<li class="pages ${cssClass}" position="${i}">
-   						<a position="${i}" ><c:out value="${i + 1}"/></a></li>
-   					</c:if>   					
- 				</c:forEach>
-
-				<c:if test="${index != nbpage}">
-				<li id="next"><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-				</a></li>
-				</c:if>
+				<ex:Page index="${index}" nbPage="${nbpage}"></ex:Page>
+				
 			</ul>
 
 			<div class="btn-group btn-group-sm pull-right" role="group">
-				<button  type="button" class="max_obj btn btn-default">10</button>
+				<button type="button" class="max_obj btn btn-default">10</button>
 				<button type="button" class="max_obj btn btn-default">50</button>
 				<button type="button" class="max_obj btn btn-default">100</button>
 			</div>

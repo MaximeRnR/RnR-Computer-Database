@@ -5,16 +5,36 @@ import java.util.List;
 import com.excilys.formation.model.Computer;
 
 public interface ComputerDAOInterface {
-    public abstract long createComputer(Computer cp);
+    /**
+     * @param cp Computer
+     * @return long id
+     */
+    long createComputer(Computer cp);
 
-    public abstract Computer find(long id);
+    /**
+     * @param id id
+     * @return Computer
+     */
+    Computer find(long id);
 
-    public abstract void delete(long id);
+    /**
+     * @param id Id
+     */
+    void delete(long id);
 
-    public abstract void update(Computer cp);
+    /**
+     * @param cp Computer
+     */
+    void update(Computer cp);
 
-    public abstract int count();
+    /**
+     * @return nbComputer
+     */
+    int count();
 
-    public abstract List<Computer> page();
+    /**
+     * @return List<Computer>
+     */
+    List<Computer> page();
 
 }

@@ -20,12 +20,20 @@ public enum CompanyDAO implements CompanyDAOInterface {
     static Logger logger = LogManager.getRootLogger();
     private Company company;
 
-    private CompanyDAO() throws ComputerDBException {
+    /**
+     * @throws ComputerDBException cdbex
+     */
+    CompanyDAO() throws ComputerDBException {
 
         this.conn = ConnectionDB.CONNECTION.getConn();
 
     }
 
+    /**
+    * @param id Id
+    * @throws ComputerDBException cdbex
+    * @return Company
+    */
     public Company find(long id) throws ComputerDBException {
         company = new Company();
         String sql = "SELECT c.id, c.name FROM company c WHERE c.id=?";
@@ -37,10 +45,12 @@ public enum CompanyDAO implements CompanyDAOInterface {
             try (ResultSet result = preparedStmt.getResultSet();) {
 
                 if (result.first()) {
-                    if (result.getInt("c.id") != 0)
+                    if (result.getInt("c.id") != 0) {
                         company.setId(result.getInt("c.id"));
-                    if (result.getString("c.name") != null)
+                    }
+                    if (result.getString("c.name") != null) {
                         company.setName(result.getString("c.name"));
+                    }
                 }
                 logger.info("Company " + company.getId() + " selected");
             }
@@ -52,14 +62,20 @@ public enum CompanyDAO implements CompanyDAOInterface {
         return company;
     }
 
+
+    /**
+     * @throws ComputerDBException cdbex
+     * @return List<Company>
+     */
     public List<Company> findAll() throws ComputerDBException {
         List<Company> lcp = new ArrayList<Company>();
         Company cp;
         String sql = "SELECT c.id, c.name FROM company c;";
         try (ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
                 .executeQuery(sql);) {
-            if (!result.first())
+            if (!result.first()) {
                 throw new IllegalArgumentException();
+            }
             while (result.next()) {
                 cp = new Company(result.getLong("c.id"), result.getString("c.name"));
                 lcp.add(cp);

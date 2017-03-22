@@ -1,24 +1,32 @@
 package com.excilys.formation.mapper;
 
+import com.excilys.formation.dto.CompanyDTO;
 import com.excilys.formation.model.Company;
-import com.excilys.formation.ui.CompanyModelUI;
 import com.excilys.formation.util.ComputerDBException;
 
 public class CompanyMapper {
     private Company cy;
-    private CompanyModelUI cymui;
+    private CompanyDTO cydto;
 
+    /**
+     * @param cy Company
+     * @throws ComputerDBException cdbex
+     */
     public CompanyMapper(Company cy) throws ComputerDBException {
 
         this.cy = cy;
-        this.cymui = new CompanyModelUI(this.cy.getId(), this.cy.getName());
+        this.cydto = new CompanyDTO(this.cy.getId(), this.cy.getName());
 
     }
 
-    public CompanyMapper(CompanyModelUI cymui) throws ComputerDBException {
+    /**
+     * @param cydto CompanyDTO
+     * @throws ComputerDBException cdbex
+     */
+    public CompanyMapper(CompanyDTO cydto) throws ComputerDBException {
 
-        this.cymui = cymui;
-        this.cy = new Company(this.cymui.getId(), this.cymui.getName());
+        this.cydto = cydto;
+        this.cy = new Company(this.cydto.getId(), this.cydto.getName());
 
     }
 
@@ -30,12 +38,12 @@ public class CompanyMapper {
         this.cy = cy;
     }
 
-    public CompanyModelUI getCymui() {
-        return cymui;
+    public CompanyDTO getCydto() {
+        return cydto;
     }
 
-    public void setCymui(CompanyModelUI cymui) {
-        this.cymui = cymui;
+    public void setCydto(CompanyDTO cydto) {
+        this.cydto = cydto;
     }
 
 }

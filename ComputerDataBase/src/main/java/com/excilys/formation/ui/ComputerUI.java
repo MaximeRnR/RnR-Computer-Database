@@ -1,23 +1,28 @@
 package com.excilys.formation.ui;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import com.excilys.formation.dto.CompanyDTO;
+import com.excilys.formation.dto.ComputerDTO;
 import com.excilys.formation.service.ComputerService;
 import com.excilys.formation.util.ComputerDBException;
 
-import java.time.format.*;
 
 //Called in App
 public class ComputerUI {
     private ComputerService cpS;
-    private ComputerModelUI cp;
-    private CompanyModelUI cy;
+    private ComputerDTO cp;
+    private CompanyDTO cy;
     private Page page;
 
-    public void AddComputer() throws ComputerDBException {
+    /**
+     * @throws ComputerDBException cdbexc
+     */
+    public void addComputer() throws ComputerDBException {
 
         cpS = new ComputerService();
         System.out.println("Add a computer");
@@ -28,12 +33,15 @@ public class ComputerUI {
         if (name == null) {
             throw new ComputerDBException("Missing Name");
         }
-        cy = new CompanyModelUI(44);
-        cp = new ComputerModelUI.Builder().name(name).di(LocalDate.now()).dd(null).cymui(cy).build();
+        cy = new CompanyDTO(44);
+        cp = new ComputerDTO.Builder().name(name).di(LocalDate.now()).dd(null).cydto(cy).build();
         cpS.createComputer(cp);
     }
 
-    public void RemoveComputer() throws ComputerDBException {
+    /**
+     * @throws ComputerDBException cdbex
+     */
+    public void removeComputer() throws ComputerDBException {
 
         cpS = new ComputerService();
         System.out.println("Remove a computer");
@@ -50,7 +58,10 @@ public class ComputerUI {
 
     }
 
-    public void UpdateComputer() throws ComputerDBException {
+    /**
+     * @throws ComputerDBException cdbex
+     */
+    public void updateComputer() throws ComputerDBException {
 
         cpS = new ComputerService();
         System.out.println("Update a computer");
@@ -75,32 +86,36 @@ public class ComputerUI {
             App.menu();
         }
         switch (choice) {
-        case 1:
-            System.out.print(cp.getName() + " to : ");
-            String name = scan.next();
-            if (name == null) {
-                throw new ComputerDBException("Missing Name");
-            }
-            cp.setName(name);
-            cpS.update(cp);
-            break;
-        case 2:
-            System.out.print(cp.getdDiscontinued() + " to (yyyy-MM-dd) : ");
-            LocalDate dD = null;
-            try {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                dD = LocalDate.parse(scan.next(), formatter);
-            } catch (ComputerDBException e) {
-                throw new ComputerDBException("Not in the right Format", e);
-            }
-            cp.setdDiscontinued(dD);
-            cpS.update(cp);
-            break;
+            case 1:
+                System.out.print(cp.getName() + " to : ");
+                String name = scan.next();
+                if (name == null) {
+                    throw new ComputerDBException("Missing Name");
+                }
+                cp.setName(name);
+                cpS.update(cp);
+                break;
+            case 2:
+                System.out.print(cp.getdDiscontinued() + " to (yyyy-MM-dd) : ");
+                LocalDate dD = null;
+                try {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    dD = LocalDate.parse(scan.next(), formatter);
+                } catch (ComputerDBException e) {
+                    throw new ComputerDBException("Not in the right Format", e);
+                }
+                cp.setdDiscontinued(dD);
+                cpS.update(cp);
+                break;
 
         }
     }
 
-    public ComputerModelUI FindComputer() throws ComputerDBException {
+    /**
+     * @return cp ComputerDTO
+     * @throws ComputerDBException cdbex
+     */
+    public ComputerDTO findComputer() throws ComputerDBException {
 
         cpS = new ComputerService();
         System.out.println("Find a computer");
@@ -118,7 +133,11 @@ public class ComputerUI {
 
     }
 
-    public List<ComputerModelUI> FirstPage() throws ComputerDBException {
+    /**
+     * @return lcp List<ComputerDTO>
+     * @throws ComputerDBException cdbex
+     */
+    public List<ComputerDTO> firstPage() throws ComputerDBException {
 
         cpS = new ComputerService();
         page = Page.PAGE;
@@ -134,12 +153,16 @@ public class ComputerUI {
         }
         page.setIndex(index);
 
-        return cpS.Page();
+        return cpS.page();
     }
 
-    public List<ComputerModelUI> Page() throws ComputerDBException {
+    /**
+     * @return lcp List<ComputerDTO>
+     * @throws ComputerDBException cdbex
+     */
+    public List<ComputerDTO> page() throws ComputerDBException {
 
-        return cpS.Page();
+        return cpS.page();
     }
 
 }

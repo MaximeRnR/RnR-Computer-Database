@@ -1,17 +1,23 @@
-package com.excilys.formation.ui;
+package com.excilys.formation.dto;
 
 //Model company
-public class CompanyModelUI {
+public class CompanyDTO {
     private long id;
     private String name;
 
-    
-    public CompanyModelUI(long id, String name) {
+    /**
+     * @param id Id
+     * @param name Name
+     */
+    public CompanyDTO(long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public CompanyModelUI(long id) {
+    /**
+     * @param id Id
+     */
+    public CompanyDTO(long id) {
         this.id = id;
     }
 

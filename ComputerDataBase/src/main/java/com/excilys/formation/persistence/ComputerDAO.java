@@ -23,12 +23,19 @@ public enum ComputerDAO implements ComputerDAOInterface {
     private Connection conn;
     private Computer cp;
     static Logger logger = LogManager.getRootLogger();
-
-    private ComputerDAO() throws ComputerDBException {
+    /**
+     * @throws ComputerDBException cdbex
+     */
+    ComputerDAO() throws ComputerDBException {
 
         this.conn = ConnectionDB.CONNECTION.getConn();
     }
 
+    /**
+     * @param cp Computer
+     * @return long id
+     * @throws ComputerDBException cdbex
+     */
     public long createComputer(Computer cp) throws ComputerDBException {
         String query = "insert into computer" + "(name,introduced,discontinued,company_id)" + "values (?,?,?,?)";
         try (PreparedStatement preparedStmt = this.conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);) {
@@ -36,16 +43,19 @@ public enum ComputerDAO implements ComputerDAOInterface {
             preparedStmt.setString(1, cp.getName());
             if (cp.getdIntroduced() != null) {
                 preparedStmt.setTimestamp(2, new Timestamp(Date.valueOf(cp.getdIntroduced()).getTime()));
-            } else
+            } else {
                 preparedStmt.setNull(2, java.sql.Types.TIMESTAMP);
+            }
             if (cp.getdDiscontinued() != null) {
                 preparedStmt.setTimestamp(3, new Timestamp(Date.valueOf(cp.getdDiscontinued()).getTime()));
-            } else
+            } else {
                 preparedStmt.setNull(3, java.sql.Types.TIMESTAMP);
+            }
             if (cp.getManufacturer() != 0) {
                 preparedStmt.setLong(4, cp.getManufacturer());
-            } else
-            preparedStmt.setNull(4, java.sql.Types.BIGINT);
+            } else {
+                preparedStmt.setNull(4, java.sql.Types.BIGINT);
+            }
             preparedStmt.execute();
             try (ResultSet rs = preparedStmt.getGeneratedKeys();) {
                 if (rs.next()) {
@@ -62,6 +72,10 @@ public enum ComputerDAO implements ComputerDAOInterface {
 
     }
 
+    /**
+     * @param id Id
+     * @throws ComputerDBException cdbex
+     */
     public void delete(long id) throws ComputerDBException {
         String query = "DELETE FROM computer WHERE id = ?";
 
@@ -77,6 +91,10 @@ public enum ComputerDAO implements ComputerDAOInterface {
         }
     }
 
+    /**
+     * @param cp Computer
+     * @throws ComputerDBException cdbex
+     */
     public void update(Computer cp) throws ComputerDBException {
 
         find(cp.getId());
@@ -87,12 +105,14 @@ public enum ComputerDAO implements ComputerDAOInterface {
             preparedStmt.setString(1, cp.getName());
             if (cp.getdIntroduced() != null) {
                 preparedStmt.setTimestamp(2, new Timestamp(Date.valueOf(cp.getdIntroduced()).getTime()));
-            } else
+            } else {
                 preparedStmt.setNull(2, java.sql.Types.TIMESTAMP);
+            }
             if (cp.getdDiscontinued() != null) {
                 preparedStmt.setTimestamp(3, new Timestamp(Date.valueOf(cp.getdDiscontinued()).getTime()));
-            } else
+            } else {
                 preparedStmt.setNull(3, java.sql.Types.TIMESTAMP);
+            }
             preparedStmt.setLong(4, cp.getManufacturer());
             preparedStmt.setLong(5, cp.getId());
             preparedStmt.executeUpdate();
@@ -103,6 +123,11 @@ public enum ComputerDAO implements ComputerDAOInterface {
         }
     }
 
+    /**
+     * @param id id
+     * @throws ComputerDBException cdbex
+     * @return Computer
+     */
     public Computer find(long id) throws ComputerDBException {
         cp = null;
         String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c WHERE c.id=?;";
@@ -115,10 +140,12 @@ public enum ComputerDAO implements ComputerDAOInterface {
                     cp = new Computer.Builder().id(result.getLong("c.id")).name(result.getString("c.name")).di(null)
                             .dd(null).manufacturer(result.getInt("c.company_id")).build();
 
-                    if (result.getTimestamp("c.introduced") != null)
+                    if (result.getTimestamp("c.introduced") != null) {
                         cp.setdIntroduced(result.getTimestamp("c.introduced").toLocalDateTime().toLocalDate());
-                    if (result.getDate("c.discontinued") != null)
+                    }
+                    if (result.getDate("c.discontinued") != null) {
                         cp.setdDiscontinued(result.getTimestamp("c.discontinued").toLocalDateTime().toLocalDate());
+                    }
                     logger.info("Computer " + cp.getId() + " selected ");
                     return cp;
                 }
@@ -130,7 +157,10 @@ public enum ComputerDAO implements ComputerDAOInterface {
         return cp;
 
     }
-
+    /**
+     * @return List<Computer>
+     * @throws ComputerDBException cdbex
+     */
     public List<Computer> page() throws ComputerDBException {
 
         List<Computer> lcp = new ArrayList<Computer>();
@@ -139,8 +169,8 @@ public enum ComputerDAO implements ComputerDAOInterface {
 
         try (PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
 
-            preparedStmt.setInt(1, Page.MAX_NUMBER_OF_OBJECT);
-            preparedStmt.setInt(2, (Page.PAGE.getIndex()) * Page.MAX_NUMBER_OF_OBJECT);
+            preparedStmt.setInt(1, Page.mAXNUMBEROFOBJECTS);
+            preparedStmt.setInt(2, (Page.PAGE.getIndex()) * Page.mAXNUMBEROFOBJECTS);
             preparedStmt.execute();
 
             try (ResultSet result = preparedStmt.getResultSet();) {
@@ -148,10 +178,12 @@ public enum ComputerDAO implements ComputerDAOInterface {
                     cp = new Computer.Builder().id(result.getLong("c.id")).name(result.getString("c.name")).di(null)
                             .dd(null).manufacturer(result.getInt("c.company_id")).build();
 
-                    if (result.getDate("c.introduced") != null)
+                    if (result.getDate("c.introduced") != null) {
                         cp.setdIntroduced(result.getDate("c.introduced").toLocalDate());
-                    if (result.getDate("c.discontinued") != null)
+                        }
+                    if (result.getDate("c.discontinued") != null) {
                         cp.setdDiscontinued(result.getDate("c.discontinued").toLocalDate());
+                        }
 
                     lcp.add(cp);
                 }
@@ -165,6 +197,9 @@ public enum ComputerDAO implements ComputerDAOInterface {
         return lcp;
     }
 
+    /**
+     * @return nbComputer
+     */
     @Override
     public int count() throws ComputerDBException {
 

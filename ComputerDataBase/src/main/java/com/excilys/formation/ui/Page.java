@@ -1,35 +1,52 @@
 package com.excilys.formation.ui;
 
-
-//Class Pagination 
+//Class Pagination
 public enum Page {
     PAGE;
-    public static int MAX_NUMBER_OF_OBJECT = 10;
+    /**
+     */
+    public static int mAXNUMBEROFOBJECTS = 10;
     private int index;
 
-    private Page() {
-        this.index=0;
+    /**
+     */
+    Page() {
+        this.index = 0;
     }
 
+    /**
+     * @return index index
+     */
     public int getIndex() {
         return this.index;
     }
 
+    /**
+     * @param index index
+     */
     public void setIndex(int index) {
         this.index = index;
     }
 
+    /**
+     */
     public void next() {
-        this.index=this.index+1;
+        this.index = this.index + 1;
     }
 
+    /**
+     */
     public void previous() {
 
-        this.index=this.index-1;
+        this.index = this.index - 1;
 
     }
-    public static void setMAX_NUMBER_OF_OBJECT(int mAX_NUMBER_OF_OBJECT) {
-        MAX_NUMBER_OF_OBJECT = mAX_NUMBER_OF_OBJECT;
+
+    /**
+     * @param mAXNUMBEROFOBJECT max_num
+     */
+    public static void setMAXNUMBEROFOBJECTS(int mAXNUMBEROFOBJECT) {
+        mAXNUMBEROFOBJECTS = mAXNUMBEROFOBJECT;
     }
 
 }

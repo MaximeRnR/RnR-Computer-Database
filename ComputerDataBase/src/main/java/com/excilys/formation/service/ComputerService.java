@@ -3,56 +3,81 @@ package com.excilys.formation.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.excilys.formation.dto.ComputerDTO;
 import com.excilys.formation.mapper.ComputerMapper;
 import com.excilys.formation.model.Computer;
 import com.excilys.formation.persistence.ComputerDAO;
 import com.excilys.formation.persistence.ComputerDAOInterface;
-import com.excilys.formation.ui.ComputerModelUI;
 import com.excilys.formation.ui.Page;
 
 public class ComputerService {
     private ComputerDAOInterface cpdaoi = ComputerDAO.COMPUTERDAO;
 
+    /**
+     */
     public ComputerService() {
 
     }
 
-    public long createComputer(ComputerModelUI cpmui) {
+    /**
+     * @param cpdto cpdto
+     * @return long generatedKey
+     */
+    public long createComputer(ComputerDTO cpdto) {
 
-        return cpdaoi.createComputer(new ComputerMapper(cpmui).getCp());
+        return cpdaoi.createComputer(new ComputerMapper(cpdto).getCp());
 
     }
 
+    /**
+     * @param id id
+     */
     public void delete(long id) {
 
         cpdaoi.delete(id);
     }
 
-    public void update(ComputerModelUI cpmui) {
+    /**
+     * @param cpdto cpdto
+     */
+    public void update(ComputerDTO cpdto) {
 
-        cpdaoi.update(new ComputerMapper(cpmui).getCp());
+        cpdaoi.update(new ComputerMapper(cpdto).getCp());
     }
 
-    public ComputerModelUI find(long id) {
+    /**
+     * @param id id
+     * @return cpdto cpdto
+     */
+    public ComputerDTO find(long id) {
 
-        return new ComputerMapper(cpdaoi.find(id)).getCpmui();
+        return new ComputerMapper(cpdaoi.find(id)).getCpdto();
     }
 
+    /**
+     * @return int pageNumber
+     */
     public int pageNumber() {
-        return cpdaoi.count()/Page.MAX_NUMBER_OF_OBJECT;
+        return cpdaoi.count() / Page.mAXNUMBEROFOBJECTS;
     }
-    
+
+    /**
+     * @return int nbComputer
+     */
     public int count() {
         return cpdaoi.count();
     }
 
-    public List<ComputerModelUI> Page() {
+    /**
+     * @return List<ComputerDTO> lcpdto
+     */
+    public List<ComputerDTO> page() {
         List<Computer> lcp = cpdaoi.page();
-        List<ComputerModelUI> lcpmui = new ArrayList<ComputerModelUI>();
+        List<ComputerDTO> lcpdto = new ArrayList<ComputerDTO>();
         for (int i = 0; i < lcp.size(); i++) {
-            lcpmui.add(new ComputerMapper(lcp.get(i)).getCpmui());
+            lcpdto.add(new ComputerMapper(lcp.get(i)).getCpdto());
         }
-        return lcpmui;
+        return lcpdto;
     }
 
 }

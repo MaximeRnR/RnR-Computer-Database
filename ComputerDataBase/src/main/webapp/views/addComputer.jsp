@@ -30,10 +30,11 @@
 					<h1>Add Computer</h1>
 					<form action="add" method="POST">
 						<fieldset>
-							<div class="form-group">
+							<div class="form-group ">
 								<label for="computerName">Computer name</label> <input
 									type="text" class="form-control" name="name" id="computerName"
 									placeholder="Computer name">
+								
 							</div>
 							<div class="form-group">
 								<label for="introduced">Introduced date</label> <input
@@ -49,9 +50,9 @@
 								<label for="companyId">Company</label> <select
 									class="form-control" name="companyId" id="companyId">
 									<option value="0">--</option>
-									<c:forEach items="${lcyui}" var="cyui">
-										<option value="<c:out value="${cyui.id}"/>">
-											<c:out value="${cyui.name}" /></option>
+									<c:forEach items="${lcydto}" var="cydto">
+										<option value="<c:out value="${cydto.id}"/>">
+											<c:out value="${cydto.name}" /></option>
 									</c:forEach>
 								</select>
 							</div>
@@ -63,7 +64,7 @@
 							<div class="alert alert-danger pull-left" role="alert">Computer not Added</div>
 						</c:if>
 						<div class="actions pull-right">
-							<input type="submit" value="Add" class="btn btn-primary">
+							<input type="submit" id="submit" value="Add" class="btn btn-primary">
 							or <a href="dashboard" class="btn btn-default">Cancel</a>
 						</div>
 					</form>
@@ -72,4 +73,7 @@
 		</div>
 	</section>
 </body>
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/addComputer.js"></script>
 </html>
