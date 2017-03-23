@@ -34,7 +34,7 @@ public class DashboardServlet extends HttpServlet {
     * @throws ServletException serlvetexcp
     */
     public void init() throws ServletException {
-        cpS = new ComputerService();
+        cpS = ComputerService.COMPUTERSERVICE;
         nbPage = cpS.pageNumber();
         indexPage = Page.PAGE.getIndex();
         count = cpS.count();
@@ -56,7 +56,7 @@ public class DashboardServlet extends HttpServlet {
         request.setAttribute("index", indexPage);
         request.setAttribute("lcpdto", lcpdto);
         request.setAttribute("nbpage", nbPage);
-        request.getRequestDispatcher("/views/dashboard.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/dashboard.jsp").forward(request, response);
     }
 
     /**
@@ -105,7 +105,7 @@ public class DashboardServlet extends HttpServlet {
         request.setAttribute("index", indexPage);
         request.setAttribute("lcpdto", lcpdto);
         request.setAttribute("nbpage", nbPage);
-        request.getRequestDispatcher("/views/dashboard.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/dashboard.jsp").forward(request, response);
     }
 
     /**

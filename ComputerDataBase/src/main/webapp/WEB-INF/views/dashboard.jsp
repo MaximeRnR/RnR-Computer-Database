@@ -27,8 +27,8 @@
 
 	<section id="main">
 		<div class="container">
-			<h1 id="homeTitle">${count}Computers found</h1>
-			
+			<h1 id="homeTitle">${count} Computers found</h1>
+
 			<div id="actions" class="form-horizontal">
 				<div class="pull-left">
 					<form id="searchForm" action="#" method="GET" class="form-inline">
@@ -81,7 +81,7 @@
 						<tr>
 							<td class="editMode" style="display: none"><input
 								type="checkbox" class="cb" value="<c:out value="${cpdto.id}"/>" /></td>
-							<td><c:out value="${cpdto.name}" /></td>
+							<td><a href="edit?id=<c:out value="${cpdto.id}"/>"><c:out value="${cpdto.name}" /></a></td>
 							<td><c:out value="${cpdto.dIntroduced}" /></td>
 							<td><c:out value="${cpdto.dDiscontinued}" /></td>
 							<td><c:out value="${cpdto.cydto.name}" /></td>
@@ -97,7 +97,7 @@
 		<div class="container text-center">
 			<ul class="pagination">
 				<ex:Page index="${index}" nbPage="${nbpage}"></ex:Page>
-				
+
 			</ul>
 
 			<div class="btn-group btn-group-sm pull-right" role="group">

@@ -6,10 +6,10 @@ import com.excilys.formation.model.Computer;
 
 public interface ComputerDAOInterface {
     /**
-     * @param cp Computer
+     * @param computer Computer
      * @return long id
      */
-    long createComputer(Computer cp);
+    long createComputer(Computer computer);
 
     /**
      * @param id id
@@ -23,9 +23,9 @@ public interface ComputerDAOInterface {
     void delete(long id);
 
     /**
-     * @param cp Computer
+     * @param computer Computer
      */
-    void update(Computer cp);
+    void update(Computer computer);
 
     /**
      * @return nbComputer

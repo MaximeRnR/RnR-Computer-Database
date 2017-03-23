@@ -7,10 +7,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.excilys.formation.model.Company;
+import com.excilys.formation.entity.CompanyEntity;
 
 public class CompanyDAOTest {
-    private Company cp;
+    private CompanyEntity cp;
     private CompanyDAOInterface cydaoi;
 
     /**
@@ -18,7 +18,7 @@ public class CompanyDAOTest {
     @Before
     public void beforeEachTest() {
 
-        cp = new Company();
+        cp = new CompanyEntity();
         cydaoi = CompanyDAO.COMPANYDAO;
 
     }

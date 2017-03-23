@@ -10,6 +10,8 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.excilys.formation.entity.CompanyEntity;
+import com.excilys.formation.mapper.CompanyMapperEntity;
 import com.excilys.formation.model.Company;
 import com.excilys.formation.util.ComputerDBException;
 
@@ -18,7 +20,7 @@ public enum CompanyDAO implements CompanyDAOInterface {
     COMPANYDAO;
     private Connection conn;
     static Logger logger = LogManager.getRootLogger();
-    private Company company;
+    private CompanyEntity cyE;
 
     /**
      * @throws ComputerDBException cdbex
@@ -35,7 +37,7 @@ public enum CompanyDAO implements CompanyDAOInterface {
     * @return Company
     */
     public Company find(long id) throws ComputerDBException {
-        company = new Company();
+        cyE = new CompanyEntity();
         String sql = "SELECT c.id, c.name FROM company c WHERE c.id=?";
 
         try (PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
@@ -46,20 +48,20 @@ public enum CompanyDAO implements CompanyDAOInterface {
 
                 if (result.first()) {
                     if (result.getInt("c.id") != 0) {
-                        company.setId(result.getInt("c.id"));
+                        cyE.setId(result.getInt("c.id"));
                     }
                     if (result.getString("c.name") != null) {
-                        company.setName(result.getString("c.name"));
+                        cyE.setName(result.getString("c.name"));
                     }
                 }
-                logger.info("Company " + company.getId() + " selected");
+                logger.info("Company " + cyE.getId() + " selected");
             }
         } catch (ComputerDBException | SQLException e) {
             logger.error("Company not selected ");
             throw new ComputerDBException("This company does'nt exist", e);
         }
 
-        return company;
+        return new CompanyMapperEntity(cyE).getCy();
     }
 
 
@@ -68,8 +70,7 @@ public enum CompanyDAO implements CompanyDAOInterface {
      * @return List<Company>
      */
     public List<Company> findAll() throws ComputerDBException {
-        List<Company> lcp = new ArrayList<Company>();
-        Company cp;
+        List<CompanyEntity> lcyE = new ArrayList<CompanyEntity>();
         String sql = "SELECT c.id, c.name FROM company c;";
         try (ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
                 .executeQuery(sql);) {
@@ -77,16 +78,19 @@ public enum CompanyDAO implements CompanyDAOInterface {
                 throw new IllegalArgumentException();
             }
             while (result.next()) {
-                cp = new Company(result.getLong("c.id"), result.getString("c.name"));
-                lcp.add(cp);
+                cyE = new CompanyEntity(result.getLong("c.id"), result.getString("c.name"));
+                lcyE.add(cyE);
             }
             logger.info("Companies selected");
         } catch (ComputerDBException | SQLException e) {
             logger.error("Company not selected ");
             throw new ComputerDBException("Company not selected", e);
         }
-
-        return lcp;
+        List<Company> lcy = new ArrayList<Company>();
+        for (int i = 0; i < lcyE.size(); i++) {
+            lcy.add(new CompanyMapperEntity(lcyE.get(i)).getCy());
+        }
+        return lcy;
     }
 
 }

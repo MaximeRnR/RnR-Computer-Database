@@ -13,6 +13,8 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.excilys.formation.entity.ComputerEntity;
+import com.excilys.formation.mapper.ComputerMapperEntity;
 import com.excilys.formation.model.Computer;
 import com.excilys.formation.ui.Page;
 import com.excilys.formation.util.ComputerDBException;
@@ -21,7 +23,7 @@ import com.excilys.formation.util.ComputerDBException;
 public enum ComputerDAO implements ComputerDAOInterface {
     COMPUTERDAO;
     private Connection conn;
-    private Computer cp;
+    private ComputerEntity cpE;
     static Logger logger = LogManager.getRootLogger();
     /**
      * @throws ComputerDBException cdbex
@@ -37,22 +39,23 @@ public enum ComputerDAO implements ComputerDAOInterface {
      * @throws ComputerDBException cdbex
      */
     public long createComputer(Computer cp) throws ComputerDBException {
+        cpE = new ComputerMapperEntity(cp).getCpE();
         String query = "insert into computer" + "(name,introduced,discontinued,company_id)" + "values (?,?,?,?)";
         try (PreparedStatement preparedStmt = this.conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);) {
 
-            preparedStmt.setString(1, cp.getName());
-            if (cp.getdIntroduced() != null) {
-                preparedStmt.setTimestamp(2, new Timestamp(Date.valueOf(cp.getdIntroduced()).getTime()));
+            preparedStmt.setString(1, cpE.getName());
+            if (cpE.getdIntroduced() != null) {
+                preparedStmt.setTimestamp(2, new Timestamp(Date.valueOf(cpE.getdIntroduced()).getTime()));
             } else {
                 preparedStmt.setNull(2, java.sql.Types.TIMESTAMP);
             }
-            if (cp.getdDiscontinued() != null) {
-                preparedStmt.setTimestamp(3, new Timestamp(Date.valueOf(cp.getdDiscontinued()).getTime()));
+            if (cpE.getdDiscontinued() != null) {
+                preparedStmt.setTimestamp(3, new Timestamp(Date.valueOf(cpE.getdDiscontinued()).getTime()));
             } else {
                 preparedStmt.setNull(3, java.sql.Types.TIMESTAMP);
             }
-            if (cp.getManufacturer() != 0) {
-                preparedStmt.setLong(4, cp.getManufacturer());
+            if (cpE.getManufacturer() != 0) {
+                preparedStmt.setLong(4, cpE.getManufacturer());
             } else {
                 preparedStmt.setNull(4, java.sql.Types.BIGINT);
             }
@@ -81,10 +84,10 @@ public enum ComputerDAO implements ComputerDAOInterface {
 
         try (PreparedStatement preparedStmt = this.conn.prepareStatement(query);) {
 
-            this.cp = find(id);
-            preparedStmt.setLong(1, cp.getId());
+            this.cpE = new ComputerMapperEntity(find(id)).getCpE();
+            preparedStmt.setLong(1, cpE.getId());
             preparedStmt.execute();
-            logger.info("Computer " + cp.getId() + " deleted");
+            logger.info("Computer " + cpE.getId() + " deleted");
         } catch (SQLException e) {
             logger.error("Computer not deleted ");
             throw new ComputerDBException("Computer not deleted ", e);
@@ -97,30 +100,29 @@ public enum ComputerDAO implements ComputerDAOInterface {
      */
     public void update(Computer cp) throws ComputerDBException {
 
-        find(cp.getId());
+        cpE = new ComputerMapperEntity(cp).getCpE();
+            String query = "UPDATE computer SET name = ?, introduced = ?, discontinued = ?, company_id = ? WHERE id = ?";
 
-        String query = "UPDATE computer SET name = ?, introduced = ?, discontinued = ?, company_id = ? WHERE id = ?";
-
-        try (PreparedStatement preparedStmt = this.conn.prepareStatement(query);) {
-            preparedStmt.setString(1, cp.getName());
-            if (cp.getdIntroduced() != null) {
-                preparedStmt.setTimestamp(2, new Timestamp(Date.valueOf(cp.getdIntroduced()).getTime()));
-            } else {
-                preparedStmt.setNull(2, java.sql.Types.TIMESTAMP);
+            try (PreparedStatement preparedStmt = this.conn.prepareStatement(query);) {
+                preparedStmt.setString(1, cpE.getName());
+                if (cpE.getdIntroduced() != null) {
+                    preparedStmt.setTimestamp(2, new Timestamp(Date.valueOf(cpE.getdIntroduced()).getTime()));
+                } else {
+                    preparedStmt.setNull(2, java.sql.Types.TIMESTAMP);
+                }
+                if (cpE.getdDiscontinued() != null) {
+                    preparedStmt.setTimestamp(3, new Timestamp(Date.valueOf(cpE.getdDiscontinued()).getTime()));
+                } else {
+                    preparedStmt.setNull(3, java.sql.Types.TIMESTAMP);
+                }
+                preparedStmt.setLong(4, cpE.getManufacturer());
+                preparedStmt.setLong(5, cpE.getId());
+                preparedStmt.executeUpdate();
+                logger.info("Computer " + cpE.getId() + " updated ");
+            } catch (SQLException e) {
+                logger.error("Computer not updated ");
+                throw new ComputerDBException("Computer not updated ", e);
             }
-            if (cp.getdDiscontinued() != null) {
-                preparedStmt.setTimestamp(3, new Timestamp(Date.valueOf(cp.getdDiscontinued()).getTime()));
-            } else {
-                preparedStmt.setNull(3, java.sql.Types.TIMESTAMP);
-            }
-            preparedStmt.setLong(4, cp.getManufacturer());
-            preparedStmt.setLong(5, cp.getId());
-            preparedStmt.executeUpdate();
-            logger.info("Computer " + cp.getId() + " updated ");
-        } catch (SQLException e) {
-            logger.error("Computer not updated ");
-            throw new ComputerDBException("Computer not updated ", e);
-        }
     }
 
     /**
@@ -129,7 +131,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
      * @return Computer
      */
     public Computer find(long id) throws ComputerDBException {
-        cp = null;
+        cpE = null;
         String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c WHERE c.id=?;";
         try (PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
 
@@ -137,24 +139,29 @@ public enum ComputerDAO implements ComputerDAOInterface {
             preparedStmt.execute();
             try (ResultSet result = preparedStmt.getResultSet();) {
                 while (result.next()) {
-                    cp = new Computer.Builder().id(result.getLong("c.id")).name(result.getString("c.name")).di(null)
-                            .dd(null).manufacturer(result.getInt("c.company_id")).build();
+                    cpE = new ComputerEntity.Builder()
+                            .id(result.getLong("c.id"))
+                            .name(result.getString("c.name"))
+                            .di(null)
+                            .dd(null)
+                            .manufacturer(result.getInt("c.company_id"))
+                            .build();
 
                     if (result.getTimestamp("c.introduced") != null) {
-                        cp.setdIntroduced(result.getTimestamp("c.introduced").toLocalDateTime().toLocalDate());
+                        cpE.setdIntroduced(result.getTimestamp("c.introduced").toLocalDateTime().toLocalDate());
                     }
                     if (result.getDate("c.discontinued") != null) {
-                        cp.setdDiscontinued(result.getTimestamp("c.discontinued").toLocalDateTime().toLocalDate());
+                        cpE.setdDiscontinued(result.getTimestamp("c.discontinued").toLocalDateTime().toLocalDate());
                     }
-                    logger.info("Computer " + cp.getId() + " selected ");
-                    return cp;
+                    logger.info("Computer " + cpE.getId() + " selected ");
+                    return new ComputerMapperEntity(cpE).getCp();
                 }
             }
         } catch (SQLException e) {
             logger.error("Computer not found ");
             throw new ComputerDBException("Computer not found ", e);
         }
-        return cp;
+        return new ComputerMapperEntity(cpE).getCp();
 
     }
     /**
@@ -163,8 +170,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
      */
     public List<Computer> page() throws ComputerDBException {
 
-        List<Computer> lcp = new ArrayList<Computer>();
-        Computer cp;
+        List<ComputerEntity> lcpE = new ArrayList<ComputerEntity>();
         String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c LIMIT ? OFFSET ?;";
 
         try (PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
@@ -175,17 +181,17 @@ public enum ComputerDAO implements ComputerDAOInterface {
 
             try (ResultSet result = preparedStmt.getResultSet();) {
                 while (result.next()) {
-                    cp = new Computer.Builder().id(result.getLong("c.id")).name(result.getString("c.name")).di(null)
+                    cpE = new ComputerEntity.Builder().id(result.getLong("c.id")).name(result.getString("c.name")).di(null)
                             .dd(null).manufacturer(result.getInt("c.company_id")).build();
 
                     if (result.getDate("c.introduced") != null) {
-                        cp.setdIntroduced(result.getDate("c.introduced").toLocalDate());
-                        }
+                        cpE.setdIntroduced(result.getDate("c.introduced").toLocalDate());
+                    }
                     if (result.getDate("c.discontinued") != null) {
-                        cp.setdDiscontinued(result.getDate("c.discontinued").toLocalDate());
-                        }
+                        cpE.setdDiscontinued(result.getDate("c.discontinued").toLocalDate());
+                    }
 
-                    lcp.add(cp);
+                    lcpE.add(cpE);
                 }
                 logger.info("Computers selected ");
             }
@@ -193,7 +199,10 @@ public enum ComputerDAO implements ComputerDAOInterface {
             logger.error("Computers not found ");
             throw new ComputerDBException("Computers not found ", e);
         }
-
+        List<Computer> lcp = new ArrayList<Computer>();
+        for (int i = 0; i < lcpE.size(); i++) {
+            lcp.add(new ComputerMapperEntity(lcpE.get(i)).getCp());
+        }
         return lcp;
     }
 

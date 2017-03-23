@@ -2,9 +2,6 @@ package com.excilys.formation.servlet;
 
 import java.io.IOException;
 // Import required java libraries
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -36,8 +33,8 @@ public class AddComputerServlet extends HttpServlet {
      * @throws ServletException serlvetexcp
      */
     public void init() throws ServletException {
-        cpS = new ComputerService();
-        cyS = new CompanyService();
+        cpS = ComputerService.COMPUTERSERVICE;
+        cyS = CompanyService.COMPANYSERVICE;
         lcydto = cyS.findAll();
 
     }
@@ -50,7 +47,7 @@ public class AddComputerServlet extends HttpServlet {
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("lcydto", lcydto);
-        request.getRequestDispatcher("/views/addComputer.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
     }
 
     /**
@@ -63,6 +60,7 @@ public class AddComputerServlet extends HttpServlet {
 
         String name = request.getParameter("name");
         String dI = request.getParameter("dI");
+        System.out.println("DI vaut :" + dI);
         String dD = request.getParameter("dD");
         lcydto = cyS.findAll();
         request.setAttribute("lcydto", lcydto);
@@ -72,49 +70,27 @@ public class AddComputerServlet extends HttpServlet {
             cy = new CompanyDTO(Integer.parseInt(request.getParameter("companyId")));
         }
         if (name != null && !name.isEmpty() && name.matches("^[a-zA-Z ]+$")) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate di = null;
-            LocalDate dd = null;
-            if (dI != null && !dI.isEmpty() && dI.matches("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$")) {
-                try {
-                    di = LocalDate.parse(dI, formatter);
-                    if (di.isAfter(LocalDate.now()) || di.getYear() > 2025) {
-                        System.out.println("Nope");
-                        request.setAttribute("lcydto", lcydto);
-                        request.setAttribute("error", 1);
-                        request.getRequestDispatcher("/views/addComputer.jsp").forward(request, response);
-                    }
-                } catch (DateTimeParseException e) {
+            if ((dI != null && dI.matches("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$")) || dI == "") {
+                if ((dD != null && dD.matches("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$")) || dD == "") {
+                    cp = new ComputerDTO.Builder().name(request.getParameter("name")).di(dI).dd(dD).cydto(cy).build();
+                    System.out.println(cp.toString());
+                    cpS.createComputer(cp);
+                    request.setAttribute("success", 1);
+                    request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
+                } else {
                     System.out.println("Nope");
-                    request.setAttribute("lcydto", lcydto);
                     request.setAttribute("error", 1);
-                    request.getRequestDispatcher("/views/addComputer.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
                 }
+            } else {
+                System.out.println("Nope");
+                request.setAttribute("error", 1);
+                request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
             }
-            if (dD != null && !dD.isEmpty() && dI.matches("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$")) {
-                try {
-                    dd = LocalDate.parse(dI, formatter);
-                    if (dd.isBefore(di) || dd.getYear() > 2025) {
-                        System.out.println("Nope");
-                        request.setAttribute("lcydto", lcydto);
-                        request.setAttribute("error", 1);
-                        request.getRequestDispatcher("/views/addComputer.jsp").forward(request, response);
-                    }
-                } catch (DateTimeParseException e) {
-                    System.out.println("Nope");
-                    request.setAttribute("lcydto", lcydto);
-                    request.setAttribute("error", 1);
-                    request.getRequestDispatcher("/views/addComputer.jsp").forward(request, response);
-                }
-            }
-            cp = new ComputerDTO.Builder().name(request.getParameter("name")).di(di).dd(dd).cydto(cy).build();
-            cpS.createComputer(cp);
-            request.setAttribute("success", 1);
-            request.getRequestDispatcher("/views/addComputer.jsp").forward(request, response);
         } else {
             System.out.println("Nope");
             request.setAttribute("error", 1);
-            request.getRequestDispatcher("/views/addComputer.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
         }
 
 

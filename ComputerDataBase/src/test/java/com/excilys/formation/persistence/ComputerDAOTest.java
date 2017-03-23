@@ -11,6 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.excilys.formation.model.Company;
 import com.excilys.formation.model.Computer;
 
 public class ComputerDAOTest {
@@ -41,15 +42,17 @@ public class ComputerDAOTest {
      */
     @Test
     public void findTest() {
-        cp.setId(574);
-        cp.setName("iPhone 4S");
-        cp.setdIntroduced(LocalDate.of(2011, 10, 14));
-        cp.setdDiscontinued(null);
-        cp.setManufacturer(1);
+        cp = new Computer.Builder()
+                .id(574)
+                .name("iPhone4S")
+                .di(LocalDate.of(2011, 10, 14))
+                .dd(null)
+                .cy(new Company(1))
+                .build();
         assertEquals(cp.getId(), cpDAO.find(574).getId());
         assertEquals(cp.getName(), cpDAO.find(574).getName());
         assertEquals(cp.getdDiscontinued(), cpDAO.find(574).getdDiscontinued());
-        assertEquals(cp.getManufacturer(), cpDAO.find(574).getManufacturer());
+        assertEquals(cp.getCy().getId(), cpDAO.find(574).getCy().getId());
 
     }
 
@@ -58,7 +61,7 @@ public class ComputerDAOTest {
     @Test
     public void deleteTest() {
         cp.setName("Test_delete");
-        cp.setManufacturer(1);
+        cp.setCy(new Company(1));
         cp.setId(cpDAO.createComputer(cp));
         cpDAO.delete(cp.getId());
         assertTrue(cpDAO.find(cp.getId()) == null);
@@ -71,14 +74,17 @@ public class ComputerDAOTest {
         cp.setName("Test");
         cp.setdIntroduced(LocalDate.now());
         cp.setdDiscontinued(null);
-        cp.setManufacturer(1);
+        cp.setCy(new Company(1));
         long generateKey = cpDAO.createComputer(cp);
         cp.setId(generateKey);
-        cp.setName("Test1");
+        cp.setName("Test_modif");
+        System.out.println(cp.toString());
         cpDAO.update(cp);
         cp = cpDAO.find(generateKey);
-        assertEquals("Test1", cp.getName());
+        assertEquals("Test_modif", cp.getName());
         cpDAO.delete(generateKey);
+        cp.setId(810);
+        cpDAO.update(cp);
     }
 
     /**
@@ -88,7 +94,7 @@ public class ComputerDAOTest {
         cp.setName("Test");
         cp.setdIntroduced(LocalDate.now());
         cp.setdDiscontinued(LocalDate.now());
-        cp.setManufacturer(1);
+        cp.setCy(new Company(1));
         long generateKey = cpDAO.createComputer(cp);
         assertEquals(generateKey, cpDAO.find(generateKey).getId());
         cpDAO.delete(generateKey);

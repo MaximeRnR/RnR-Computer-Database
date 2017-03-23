@@ -1,24 +1,23 @@
-package com.excilys.formation.model;
+package com.excilys.formation.entity;
 
 //Model company
-public class Company {
+public class CompanyEntity {
     private long id;
     private String name;
+
+    /**
+     * Default.
+     */
+    public CompanyEntity() {
+    }
 
     /**
      * @param id Id
      * @param name Name
      */
-    public Company(long id, String name) {
+    public CompanyEntity(long id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    /**
-     * @param id Id
-     */
-    public Company(long id) {
-        this.id = id;
     }
 
     @Override

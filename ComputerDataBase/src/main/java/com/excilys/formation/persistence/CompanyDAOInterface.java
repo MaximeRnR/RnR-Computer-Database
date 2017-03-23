@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.excilys.formation.model.Company;
 
+
 public interface CompanyDAOInterface {
     /**
      * @param id Id

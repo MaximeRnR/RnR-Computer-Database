@@ -4,18 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.excilys.formation.dto.ComputerDTO;
-import com.excilys.formation.mapper.ComputerMapper;
+import com.excilys.formation.mapper.ComputerMapperService;
 import com.excilys.formation.model.Computer;
 import com.excilys.formation.persistence.ComputerDAO;
 import com.excilys.formation.persistence.ComputerDAOInterface;
 import com.excilys.formation.ui.Page;
 
-public class ComputerService {
+public enum ComputerService {
+    COMPUTERSERVICE;
     private ComputerDAOInterface cpdaoi = ComputerDAO.COMPUTERDAO;
 
     /**
      */
-    public ComputerService() {
+    ComputerService() {
 
     }
 
@@ -25,7 +26,7 @@ public class ComputerService {
      */
     public long createComputer(ComputerDTO cpdto) {
 
-        return cpdaoi.createComputer(new ComputerMapper(cpdto).getCp());
+        return cpdaoi.createComputer(new ComputerMapperService(cpdto).getCp());
 
     }
 
@@ -42,7 +43,7 @@ public class ComputerService {
      */
     public void update(ComputerDTO cpdto) {
 
-        cpdaoi.update(new ComputerMapper(cpdto).getCp());
+        cpdaoi.update(new ComputerMapperService(cpdto).getCp());
     }
 
     /**
@@ -51,7 +52,7 @@ public class ComputerService {
      */
     public ComputerDTO find(long id) {
 
-        return new ComputerMapper(cpdaoi.find(id)).getCpdto();
+        return new ComputerMapperService(cpdaoi.find(id)).getCpdto();
     }
 
     /**
@@ -75,7 +76,7 @@ public class ComputerService {
         List<Computer> lcp = cpdaoi.page();
         List<ComputerDTO> lcpdto = new ArrayList<ComputerDTO>();
         for (int i = 0; i < lcp.size(); i++) {
-            lcpdto.add(new ComputerMapper(lcp.get(i)).getCpdto());
+            lcpdto.add(new ComputerMapperService(lcp.get(i)).getCpdto());
         }
         return lcpdto;
     }

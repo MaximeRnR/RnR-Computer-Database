@@ -15,7 +15,7 @@ public class CompanyUI {
      * @return cy company
      */
     public CompanyDTO findAssociatedCompany(long id) {
-        cyS = new CompanyService();
+        cyS = CompanyService.COMPANYSERVICE;
         cy = cyS.find(id);
         return cy;
 
@@ -25,7 +25,7 @@ public class CompanyUI {
      * @return lcy List<Company>
      */
     public List<CompanyDTO> findAllCompany() {
-        cyS = new CompanyService();
+        cyS = CompanyService.COMPANYSERVICE;
         return cyS.findAll();
 
     }

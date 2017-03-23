@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +16,7 @@
 <body>
     <header class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="dashboard.html"> Application - Computer Database </a>
+            <a class="navbar-brand" href="dashboard"> Application - Computer Database </a>
         </div>
     </header>
     <section id="main">
@@ -21,34 +24,47 @@
             <div class="row">
                 <div class="col-xs-8 col-xs-offset-2 box">
                     <div class="label label-default pull-right">
-                        id: 0
+                        id: ${cp.id}
                     </div>
                     <h1>Edit Computer</h1>
 
                     <form action="editComputer" method="POST">
-                        <input type="hidden" value="0" id="id"/> <!-- TODO: Change this value with the computer id -->
+                        <input type="hidden" value="${cp.id}" id="id"/>
                         <fieldset>
                             <div class="form-group">
                                 <label for="computerName">Computer name</label>
-                                <input type="text" class="form-control" id="computerName" placeholder="Computer name">
+                                <input type="text" class="form-control" name="computerName" id="computerName" placeholder="Computer name" 
+                                value="${cp.name}">
                             </div>
                             <div class="form-group">
                                 <label for="introduced">Introduced date</label>
-                                <input type="date" class="form-control" id="introduced" placeholder="Introduced date">
+                                <input type="date" class="form-control" name="introduced" id="introduced" placeholder="Introduced date" 
+                                value="${cp.dIntroduced}">
                             </div>
                             <div class="form-group">
                                 <label for="discontinued">Discontinued date</label>
-                                <input type="date" class="form-control" id="discontinued" placeholder="Discontinued date">
+                                <input type="date" class="form-control" name="discontinued" id="discontinued" placeholder="Discontinued date" 
+                                value="${cp.dDiscontinued}">
                             </div>
                             <div class="form-group">
                                 <label for="companyId">Company</label>
-                                <select class="form-control" id="companyId" >
+                                <select name="companyId" class="form-control" id="companyId" >
                                     <option value="0">--</option>
+                                    <c:forEach items="${lcydto}" var="cydto">
+										<option value="<c:out value="${cydto.id}"/>">
+											<c:out value="${cydto.name}" /></option>
+									</c:forEach>
                                 </select>
                             </div>            
                         </fieldset>
+                        <c:if test="${success==1}">
+								<div class="alert alert-success pull-left" role="alert">Computer Succesfully Added</div>
+						</c:if>
+						<c:if test="${error==1}">
+							<div class="alert alert-danger pull-left" role="alert">Computer not Added</div>
+						</c:if>
                         <div class="actions pull-right">
-                            <input type="submit" value="Edit" class="btn btn-primary">
+                            <input id="submit" type="submit" value="Edit" class="btn btn-primary">
                             or
                             <a href="dashboard.html" class="btn btn-default">Cancel</a>
                         </div>
@@ -58,4 +74,7 @@
         </div>
     </section>
 </body>
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/addComputer.js"></script>
 </html>

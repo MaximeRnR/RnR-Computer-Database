@@ -24,7 +24,7 @@ public class ComputerUI {
      */
     public void addComputer() throws ComputerDBException {
 
-        cpS = new ComputerService();
+        cpS = ComputerService.COMPUTERSERVICE;
         System.out.println("Add a computer");
         System.out.print("Enter a name : ");
         System.out.println();
@@ -34,7 +34,7 @@ public class ComputerUI {
             throw new ComputerDBException("Missing Name");
         }
         cy = new CompanyDTO(44);
-        cp = new ComputerDTO.Builder().name(name).di(LocalDate.now()).dd(null).cydto(cy).build();
+        cp = new ComputerDTO.Builder().name(name).di(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))).dd(null).cydto(cy).build();
         cpS.createComputer(cp);
     }
 
@@ -43,7 +43,7 @@ public class ComputerUI {
      */
     public void removeComputer() throws ComputerDBException {
 
-        cpS = new ComputerService();
+        cpS = ComputerService.COMPUTERSERVICE;
         System.out.println("Remove a computer");
         System.out.print("Enter a id : ");
         System.out.println();
@@ -63,7 +63,7 @@ public class ComputerUI {
      */
     public void updateComputer() throws ComputerDBException {
 
-        cpS = new ComputerService();
+        cpS = ComputerService.COMPUTERSERVICE;
         System.out.println("Update a computer");
         System.out.print("Enter a id : ");
         System.out.println();
@@ -97,14 +97,7 @@ public class ComputerUI {
                 break;
             case 2:
                 System.out.print(cp.getdDiscontinued() + " to (yyyy-MM-dd) : ");
-                LocalDate dD = null;
-                try {
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                    dD = LocalDate.parse(scan.next(), formatter);
-                } catch (ComputerDBException e) {
-                    throw new ComputerDBException("Not in the right Format", e);
-                }
-                cp.setdDiscontinued(dD);
+                cp.setdDiscontinued(scan.next());
                 cpS.update(cp);
                 break;
 
@@ -117,7 +110,7 @@ public class ComputerUI {
      */
     public ComputerDTO findComputer() throws ComputerDBException {
 
-        cpS = new ComputerService();
+        cpS = ComputerService.COMPUTERSERVICE;
         System.out.println("Find a computer");
         System.out.print("Enter a id : ");
         Scanner scan = new Scanner(System.in);
@@ -139,7 +132,7 @@ public class ComputerUI {
      */
     public List<ComputerDTO> firstPage() throws ComputerDBException {
 
-        cpS = new ComputerService();
+        cpS = ComputerService.COMPUTERSERVICE;
         page = Page.PAGE;
         System.out.println("There are " + cpS.pageNumber() + ".");
         System.out.print("Enter a page : ");

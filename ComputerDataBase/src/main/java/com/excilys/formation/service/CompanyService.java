@@ -4,19 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.excilys.formation.dto.CompanyDTO;
-import com.excilys.formation.mapper.CompanyMapper;
+import com.excilys.formation.mapper.CompanyMapperService;
 import com.excilys.formation.model.Company;
 import com.excilys.formation.persistence.CompanyDAO;
 import com.excilys.formation.persistence.CompanyDAOInterface;
 import com.excilys.formation.util.ComputerDBException;
 
-public class CompanyService {
+
+
+public enum CompanyService {
+    COMPANYSERVICE;
     private CompanyDAOInterface cydaoi = CompanyDAO.COMPANYDAO;
 
     /**
      * @throws ComputerDBException cdbex
      */
-    public CompanyService() throws ComputerDBException {
+    CompanyService() throws ComputerDBException {
 
     }
 
@@ -26,7 +29,7 @@ public class CompanyService {
      */
     public CompanyDTO find(long id) {
 
-        return new CompanyMapper(cydaoi.find(id)).getCydto();
+        return new CompanyMapperService(cydaoi.find(id)).getCydto();
     }
 
     /**
@@ -36,7 +39,7 @@ public class CompanyService {
         List<Company> lcp = cydaoi.findAll();
         List<CompanyDTO> lcy = new ArrayList<CompanyDTO>();
         for (int i = 0; i < lcp.size(); i++) {
-            lcy.add(new CompanyMapper(lcp.get(i)).getCydto());
+            lcy.add(new CompanyMapperService(lcp.get(i)).getCydto());
         }
         return lcy;
     }

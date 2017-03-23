@@ -1,13 +1,12 @@
 package com.excilys.formation.dto;
 
-import java.time.LocalDate;
 
 //Model Computer
 public class ComputerDTO {
     private long id;
     private String name;
-    private LocalDate dIntroduced;
-    private LocalDate dDiscontinued;
+    private String dIntroduced;
+    private String dDiscontinued;
     private CompanyDTO cydto;
 
     // Constructor
@@ -18,7 +17,7 @@ public class ComputerDTO {
      * @param dDiscontinued DD
      * @param cydto Cydto
      */
-    private ComputerDTO(long id, String name, LocalDate dIntroduced, LocalDate dDiscontinued, CompanyDTO cydto) {
+    private ComputerDTO(long id, String name, String dIntroduced, String dDiscontinued, CompanyDTO cydto) {
         this.id = id;
         this.name = name;
         this.dIntroduced = dIntroduced;
@@ -63,28 +62,28 @@ public class ComputerDTO {
     /**
      * @return Date intro
      */
-    public LocalDate getdIntroduced() {
+    public String getdIntroduced() {
         return dIntroduced;
     }
 
     /**
      * @param dIntroduced Date intro
      */
-    public void setdIntroduced(LocalDate dIntroduced) {
+    public void setdIntroduced(String dIntroduced) {
         this.dIntroduced = dIntroduced;
     }
 
     /**
      * @return Date discontinued
      */
-    public LocalDate getdDiscontinued() {
+    public String getdDiscontinued() {
         return dDiscontinued;
     }
 
     /**
      * @param dDiscontinued Date discontinued
      */
-    public void setdDiscontinued(LocalDate dDiscontinued) {
+    public void setdDiscontinued(String dDiscontinued) {
         this.dDiscontinued = dDiscontinued;
     }
 
@@ -109,8 +108,8 @@ public class ComputerDTO {
     public static class Builder {
         private long id;
         private String name;
-        private LocalDate dIntroduced;
-        private LocalDate dDiscontinued;
+        private String dIntroduced;
+        private String dDiscontinued;
         private CompanyDTO cydto;
 
         /**
@@ -142,7 +141,7 @@ public class ComputerDTO {
          * @param di Date intro
          * @return builder Builder
          */
-        public Builder di(LocalDate di) {
+        public Builder di(String di) {
             this.dIntroduced = di;
             return this;
 
@@ -152,7 +151,7 @@ public class ComputerDTO {
          * @param dd Date discontinued
          * @return builder Builder
          */
-        public Builder dd(LocalDate dd) {
+        public Builder dd(String dd) {
             this.dDiscontinued = dd;
             return this;
 

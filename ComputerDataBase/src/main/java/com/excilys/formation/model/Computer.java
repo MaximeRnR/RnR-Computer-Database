@@ -2,54 +2,52 @@ package com.excilys.formation.model;
 
 import java.time.LocalDate;
 
-import com.excilys.formation.dto.ComputerDTO.Builder;
-
 //Model Computer
 public class Computer {
     private long id;
     private String name;
     private LocalDate dIntroduced;
     private LocalDate dDiscontinued;
-    private long manufacturer;
+    private Company cy;
 
-    // Constructor with id
+    // Constructor
     /**
      * @param id Id
      * @param name Name
-     * @param dIntroduced dI
-     * @param dDiscontinued dD
-     * @param manufacturer CompanyId
+     * @param dIntroduced Di
+     * @param dDiscontinued DD
+     * @param cy Cy
      */
-    private Computer(long id, String name, LocalDate dIntroduced, LocalDate dDiscontinued, long manufacturer) {
+    private Computer(long id, String name, LocalDate dIntroduced, LocalDate dDiscontinued, Company cy) {
         this.id = id;
         this.name = name;
         this.dIntroduced = dIntroduced;
         this.dDiscontinued = dDiscontinued;
-        this.manufacturer = manufacturer;
+        this.cy = cy;
     }
 
     @Override
     public String toString() {
         return "Computer [id=" + id + ", name=" + name + ", dIntroduced=" + dIntroduced + ", dDiscontinued="
-                + dDiscontinued + ", manufacturer=" + manufacturer + "]";
+                + dDiscontinued + ", cy=" + cy + "]";
     }
 
     /**
-     * @return id Id
+     * @return Id
      */
     public long getId() {
         return id;
     }
 
     /**
-     * @param id ID
+     * @param id Id
      */
     public void setId(long id) {
         this.id = id;
     }
 
     /**
-     * @return name
+     * @return Name
      */
     public String getName() {
         return name;
@@ -63,21 +61,21 @@ public class Computer {
     }
 
     /**
-     * @return dIntroduced Date Intro
+     * @return Date intro
      */
     public LocalDate getdIntroduced() {
         return dIntroduced;
     }
 
     /**
-     * @param dIntroduced Date Intro
+     * @param dIntroduced Date intro
      */
     public void setdIntroduced(LocalDate dIntroduced) {
         this.dIntroduced = dIntroduced;
     }
 
     /**
-     * @return dDiscontinued Date discontinued
+     * @return Date discontinued
      */
     public LocalDate getdDiscontinued() {
         return dDiscontinued;
@@ -91,75 +89,17 @@ public class Computer {
     }
 
     /**
-     * @return manufacturer CompanyID
+     * @return Company
      */
-    public long getManufacturer() {
-        return manufacturer;
+    public Company getCy() {
+        return cy;
     }
 
     /**
-     * @param manufacturer CompanyID
+     * @param cy Company
      */
-    public void setManufacturer(long manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((dDiscontinued == null) ? 0 : dDiscontinued.hashCode());
-        result = prime * result + ((dIntroduced == null) ? 0 : dIntroduced.hashCode());
-        result = prime * result + (int) (id ^ (id >>> 32));
-        result = prime * result + (int) (manufacturer ^ (manufacturer >>> 32));
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        return result;
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        Computer other = (Computer) obj;
-        if (dDiscontinued == null) {
-            if (other.dDiscontinued != null) {
-                return false;
-            }
-        } else if (!dDiscontinued.equals(other.dDiscontinued)) {
-            return false;
-        }
-        if (dIntroduced == null) {
-            if (other.dIntroduced != null) {
-                return false;
-            }
-        } else if (!dIntroduced.equals(other.dIntroduced)) {
-            return false;
-        }
-        if (id != other.id) {
-            return false;
-        }
-        if (manufacturer != other.manufacturer) {
-            return false;
-        }
-        if (name == null) {
-            if (other.name != null) {
-                return false;
-            }
-        } else if (!name.equals(other.name)) {
-            return false;
-        }
-        return true;
+    public void setCy(Company cy) {
+        this.cy = cy;
     }
 
     /**
@@ -171,59 +111,59 @@ public class Computer {
         private String name;
         private LocalDate dIntroduced;
         private LocalDate dDiscontinued;
-        private long manufacturer;
+        private Company cy;
 
         /**
-        *
-        */
-       public Builder() {
+         *
+         */
+        public Builder() {
 
-       }
+        }
 
-       /**
-        * @param id ID
-        * @return builder Builder
-        */
-       public Builder id(long id) {
-           this.id = id;
-           return this;
-       }
+        /**
+         * @param id ID
+         * @return builder Builder
+         */
+        public Builder id(long id) {
+            this.id = id;
+            return this;
+        }
 
-       /**
-        * @param name Name
-        * @return builder Builder
-        */
-       public Builder name(String name) {
-           this.name = name;
-           return this;
+        /**
+         * @param name Name
+         * @return builder Builder
+         */
+        public Builder name(String name) {
+            this.name = name;
+            return this;
 
-       }
-       /**
-        * @param di Date Intro
-        * @return builder Builder
-        */
-       public Builder di(LocalDate di) {
-           this.dIntroduced = di;
-           return this;
+        }
+        /**
+         * @param di Date intro
+         * @return builder Builder
+         */
+        public Builder di(LocalDate di) {
+            this.dIntroduced = di;
+            return this;
 
-       }
+        }
 
-       /**
-        * @param dd Date discontinued
-        * @return builder Builder
-        */
-       public Builder dd(LocalDate dd) {
-           this.dDiscontinued = dd;
-           return this;
+        /**
+         * @param dd Date discontinued
+         * @return builder Builder
+         */
+        public Builder dd(LocalDate dd) {
+            this.dDiscontinued = dd;
+            return this;
 
-       }
-       /**
-        * @param manu COmpanyID
-        * @return builder Builder
-        */
+        }
 
-        public Builder manufacturer(long manu) {
-            this.manufacturer = manu;
+        /**
+         * @param cy Company
+         * @return builder Builder
+         */
+        public Builder cy(Company cy) {
+            this.cy = cy;
             return this;
 
         }
@@ -232,7 +172,7 @@ public class Computer {
          * @return Computer Computer
          */
         public Computer build() {
-            return new Computer(this.id, this.name, this.dIntroduced, this.dDiscontinued, this.manufacturer);
+            return new Computer(this.id, this.name, this.dIntroduced, this.dDiscontinued, this.cy);
 
         }
     }
