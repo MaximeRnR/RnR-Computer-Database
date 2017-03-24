@@ -31,11 +31,11 @@ public enum ComputerService {
     }
 
     /**
-     * @param id id
+     * @param ids ids
      */
-    public void delete(long id) {
+    public void delete(String ids) {
 
-        cpdaoi.delete(id);
+        cpdaoi.delete(ids);
     }
 
     /**

@@ -18,9 +18,9 @@ public interface ComputerDAOInterface {
     Computer find(long id);
 
     /**
-     * @param id Id
+     * @param ids Ids
      */
-    void delete(long id);
+    void delete(String ids);
 
     /**
      * @param computer Computer

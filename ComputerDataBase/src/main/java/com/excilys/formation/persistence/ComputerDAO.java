@@ -22,7 +22,6 @@ import com.excilys.formation.util.ComputerDBException;
 //DAO of Computer
 public enum ComputerDAO implements ComputerDAOInterface {
     COMPUTERDAO;
-    private Connection conn;
     private ComputerEntity cpE;
     static Logger logger = LogManager.getRootLogger();
     /**
@@ -30,7 +29,6 @@ public enum ComputerDAO implements ComputerDAOInterface {
      */
     ComputerDAO() throws ComputerDBException {
 
-        this.conn = ConnectionDB.CONNECTION.getConn();
     }
 
     /**
@@ -41,7 +39,9 @@ public enum ComputerDAO implements ComputerDAOInterface {
     public long createComputer(Computer cp) throws ComputerDBException {
         cpE = new ComputerMapperEntity(cp).getCpE();
         String query = "insert into computer" + "(name,introduced,discontinued,company_id)" + "values (?,?,?,?)";
-        try (PreparedStatement preparedStmt = this.conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);) {
+        try (Connection conn = ConnectionDB.CONNECTION.getConn();
+                PreparedStatement preparedStmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+                ) {
 
             preparedStmt.setString(1, cpE.getName());
             if (cpE.getdIntroduced() != null) {
@@ -76,20 +76,35 @@ public enum ComputerDAO implements ComputerDAOInterface {
     }
 
     /**
-     * @param id Id
+     * @param ids Ids
      * @throws ComputerDBException cdbex
      */
-    public void delete(long id) throws ComputerDBException {
+    public void delete(String ids) throws ComputerDBException {
         String query = "DELETE FROM computer WHERE id = ?";
-
-        try (PreparedStatement preparedStmt = this.conn.prepareStatement(query);) {
-
-            this.cpE = new ComputerMapperEntity(find(id)).getCpE();
+        String[] idTab = ids.split(",");
+        System.out.println(idTab.length);
+        if (idTab.length > 2) {
+            for (int i = 0; i < idTab.length; i++) {
+                query = query + "OR id = ?";
+            }
+        }
+        try (Connection conn = ConnectionDB.CONNECTION.getConn();
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+                ) {
+            this.cpE = new ComputerMapperEntity(find(Integer.parseInt(idTab[0]))).getCpE();
             preparedStmt.setLong(1, cpE.getId());
+            if (idTab.length > 2) {
+                for (int i = 1; i < idTab.length; i++) {
+                    this.cpE = new ComputerMapperEntity(find(Integer.parseInt(idTab[i]))).getCpE();
+                    preparedStmt.setLong((i + 1), cpE.getId());
+                }
+            }
+            System.out.println(preparedStmt.toString());
             preparedStmt.execute();
             logger.info("Computer " + cpE.getId() + " deleted");
         } catch (SQLException e) {
             logger.error("Computer not deleted ");
+            e.printStackTrace();
             throw new ComputerDBException("Computer not deleted ", e);
         }
     }
@@ -100,33 +115,35 @@ public enum ComputerDAO implements ComputerDAOInterface {
      */
     public void update(Computer cp) throws ComputerDBException {
         cpE = new ComputerMapperEntity(cp).getCpE();
-            String query = "UPDATE computer SET name = ?, introduced = ?, discontinued = ?, company_id = ? WHERE id = ?";
+        String query = "UPDATE computer SET name = ?, introduced = ?, discontinued = ?, company_id = ? WHERE id = ?";
 
-            try (PreparedStatement preparedStmt = this.conn.prepareStatement(query);) {
-                preparedStmt.setString(1, cpE.getName());
-                if (cpE.getdIntroduced() != null) {
-                    preparedStmt.setTimestamp(2, new Timestamp(Date.valueOf(cpE.getdIntroduced()).getTime()));
-                } else {
-                    preparedStmt.setNull(2, java.sql.Types.TIMESTAMP);
-                }
-                if (cpE.getdDiscontinued() != null) {
-                    preparedStmt.setTimestamp(3, new Timestamp(Date.valueOf(cpE.getdDiscontinued()).getTime()));
-                } else {
-                    preparedStmt.setNull(3, java.sql.Types.TIMESTAMP);
-                }
-                if (cpE.getManufacturer() != 0) {
-                    preparedStmt.setLong(4, cpE.getManufacturer());
-                } else {
-                    preparedStmt.setNull(4, java.sql.Types.BIGINT);
-                }
-                preparedStmt.setLong(5, cpE.getId());
-                preparedStmt.executeUpdate();
-                logger.info("Computer " + cpE.getId() + " updated ");
-            } catch (SQLException e) {
-                logger.error("Computer not updated ");
-                e.printStackTrace();
-                throw new ComputerDBException("Computer not updated ", e);
+        try (Connection conn = ConnectionDB.CONNECTION.getConn();
+                PreparedStatement preparedStmt = conn.prepareStatement(query);
+                ) {
+            preparedStmt.setString(1, cpE.getName());
+            if (cpE.getdIntroduced() != null) {
+                preparedStmt.setTimestamp(2, new Timestamp(Date.valueOf(cpE.getdIntroduced()).getTime()));
+            } else {
+                preparedStmt.setNull(2, java.sql.Types.TIMESTAMP);
             }
+            if (cpE.getdDiscontinued() != null) {
+                preparedStmt.setTimestamp(3, new Timestamp(Date.valueOf(cpE.getdDiscontinued()).getTime()));
+            } else {
+                preparedStmt.setNull(3, java.sql.Types.TIMESTAMP);
+            }
+            if (cpE.getManufacturer() != 0) {
+                preparedStmt.setLong(4, cpE.getManufacturer());
+            } else {
+                preparedStmt.setNull(4, java.sql.Types.BIGINT);
+            }
+            preparedStmt.setLong(5, cpE.getId());
+            preparedStmt.executeUpdate();
+            logger.info("Computer " + cpE.getId() + " updated ");
+        } catch (SQLException e) {
+            logger.error("Computer not updated ");
+            e.printStackTrace();
+            throw new ComputerDBException("Computer not updated ", e);
+        }
     }
 
     /**
@@ -137,7 +154,9 @@ public enum ComputerDAO implements ComputerDAOInterface {
     public Computer find(long id) throws ComputerDBException {
         cpE = null;
         String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c WHERE c.id=?;";
-        try (PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
+        try (Connection conn = ConnectionDB.CONNECTION.getConn();
+                PreparedStatement preparedStmt = conn.prepareStatement(sql);
+                ) {
 
             preparedStmt.setLong(1, id);
             preparedStmt.execute();
@@ -177,7 +196,9 @@ public enum ComputerDAO implements ComputerDAOInterface {
         List<ComputerEntity> lcpE = new ArrayList<ComputerEntity>();
         String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c LIMIT ? OFFSET ?;";
 
-        try (PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
+        try (Connection conn = ConnectionDB.CONNECTION.getConn();
+                PreparedStatement preparedStmt = conn.prepareStatement(sql);
+                ) {
 
             preparedStmt.setInt(1, Page.mAXNUMBEROFOBJECTS);
             preparedStmt.setInt(2, (Page.PAGE.getIndex()) * Page.mAXNUMBEROFOBJECTS);
@@ -217,7 +238,9 @@ public enum ComputerDAO implements ComputerDAOInterface {
     public int count() throws ComputerDBException {
 
         String sql = "SELECT count(*) FROM computer c;";
-        try (PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
+        try (Connection conn = ConnectionDB.CONNECTION.getConn();
+                PreparedStatement preparedStmt = conn.prepareStatement(sql);
+                ) {
 
             preparedStmt.execute();
             try (ResultSet result = preparedStmt.getResultSet();) {
@@ -240,7 +263,9 @@ public enum ComputerDAO implements ComputerDAOInterface {
     public int countLike(String search) throws ComputerDBException {
 
         String sql = "SELECT count(*) FROM computer c WHERE c.name LIKE ? ;";
-        try (PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
+        try (Connection conn = ConnectionDB.CONNECTION.getConn();
+                PreparedStatement preparedStmt = conn.prepareStatement(sql);
+                ) {
             preparedStmt.setString(1, "%" + search + "%");
             preparedStmt.execute();
             try (ResultSet result = preparedStmt.getResultSet();) {
@@ -264,7 +289,9 @@ public enum ComputerDAO implements ComputerDAOInterface {
         List<ComputerEntity> lcpE = new ArrayList<ComputerEntity>();
         String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c WHERE c.name LIKE ? LIMIT ? OFFSET ? ;";
 
-        try (PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
+        try (Connection conn = ConnectionDB.CONNECTION.getConn();
+                PreparedStatement preparedStmt = conn.prepareStatement(sql);
+                ) {
 
             preparedStmt.setString(1, "%" + search + "%");
             preparedStmt.setInt(2, Page.mAXNUMBEROFOBJECTS);

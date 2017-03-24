@@ -48,13 +48,13 @@ public class ComputerUI {
         System.out.print("Enter a id : ");
         System.out.println();
         Scanner scan = new Scanner(System.in);
-        long id = 0;
+        String ids = "0";
         try {
-            id = scan.nextLong();
+            ids = scan.next();
         } catch (ComputerDBException | InputMismatchException e) {
             throw new ComputerDBException("Not a Number", e);
         }
-        cpS.delete(id);
+        cpS.delete(ids);
 
     }
 

@@ -1,34 +1,61 @@
 package com.excilys.formation.persistence;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.excilys.formation.util.ComputerDBException;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 //Singleton Connection
 public enum ConnectionDB {
     CONNECTION;
     private Connection conn;
+    HikariConfig config;
+    HikariDataSource hs;
+    private Logger logger = LogManager.getRootLogger();
 
-    // Constructor privé
     /**
-     * @throws ComputerDBException cdbex
+     * @throws ComputerDBException cdbexc
      */
-     ConnectionDB() throws ComputerDBException {
-        try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            String url = new String(
-                    "jdbc:mysql://localhost:3306/computer-database-db-test" + "?zeroDateTimeBehavior=convertToNull");
-            this.conn = DriverManager.getConnection(url, "admincdb", "qwerty1234");
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-            throw new ComputerDBException("ConnectionDB can not be instantiated", e);
-        }
-    }
+    ConnectionDB() throws ComputerDBException {
+      try {
+        final String resourceName = "hikari.properties";
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        Properties props = new Properties();
+        try (InputStream resourceStream = loader.getResourceAsStream(resourceName)) {
+          props.load(resourceStream);
+          config = new HikariConfig(props);
 
-    public Connection getConn() {
-        return conn;
+          config.setMaximumPoolSize(20);
+          config.setMinimumIdle(5);
+          config.setIdleTimeout(60 * 1000);
+          config.setPassword("qwerty1234");
+          config.setConnectionTimeout(1000);
+          config.setMaxLifetime(287400);
+          hs = new HikariDataSource(config);
+        }
+      } catch (IOException e) {
+          logger.error("ConnectionDB : cannot be instanciated");
+        throw new ComputerDBException(e);
+      }
     }
+    /**
+     * @return Connection conn;
+     */
+    public Connection getConn() {
+        try {
+            return hs.getConnection();
+        } catch (SQLException e) {
+            logger.error("Conn : cannot be instanciated");
+            throw new ComputerDBException(e);
+        }
+      }
 
 }

@@ -1,0 +1,1604 @@
+2017-03-17 14:20:20.908 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 14:20:21.008 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 593 created
+2017-03-17 14:20:21.010 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 593 selected 
+2017-03-17 14:20:21.011 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 593 selected 
+2017-03-17 14:20:21.016 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 593 deleted
+2017-03-17 14:20:21.019 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:20:21.020 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:20:21.021 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:20:21.021 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:20:21.028 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 594 created
+2017-03-17 14:20:21.029 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 594 selected 
+2017-03-17 14:20:21.034 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 594 deleted
+2017-03-17 14:20:21.041 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 595 created
+2017-03-17 14:20:21.043 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 595 selected 
+2017-03-17 14:20:21.049 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 595 updated 
+2017-03-17 14:20:21.050 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 595 selected 
+2017-03-17 14:20:21.051 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 595 selected 
+2017-03-17 14:20:21.057 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 595 deleted
+2017-03-17 14:20:21.061 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 14:20:21.062 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 14:20:21.066 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 14:21:11.872 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 14:21:11.894 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 596 created
+2017-03-17 14:21:11.896 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 596 selected 
+2017-03-17 14:21:11.901 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 596 deleted
+2017-03-17 14:21:11.977 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 597 created
+2017-03-17 14:21:11.978 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 597 selected 
+2017-03-17 14:21:11.983 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 597 updated 
+2017-03-17 14:21:11.984 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 597 selected 
+2017-03-17 14:21:11.985 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 597 selected 
+2017-03-17 14:21:11.995 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 597 deleted
+2017-03-17 14:21:12.002 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 598 created
+2017-03-17 14:21:12.003 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 598 selected 
+2017-03-17 14:21:12.004 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 598 selected 
+2017-03-17 14:21:12.010 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 598 deleted
+2017-03-17 14:21:12.012 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:21:12.013 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:21:12.014 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:21:12.015 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:21:12.021 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 14:21:12.022 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 14:21:12.023 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 14:29:56.060 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 14:29:56.079 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:29:56.079 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:29:56.080 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:29:56.081 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:29:56.154 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 599 created
+2017-03-17 14:29:56.155 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 599 selected 
+2017-03-17 14:29:56.156 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 599 selected 
+2017-03-17 14:29:56.158 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 599 deleted
+2017-03-17 14:29:56.161 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 600 created
+2017-03-17 14:29:56.162 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 600 selected 
+2017-03-17 14:29:56.164 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 600 deleted
+2017-03-17 14:29:56.166 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 601 created
+2017-03-17 14:29:56.167 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 601 selected 
+2017-03-17 14:29:56.170 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 601 updated 
+2017-03-17 14:29:56.171 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 601 selected 
+2017-03-17 14:29:56.172 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 601 selected 
+2017-03-17 14:29:56.174 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 601 deleted
+2017-03-17 14:29:56.178 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 14:29:56.179 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 14:29:56.180 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 14:30:54.990 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 14:30:55.089 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 602 created
+2017-03-17 14:30:55.090 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 602 selected 
+2017-03-17 14:30:55.092 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 602 selected 
+2017-03-17 14:30:55.094 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 602 deleted
+2017-03-17 14:30:55.097 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 603 created
+2017-03-17 14:30:55.098 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 603 selected 
+2017-03-17 14:30:55.100 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 603 deleted
+2017-03-17 14:30:55.104 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 604 created
+2017-03-17 14:30:55.105 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 604 selected 
+2017-03-17 14:30:55.106 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 604 updated 
+2017-03-17 14:30:55.107 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 604 selected 
+2017-03-17 14:30:55.108 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 604 selected 
+2017-03-17 14:30:55.110 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 604 deleted
+2017-03-17 14:30:55.112 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:30:55.113 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:30:55.114 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:30:55.115 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:30:55.121 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 14:30:55.122 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 14:30:55.123 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 14:31:52.024 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 14:31:52.050 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 605 created
+2017-03-17 14:31:52.052 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 605 selected 
+2017-03-17 14:31:52.054 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 605 deleted
+2017-03-17 14:31:52.145 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 606 created
+2017-03-17 14:31:52.147 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 606 selected 
+2017-03-17 14:31:52.148 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 606 selected 
+2017-03-17 14:31:52.150 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 606 deleted
+2017-03-17 14:31:52.154 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 607 created
+2017-03-17 14:31:52.155 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 607 selected 
+2017-03-17 14:31:52.157 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 607 updated 
+2017-03-17 14:31:52.158 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 607 selected 
+2017-03-17 14:31:52.160 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 607 selected 
+2017-03-17 14:31:52.162 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 607 deleted
+2017-03-17 14:31:52.164 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:31:52.166 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:31:52.167 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:31:52.168 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:31:52.173 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 14:31:52.175 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 14:31:52.175 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 14:37:52.100 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 14:37:52.191 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 608 created
+2017-03-17 14:37:52.192 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 608 selected 
+2017-03-17 14:37:52.198 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 608 updated 
+2017-03-17 14:37:52.199 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 608 selected 
+2017-03-17 14:37:52.200 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 608 selected 
+2017-03-17 14:37:52.206 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 608 deleted
+2017-03-17 14:37:52.214 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 609 created
+2017-03-17 14:37:52.215 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 609 selected 
+2017-03-17 14:37:52.216 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 609 selected 
+2017-03-17 14:37:52.222 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 609 deleted
+2017-03-17 14:37:52.223 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:37:52.224 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:37:52.225 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:37:52.226 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:37:52.233 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 610 created
+2017-03-17 14:37:52.234 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 610 selected 
+2017-03-17 14:37:52.240 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 610 deleted
+2017-03-17 14:37:52.245 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 14:37:52.246 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 14:37:52.247 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 14:38:43.306 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 14:38:43.334 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 611 created
+2017-03-17 14:38:43.336 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 611 selected 
+2017-03-17 14:38:43.342 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 611 deleted
+2017-03-17 14:38:43.437 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 612 created
+2017-03-17 14:38:43.438 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 612 selected 
+2017-03-17 14:38:43.440 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 612 selected 
+2017-03-17 14:38:43.445 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 612 deleted
+2017-03-17 14:38:43.452 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 613 created
+2017-03-17 14:38:43.458 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 613 selected 
+2017-03-17 14:38:43.465 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 613 updated 
+2017-03-17 14:38:43.466 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 613 selected 
+2017-03-17 14:38:43.467 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 613 selected 
+2017-03-17 14:38:43.473 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 613 deleted
+2017-03-17 14:38:43.476 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:38:43.478 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:38:43.479 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:38:43.480 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 14:38:43.486 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 14:38:43.487 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 14:38:43.500 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 15:14:50.550 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 15:14:50.573 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 614 created
+2017-03-17 15:14:50.574 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 614 selected 
+2017-03-17 15:14:50.577 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 614 deleted
+2017-03-17 15:14:50.664 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 615 created
+2017-03-17 15:14:50.665 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 615 selected 
+2017-03-17 15:14:50.666 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 615 selected 
+2017-03-17 15:14:50.668 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 615 deleted
+2017-03-17 15:14:50.670 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 15:14:50.675 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 15:14:50.676 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 15:14:50.677 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 15:14:50.681 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 616 created
+2017-03-17 15:14:50.682 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 616 selected 
+2017-03-17 15:14:50.685 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 616 updated 
+2017-03-17 15:14:50.686 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 616 selected 
+2017-03-17 15:14:50.687 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 616 selected 
+2017-03-17 15:14:50.690 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 616 deleted
+2017-03-17 15:14:50.695 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 15:14:50.696 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 15:14:50.696 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 15:15:31.145 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 15:15:31.244 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 617 created
+2017-03-17 15:15:31.246 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 617 selected 
+2017-03-17 15:15:31.247 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 617 selected 
+2017-03-17 15:15:31.253 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 617 deleted
+2017-03-17 15:15:31.255 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 15:15:31.256 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 15:15:31.257 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 15:15:31.258 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 15:15:31.269 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 618 created
+2017-03-17 15:15:31.270 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 618 selected 
+2017-03-17 15:15:31.276 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 618 updated 
+2017-03-17 15:15:31.277 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 618 selected 
+2017-03-17 15:15:31.278 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 618 selected 
+2017-03-17 15:15:31.284 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 618 deleted
+2017-03-17 15:15:31.290 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 619 created
+2017-03-17 15:15:31.292 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 619 selected 
+2017-03-17 15:15:31.297 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 619 deleted
+2017-03-17 15:15:31.302 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 15:15:31.303 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 15:15:31.304 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 16:19:47.297 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 16:19:47.319 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:19:47.321 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:19:47.322 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:19:47.322 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:19:47.420 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 620 created
+2017-03-17 16:19:47.421 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 620 selected 
+2017-03-17 16:19:47.427 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 620 updated 
+2017-03-17 16:19:47.428 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 620 selected 
+2017-03-17 16:19:47.429 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 620 selected 
+2017-03-17 16:19:47.434 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 620 deleted
+2017-03-17 16:19:47.440 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 621 created
+2017-03-17 16:19:47.441 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 621 selected 
+2017-03-17 16:19:47.443 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 621 deleted
+2017-03-17 16:19:47.448 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 622 created
+2017-03-17 16:19:47.449 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 622 selected 
+2017-03-17 16:19:47.450 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 622 selected 
+2017-03-17 16:19:47.452 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 622 deleted
+2017-03-17 16:19:47.459 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 16:19:47.461 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 16:19:47.462 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 16:21:57.245 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 16:21:57.289 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 623 created
+2017-03-17 16:21:57.291 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 623 selected 
+2017-03-17 16:21:57.296 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 623 deleted
+2017-03-17 16:21:57.375 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 624 created
+2017-03-17 16:21:57.377 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 624 selected 
+2017-03-17 16:21:57.378 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 624 selected 
+2017-03-17 16:21:57.384 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 624 deleted
+2017-03-17 16:21:57.391 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 625 created
+2017-03-17 16:21:57.396 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 625 selected 
+2017-03-17 16:21:57.402 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 625 updated 
+2017-03-17 16:21:57.403 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 625 selected 
+2017-03-17 16:21:57.404 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 625 selected 
+2017-03-17 16:21:57.410 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 625 deleted
+2017-03-17 16:21:57.412 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:21:57.413 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:21:57.414 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:21:57.415 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:21:57.418 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 16:21:57.419 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 16:21:57.421 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 16:40:03.761 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 16:40:03.851 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 626 created
+2017-03-17 16:40:03.852 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 626 selected 
+2017-03-17 16:40:03.854 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 626 updated 
+2017-03-17 16:40:03.855 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 626 selected 
+2017-03-17 16:40:03.856 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 626 selected 
+2017-03-17 16:40:03.858 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 626 deleted
+2017-03-17 16:40:03.863 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 627 created
+2017-03-17 16:40:03.864 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 627 selected 
+2017-03-17 16:40:03.865 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 627 selected 
+2017-03-17 16:40:03.867 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 627 deleted
+2017-03-17 16:40:03.870 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 628 created
+2017-03-17 16:40:03.871 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 628 selected 
+2017-03-17 16:40:03.873 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 628 deleted
+2017-03-17 16:40:03.878 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:40:03.879 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:40:03.880 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:40:03.881 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:40:03.888 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 16:40:03.892 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 16:40:03.898 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 16:41:02.976 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 16:41:03.010 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 629 created
+2017-03-17 16:41:03.011 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 629 selected 
+2017-03-17 16:41:03.017 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 629 deleted
+2017-03-17 16:41:03.096 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 630 created
+2017-03-17 16:41:03.097 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 630 selected 
+2017-03-17 16:41:03.098 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 630 selected 
+2017-03-17 16:41:03.104 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 630 deleted
+2017-03-17 16:41:03.107 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 631 created
+2017-03-17 16:41:03.108 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 631 selected 
+2017-03-17 16:41:03.110 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 631 updated 
+2017-03-17 16:41:03.111 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 631 selected 
+2017-03-17 16:41:03.112 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 631 selected 
+2017-03-17 16:41:03.114 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 631 deleted
+2017-03-17 16:41:03.116 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:41:03.117 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:41:03.118 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:41:03.119 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:41:03.124 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 16:41:03.125 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 16:41:03.126 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 16:42:51.935 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 16:42:52.046 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 632 created
+2017-03-17 16:42:52.048 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 632 selected 
+2017-03-17 16:42:52.059 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 632 updated 
+2017-03-17 16:42:52.060 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 632 selected 
+2017-03-17 16:42:52.061 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 632 selected 
+2017-03-17 16:42:52.063 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 632 deleted
+2017-03-17 16:42:52.068 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 633 created
+2017-03-17 16:42:52.069 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 633 selected 
+2017-03-17 16:42:52.070 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 633 selected 
+2017-03-17 16:42:52.072 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 633 deleted
+2017-03-17 16:42:52.075 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 634 created
+2017-03-17 16:42:52.076 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 634 selected 
+2017-03-17 16:42:52.079 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 634 deleted
+2017-03-17 16:42:52.081 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:42:52.083 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:42:52.083 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:42:52.084 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 16:42:52.089 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 16:42:52.091 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 16:42:52.092 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 17:51:48.963 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 17:51:49.063 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 635 created
+2017-03-17 17:51:49.065 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 635 selected 
+2017-03-17 17:51:49.066 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 635 selected 
+2017-03-17 17:51:49.067 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 635 deleted
+2017-03-17 17:51:49.071 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 17:51:49.071 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 17:51:49.072 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 17:51:49.073 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 17:51:49.081 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 636 created
+2017-03-17 17:51:49.082 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 636 selected 
+2017-03-17 17:51:49.084 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 636 updated 
+2017-03-17 17:51:49.086 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 636 selected 
+2017-03-17 17:51:49.087 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 636 selected 
+2017-03-17 17:51:49.089 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 636 deleted
+2017-03-17 17:51:49.093 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 637 created
+2017-03-17 17:51:49.094 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 637 selected 
+2017-03-17 17:51:49.096 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 637 deleted
+2017-03-17 17:51:49.101 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 17:51:49.103 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 17:51:49.103 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 17:56:16.768 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 17:56:16.800 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 638 created
+2017-03-17 17:56:16.801 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 638 selected 
+2017-03-17 17:56:16.807 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 638 deleted
+2017-03-17 17:56:16.893 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 639 created
+2017-03-17 17:56:16.895 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 639 selected 
+2017-03-17 17:56:16.896 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 639 selected 
+2017-03-17 17:56:16.903 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 639 deleted
+2017-03-17 17:56:16.905 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 17:56:16.911 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 17:56:16.912 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 17:56:16.913 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 17:56:16.921 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 640 created
+2017-03-17 17:56:16.922 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 640 selected 
+2017-03-17 17:56:16.930 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 640 updated 
+2017-03-17 17:56:16.932 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 640 selected 
+2017-03-17 17:56:16.934 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 640 selected 
+2017-03-17 17:56:16.940 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 640 deleted
+2017-03-17 17:56:16.946 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 17:56:16.948 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 17:56:16.948 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 17:58:20.967 [main] INFO  com.excilys.formation.persistence.ConnectionDB - ConnectionDB instantiated
+2017-03-17 17:58:20.997 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 641 created
+2017-03-17 17:58:20.998 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 641 selected 
+2017-03-17 17:58:21.004 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 641 deleted
+2017-03-17 17:58:21.086 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 642 created
+2017-03-17 17:58:21.087 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 642 selected 
+2017-03-17 17:58:21.088 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 642 selected 
+2017-03-17 17:58:21.094 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 642 deleted
+2017-03-17 17:58:21.101 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 643 created
+2017-03-17 17:58:21.106 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 643 selected 
+2017-03-17 17:58:21.114 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 643 updated 
+2017-03-17 17:58:21.115 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 643 selected 
+2017-03-17 17:58:21.116 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 643 selected 
+2017-03-17 17:58:21.121 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 643 deleted
+2017-03-17 17:58:21.123 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 17:58:21.124 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 17:58:21.125 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 17:58:21.126 [main] INFO  com.excilys.formation.persistence.ComputerDAO - Computer 574 selected 
+2017-03-17 17:58:21.131 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Companies selected
+2017-03-17 17:58:21.132 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-17 17:58:21.133 [main] INFO  com.excilys.formation.persistence.CompanyDAO - Company 1 selected
+2017-03-20 12:27:48.331 [main] INFO   - Companies selected
+2017-03-20 12:27:51.832 [main] INFO   - Computers selected 
+2017-03-20 12:27:51.834 [main] INFO   - Company 30 selected
+2017-03-20 12:27:51.835 [main] INFO   - Company 0 selected
+2017-03-20 12:27:51.836 [main] INFO   - Company 0 selected
+2017-03-20 12:27:51.836 [main] INFO   - Company 0 selected
+2017-03-20 12:27:51.837 [main] INFO   - Company 10 selected
+2017-03-20 12:27:51.842 [main] INFO   - Company 10 selected
+2017-03-20 12:27:51.843 [main] INFO   - Company 10 selected
+2017-03-20 12:27:51.843 [main] INFO   - Company 10 selected
+2017-03-20 12:27:51.844 [main] INFO   - Company 10 selected
+2017-03-20 12:27:51.845 [main] INFO   - Company 10 selected
+2017-03-20 12:27:59.745 [main] INFO   - Computer 574 selected 
+2017-03-20 12:27:59.747 [main] INFO   - Company 1 selected
+2017-03-22 17:21:49.959 [main] INFO   - Computer 574 selected 
+2017-03-22 17:21:49.964 [main] INFO   - Computer 574 selected 
+2017-03-22 17:21:49.965 [main] INFO   - Computer 574 selected 
+2017-03-22 17:21:49.966 [main] INFO   - Computer 574 selected 
+2017-03-22 17:21:49.976 [main] INFO   - Computer 587 created
+2017-03-22 17:21:49.981 [main] INFO   - Computer 587 selected 
+2017-03-22 17:21:49.988 [main] INFO   - Computer 587 deleted
+2017-03-22 17:21:50.065 [main] INFO   - Computer 588 created
+2017-03-22 17:21:50.066 [main] INFO   - Computer 588 selected 
+2017-03-22 17:21:50.072 [main] INFO   - Computer 588 updated 
+2017-03-22 17:21:50.073 [main] INFO   - Computer 588 selected 
+2017-03-22 17:21:50.074 [main] INFO   - Computer 588 selected 
+2017-03-22 17:21:50.078 [main] INFO   - Computer 588 deleted
+2017-03-22 17:21:50.081 [main] INFO   - Computer 589 created
+2017-03-22 17:21:50.082 [main] INFO   - Computer 589 selected 
+2017-03-22 17:21:50.083 [main] INFO   - Computer 589 selected 
+2017-03-22 17:21:50.085 [main] INFO   - Computer 589 deleted
+2017-03-22 17:21:50.089 [main] INFO   - Company 1 selected
+2017-03-22 17:21:50.090 [main] INFO   - Company 1 selected
+2017-03-22 17:21:50.091 [main] INFO   - Companies selected
+2017-03-23 15:38:35.139 [main] INFO   - Computer 589 created
+2017-03-23 15:38:35.144 [main] INFO   - Computer 589 selected 
+2017-03-23 15:38:35.146 [main] INFO   - Company 1 selected
+2017-03-23 15:38:35.152 [main] INFO   - Computer 589 deleted
+2017-03-23 15:38:35.229 [main] INFO   - Computer 590 created
+2017-03-23 15:38:35.235 [main] INFO   - Computer 590 selected 
+2017-03-23 15:38:35.235 [main] INFO   - Company 1 selected
+2017-03-23 15:38:35.238 [main] INFO   - Computer 590 updated 
+2017-03-23 15:38:35.239 [main] INFO   - Computer 590 selected 
+2017-03-23 15:38:35.239 [main] INFO   - Company 1 selected
+2017-03-23 15:38:35.244 [main] INFO   - Computer 591 created
+2017-03-23 15:38:35.245 [main] INFO   - Computer 591 selected 
+2017-03-23 15:38:35.246 [main] INFO   - Company 1 selected
+2017-03-23 15:38:35.247 [main] INFO   - Computer 591 selected 
+2017-03-23 15:38:35.248 [main] INFO   - Company 1 selected
+2017-03-23 15:38:35.250 [main] INFO   - Computer 591 deleted
+2017-03-23 15:38:35.251 [main] INFO   - Computer 574 selected 
+2017-03-23 15:38:35.252 [main] INFO   - Company 1 selected
+2017-03-23 15:38:35.253 [main] INFO   - Computer 574 selected 
+2017-03-23 15:38:35.253 [main] INFO   - Company 1 selected
+2017-03-23 15:38:35.254 [main] INFO   - Computer 574 selected 
+2017-03-23 15:38:35.254 [main] INFO   - Company 1 selected
+2017-03-23 15:38:35.255 [main] INFO   - Computer 574 selected 
+2017-03-23 15:38:35.255 [main] INFO   - Company 1 selected
+2017-03-23 15:38:35.258 [main] INFO   - Companies selected
+2017-03-23 15:38:35.259 [main] INFO   - Company 1 selected
+2017-03-23 15:38:35.259 [main] INFO   - Company 1 selected
+2017-03-23 15:47:39.329 [main] INFO   - Computer 574 selected 
+2017-03-23 15:47:39.335 [main] INFO   - Company 1 selected
+2017-03-23 15:47:39.405 [main] INFO   - Companies selected
+2017-03-23 15:47:39.406 [main] INFO   - Company 1 selected
+2017-03-23 15:47:39.406 [main] INFO   - Company 1 selected
+2017-03-23 15:48:25.615 [main] INFO   - Computer 592 created
+2017-03-23 15:48:25.620 [main] INFO   - Computer 592 selected 
+2017-03-23 15:48:25.623 [main] INFO   - Company 1 selected
+2017-03-23 15:48:25.629 [main] INFO   - Computer 592 deleted
+2017-03-23 15:48:25.707 [main] INFO   - Computer 593 created
+2017-03-23 15:48:25.712 [main] INFO   - Computer 593 selected 
+2017-03-23 15:48:25.713 [main] INFO   - Company 1 selected
+2017-03-23 15:48:25.719 [main] INFO   - Computer 593 updated 
+2017-03-23 15:48:25.720 [main] INFO   - Computer 593 selected 
+2017-03-23 15:48:25.721 [main] INFO   - Company 1 selected
+2017-03-23 15:48:25.730 [main] INFO   - Computer 594 created
+2017-03-23 15:48:25.731 [main] INFO   - Computer 594 selected 
+2017-03-23 15:48:25.732 [main] INFO   - Company 1 selected
+2017-03-23 15:48:25.733 [main] INFO   - Computer 594 selected 
+2017-03-23 15:48:25.734 [main] INFO   - Company 1 selected
+2017-03-23 15:48:25.740 [main] INFO   - Computer 594 deleted
+2017-03-23 15:48:25.741 [main] INFO   - Computer 574 selected 
+2017-03-23 15:48:25.741 [main] INFO   - Company 1 selected
+2017-03-23 15:48:25.742 [main] INFO   - Computer 574 selected 
+2017-03-23 15:48:25.743 [main] INFO   - Company 1 selected
+2017-03-23 15:48:25.743 [main] INFO   - Computer 574 selected 
+2017-03-23 15:48:25.744 [main] INFO   - Company 1 selected
+2017-03-23 15:48:25.744 [main] INFO   - Computer 574 selected 
+2017-03-23 15:48:25.745 [main] INFO   - Company 1 selected
+2017-03-23 15:48:25.746 [main] INFO   - Company 1 selected
+2017-03-23 15:48:25.747 [main] INFO   - Company 1 selected
+2017-03-23 15:48:25.749 [main] INFO   - Companies selected
+2017-03-23 15:49:35.659 [main] INFO   - Computer 574 selected 
+2017-03-23 15:49:35.665 [main] INFO   - Company 1 selected
+2017-03-23 15:49:35.666 [main] INFO   - Computer 574 selected 
+2017-03-23 15:49:35.667 [main] INFO   - Company 1 selected
+2017-03-23 15:49:35.668 [main] INFO   - Computer 574 selected 
+2017-03-23 15:49:35.668 [main] INFO   - Company 1 selected
+2017-03-23 15:49:35.669 [main] INFO   - Computer 574 selected 
+2017-03-23 15:49:35.669 [main] INFO   - Company 1 selected
+2017-03-23 15:49:35.675 [main] INFO   - Computer 595 created
+2017-03-23 15:49:35.676 [main] INFO   - Computer 595 selected 
+2017-03-23 15:49:35.677 [main] INFO   - Company 1 selected
+2017-03-23 15:49:35.679 [main] INFO   - Computer 595 deleted
+2017-03-23 15:49:35.754 [main] INFO   - Computer 596 created
+2017-03-23 15:49:35.755 [main] INFO   - Computer 596 selected 
+2017-03-23 15:49:35.756 [main] INFO   - Company 1 selected
+2017-03-23 15:49:35.758 [main] INFO   - Computer 596 updated 
+2017-03-23 15:49:35.759 [main] INFO   - Computer 596 selected 
+2017-03-23 15:49:35.759 [main] INFO   - Company 1 selected
+2017-03-23 15:49:35.769 [main] INFO   - Computer 597 created
+2017-03-23 15:49:35.770 [main] INFO   - Computer 597 selected 
+2017-03-23 15:49:35.771 [main] INFO   - Company 1 selected
+2017-03-23 15:49:35.772 [main] INFO   - Computer 597 selected 
+2017-03-23 15:49:35.772 [main] INFO   - Company 1 selected
+2017-03-23 15:49:35.774 [main] INFO   - Computer 597 deleted
+2017-03-23 15:49:35.776 [main] INFO   - Company 1 selected
+2017-03-23 15:49:35.776 [main] INFO   - Company 1 selected
+2017-03-23 15:49:35.777 [main] INFO   - Companies selected
+2017-03-23 15:53:17.260 [main] INFO   - Computer 598 created
+2017-03-23 15:53:17.265 [main] INFO   - Computer 598 selected 
+2017-03-23 15:53:17.267 [main] INFO   - Company 1 selected
+2017-03-23 15:53:17.273 [main] INFO   - Computer 598 deleted
+2017-03-23 15:53:17.370 [main] INFO   - Computer 599 created
+2017-03-23 15:53:17.375 [main] INFO   - Computer 599 selected 
+2017-03-23 15:53:17.376 [main] INFO   - Company 1 selected
+2017-03-23 15:53:17.378 [main] INFO   - Computer 599 updated 
+2017-03-23 15:53:17.379 [main] INFO   - Computer 599 selected 
+2017-03-23 15:53:17.380 [main] INFO   - Company 1 selected
+2017-03-23 15:53:17.387 [main] INFO   - Computer 600 created
+2017-03-23 15:53:17.388 [main] INFO   - Computer 600 selected 
+2017-03-23 15:53:17.389 [main] INFO   - Company 1 selected
+2017-03-23 15:53:17.391 [main] INFO   - Computer 600 selected 
+2017-03-23 15:53:17.392 [main] INFO   - Company 1 selected
+2017-03-23 15:53:17.394 [main] INFO   - Computer 600 deleted
+2017-03-23 15:53:17.395 [main] INFO   - Computer 574 selected 
+2017-03-23 15:53:17.396 [main] INFO   - Company 1 selected
+2017-03-23 15:53:17.396 [main] INFO   - Computer 574 selected 
+2017-03-23 15:53:17.397 [main] INFO   - Company 1 selected
+2017-03-23 15:53:17.398 [main] INFO   - Computer 574 selected 
+2017-03-23 15:53:17.398 [main] INFO   - Company 1 selected
+2017-03-23 15:53:17.399 [main] INFO   - Computer 574 selected 
+2017-03-23 15:53:17.399 [main] INFO   - Company 1 selected
+2017-03-23 15:53:17.403 [main] INFO   - Companies selected
+2017-03-23 15:53:17.404 [main] INFO   - Company 1 selected
+2017-03-23 15:53:17.404 [main] INFO   - Company 1 selected
+2017-03-23 15:55:01.257 [main] INFO   - Computer 574 selected 
+2017-03-23 15:55:01.266 [main] INFO   - Company 1 selected
+2017-03-23 15:55:35.750 [main] INFO   - Computers selected 
+2017-03-23 15:55:35.759 [main] INFO   - Company 1 selected
+2017-03-23 15:55:48.379 [main] INFO   - Computer 599 selected 
+2017-03-23 15:55:48.379 [main] INFO   - Company 1 selected
+2017-03-23 15:55:53.289 [main] INFO   - Computer 599 selected 
+2017-03-23 15:55:53.289 [main] INFO   - Company 1 selected
+2017-03-23 15:55:53.301 [main] INFO   - Computer 599 updated 
+2017-03-23 15:55:59.442 [main] INFO   - Computers selected 
+2017-03-23 15:55:59.443 [main] INFO   - Company 1 selected
+2017-03-23 16:01:28.110 [main] INFO   - Computer 574 selected 
+2017-03-23 16:01:28.116 [main] INFO   - Company 1 selected
+2017-03-23 16:01:28.117 [main] INFO   - Computer 574 selected 
+2017-03-23 16:01:28.117 [main] INFO   - Company 1 selected
+2017-03-23 16:01:28.118 [main] INFO   - Computer 574 selected 
+2017-03-23 16:01:28.119 [main] INFO   - Company 1 selected
+2017-03-23 16:01:28.119 [main] INFO   - Computer 574 selected 
+2017-03-23 16:01:28.120 [main] INFO   - Company 1 selected
+2017-03-23 16:01:28.130 [main] INFO   - Computer 601 created
+2017-03-23 16:01:28.131 [main] INFO   - Computer 601 selected 
+2017-03-23 16:01:28.132 [main] INFO   - Company 1 selected
+2017-03-23 16:01:28.137 [main] INFO   - Computer 601 deleted
+2017-03-23 16:01:28.208 [main] INFO   - Computer 602 created
+2017-03-23 16:01:28.213 [main] INFO   - Computer 602 updated 
+2017-03-23 16:01:28.214 [main] INFO   - Computer 602 selected 
+2017-03-23 16:01:28.214 [main] INFO   - Company 1 selected
+2017-03-23 16:01:28.215 [main] INFO   - Computer 602 selected 
+2017-03-23 16:01:28.215 [main] INFO   - Company 1 selected
+2017-03-23 16:01:28.222 [main] INFO   - Computer 602 deleted
+2017-03-23 16:01:28.225 [main] INFO   - Computer 603 created
+2017-03-23 16:01:28.226 [main] INFO   - Computer 603 selected 
+2017-03-23 16:01:28.226 [main] INFO   - Company 1 selected
+2017-03-23 16:01:28.227 [main] INFO   - Computer 603 selected 
+2017-03-23 16:01:28.227 [main] INFO   - Company 1 selected
+2017-03-23 16:01:28.229 [main] INFO   - Computer 603 deleted
+2017-03-23 16:01:28.232 [main] INFO   - Companies selected
+2017-03-23 16:01:28.232 [main] INFO   - Company 1 selected
+2017-03-23 16:01:28.233 [main] INFO   - Company 1 selected
+2017-03-23 16:01:34.959 [main] INFO   - Computer 604 created
+2017-03-23 16:01:34.964 [main] INFO   - Computer 604 selected 
+2017-03-23 16:01:34.966 [main] INFO   - Company 1 selected
+2017-03-23 16:01:34.969 [main] INFO   - Computer 604 updated 
+2017-03-23 16:01:34.970 [main] INFO   - Computer 604 selected 
+2017-03-23 16:01:34.974 [main] INFO   - Company 1 selected
+2017-03-23 16:01:34.981 [main] INFO   - Computer 605 created
+2017-03-23 16:01:34.982 [main] INFO   - Computer 605 selected 
+2017-03-23 16:01:34.983 [main] INFO   - Company 1 selected
+2017-03-23 16:01:34.984 [main] INFO   - Computer 605 selected 
+2017-03-23 16:01:34.984 [main] INFO   - Company 1 selected
+2017-03-23 16:01:34.986 [main] INFO   - Computer 605 deleted
+2017-03-23 16:01:34.988 [main] INFO   - Computer 574 selected 
+2017-03-23 16:01:34.988 [main] INFO   - Company 1 selected
+2017-03-23 16:01:34.990 [main] INFO   - Computer 574 selected 
+2017-03-23 16:01:34.991 [main] INFO   - Company 1 selected
+2017-03-23 16:01:34.992 [main] INFO   - Computer 574 selected 
+2017-03-23 16:01:34.992 [main] INFO   - Company 1 selected
+2017-03-23 16:01:34.993 [main] INFO   - Computer 574 selected 
+2017-03-23 16:01:34.994 [main] INFO   - Company 1 selected
+2017-03-23 16:01:34.996 [main] INFO   - Computer 606 created
+2017-03-23 16:01:34.997 [main] INFO   - Computer 606 selected 
+2017-03-23 16:01:34.998 [main] INFO   - Company 1 selected
+2017-03-23 16:01:35.000 [main] INFO   - Computer 606 deleted
+2017-03-23 16:01:35.003 [main] INFO   - Companies selected
+2017-03-23 16:01:35.004 [main] INFO   - Company 1 selected
+2017-03-23 16:01:35.005 [main] INFO   - Company 1 selected
+2017-03-23 16:03:02.577 [main] INFO   - Computer 607 created
+2017-03-23 16:03:02.582 [main] INFO   - Computer 607 selected 
+2017-03-23 16:03:02.584 [main] INFO   - Company 1 selected
+2017-03-23 16:03:02.586 [main] INFO   - Computer 607 deleted
+2017-03-23 16:03:02.665 [main] INFO   - Computer 608 created
+2017-03-23 16:03:02.670 [main] INFO   - Computer 608 selected 
+2017-03-23 16:03:02.671 [main] INFO   - Company 1 selected
+2017-03-23 16:03:02.673 [main] INFO   - Computer 608 updated 
+2017-03-23 16:03:02.674 [main] INFO   - Computer 608 selected 
+2017-03-23 16:03:02.675 [main] INFO   - Company 1 selected
+2017-03-23 16:03:02.681 [main] INFO   - Computer 609 created
+2017-03-23 16:03:02.682 [main] INFO   - Computer 609 selected 
+2017-03-23 16:03:02.682 [main] INFO   - Company 1 selected
+2017-03-23 16:03:02.684 [main] INFO   - Computer 609 selected 
+2017-03-23 16:03:02.685 [main] INFO   - Company 1 selected
+2017-03-23 16:03:02.687 [main] INFO   - Computer 609 deleted
+2017-03-23 16:03:02.688 [main] INFO   - Computer 574 selected 
+2017-03-23 16:03:02.688 [main] INFO   - Company 1 selected
+2017-03-23 16:03:02.689 [main] INFO   - Computer 574 selected 
+2017-03-23 16:03:02.689 [main] INFO   - Company 1 selected
+2017-03-23 16:03:02.690 [main] INFO   - Computer 574 selected 
+2017-03-23 16:03:02.690 [main] INFO   - Company 1 selected
+2017-03-23 16:03:02.691 [main] INFO   - Computer 574 selected 
+2017-03-23 16:03:02.692 [main] INFO   - Company 1 selected
+2017-03-23 16:03:02.694 [main] INFO   - Companies selected
+2017-03-23 16:03:02.695 [main] INFO   - Company 1 selected
+2017-03-23 16:03:02.696 [main] INFO   - Company 1 selected
+2017-03-23 16:03:18.750 [main] INFO   - Computer 610 created
+2017-03-23 16:03:18.755 [main] INFO   - Computer 610 selected 
+2017-03-23 16:03:18.757 [main] INFO   - Company 1 selected
+2017-03-23 16:03:18.763 [main] INFO   - Computer 610 deleted
+2017-03-23 16:03:18.850 [main] INFO   - Computer 611 created
+2017-03-23 16:03:18.860 [main] INFO   - Computer 611 updated 
+2017-03-23 16:03:18.861 [main] INFO   - Computer 611 selected 
+2017-03-23 16:03:18.862 [main] INFO   - Company 1 selected
+2017-03-23 16:03:18.862 [main] INFO   - Computer 611 selected 
+2017-03-23 16:03:18.863 [main] INFO   - Company 1 selected
+2017-03-23 16:03:18.868 [main] INFO   - Computer 611 deleted
+2017-03-23 16:03:18.875 [main] INFO   - Computer 612 created
+2017-03-23 16:03:18.876 [main] INFO   - Computer 612 selected 
+2017-03-23 16:03:18.877 [main] INFO   - Company 1 selected
+2017-03-23 16:03:18.878 [main] INFO   - Computer 612 selected 
+2017-03-23 16:03:18.879 [main] INFO   - Company 1 selected
+2017-03-23 16:03:18.884 [main] INFO   - Computer 612 deleted
+2017-03-23 16:03:18.885 [main] INFO   - Computer 574 selected 
+2017-03-23 16:03:18.886 [main] INFO   - Company 1 selected
+2017-03-23 16:03:18.887 [main] INFO   - Computer 574 selected 
+2017-03-23 16:03:18.887 [main] INFO   - Company 1 selected
+2017-03-23 16:03:18.888 [main] INFO   - Computer 574 selected 
+2017-03-23 16:03:18.888 [main] INFO   - Company 1 selected
+2017-03-23 16:03:18.889 [main] INFO   - Computer 574 selected 
+2017-03-23 16:03:18.889 [main] INFO   - Company 1 selected
+2017-03-23 16:03:18.891 [main] INFO   - Company 1 selected
+2017-03-23 16:03:18.892 [main] INFO   - Company 1 selected
+2017-03-23 16:03:18.893 [main] INFO   - Companies selected
+2017-03-23 16:04:51.580 [main] INFO   - Computer 613 created
+2017-03-23 16:04:51.585 [main] INFO   - Computer 613 selected 
+2017-03-23 16:04:51.587 [main] INFO   - Company 1 selected
+2017-03-23 16:04:51.589 [main] INFO   - Computer 613 deleted
+2017-03-23 16:04:51.672 [main] INFO   - Computer 614 created
+2017-03-23 16:04:51.677 [main] INFO   - Computer 614 selected 
+2017-03-23 16:04:51.677 [main] INFO   - Company 1 selected
+2017-03-23 16:04:51.683 [main] INFO   - Computer 614 updated 
+2017-03-23 16:04:51.684 [main] INFO   - Computer 614 selected 
+2017-03-23 16:04:51.685 [main] INFO   - Company 1 selected
+2017-03-23 16:04:51.694 [main] INFO   - Computer 615 created
+2017-03-23 16:04:51.695 [main] INFO   - Computer 615 selected 
+2017-03-23 16:04:51.696 [main] INFO   - Company 1 selected
+2017-03-23 16:04:51.697 [main] INFO   - Computer 615 selected 
+2017-03-23 16:04:51.698 [main] INFO   - Company 1 selected
+2017-03-23 16:04:51.704 [main] INFO   - Computer 615 deleted
+2017-03-23 16:04:51.705 [main] INFO   - Computer 574 selected 
+2017-03-23 16:04:51.705 [main] INFO   - Company 1 selected
+2017-03-23 16:04:51.706 [main] INFO   - Computer 574 selected 
+2017-03-23 16:04:51.706 [main] INFO   - Company 1 selected
+2017-03-23 16:04:51.707 [main] INFO   - Computer 574 selected 
+2017-03-23 16:04:51.707 [main] INFO   - Company 1 selected
+2017-03-23 16:04:51.708 [main] INFO   - Computer 574 selected 
+2017-03-23 16:04:51.708 [main] INFO   - Company 1 selected
+2017-03-23 16:04:51.711 [main] INFO   - Companies selected
+2017-03-23 16:04:51.711 [main] INFO   - Company 1 selected
+2017-03-23 16:04:51.712 [main] INFO   - Company 1 selected
+2017-03-23 16:06:09.042 [main] INFO   - Computer 616 created
+2017-03-23 16:06:09.047 [main] INFO   - Computer 616 selected 
+2017-03-23 16:06:09.049 [main] INFO   - Company 1 selected
+2017-03-23 16:06:09.051 [main] INFO   - Computer 616 deleted
+2017-03-23 16:06:09.128 [main] INFO   - Computer 617 created
+2017-03-23 16:06:09.133 [main] INFO   - Computer 617 selected 
+2017-03-23 16:06:09.134 [main] INFO   - Company 1 selected
+2017-03-23 16:06:09.134 [main] INFO   - Computer 617 selected 
+2017-03-23 16:06:09.135 [main] INFO   - Company 1 selected
+2017-03-23 16:06:09.137 [main] INFO   - Computer 617 updated 
+2017-03-23 16:06:09.138 [main] INFO   - Computer 617 selected 
+2017-03-23 16:06:09.138 [main] INFO   - Company 1 selected
+2017-03-23 16:06:09.144 [main] INFO   - Computer 618 created
+2017-03-23 16:06:09.146 [main] INFO   - Computer 618 selected 
+2017-03-23 16:06:09.147 [main] INFO   - Company 1 selected
+2017-03-23 16:06:09.147 [main] INFO   - Computer 618 selected 
+2017-03-23 16:06:09.148 [main] INFO   - Company 1 selected
+2017-03-23 16:06:09.150 [main] INFO   - Computer 618 deleted
+2017-03-23 16:06:09.151 [main] INFO   - Computer 574 selected 
+2017-03-23 16:06:09.151 [main] INFO   - Company 1 selected
+2017-03-23 16:06:09.152 [main] INFO   - Computer 574 selected 
+2017-03-23 16:06:09.153 [main] INFO   - Company 1 selected
+2017-03-23 16:06:09.153 [main] INFO   - Computer 574 selected 
+2017-03-23 16:06:09.154 [main] INFO   - Company 1 selected
+2017-03-23 16:06:09.154 [main] INFO   - Computer 574 selected 
+2017-03-23 16:06:09.155 [main] INFO   - Company 1 selected
+2017-03-23 16:06:09.156 [main] INFO   - Company 1 selected
+2017-03-23 16:06:09.157 [main] INFO   - Company 1 selected
+2017-03-23 16:06:09.158 [main] INFO   - Companies selected
+2017-03-23 16:06:52.224 [main] INFO   - Computer 574 selected 
+2017-03-23 16:06:52.231 [main] INFO   - Company 1 selected
+2017-03-23 16:06:52.232 [main] INFO   - Computer 574 selected 
+2017-03-23 16:06:52.232 [main] INFO   - Company 1 selected
+2017-03-23 16:06:52.233 [main] INFO   - Computer 574 selected 
+2017-03-23 16:06:52.233 [main] INFO   - Company 1 selected
+2017-03-23 16:06:52.234 [main] INFO   - Computer 574 selected 
+2017-03-23 16:06:52.234 [main] INFO   - Company 1 selected
+2017-03-23 16:06:52.314 [main] INFO   - Computer 619 created
+2017-03-23 16:06:52.316 [main] INFO   - Computer 619 selected 
+2017-03-23 16:06:52.316 [main] INFO   - Company 1 selected
+2017-03-23 16:06:52.322 [main] INFO   - Computer 619 updated 
+2017-03-23 16:06:52.323 [main] INFO   - Computer 619 selected 
+2017-03-23 16:06:52.323 [main] INFO   - Company 1 selected
+2017-03-23 16:06:52.325 [main] INFO   - Computer 619 selected 
+2017-03-23 16:06:52.326 [main] INFO   - Company 1 selected
+2017-03-23 16:06:52.331 [main] INFO   - Computer 619 deleted
+2017-03-23 16:06:52.337 [main] INFO   - Computer 620 created
+2017-03-23 16:06:52.338 [main] INFO   - Computer 620 selected 
+2017-03-23 16:06:52.342 [main] INFO   - Company 1 selected
+2017-03-23 16:06:52.348 [main] INFO   - Computer 620 deleted
+2017-03-23 16:06:52.355 [main] INFO   - Computer 621 created
+2017-03-23 16:06:52.356 [main] INFO   - Computer 621 selected 
+2017-03-23 16:06:52.356 [main] INFO   - Company 1 selected
+2017-03-23 16:06:52.357 [main] INFO   - Computer 621 selected 
+2017-03-23 16:06:52.358 [main] INFO   - Company 1 selected
+2017-03-23 16:06:52.363 [main] INFO   - Computer 621 deleted
+2017-03-23 16:06:52.366 [main] INFO   - Companies selected
+2017-03-23 16:06:52.367 [main] INFO   - Company 1 selected
+2017-03-23 16:06:52.367 [main] INFO   - Company 1 selected
+2017-03-23 16:07:33.160 [main] INFO   - Computer 622 created
+2017-03-23 16:07:33.170 [main] INFO   - Computer 622 updated 
+2017-03-23 16:07:33.172 [main] INFO   - Computer 622 selected 
+2017-03-23 16:07:33.174 [main] INFO   - Company 1 selected
+2017-03-23 16:07:33.175 [main] INFO   - Computer 622 selected 
+2017-03-23 16:07:33.175 [main] INFO   - Company 1 selected
+2017-03-23 16:07:33.181 [main] INFO   - Computer 622 deleted
+2017-03-23 16:07:33.188 [main] INFO   - Computer 623 created
+2017-03-23 16:07:33.189 [main] INFO   - Computer 623 selected 
+2017-03-23 16:07:33.190 [main] INFO   - Company 1 selected
+2017-03-23 16:07:33.190 [main] INFO   - Computer 623 selected 
+2017-03-23 16:07:33.191 [main] INFO   - Company 1 selected
+2017-03-23 16:07:33.197 [main] INFO   - Computer 623 deleted
+2017-03-23 16:07:33.198 [main] INFO   - Computer 574 selected 
+2017-03-23 16:07:33.198 [main] INFO   - Company 1 selected
+2017-03-23 16:07:33.199 [main] INFO   - Computer 574 selected 
+2017-03-23 16:07:33.200 [main] INFO   - Company 1 selected
+2017-03-23 16:07:33.201 [main] INFO   - Computer 574 selected 
+2017-03-23 16:07:33.202 [main] INFO   - Company 1 selected
+2017-03-23 16:07:33.207 [main] INFO   - Computer 574 selected 
+2017-03-23 16:07:33.207 [main] INFO   - Company 1 selected
+2017-03-23 16:07:33.213 [main] INFO   - Computer 624 created
+2017-03-23 16:07:33.214 [main] INFO   - Computer 624 selected 
+2017-03-23 16:07:33.214 [main] INFO   - Company 1 selected
+2017-03-23 16:07:33.220 [main] INFO   - Computer 624 deleted
+2017-03-23 16:07:33.224 [main] INFO   - Companies selected
+2017-03-23 16:07:33.224 [main] INFO   - Company 1 selected
+2017-03-23 16:07:33.225 [main] INFO   - Company 1 selected
+2017-03-23 16:07:52.272 [main] INFO   - Computer 625 created
+2017-03-23 16:07:52.277 [main] INFO   - Computer 625 selected 
+2017-03-23 16:07:52.279 [main] INFO   - Company 1 selected
+2017-03-23 16:07:52.285 [main] INFO   - Computer 625 deleted
+2017-03-23 16:07:52.385 [main] INFO   - Computer 626 created
+2017-03-23 16:07:52.395 [main] INFO   - Computer 626 updated 
+2017-03-23 16:07:52.396 [main] INFO   - Computer 626 selected 
+2017-03-23 16:07:52.397 [main] INFO   - Company 1 selected
+2017-03-23 16:07:52.398 [main] INFO   - Computer 626 selected 
+2017-03-23 16:07:52.398 [main] INFO   - Company 1 selected
+2017-03-23 16:07:52.404 [main] INFO   - Computer 626 deleted
+2017-03-23 16:07:52.411 [main] INFO   - Computer 627 created
+2017-03-23 16:07:52.412 [main] INFO   - Computer 627 selected 
+2017-03-23 16:07:52.413 [main] INFO   - Company 1 selected
+2017-03-23 16:07:52.414 [main] INFO   - Computer 627 selected 
+2017-03-23 16:07:52.415 [main] INFO   - Company 1 selected
+2017-03-23 16:07:52.421 [main] INFO   - Computer 627 deleted
+2017-03-23 16:07:52.422 [main] INFO   - Computer 574 selected 
+2017-03-23 16:07:52.422 [main] INFO   - Company 1 selected
+2017-03-23 16:07:52.423 [main] INFO   - Computer 574 selected 
+2017-03-23 16:07:52.423 [main] INFO   - Company 1 selected
+2017-03-23 16:07:52.424 [main] INFO   - Computer 574 selected 
+2017-03-23 16:07:52.425 [main] INFO   - Company 1 selected
+2017-03-23 16:07:52.425 [main] INFO   - Computer 574 selected 
+2017-03-23 16:07:52.426 [main] INFO   - Company 1 selected
+2017-03-23 16:07:52.429 [main] INFO   - Companies selected
+2017-03-23 16:07:52.430 [main] INFO   - Company 1 selected
+2017-03-23 16:07:52.431 [main] INFO   - Company 1 selected
+2017-03-23 16:09:54.122 [main] INFO   - Computer 628 created
+2017-03-23 16:09:54.127 [main] INFO   - Computer 628 selected 
+2017-03-23 16:09:54.129 [main] INFO   - Company 1 selected
+2017-03-23 16:09:54.135 [main] INFO   - Computer 628 deleted
+2017-03-23 16:09:54.219 [main] INFO   - Computer 629 created
+2017-03-23 16:09:54.231 [main] INFO   - Computer 629 updated 
+2017-03-23 16:09:54.233 [main] INFO   - Computer 629 selected 
+2017-03-23 16:09:54.233 [main] INFO   - Company 1 selected
+2017-03-23 16:09:54.234 [main] INFO   - Computer 629 selected 
+2017-03-23 16:09:54.235 [main] INFO   - Company 1 selected
+2017-03-23 16:09:54.240 [main] INFO   - Computer 629 deleted
+2017-03-23 16:09:54.241 [main] INFO   - Computer 810 updated 
+2017-03-23 16:09:54.248 [main] INFO   - Computer 630 created
+2017-03-23 16:09:54.249 [main] INFO   - Computer 630 selected 
+2017-03-23 16:09:54.250 [main] INFO   - Company 1 selected
+2017-03-23 16:09:54.251 [main] INFO   - Computer 630 selected 
+2017-03-23 16:09:54.251 [main] INFO   - Company 1 selected
+2017-03-23 16:09:54.257 [main] INFO   - Computer 630 deleted
+2017-03-23 16:09:54.257 [main] INFO   - Computer 574 selected 
+2017-03-23 16:09:54.258 [main] INFO   - Company 1 selected
+2017-03-23 16:09:54.258 [main] INFO   - Computer 574 selected 
+2017-03-23 16:09:54.259 [main] INFO   - Company 1 selected
+2017-03-23 16:09:54.260 [main] INFO   - Computer 574 selected 
+2017-03-23 16:09:54.260 [main] INFO   - Company 1 selected
+2017-03-23 16:09:54.261 [main] INFO   - Computer 574 selected 
+2017-03-23 16:09:54.261 [main] INFO   - Company 1 selected
+2017-03-23 16:09:54.265 [main] INFO   - Companies selected
+2017-03-23 16:09:54.266 [main] INFO   - Company 1 selected
+2017-03-23 16:09:54.266 [main] INFO   - Company 1 selected
+2017-03-23 16:17:18.977 [main] INFO   - Computer 574 selected 
+2017-03-23 16:17:18.984 [main] INFO   - Company 1 selected
+2017-03-23 16:17:18.984 [main] INFO   - Computer 574 selected 
+2017-03-23 16:17:18.985 [main] INFO   - Company 1 selected
+2017-03-23 16:17:18.986 [main] INFO   - Computer 574 selected 
+2017-03-23 16:17:18.986 [main] INFO   - Company 1 selected
+2017-03-23 16:17:18.987 [main] INFO   - Computer 574 selected 
+2017-03-23 16:17:18.988 [main] INFO   - Company 1 selected
+2017-03-23 16:17:18.995 [main] INFO   - Computer 631 created
+2017-03-23 16:17:18.996 [main] INFO   - Computer 631 selected 
+2017-03-23 16:17:18.996 [main] INFO   - Company 1 selected
+2017-03-23 16:17:18.998 [main] INFO   - Computer 631 deleted
+2017-03-23 16:17:19.070 [main] INFO   - Computer 632 created
+2017-03-23 16:17:19.077 [main] INFO   - Computer 632 updated 
+2017-03-23 16:17:19.078 [main] INFO   - Computer 632 selected 
+2017-03-23 16:17:19.079 [main] INFO   - Company 1 selected
+2017-03-23 16:17:19.080 [main] INFO   - Computer 632 selected 
+2017-03-23 16:17:19.080 [main] INFO   - Company 1 selected
+2017-03-23 16:17:19.089 [main] INFO   - Computer 632 deleted
+2017-03-23 16:17:19.090 [main] INFO   - Computer 810 updated 
+2017-03-23 16:17:19.096 [main] INFO   - Computer 633 created
+2017-03-23 16:17:19.097 [main] INFO   - Computer 633 selected 
+2017-03-23 16:17:19.098 [main] INFO   - Company 1 selected
+2017-03-23 16:17:19.099 [main] INFO   - Computer 633 selected 
+2017-03-23 16:17:19.099 [main] INFO   - Company 1 selected
+2017-03-23 16:17:19.105 [main] INFO   - Computer 633 deleted
+2017-03-23 16:17:19.107 [main] INFO   - Company 1 selected
+2017-03-23 16:17:19.107 [main] INFO   - Company 1 selected
+2017-03-23 16:17:19.109 [main] INFO   - Companies selected
+2017-03-23 16:17:24.944 [main] INFO   - Computer 634 created
+2017-03-23 16:17:24.949 [main] INFO   - Computer 634 selected 
+2017-03-23 16:17:24.951 [main] INFO   - Company 1 selected
+2017-03-23 16:17:24.953 [main] INFO   - Computer 634 deleted
+2017-03-23 16:17:25.029 [main] INFO   - Computer 635 created
+2017-03-23 16:17:25.036 [main] INFO   - Computer 635 updated 
+2017-03-23 16:17:25.037 [main] INFO   - Computer 635 selected 
+2017-03-23 16:17:25.037 [main] INFO   - Company 1 selected
+2017-03-23 16:17:25.038 [main] INFO   - Computer 635 selected 
+2017-03-23 16:17:25.038 [main] INFO   - Company 1 selected
+2017-03-23 16:17:25.040 [main] INFO   - Computer 635 deleted
+2017-03-23 16:17:25.041 [main] INFO   - Computer 810 updated 
+2017-03-23 16:17:25.044 [main] INFO   - Computer 636 created
+2017-03-23 16:17:25.045 [main] INFO   - Computer 636 selected 
+2017-03-23 16:17:25.046 [main] INFO   - Company 1 selected
+2017-03-23 16:17:25.047 [main] INFO   - Computer 636 selected 
+2017-03-23 16:17:25.048 [main] INFO   - Company 1 selected
+2017-03-23 16:17:25.050 [main] INFO   - Computer 636 deleted
+2017-03-23 16:17:25.051 [main] INFO   - Computer 574 selected 
+2017-03-23 16:17:25.051 [main] INFO   - Company 1 selected
+2017-03-23 16:17:25.052 [main] INFO   - Computer 574 selected 
+2017-03-23 16:17:25.052 [main] INFO   - Company 1 selected
+2017-03-23 16:17:25.053 [main] INFO   - Computer 574 selected 
+2017-03-23 16:17:25.053 [main] INFO   - Company 1 selected
+2017-03-23 16:17:25.055 [main] INFO   - Computer 574 selected 
+2017-03-23 16:17:25.057 [main] INFO   - Company 1 selected
+2017-03-23 16:17:25.063 [main] INFO   - Companies selected
+2017-03-23 16:17:25.064 [main] INFO   - Company 1 selected
+2017-03-23 16:17:25.064 [main] INFO   - Company 1 selected
+2017-03-23 16:17:29.533 [main] INFO   - Computer 574 selected 
+2017-03-23 16:17:29.539 [main] INFO   - Company 1 selected
+2017-03-23 16:17:29.540 [main] INFO   - Computer 574 selected 
+2017-03-23 16:17:29.540 [main] INFO   - Company 1 selected
+2017-03-23 16:17:29.541 [main] INFO   - Computer 574 selected 
+2017-03-23 16:17:29.541 [main] INFO   - Company 1 selected
+2017-03-23 16:17:29.542 [main] INFO   - Computer 574 selected 
+2017-03-23 16:17:29.542 [main] INFO   - Company 1 selected
+2017-03-23 16:17:29.558 [main] INFO   - Computer 637 created
+2017-03-23 16:17:29.559 [main] INFO   - Computer 637 selected 
+2017-03-23 16:17:29.559 [main] INFO   - Company 1 selected
+2017-03-23 16:17:29.565 [main] INFO   - Computer 637 deleted
+2017-03-23 16:17:29.637 [main] INFO   - Computer 638 created
+2017-03-23 16:17:29.643 [main] INFO   - Computer 638 updated 
+2017-03-23 16:17:29.645 [main] INFO   - Computer 638 selected 
+2017-03-23 16:17:29.645 [main] INFO   - Company 1 selected
+2017-03-23 16:17:29.646 [main] INFO   - Computer 638 selected 
+2017-03-23 16:17:29.646 [main] INFO   - Company 1 selected
+2017-03-23 16:17:29.652 [main] INFO   - Computer 638 deleted
+2017-03-23 16:17:29.657 [main] INFO   - Computer 810 updated 
+2017-03-23 16:17:29.663 [main] INFO   - Computer 639 created
+2017-03-23 16:17:29.664 [main] INFO   - Computer 639 selected 
+2017-03-23 16:17:29.665 [main] INFO   - Company 1 selected
+2017-03-23 16:17:29.666 [main] INFO   - Computer 639 selected 
+2017-03-23 16:17:29.666 [main] INFO   - Company 1 selected
+2017-03-23 16:17:29.671 [main] INFO   - Computer 639 deleted
+2017-03-23 16:17:29.673 [main] INFO   - Company 1 selected
+2017-03-23 16:17:29.674 [main] INFO   - Company 1 selected
+2017-03-23 16:17:29.675 [main] INFO   - Companies selected
+2017-03-23 16:42:38.754 [main] INFO   - Computer 574 selected 
+2017-03-23 16:42:38.761 [main] INFO   - Company 1 selected
+2017-03-23 16:42:47.436 [main] INFO   - Computer 574 updated 
+2017-03-23 16:42:50.603 [main] INFO   - Computer 574 selected 
+2017-03-23 16:42:50.603 [main] INFO   - Company 1 selected
+2017-03-23 17:38:59.653 [main] INFO   - Computer 640 created
+2017-03-23 17:38:59.659 [main] INFO   - Computer 640 selected 
+2017-03-23 17:38:59.660 [main] INFO   - Company 1 selected
+2017-03-23 17:38:59.666 [main] INFO   - Computer 640 deleted
+2017-03-23 17:38:59.746 [main] INFO   - Computer 641 created
+2017-03-23 17:38:59.756 [main] INFO   - Computer 641 updated 
+2017-03-23 17:38:59.757 [main] INFO   - Computer 641 selected 
+2017-03-23 17:38:59.758 [main] INFO   - Company 1 selected
+2017-03-23 17:38:59.759 [main] INFO   - Computer 641 selected 
+2017-03-23 17:38:59.759 [main] INFO   - Company 1 selected
+2017-03-23 17:38:59.765 [main] INFO   - Computer 641 deleted
+2017-03-23 17:38:59.766 [main] INFO   - Computer 810 updated 
+2017-03-23 17:38:59.772 [main] INFO   - Computer 642 created
+2017-03-23 17:38:59.773 [main] INFO   - Computer 642 selected 
+2017-03-23 17:38:59.774 [main] INFO   - Company 1 selected
+2017-03-23 17:38:59.775 [main] INFO   - Computer 642 selected 
+2017-03-23 17:38:59.776 [main] INFO   - Company 1 selected
+2017-03-23 17:38:59.781 [main] INFO   - Computer 642 deleted
+2017-03-23 17:38:59.782 [main] INFO   - Computer 574 selected 
+2017-03-23 17:38:59.783 [main] INFO   - Company 1 selected
+2017-03-23 17:38:59.784 [main] INFO   - Computer 574 selected 
+2017-03-23 17:38:59.784 [main] INFO   - Company 1 selected
+2017-03-23 17:38:59.790 [main] INFO   - Companies selected
+2017-03-23 17:38:59.790 [main] INFO   - Company 1 selected
+2017-03-23 17:38:59.791 [main] INFO   - Company 1 selected
+2017-03-23 17:39:31.013 [main] INFO   - Computer 574 selected 
+2017-03-23 17:39:31.019 [main] INFO   - Company 1 selected
+2017-03-23 17:47:09.252 [main] INFO   - Computer 574 selected 
+2017-03-23 17:47:09.258 [main] INFO   - Company 1 selected
+2017-03-23 17:47:16.073 [main] INFO   - Computer 574 updated 
+2017-03-23 17:47:23.211 [main] INFO   - Computer 574 selected 
+2017-03-23 17:47:23.212 [main] INFO   - Company 1 selected
+2017-03-23 17:47:39.164 [main] INFO   - Computer 574 selected 
+2017-03-23 17:47:39.164 [main] INFO   - Company 1 selected
+2017-03-23 17:47:50.065 [main] INFO   - Computer 643 created
+2017-03-23 17:47:50.070 [main] INFO   - Computer 643 selected 
+2017-03-23 17:47:50.072 [main] INFO   - Company 1 selected
+2017-03-23 17:47:50.077 [main] INFO   - Computer 643 deleted
+2017-03-23 17:47:50.158 [main] INFO   - Computer 644 created
+2017-03-23 17:47:50.168 [main] INFO   - Computer 644 updated 
+2017-03-23 17:47:50.169 [main] INFO   - Computer 644 selected 
+2017-03-23 17:47:50.169 [main] INFO   - Company 1 selected
+2017-03-23 17:47:50.170 [main] INFO   - Computer 644 selected 
+2017-03-23 17:47:50.171 [main] INFO   - Company 1 selected
+2017-03-23 17:47:50.176 [main] INFO   - Computer 644 deleted
+2017-03-23 17:47:50.177 [main] INFO   - Computer 810 updated 
+2017-03-23 17:47:50.184 [main] INFO   - Computer 645 created
+2017-03-23 17:47:50.185 [main] INFO   - Computer 645 selected 
+2017-03-23 17:47:50.186 [main] INFO   - Company 1 selected
+2017-03-23 17:47:50.187 [main] INFO   - Computer 645 selected 
+2017-03-23 17:47:50.187 [main] INFO   - Company 1 selected
+2017-03-23 17:47:50.193 [main] INFO   - Computer 645 deleted
+2017-03-23 17:47:50.194 [main] INFO   - Computer 574 selected 
+2017-03-23 17:47:50.194 [main] INFO   - Company 1 selected
+2017-03-23 17:47:50.195 [main] INFO   - Computer 574 selected 
+2017-03-23 17:47:50.196 [main] INFO   - Company 1 selected
+2017-03-23 17:47:50.200 [main] INFO   - Company 1 selected
+2017-03-23 17:47:50.201 [main] INFO   - Company 1 selected
+2017-03-23 17:47:50.202 [main] INFO   - Companies selected
+2017-03-23 17:48:01.727 [main] INFO   - Computer 646 created
+2017-03-23 17:48:01.732 [main] INFO   - Computer 646 selected 
+2017-03-23 17:48:01.733 [main] INFO   - Company 1 selected
+2017-03-23 17:48:01.736 [main] INFO   - Computer 646 deleted
+2017-03-23 17:48:01.812 [main] INFO   - Computer 647 created
+2017-03-23 17:48:01.817 [main] INFO   - Computer 647 updated 
+2017-03-23 17:48:01.818 [main] INFO   - Computer 647 selected 
+2017-03-23 17:48:01.819 [main] INFO   - Company 1 selected
+2017-03-23 17:48:01.820 [main] INFO   - Computer 647 selected 
+2017-03-23 17:48:01.820 [main] INFO   - Company 1 selected
+2017-03-23 17:48:01.822 [main] INFO   - Computer 647 deleted
+2017-03-23 17:48:01.823 [main] INFO   - Computer 810 updated 
+2017-03-23 17:48:01.826 [main] INFO   - Computer 648 created
+2017-03-23 17:48:01.827 [main] INFO   - Computer 648 selected 
+2017-03-23 17:48:01.828 [main] INFO   - Company 1 selected
+2017-03-23 17:48:01.828 [main] INFO   - Computer 648 selected 
+2017-03-23 17:48:01.829 [main] INFO   - Company 1 selected
+2017-03-23 17:48:01.831 [main] INFO   - Computer 648 deleted
+2017-03-23 17:48:01.832 [main] INFO   - Computer 574 selected 
+2017-03-23 17:48:01.833 [main] INFO   - Company 1 selected
+2017-03-23 17:48:01.833 [main] INFO   - Computer 574 selected 
+2017-03-23 17:48:01.833 [main] INFO   - Company 1 selected
+2017-03-23 17:48:01.834 [main] INFO   - Computer 574 selected 
+2017-03-23 17:48:01.835 [main] INFO   - Company 1 selected
+2017-03-23 17:48:01.835 [main] INFO   - Computer 574 selected 
+2017-03-23 17:48:01.836 [main] INFO   - Company 1 selected
+2017-03-23 17:48:01.837 [main] INFO   - Company 1 selected
+2017-03-23 17:48:01.838 [main] INFO   - Company 1 selected
+2017-03-23 17:48:01.839 [main] INFO   - Companies selected
+2017-03-24 10:19:36.523 [main] INFO   - Computer 652 created
+2017-03-24 10:19:36.528 [main] INFO   - Computer 652 selected 
+2017-03-24 10:19:36.530 [main] INFO   - Company 1 selected
+2017-03-24 10:19:36.536 [main] INFO   - Computer 652 deleted
+2017-03-24 10:19:36.619 [main] INFO   - Computer 653 created
+2017-03-24 10:19:36.629 [main] INFO   - Computer 653 updated 
+2017-03-24 10:19:36.630 [main] INFO   - Computer 653 selected 
+2017-03-24 10:19:36.631 [main] INFO   - Company 1 selected
+2017-03-24 10:19:36.631 [main] INFO   - Computer 653 selected 
+2017-03-24 10:19:36.632 [main] INFO   - Company 1 selected
+2017-03-24 10:19:36.637 [main] INFO   - Computer 653 deleted
+2017-03-24 10:19:36.638 [main] INFO   - Computer 810 updated 
+2017-03-24 10:19:36.644 [main] INFO   - Computer 654 created
+2017-03-24 10:19:36.646 [main] INFO   - Computer 654 selected 
+2017-03-24 10:19:36.646 [main] INFO   - Company 1 selected
+2017-03-24 10:19:36.647 [main] INFO   - Computer 654 selected 
+2017-03-24 10:19:36.648 [main] INFO   - Company 1 selected
+2017-03-24 10:19:36.653 [main] INFO   - Computer 654 deleted
+2017-03-24 10:19:36.654 [main] INFO   - Computer 574 selected 
+2017-03-24 10:19:36.655 [main] INFO   - Company 1 selected
+2017-03-24 10:19:36.656 [main] INFO   - Computer 574 selected 
+2017-03-24 10:19:36.656 [main] INFO   - Company 1 selected
+2017-03-24 10:19:36.657 [main] INFO   - Computer 574 selected 
+2017-03-24 10:19:36.657 [main] INFO   - Company 1 selected
+2017-03-24 10:19:36.658 [main] INFO   - Computer 574 selected 
+2017-03-24 10:19:36.658 [main] INFO   - Company 1 selected
+2017-03-24 10:19:36.660 [main] INFO   - Company 1 selected
+2017-03-24 10:19:36.661 [main] INFO   - Company 1 selected
+2017-03-24 10:19:36.662 [main] INFO   - Companies selected
+2017-03-24 10:25:28.476 [main] INFO   - Computer 655 created
+2017-03-24 10:25:28.482 [main] INFO   - Computer 655 selected 
+2017-03-24 10:25:28.484 [main] INFO   - Company 1 selected
+2017-03-24 10:25:28.490 [main] INFO   - Computer 655 deleted
+2017-03-24 10:25:28.575 [main] INFO   - Computer 656 created
+2017-03-24 10:25:28.586 [main] INFO   - Computer 656 updated 
+2017-03-24 10:25:28.587 [main] INFO   - Computer 656 selected 
+2017-03-24 10:25:28.588 [main] INFO   - Company 1 selected
+2017-03-24 10:25:28.588 [main] INFO   - Computer 656 selected 
+2017-03-24 10:25:28.589 [main] INFO   - Company 1 selected
+2017-03-24 10:25:28.595 [main] INFO   - Computer 656 deleted
+2017-03-24 10:25:28.595 [main] INFO   - Computer 810 updated 
+2017-03-24 10:25:28.602 [main] INFO   - Computer 657 created
+2017-03-24 10:25:28.603 [main] INFO   - Computer 657 selected 
+2017-03-24 10:25:28.604 [main] INFO   - Company 1 selected
+2017-03-24 10:25:28.605 [main] INFO   - Computer 657 selected 
+2017-03-24 10:25:28.606 [main] INFO   - Company 1 selected
+2017-03-24 10:25:28.612 [main] INFO   - Computer 657 deleted
+2017-03-24 10:25:28.613 [main] INFO   - Computer 574 selected 
+2017-03-24 10:25:28.613 [main] INFO   - Company 1 selected
+2017-03-24 10:25:28.614 [main] INFO   - Computer 574 selected 
+2017-03-24 10:25:28.614 [main] INFO   - Company 1 selected
+2017-03-24 10:25:28.615 [main] INFO   - Computer 574 selected 
+2017-03-24 10:25:28.615 [main] INFO   - Company 1 selected
+2017-03-24 10:25:28.616 [main] INFO   - Computer 574 selected 
+2017-03-24 10:25:28.618 [main] INFO   - Company 1 selected
+2017-03-24 10:25:28.621 [main] INFO   - Companies selected
+2017-03-24 10:25:28.622 [main] INFO   - Company 1 selected
+2017-03-24 10:25:28.622 [main] INFO   - Company 1 selected
+2017-03-24 10:25:40.143 [main] INFO   - Computer 658 created
+2017-03-24 10:25:40.153 [main] INFO   - Computer 658 updated 
+2017-03-24 10:25:40.154 [main] INFO   - Computer 658 selected 
+2017-03-24 10:25:40.157 [main] INFO   - Company 1 selected
+2017-03-24 10:25:40.157 [main] INFO   - Computer 658 selected 
+2017-03-24 10:25:40.162 [main] INFO   - Company 1 selected
+2017-03-24 10:25:40.168 [main] INFO   - Computer 658 deleted
+2017-03-24 10:25:40.168 [main] INFO   - Computer 810 updated 
+2017-03-24 10:25:40.176 [main] INFO   - Computer 659 created
+2017-03-24 10:25:40.177 [main] INFO   - Computer 659 selected 
+2017-03-24 10:25:40.178 [main] INFO   - Company 1 selected
+2017-03-24 10:25:40.179 [main] INFO   - Computer 659 selected 
+2017-03-24 10:25:40.179 [main] INFO   - Company 1 selected
+2017-03-24 10:25:40.185 [main] INFO   - Computer 659 deleted
+2017-03-24 10:25:40.186 [main] INFO   - Computer 574 selected 
+2017-03-24 10:25:40.187 [main] INFO   - Company 1 selected
+2017-03-24 10:25:40.188 [main] INFO   - Computer 574 selected 
+2017-03-24 10:25:40.189 [main] INFO   - Company 1 selected
+2017-03-24 10:25:40.190 [main] INFO   - Computer 574 selected 
+2017-03-24 10:25:40.190 [main] INFO   - Company 1 selected
+2017-03-24 10:25:40.191 [main] INFO   - Computer 574 selected 
+2017-03-24 10:25:40.191 [main] INFO   - Company 1 selected
+2017-03-24 10:25:40.197 [main] INFO   - Computer 660 created
+2017-03-24 10:25:40.198 [main] INFO   - Computer 660 selected 
+2017-03-24 10:25:40.198 [main] INFO   - Company 1 selected
+2017-03-24 10:25:40.204 [main] INFO   - Computer 660 deleted
+2017-03-24 10:25:40.207 [main] INFO   - Companies selected
+2017-03-24 10:25:40.208 [main] INFO   - Company 1 selected
+2017-03-24 10:25:40.209 [main] INFO   - Company 1 selected
+2017-03-24 10:30:32.202 [main] INFO   - Computer 661 created
+2017-03-24 10:30:32.207 [main] INFO   - Computer 661 selected 
+2017-03-24 10:30:32.209 [main] INFO   - Company 1 selected
+2017-03-24 10:30:32.215 [main] INFO   - Computer 661 deleted
+2017-03-24 10:30:32.316 [main] INFO   - Computer 662 created
+2017-03-24 10:30:32.327 [main] INFO   - Computer 662 updated 
+2017-03-24 10:30:32.328 [main] INFO   - Computer 662 selected 
+2017-03-24 10:30:32.328 [main] INFO   - Company 1 selected
+2017-03-24 10:30:32.329 [main] INFO   - Computer 662 selected 
+2017-03-24 10:30:32.330 [main] INFO   - Company 1 selected
+2017-03-24 10:30:32.335 [main] INFO   - Computer 662 deleted
+2017-03-24 10:30:32.336 [main] INFO   - Computer 810 updated 
+2017-03-24 10:30:32.337 [main] INFO   - Computer 574 selected 
+2017-03-24 10:30:32.338 [main] INFO   - Company 1 selected
+2017-03-24 10:30:32.339 [main] INFO   - Computer 574 selected 
+2017-03-24 10:30:32.340 [main] INFO   - Company 1 selected
+2017-03-24 10:30:32.341 [main] INFO   - Computer 574 selected 
+2017-03-24 10:30:32.341 [main] INFO   - Company 1 selected
+2017-03-24 10:30:32.342 [main] INFO   - Computer 574 selected 
+2017-03-24 10:30:32.342 [main] INFO   - Company 1 selected
+2017-03-24 10:30:32.349 [main] INFO   - Computer 663 created
+2017-03-24 10:30:32.350 [main] INFO   - Computer 663 selected 
+2017-03-24 10:30:32.350 [main] INFO   - Company 1 selected
+2017-03-24 10:30:32.351 [main] INFO   - Computer 663 selected 
+2017-03-24 10:30:32.351 [main] INFO   - Company 1 selected
+2017-03-24 10:30:32.357 [main] INFO   - Computer 663 deleted
+2017-03-24 10:30:32.360 [main] INFO   - Companies selected
+2017-03-24 10:30:32.361 [main] INFO   - Company 1 selected
+2017-03-24 10:30:32.361 [main] INFO   - Company 1 selected
+2017-03-24 11:09:02.516 [main] INFO   - Computer 574 selected 
+2017-03-24 11:09:02.522 [main] INFO   - Company 1 selected
+2017-03-24 11:09:02.523 [main] INFO   - Computer 574 selected 
+2017-03-24 11:09:02.524 [main] INFO   - Company 1 selected
+2017-03-24 11:09:02.525 [main] INFO   - Computer 574 selected 
+2017-03-24 11:09:02.525 [main] INFO   - Company 1 selected
+2017-03-24 11:09:02.526 [main] INFO   - Computer 574 selected 
+2017-03-24 11:09:02.526 [main] INFO   - Company 1 selected
+2017-03-24 11:09:02.536 [main] INFO   - Computer 664 created
+2017-03-24 11:09:02.537 [main] INFO   - Computer 664 selected 
+2017-03-24 11:09:02.538 [main] INFO   - Company 1 selected
+2017-03-24 11:09:02.543 [main] INFO   - Computer 664 deleted
+2017-03-24 11:09:02.633 [main] INFO   - Computer 665 created
+2017-03-24 11:09:02.640 [main] INFO   - Computer 665 updated 
+2017-03-24 11:09:02.641 [main] INFO   - Computer 665 selected 
+2017-03-24 11:09:02.642 [main] INFO   - Company 1 selected
+2017-03-24 11:09:02.642 [main] INFO   - Computer 665 selected 
+2017-03-24 11:09:02.643 [main] INFO   - Company 1 selected
+2017-03-24 11:09:02.652 [main] INFO   - Computer 665 deleted
+2017-03-24 11:09:02.653 [main] INFO   - Computer 810 updated 
+2017-03-24 11:09:02.659 [main] INFO   - Computer 666 created
+2017-03-24 11:09:02.660 [main] INFO   - Computer 666 selected 
+2017-03-24 11:09:02.661 [main] INFO   - Company 1 selected
+2017-03-24 11:09:02.662 [main] INFO   - Computer 666 selected 
+2017-03-24 11:09:02.662 [main] INFO   - Company 1 selected
+2017-03-24 11:09:02.668 [main] INFO   - Computer 666 deleted
+2017-03-24 11:09:02.671 [main] INFO   - Companies selected
+2017-03-24 11:09:02.675 [main] INFO   - Company 1 selected
+2017-03-24 11:09:02.675 [main] INFO   - Company 1 selected
+2017-03-24 11:09:15.726 [main] INFO   - Computer 574 selected 
+2017-03-24 11:09:15.733 [main] INFO   - Company 1 selected
+2017-03-24 11:09:15.735 [main] INFO   - Computer 574 selected 
+2017-03-24 11:09:15.735 [main] INFO   - Company 1 selected
+2017-03-24 11:09:15.736 [main] INFO   - Computer 574 selected 
+2017-03-24 11:09:15.737 [main] INFO   - Company 1 selected
+2017-03-24 11:09:15.738 [main] INFO   - Computer 574 selected 
+2017-03-24 11:09:15.738 [main] INFO   - Company 1 selected
+2017-03-24 11:09:15.746 [main] INFO   - Computer 667 created
+2017-03-24 11:09:15.747 [main] INFO   - Computer 667 selected 
+2017-03-24 11:09:15.747 [main] INFO   - Company 1 selected
+2017-03-24 11:09:15.749 [main] INFO   - Computer 667 deleted
+2017-03-24 11:09:15.819 [main] INFO   - Computer 668 created
+2017-03-24 11:09:15.821 [main] INFO   - Computer 668 updated 
+2017-03-24 11:09:15.823 [main] INFO   - Computer 668 selected 
+2017-03-24 11:09:15.823 [main] INFO   - Company 1 selected
+2017-03-24 11:09:15.824 [main] INFO   - Computer 668 selected 
+2017-03-24 11:09:15.824 [main] INFO   - Company 1 selected
+2017-03-24 11:09:15.831 [main] INFO   - Computer 668 deleted
+2017-03-24 11:09:15.832 [main] INFO   - Computer 810 updated 
+2017-03-24 11:09:15.834 [main] INFO   - Computer 669 created
+2017-03-24 11:09:15.835 [main] INFO   - Computer 669 selected 
+2017-03-24 11:09:15.835 [main] INFO   - Company 1 selected
+2017-03-24 11:09:15.836 [main] INFO   - Computer 669 selected 
+2017-03-24 11:09:15.836 [main] INFO   - Company 1 selected
+2017-03-24 11:09:15.839 [main] INFO   - Computer 669 deleted
+2017-03-24 11:09:15.841 [main] INFO   - Companies selected
+2017-03-24 11:09:15.842 [main] INFO   - Company 1 selected
+2017-03-24 11:09:15.843 [main] INFO   - Company 1 selected
+2017-03-24 15:50:12.020 [main] INFO   - Computer 574 selected 
+2017-03-24 15:50:12.031 [main] INFO   - Company 1 selected
+2017-03-24 15:50:12.041 [main] INFO   - Computer 574 selected 
+2017-03-24 15:50:12.042 [main] INFO   - Company 1 selected
+2017-03-24 15:50:12.043 [main] INFO   - Computer 574 selected 
+2017-03-24 15:50:12.044 [main] INFO   - Company 1 selected
+2017-03-24 15:50:12.045 [main] INFO   - Computer 574 selected 
+2017-03-24 15:50:12.046 [main] INFO   - Company 1 selected
+2017-03-24 15:50:12.053 [main] INFO   - Computer 671 created
+2017-03-24 15:50:12.054 [main] INFO   - Computer 671 selected 
+2017-03-24 15:50:12.056 [main] INFO   - Company 1 selected
+2017-03-24 15:50:12.058 [main] INFO   - Computer 671 deleted
+2017-03-24 15:50:12.078 [main] INFO   - Computer 672 created
+2017-03-24 15:50:12.080 [main] INFO   - Computer 672 updated 
+2017-03-24 15:50:12.081 [main] INFO   - Computer 672 selected 
+2017-03-24 15:50:12.082 [main] INFO   - Company 1 selected
+2017-03-24 15:50:12.083 [main] INFO   - Computer 672 selected 
+2017-03-24 15:50:12.083 [main] INFO   - Company 1 selected
+2017-03-24 15:50:12.085 [main] INFO   - Computer 672 deleted
+2017-03-24 15:50:12.086 [main] INFO   - Computer 810 updated 
+2017-03-24 15:50:12.088 [main] INFO   - Computer 673 created
+2017-03-24 15:50:12.094 [main] INFO   - Computer 673 selected 
+2017-03-24 15:50:12.095 [main] INFO   - Company 1 selected
+2017-03-24 15:50:12.096 [main] INFO   - Computer 673 selected 
+2017-03-24 15:50:12.097 [main] INFO   - Company 1 selected
+2017-03-24 15:50:12.099 [main] INFO   - Computer 673 deleted
+2017-03-24 15:50:12.101 [main] INFO   - Company 1 selected
+2017-03-24 15:50:12.101 [main] INFO   - Company 1 selected
+2017-03-24 15:50:12.103 [main] INFO   - Companies selected
+2017-03-24 17:37:00.317 [main] INFO   - Computer 574 selected 
+2017-03-24 17:37:00.325 [main] INFO   - Company 1 selected
+2017-03-24 17:37:00.335 [main] INFO   - Computer 574 selected 
+2017-03-24 17:37:00.335 [main] INFO   - Company 1 selected
+2017-03-24 17:37:00.337 [main] INFO   - Computer 574 selected 
+2017-03-24 17:37:00.337 [main] INFO   - Company 1 selected
+2017-03-24 17:37:00.339 [main] INFO   - Computer 574 selected 
+2017-03-24 17:37:00.339 [main] INFO   - Company 1 selected
+2017-03-24 17:37:00.352 [main] INFO   - Computer 675 created
+2017-03-24 17:37:00.353 [main] INFO   - Computer 675 selected 
+2017-03-24 17:37:00.355 [main] INFO   - Company 1 selected
+2017-03-24 17:37:00.361 [main] INFO   - Computer 675 deleted
+2017-03-24 17:37:00.381 [main] INFO   - Computer 676 created
+2017-03-24 17:37:00.387 [main] INFO   - Computer 676 updated 
+2017-03-24 17:37:00.388 [main] INFO   - Computer 676 selected 
+2017-03-24 17:37:00.388 [main] INFO   - Company 1 selected
+2017-03-24 17:37:00.389 [main] INFO   - Computer 676 selected 
+2017-03-24 17:37:00.389 [main] INFO   - Company 1 selected
+2017-03-24 17:37:00.395 [main] INFO   - Computer 676 deleted
+2017-03-24 17:37:00.396 [main] INFO   - Computer 810 updated 
+2017-03-24 17:37:00.402 [main] INFO   - Computer 677 created
+2017-03-24 17:37:00.409 [main] INFO   - Computer 677 selected 
+2017-03-24 17:37:00.410 [main] INFO   - Company 1 selected
+2017-03-24 17:37:00.411 [main] INFO   - Computer 677 selected 
+2017-03-24 17:37:00.411 [main] INFO   - Company 1 selected
+2017-03-24 17:37:00.417 [main] INFO   - Computer 677 deleted
+2017-03-24 17:39:05.194 [main] INFO   - Computer 574 selected 
+2017-03-24 17:39:05.202 [main] INFO   - Company 1 selected
+2017-03-24 17:39:05.210 [main] INFO   - Computer 574 selected 
+2017-03-24 17:39:05.210 [main] INFO   - Company 1 selected
+2017-03-24 17:39:05.211 [main] INFO   - Computer 574 selected 
+2017-03-24 17:39:05.212 [main] INFO   - Company 1 selected
+2017-03-24 17:39:05.213 [main] INFO   - Computer 574 selected 
+2017-03-24 17:39:05.213 [main] INFO   - Company 1 selected
+2017-03-24 17:39:05.224 [main] INFO   - Computer 678 created
+2017-03-24 17:39:05.230 [main] INFO   - Computer 679 created
+2017-03-24 17:39:05.231 [main] INFO   - Computer 678 selected 
+2017-03-24 17:39:05.233 [main] INFO   - Company 1 selected
+2017-03-24 17:39:05.239 [main] INFO   - Computer 678 deleted
+2017-03-24 17:39:05.240 [main] INFO   - Computer 679 selected 
+2017-03-24 17:39:05.240 [main] INFO   - Company 1 selected
+2017-03-24 17:39:05.263 [main] INFO   - Computer 680 created
+2017-03-24 17:39:05.268 [main] INFO   - Computer 680 updated 
+2017-03-24 17:39:05.270 [main] INFO   - Computer 680 selected 
+2017-03-24 17:39:05.270 [main] INFO   - Company 1 selected
+2017-03-24 17:39:05.272 [main] INFO   - Computer 680 selected 
+2017-03-24 17:39:05.272 [main] INFO   - Company 1 selected
+2017-03-24 17:39:05.278 [main] INFO   - Computer 680 deleted
+2017-03-24 17:39:05.278 [main] INFO   - Computer 810 updated 
+2017-03-24 17:39:05.285 [main] INFO   - Computer 681 created
+2017-03-24 17:39:05.286 [main] INFO   - Computer 681 selected 
+2017-03-24 17:39:05.287 [main] INFO   - Company 1 selected
+2017-03-24 17:39:05.288 [main] INFO   - Computer 681 selected 
+2017-03-24 17:39:05.289 [main] INFO   - Company 1 selected
+2017-03-24 17:39:05.294 [main] INFO   - Computer 681 deleted
+2017-03-24 17:41:41.104 [main] INFO   - Computer 574 selected 
+2017-03-24 17:41:41.113 [main] INFO   - Company 1 selected
+2017-03-24 17:41:41.123 [main] INFO   - Computer 574 selected 
+2017-03-24 17:41:41.124 [main] INFO   - Company 1 selected
+2017-03-24 17:41:41.126 [main] INFO   - Computer 574 selected 
+2017-03-24 17:41:41.126 [main] INFO   - Company 1 selected
+2017-03-24 17:41:41.128 [main] INFO   - Computer 574 selected 
+2017-03-24 17:41:41.128 [main] INFO   - Company 1 selected
+2017-03-24 17:41:41.141 [main] INFO   - Computer 682 created
+2017-03-24 17:41:41.142 [main] INFO   - Computer 682 selected 
+2017-03-24 17:41:41.145 [main] INFO   - Company 1 selected
+2017-03-24 17:41:41.150 [main] INFO   - Computer 682 deleted
+2017-03-24 17:41:41.156 [main] INFO   - Computer 683 created
+2017-03-24 17:41:41.162 [main] INFO   - Computer 684 created
+2017-03-24 17:41:41.163 [main] INFO   - Computer 683 selected 
+2017-03-24 17:41:41.164 [main] INFO   - Company 1 selected
+2017-03-24 17:41:41.169 [main] INFO   - Computer 683 deleted
+2017-03-24 17:41:41.170 [main] INFO   - Computer 684 selected 
+2017-03-24 17:41:41.171 [main] INFO   - Company 1 selected
+2017-03-24 17:41:41.191 [main] INFO   - Computer 685 created
+2017-03-24 17:41:41.198 [main] INFO   - Computer 685 updated 
+2017-03-24 17:41:41.200 [main] INFO   - Computer 685 selected 
+2017-03-24 17:41:41.201 [main] INFO   - Company 1 selected
+2017-03-24 17:41:41.202 [main] INFO   - Computer 685 selected 
+2017-03-24 17:41:41.202 [main] INFO   - Company 1 selected
+2017-03-24 17:41:41.211 [main] INFO   - Computer 685 deleted
+2017-03-24 17:41:41.217 [main] INFO   - Computer 810 updated 
+2017-03-24 17:41:41.224 [main] INFO   - Computer 686 created
+2017-03-24 17:41:41.228 [main] INFO   - Computer 686 selected 
+2017-03-24 17:41:41.230 [main] INFO   - Company 1 selected
+2017-03-24 17:41:41.233 [main] INFO   - Computer 686 selected 
+2017-03-24 17:41:41.233 [main] INFO   - Company 1 selected
+2017-03-24 17:41:41.239 [main] INFO   - Computer 686 deleted
+2017-03-24 17:43:31.653 [main] INFO   - Computer 574 selected 
+2017-03-24 17:43:31.662 [main] INFO   - Company 1 selected
+2017-03-24 17:43:31.669 [main] INFO   - Computer 574 selected 
+2017-03-24 17:43:31.669 [main] INFO   - Company 1 selected
+2017-03-24 17:43:31.670 [main] INFO   - Computer 574 selected 
+2017-03-24 17:43:31.671 [main] INFO   - Company 1 selected
+2017-03-24 17:43:31.672 [main] INFO   - Computer 574 selected 
+2017-03-24 17:43:31.672 [main] INFO   - Company 1 selected
+2017-03-24 17:43:31.683 [main] INFO   - Computer 687 created
+2017-03-24 17:43:31.684 [main] INFO   - Computer 687 selected 
+2017-03-24 17:43:31.687 [main] INFO   - Company 1 selected
+2017-03-24 17:43:31.692 [main] INFO   - Computer 687 deleted
+2017-03-24 17:43:31.698 [main] INFO   - Computer 688 created
+2017-03-24 17:43:31.704 [main] INFO   - Computer 689 created
+2017-03-24 17:43:31.726 [main] INFO   - Computer 690 created
+2017-03-24 17:43:31.732 [main] INFO   - Computer 690 updated 
+2017-03-24 17:43:31.733 [main] INFO   - Computer 690 selected 
+2017-03-24 17:43:31.734 [main] INFO   - Company 1 selected
+2017-03-24 17:43:31.735 [main] INFO   - Computer 690 selected 
+2017-03-24 17:43:31.736 [main] INFO   - Company 1 selected
+2017-03-24 17:43:31.742 [main] INFO   - Computer 690 deleted
+2017-03-24 17:43:31.742 [main] INFO   - Computer 810 updated 
+2017-03-24 17:43:31.748 [main] INFO   - Computer 691 created
+2017-03-24 17:43:31.754 [main] INFO   - Computer 691 selected 
+2017-03-24 17:43:31.755 [main] INFO   - Company 1 selected
+2017-03-24 17:43:31.756 [main] INFO   - Computer 691 selected 
+2017-03-24 17:43:31.757 [main] INFO   - Company 1 selected
+2017-03-24 17:43:31.762 [main] INFO   - Computer 691 deleted
+2017-03-24 17:45:19.166 [main] INFO   - Computer 574 selected 
+2017-03-24 17:45:19.175 [main] INFO   - Company 1 selected
+2017-03-24 17:45:19.186 [main] INFO   - Computer 574 selected 
+2017-03-24 17:45:19.187 [main] INFO   - Company 1 selected
+2017-03-24 17:45:19.188 [main] INFO   - Computer 574 selected 
+2017-03-24 17:45:19.189 [main] INFO   - Company 1 selected
+2017-03-24 17:45:19.190 [main] INFO   - Computer 574 selected 
+2017-03-24 17:45:19.191 [main] INFO   - Company 1 selected
+2017-03-24 17:45:19.202 [main] INFO   - Computer 692 created
+2017-03-24 17:45:19.203 [main] INFO   - Computer 692 selected 
+2017-03-24 17:45:19.206 [main] INFO   - Company 1 selected
+2017-03-24 17:45:19.211 [main] INFO   - Computer 692 deleted
+2017-03-24 17:45:19.217 [main] INFO   - Computer 693 created
+2017-03-24 17:45:19.223 [main] INFO   - Computer 694 created
+2017-03-24 17:45:19.245 [main] INFO   - Computer 695 created
+2017-03-24 17:45:19.251 [main] INFO   - Computer 695 updated 
+2017-03-24 17:45:19.252 [main] INFO   - Computer 695 selected 
+2017-03-24 17:45:19.252 [main] INFO   - Company 1 selected
+2017-03-24 17:45:19.254 [main] INFO   - Computer 695 selected 
+2017-03-24 17:45:19.254 [main] INFO   - Company 1 selected
+2017-03-24 17:45:19.260 [main] INFO   - Computer 695 deleted
+2017-03-24 17:45:19.260 [main] INFO   - Computer 810 updated 
+2017-03-24 17:45:19.267 [main] INFO   - Computer 696 created
+2017-03-24 17:45:19.272 [main] INFO   - Computer 696 selected 
+2017-03-24 17:45:19.273 [main] INFO   - Company 1 selected
+2017-03-24 17:45:19.274 [main] INFO   - Computer 696 selected 
+2017-03-24 17:45:19.275 [main] INFO   - Company 1 selected
+2017-03-24 17:45:19.281 [main] INFO   - Computer 696 deleted
+2017-03-24 17:46:53.309 [main] INFO   - Computer 574 selected 
+2017-03-24 17:46:53.317 [main] INFO   - Company 1 selected
+2017-03-24 17:46:53.324 [main] INFO   - Computer 574 selected 
+2017-03-24 17:46:53.325 [main] INFO   - Company 1 selected
+2017-03-24 17:46:53.326 [main] INFO   - Computer 574 selected 
+2017-03-24 17:46:53.326 [main] INFO   - Company 1 selected
+2017-03-24 17:46:53.327 [main] INFO   - Computer 574 selected 
+2017-03-24 17:46:53.328 [main] INFO   - Company 1 selected
+2017-03-24 17:46:53.335 [main] INFO   - Computer 697 created
+2017-03-24 17:46:53.336 [main] INFO   - Computer 697 selected 
+2017-03-24 17:46:53.338 [main] INFO   - Company 1 selected
+2017-03-24 17:46:53.340 [main] INFO   - Computer 697 deleted
+2017-03-24 17:46:53.342 [main] INFO   - Computer 698 created
+2017-03-24 17:46:53.344 [main] INFO   - Computer 699 created
+2017-03-24 17:46:53.344 [main] INFO   - Computer 698 selected 
+2017-03-24 17:46:53.345 [main] INFO   - Company 1 selected
+2017-03-24 17:46:53.352 [main] ERROR  - Computer not deleted 
+2017-03-24 17:47:18.112 [main] INFO   - Computer 574 selected 
+2017-03-24 17:47:18.120 [main] INFO   - Company 1 selected
+2017-03-24 17:47:18.127 [main] INFO   - Computer 574 selected 
+2017-03-24 17:47:18.128 [main] INFO   - Company 1 selected
+2017-03-24 17:47:18.129 [main] INFO   - Computer 574 selected 
+2017-03-24 17:47:18.129 [main] INFO   - Company 1 selected
+2017-03-24 17:47:18.130 [main] INFO   - Computer 574 selected 
+2017-03-24 17:47:18.131 [main] INFO   - Company 1 selected
+2017-03-24 17:47:18.142 [main] INFO   - Computer 700 created
+2017-03-24 17:47:18.143 [main] INFO   - Computer 700 selected 
+2017-03-24 17:47:18.145 [main] INFO   - Company 1 selected
+2017-03-24 17:47:18.149 [main] INFO   - Computer 700 deleted
+2017-03-24 17:47:18.151 [main] INFO   - Computer 701 created
+2017-03-24 17:47:18.154 [main] INFO   - Computer 702 created
+2017-03-24 17:47:18.154 [main] INFO   - Computer 701 selected 
+2017-03-24 17:47:18.155 [main] INFO   - Company 1 selected
+2017-03-24 17:47:18.157 [main] INFO   - Computer 701 deleted
+2017-03-24 17:47:18.158 [main] INFO   - Computer 702 selected 
+2017-03-24 17:47:18.158 [main] INFO   - Company 1 selected
+2017-03-24 17:47:18.176 [main] INFO   - Computer 703 created
+2017-03-24 17:47:18.178 [main] INFO   - Computer 703 updated 
+2017-03-24 17:47:18.179 [main] INFO   - Computer 703 selected 
+2017-03-24 17:47:18.179 [main] INFO   - Company 1 selected
+2017-03-24 17:47:18.180 [main] INFO   - Computer 703 selected 
+2017-03-24 17:47:18.181 [main] INFO   - Company 1 selected
+2017-03-24 17:47:18.183 [main] INFO   - Computer 703 deleted
+2017-03-24 17:47:18.184 [main] INFO   - Computer 810 updated 
+2017-03-24 17:47:18.191 [main] INFO   - Computer 704 created
+2017-03-24 17:47:18.193 [main] INFO   - Computer 704 selected 
+2017-03-24 17:47:18.194 [main] INFO   - Company 1 selected
+2017-03-24 17:47:18.196 [main] INFO   - Computer 704 selected 
+2017-03-24 17:47:18.196 [main] INFO   - Company 1 selected
+2017-03-24 17:47:18.198 [main] INFO   - Computer 704 deleted
+2017-03-24 17:47:25.902 [main] INFO   - Computer 705 created
+2017-03-24 17:47:25.919 [main] INFO   - Computer 705 selected 
+2017-03-24 17:47:25.922 [main] INFO   - Company 1 selected
+2017-03-24 17:47:25.928 [main] INFO   - Computer 705 deleted
+2017-03-24 17:47:25.934 [main] INFO   - Computer 706 created
+2017-03-24 17:47:25.940 [main] INFO   - Computer 707 created
+2017-03-24 17:47:25.941 [main] INFO   - Computer 706 selected 
+2017-03-24 17:47:25.942 [main] INFO   - Company 1 selected
+2017-03-24 17:47:25.947 [main] INFO   - Computer 706 deleted
+2017-03-24 17:47:25.948 [main] INFO   - Computer 707 selected 
+2017-03-24 17:47:25.949 [main] INFO   - Company 1 selected
+2017-03-24 17:47:25.985 [main] INFO   - Computer 708 created
+2017-03-24 17:47:25.991 [main] INFO   - Computer 708 updated 
+2017-03-24 17:47:25.992 [main] INFO   - Computer 708 selected 
+2017-03-24 17:47:25.993 [main] INFO   - Company 1 selected
+2017-03-24 17:47:25.994 [main] INFO   - Computer 708 selected 
+2017-03-24 17:47:25.995 [main] INFO   - Company 1 selected
+2017-03-24 17:47:26.000 [main] INFO   - Computer 708 deleted
+2017-03-24 17:47:26.001 [main] INFO   - Computer 810 updated 
+2017-03-24 17:47:26.002 [main] INFO   - Computer 574 selected 
+2017-03-24 17:47:26.003 [main] INFO   - Company 1 selected
+2017-03-24 17:47:26.004 [main] INFO   - Computer 574 selected 
+2017-03-24 17:47:26.004 [main] INFO   - Company 1 selected
+2017-03-24 17:47:26.005 [main] INFO   - Computer 574 selected 
+2017-03-24 17:47:26.006 [main] INFO   - Company 1 selected
+2017-03-24 17:47:26.007 [main] INFO   - Computer 574 selected 
+2017-03-24 17:47:26.007 [main] INFO   - Company 1 selected
+2017-03-24 17:47:26.013 [main] INFO   - Computer 709 created
+2017-03-24 17:47:26.015 [main] INFO   - Computer 709 selected 
+2017-03-24 17:47:26.015 [main] INFO   - Company 1 selected
+2017-03-24 17:47:26.017 [main] INFO   - Computer 709 selected 
+2017-03-24 17:47:26.017 [main] INFO   - Company 1 selected
+2017-03-24 17:47:26.023 [main] INFO   - Computer 709 deleted
+2017-03-24 17:47:44.916 [main] INFO   - Computer 710 created
+2017-03-24 17:47:44.936 [main] INFO   - Computer 710 selected 
+2017-03-24 17:47:44.940 [main] INFO   - Company 1 selected
+2017-03-24 17:47:44.946 [main] INFO   - Computer 710 deleted
+2017-03-24 17:47:44.952 [main] INFO   - Computer 711 created
+2017-03-24 17:47:44.958 [main] INFO   - Computer 712 created
+2017-03-24 17:47:44.959 [main] INFO   - Computer 711 selected 
+2017-03-24 17:47:44.959 [main] INFO   - Company 1 selected
+2017-03-24 17:47:44.965 [main] INFO   - Computer 711 deleted
+2017-03-24 17:47:44.966 [main] INFO   - Computer 712 selected 
+2017-03-24 17:47:44.967 [main] INFO   - Company 1 selected
+2017-03-24 17:47:44.994 [main] INFO   - Computer 713 created
+2017-03-24 17:47:45.000 [main] INFO   - Computer 713 updated 
+2017-03-24 17:47:45.001 [main] INFO   - Computer 713 selected 
+2017-03-24 17:47:45.002 [main] INFO   - Company 1 selected
+2017-03-24 17:47:45.003 [main] INFO   - Computer 713 selected 
+2017-03-24 17:47:45.003 [main] INFO   - Company 1 selected
+2017-03-24 17:47:45.009 [main] INFO   - Computer 713 deleted
+2017-03-24 17:47:45.009 [main] INFO   - Computer 810 updated 
+2017-03-24 17:47:45.016 [main] INFO   - Computer 714 created
+2017-03-24 17:47:45.018 [main] INFO   - Computer 714 selected 
+2017-03-24 17:47:45.018 [main] INFO   - Company 1 selected
+2017-03-24 17:47:45.020 [main] INFO   - Computer 714 selected 
+2017-03-24 17:47:45.026 [main] INFO   - Company 1 selected
+2017-03-24 17:47:45.032 [main] INFO   - Computer 714 deleted
+2017-03-24 17:47:45.033 [main] INFO   - Computer 574 selected 
+2017-03-24 17:47:45.034 [main] INFO   - Company 1 selected
+2017-03-24 17:47:45.035 [main] INFO   - Computer 574 selected 
+2017-03-24 17:47:45.035 [main] INFO   - Company 1 selected
+2017-03-24 17:47:45.037 [main] INFO   - Computer 574 selected 
+2017-03-24 17:47:45.037 [main] INFO   - Company 1 selected
+2017-03-24 17:47:45.038 [main] INFO   - Computer 574 selected 
+2017-03-24 17:47:45.039 [main] INFO   - Company 1 selected
+2017-03-24 17:48:30.030 [main] INFO   - Computer 715 created
+2017-03-24 17:48:30.048 [main] INFO   - Computer 715 selected 
+2017-03-24 17:48:30.051 [main] INFO   - Company 1 selected
+2017-03-24 17:48:30.053 [main] INFO   - Computer 715 deleted
+2017-03-24 17:48:30.055 [main] INFO   - Computer 716 created
+2017-03-24 17:48:30.057 [main] INFO   - Computer 717 created
+2017-03-24 17:48:30.058 [main] INFO   - Computer 716 selected 
+2017-03-24 17:48:30.058 [main] INFO   - Company 1 selected
+2017-03-24 17:48:30.060 [main] INFO   - Computer 716 deleted
+2017-03-24 17:48:30.061 [main] INFO   - Computer 717 selected 
+2017-03-24 17:48:30.061 [main] INFO   - Company 1 selected
+2017-03-24 17:48:30.084 [main] INFO   - Computer 718 created
+2017-03-24 17:48:30.086 [main] INFO   - Computer 718 updated 
+2017-03-24 17:48:30.087 [main] INFO   - Computer 718 selected 
+2017-03-24 17:48:30.088 [main] INFO   - Company 1 selected
+2017-03-24 17:48:30.089 [main] INFO   - Computer 718 selected 
+2017-03-24 17:48:30.090 [main] INFO   - Company 1 selected
+2017-03-24 17:48:30.092 [main] INFO   - Computer 718 deleted
+2017-03-24 17:48:30.092 [main] INFO   - Computer 810 updated 
+2017-03-24 17:48:30.094 [main] INFO   - Computer 719 created
+2017-03-24 17:48:30.096 [main] INFO   - Computer 719 selected 
+2017-03-24 17:48:30.096 [main] INFO   - Company 1 selected
+2017-03-24 17:48:30.098 [main] INFO   - Computer 719 selected 
+2017-03-24 17:48:30.098 [main] INFO   - Company 1 selected
+2017-03-24 17:48:30.100 [main] INFO   - Computer 719 deleted
+2017-03-24 17:48:30.106 [main] INFO   - Computer 574 selected 
+2017-03-24 17:48:30.107 [main] INFO   - Company 1 selected
+2017-03-24 17:48:30.108 [main] INFO   - Computer 574 selected 
+2017-03-24 17:48:30.108 [main] INFO   - Company 1 selected
+2017-03-24 17:48:30.109 [main] INFO   - Computer 574 selected 
+2017-03-24 17:48:30.109 [main] INFO   - Company 1 selected
+2017-03-24 17:48:30.110 [main] INFO   - Computer 574 selected 
+2017-03-24 17:48:30.111 [main] INFO   - Company 1 selected
+2017-03-24 17:53:48.197 [main] INFO   - Computer 574 selected 
+2017-03-24 17:53:48.205 [main] INFO   - Company 1 selected
+2017-03-24 17:53:48.215 [main] INFO   - Computer 574 selected 
+2017-03-24 17:53:48.216 [main] INFO   - Company 1 selected
+2017-03-24 17:53:48.217 [main] INFO   - Computer 574 selected 
+2017-03-24 17:53:48.217 [main] INFO   - Company 1 selected
+2017-03-24 17:53:48.219 [main] INFO   - Computer 574 selected 
+2017-03-24 17:53:48.219 [main] INFO   - Company 1 selected
+2017-03-24 17:53:48.226 [main] INFO   - Computer 720 created
+2017-03-24 17:53:48.227 [main] INFO   - Computer 720 selected 
+2017-03-24 17:53:48.230 [main] INFO   - Company 1 selected
+2017-03-24 17:53:48.232 [main] INFO   - Computer 720 deleted
+2017-03-24 17:53:48.234 [main] INFO   - Computer 721 created
+2017-03-24 17:53:48.236 [main] INFO   - Computer 722 created
+2017-03-24 17:53:48.237 [main] INFO   - Computer 721 selected 
+2017-03-24 17:53:48.238 [main] INFO   - Company 1 selected
+2017-03-24 17:53:48.241 [main] INFO   - Computer 721 deleted
+2017-03-24 17:53:48.242 [main] INFO   - Computer 722 selected 
+2017-03-24 17:53:48.242 [main] INFO   - Company 1 selected
+2017-03-24 17:53:48.260 [main] INFO   - Computer 723 created
+2017-03-24 17:53:48.262 [main] INFO   - Computer 723 updated 
+2017-03-24 17:53:48.263 [main] INFO   - Computer 723 selected 
+2017-03-24 17:53:48.263 [main] INFO   - Company 1 selected
+2017-03-24 17:53:48.265 [main] INFO   - Computer 723 selected 
+2017-03-24 17:53:48.265 [main] INFO   - Company 1 selected
+2017-03-24 17:53:48.267 [main] INFO   - Computer 723 deleted
+2017-03-24 17:53:48.268 [main] INFO   - Computer 810 updated 
+2017-03-24 17:53:48.275 [main] INFO   - Computer 724 created
+2017-03-24 17:53:48.277 [main] INFO   - Computer 724 selected 
+2017-03-24 17:53:48.277 [main] INFO   - Company 1 selected
+2017-03-24 17:53:48.279 [main] INFO   - Computer 724 selected 
+2017-03-24 17:53:48.280 [main] INFO   - Company 1 selected
+2017-03-24 17:53:48.282 [main] INFO   - Computer 724 deleted
+2017-03-24 17:55:25.096 [main] INFO   - Computer 725 created
+2017-03-24 17:55:25.113 [main] INFO   - Computer 725 selected 
+2017-03-24 17:55:25.117 [main] INFO   - Company 1 selected
+2017-03-24 17:55:25.122 [main] INFO   - Computer 725 deleted
+2017-03-24 17:55:25.129 [main] INFO   - Computer 726 created
+2017-03-24 17:55:25.134 [main] INFO   - Computer 727 created
+2017-03-24 17:55:25.135 [main] INFO   - Computer 726 selected 
+2017-03-24 17:55:25.136 [main] INFO   - Company 1 selected
+2017-03-24 17:55:25.141 [main] INFO   - Computer 726 deleted
+2017-03-24 17:55:25.142 [main] INFO   - Computer 727 selected 
+2017-03-24 17:55:25.143 [main] INFO   - Company 1 selected
+2017-03-24 17:55:25.169 [main] INFO   - Computer 728 created
+2017-03-24 17:55:25.175 [main] INFO   - Computer 728 updated 
+2017-03-24 17:55:25.177 [main] INFO   - Computer 728 selected 
+2017-03-24 17:55:25.178 [main] INFO   - Company 1 selected
+2017-03-24 17:55:25.179 [main] INFO   - Computer 728 selected 
+2017-03-24 17:55:25.180 [main] INFO   - Company 1 selected
+2017-03-24 17:55:25.186 [main] INFO   - Computer 728 deleted
+2017-03-24 17:55:25.186 [main] INFO   - Computer 810 updated 
+2017-03-24 17:55:25.188 [main] INFO   - Computer 574 selected 
+2017-03-24 17:55:25.189 [main] INFO   - Company 1 selected
+2017-03-24 17:55:25.190 [main] INFO   - Computer 574 selected 
+2017-03-24 17:55:25.190 [main] INFO   - Company 1 selected
+2017-03-24 17:55:25.191 [main] INFO   - Computer 574 selected 
+2017-03-24 17:55:25.192 [main] INFO   - Company 1 selected
+2017-03-24 17:55:25.193 [main] INFO   - Computer 574 selected 
+2017-03-24 17:55:25.193 [main] INFO   - Company 1 selected
+2017-03-24 17:55:25.199 [main] INFO   - Computer 729 created
+2017-03-24 17:55:25.201 [main] INFO   - Computer 729 selected 
+2017-03-24 17:55:25.201 [main] INFO   - Company 1 selected
+2017-03-24 17:55:25.202 [main] INFO   - Computer 729 selected 
+2017-03-24 17:55:25.203 [main] INFO   - Company 1 selected
+2017-03-24 17:55:25.208 [main] INFO   - Computer 729 deleted
+2017-03-24 17:55:49.481 [main] INFO   - Computer 574 selected 
+2017-03-24 17:55:49.490 [main] INFO   - Company 1 selected
+2017-03-24 17:55:49.499 [main] INFO   - Computer 574 selected 
+2017-03-24 17:55:49.499 [main] INFO   - Company 1 selected
+2017-03-24 17:55:49.500 [main] INFO   - Computer 574 selected 
+2017-03-24 17:55:49.501 [main] INFO   - Company 1 selected
+2017-03-24 17:55:49.502 [main] INFO   - Computer 574 selected 
+2017-03-24 17:55:49.502 [main] INFO   - Company 1 selected
+2017-03-24 17:55:49.512 [main] INFO   - Computer 730 created
+2017-03-24 17:55:49.513 [main] INFO   - Computer 730 selected 
+2017-03-24 17:55:49.516 [main] INFO   - Company 1 selected
+2017-03-24 17:55:49.522 [main] INFO   - Computer 730 deleted
+2017-03-24 17:55:49.528 [main] INFO   - Computer 731 created
+2017-03-24 17:55:49.534 [main] INFO   - Computer 732 created
+2017-03-24 17:55:49.534 [main] INFO   - Computer 731 selected 
+2017-03-24 17:55:49.535 [main] INFO   - Company 1 selected
+2017-03-24 17:55:49.540 [main] INFO   - Computer 731 deleted
+2017-03-24 17:55:49.542 [main] INFO   - Computer 732 selected 
+2017-03-24 17:55:49.542 [main] INFO   - Company 1 selected
+2017-03-24 17:55:49.563 [main] INFO   - Computer 733 created
+2017-03-24 17:55:49.573 [main] INFO   - Computer 733 updated 
+2017-03-24 17:55:49.574 [main] INFO   - Computer 733 selected 
+2017-03-24 17:55:49.575 [main] INFO   - Company 1 selected
+2017-03-24 17:55:49.576 [main] INFO   - Computer 733 selected 
+2017-03-24 17:55:49.576 [main] INFO   - Company 1 selected
+2017-03-24 17:55:49.583 [main] INFO   - Computer 733 deleted
+2017-03-24 17:55:49.584 [main] INFO   - Computer 810 updated 
+2017-03-24 17:55:49.595 [main] INFO   - Computer 734 created
+2017-03-24 17:55:49.597 [main] INFO   - Computer 734 selected 
+2017-03-24 17:55:49.597 [main] INFO   - Company 1 selected
+2017-03-24 17:55:49.599 [main] INFO   - Computer 734 selected 
+2017-03-24 17:55:49.599 [main] INFO   - Company 1 selected
+2017-03-24 17:55:49.605 [main] INFO   - Computer 734 deleted
+2017-03-24 18:00:06.541 [main] INFO   - Computer 574 selected 
+2017-03-24 18:00:06.550 [main] INFO   - Company 1 selected
+2017-03-24 18:00:06.559 [main] INFO   - Computer 574 selected 
+2017-03-24 18:00:06.560 [main] INFO   - Company 1 selected
+2017-03-24 18:00:06.561 [main] INFO   - Computer 574 selected 
+2017-03-24 18:00:06.562 [main] INFO   - Company 1 selected
+2017-03-24 18:00:06.563 [main] INFO   - Computer 574 selected 
+2017-03-24 18:00:06.563 [main] INFO   - Company 1 selected
+2017-03-24 18:00:06.571 [main] INFO   - Computer 735 created
+2017-03-24 18:00:06.572 [main] INFO   - Computer 735 selected 
+2017-03-24 18:00:06.574 [main] INFO   - Company 1 selected
+2017-03-24 18:00:06.576 [main] INFO   - Computer 735 deleted
+2017-03-24 18:00:06.578 [main] INFO   - Computer 736 created
+2017-03-24 18:00:06.580 [main] INFO   - Computer 737 created
+2017-03-24 18:00:06.581 [main] INFO   - Computer 736 selected 
+2017-03-24 18:00:06.581 [main] INFO   - Company 1 selected
+2017-03-24 18:00:06.583 [main] INFO   - Computer 736 deleted
+2017-03-24 18:00:06.584 [main] INFO   - Computer 737 selected 
+2017-03-24 18:00:06.584 [main] INFO   - Company 1 selected
+2017-03-24 18:00:06.602 [main] INFO   - Computer 738 created
+2017-03-24 18:00:06.605 [main] INFO   - Computer 738 updated 
+2017-03-24 18:00:06.606 [main] INFO   - Computer 738 selected 
+2017-03-24 18:00:06.606 [main] INFO   - Company 1 selected
+2017-03-24 18:00:06.607 [main] INFO   - Computer 738 selected 
+2017-03-24 18:00:06.608 [main] INFO   - Company 1 selected
+2017-03-24 18:00:06.610 [main] INFO   - Computer 738 deleted
+2017-03-24 18:00:06.611 [main] INFO   - Computer 810 updated 
+2017-03-24 18:00:06.618 [main] INFO   - Computer 739 created
+2017-03-24 18:00:06.619 [main] INFO   - Computer 739 selected 
+2017-03-24 18:00:06.620 [main] INFO   - Company 1 selected
+2017-03-24 18:00:06.621 [main] INFO   - Computer 739 selected 
+2017-03-24 18:00:06.622 [main] INFO   - Company 1 selected
+2017-03-24 18:00:06.624 [main] INFO   - Computer 739 deleted

@@ -31,8 +31,8 @@ public class DashboardServlet extends HttpServlet {
     private int count;
 
     /**
-    * @throws ServletException serlvetexcp
-    */
+     * @throws ServletException serlvetexcp
+     */
     public void init() throws ServletException {
         cpS = ComputerService.COMPUTERSERVICE;
         nbPage = cpS.pageNumber();
@@ -50,13 +50,18 @@ public class DashboardServlet extends HttpServlet {
 
         System.out.println("get");
         if (request.getParameter("search") != null && request.getParameter("search") != "") {
+
+            nbPage = cpS.pageNumberSearch(request.getParameter("search"));
+            if (nbPage < Page.PAGE.getIndex()) {
+                Page.PAGE.setIndex(0);
+            }
             count = cpS.countLike(request.getParameter("search"));
             lcpdto = cpS.like(request.getParameter("search"));
-            nbPage = cpS.pageNumberSearch(request.getParameter("search"));
             request.setAttribute("search", request.getParameter("search"));
         } else {
             count = cpS.count();
             lcpdto = cpS.page();
+            nbPage = cpS.pageNumber();
         }
         indexPage = Page.PAGE.getIndex();
         System.out.println(indexPage);
@@ -76,6 +81,11 @@ public class DashboardServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         System.out.println("post");
+        if (request.getParameter("selection") != null && request.getParameter("selection").matches("^[0-9,]+$")) {
+            System.out.println(request.getParameter("selection"));
+            cpS.delete(request.getParameter("selection"));
+        }
+
         if (request.getParameter("action") != null) {
             if (request.getParameter("action").equals("next")) {
                 Page.PAGE.next();

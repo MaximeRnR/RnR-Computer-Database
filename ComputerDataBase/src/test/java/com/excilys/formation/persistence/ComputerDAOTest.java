@@ -63,8 +63,25 @@ public class ComputerDAOTest {
         cp.setName("Test_delete");
         cp.setCy(new Company(1));
         cp.setId(cpDAO.createComputer(cp));
-        cpDAO.delete(cp.getId());
+        cpDAO.delete("" + cp.getId());
         assertTrue(cpDAO.find(cp.getId()) == null);
+
+
+        cp.setId(cpDAO.createComputer(cp));
+
+        String ids = "";
+        long id1 = cp.getId();
+        ids = ids + cp.getId();
+
+        cp.setName("Test_delete2");
+        cp.setCy(new Company(1));
+        cp.setId(cpDAO.createComputer(cp));
+        long id2 = cp.getId();
+        ids = ids + "," + cp.getId();
+        System.out.println(ids);
+        cpDAO.delete(ids);
+        assertTrue(cpDAO.find(id1) == null);
+        assertTrue(cpDAO.find(id2) == null);
     }
 
     /**
@@ -81,7 +98,7 @@ public class ComputerDAOTest {
         cpDAO.update(cp);
         cp = cpDAO.find(generateKey);
         assertEquals("Test_modif", cp.getName());
-        cpDAO.delete(generateKey);
+        cpDAO.delete("" + generateKey);
         cp.setId(810);
         cpDAO.update(cp);
     }
@@ -96,7 +113,7 @@ public class ComputerDAOTest {
         cp.setCy(new Company(1));
         long generateKey = cpDAO.createComputer(cp);
         assertEquals(generateKey, cpDAO.find(generateKey).getId());
-        cpDAO.delete(generateKey);
+        cpDAO.delete("" + generateKey);
 
     }
 

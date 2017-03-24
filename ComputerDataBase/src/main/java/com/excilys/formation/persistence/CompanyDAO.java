@@ -18,7 +18,6 @@ import com.excilys.formation.util.ComputerDBException;
 //DAO of Company
 public enum CompanyDAO implements CompanyDAOInterface {
     COMPANYDAO;
-    private Connection conn;
     static Logger logger = LogManager.getRootLogger();
     private CompanyEntity cyE;
 
@@ -26,8 +25,6 @@ public enum CompanyDAO implements CompanyDAOInterface {
      * @throws ComputerDBException cdbex
      */
     CompanyDAO() throws ComputerDBException {
-
-        this.conn = ConnectionDB.CONNECTION.getConn();
 
     }
 
@@ -40,7 +37,8 @@ public enum CompanyDAO implements CompanyDAOInterface {
         cyE = new CompanyEntity();
         String sql = "SELECT c.id, c.name FROM company c WHERE c.id=?";
 
-        try (PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
+        try (Connection conn = ConnectionDB.CONNECTION.getConn();
+                PreparedStatement preparedStmt = conn.prepareStatement(sql);) {
 
             preparedStmt.setLong(1, id);
             preparedStmt.execute();
@@ -72,7 +70,8 @@ public enum CompanyDAO implements CompanyDAOInterface {
     public List<Company> findAll() throws ComputerDBException {
         List<CompanyEntity> lcyE = new ArrayList<CompanyEntity>();
         String sql = "SELECT c.id, c.name FROM company c;";
-        try (ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
+        try (Connection conn = ConnectionDB.CONNECTION.getConn();
+                ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
                 .executeQuery(sql);) {
             while (result.next()) {
                 cyE = new CompanyEntity(result.getLong("c.id"), result.getString("c.name"));
