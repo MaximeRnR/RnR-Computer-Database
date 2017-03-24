@@ -74,9 +74,6 @@ public enum CompanyDAO implements CompanyDAOInterface {
         String sql = "SELECT c.id, c.name FROM company c;";
         try (ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
                 .executeQuery(sql);) {
-            if (!result.first()) {
-                throw new IllegalArgumentException();
-            }
             while (result.next()) {
                 cyE = new CompanyEntity(result.getLong("c.id"), result.getString("c.name"));
                 lcyE.add(cyE);

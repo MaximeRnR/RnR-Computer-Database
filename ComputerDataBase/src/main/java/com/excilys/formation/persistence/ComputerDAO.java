@@ -99,7 +99,6 @@ public enum ComputerDAO implements ComputerDAOInterface {
      * @throws ComputerDBException cdbex
      */
     public void update(Computer cp) throws ComputerDBException {
-
         cpE = new ComputerMapperEntity(cp).getCpE();
             String query = "UPDATE computer SET name = ?, introduced = ?, discontinued = ?, company_id = ? WHERE id = ?";
 
@@ -115,12 +114,17 @@ public enum ComputerDAO implements ComputerDAOInterface {
                 } else {
                     preparedStmt.setNull(3, java.sql.Types.TIMESTAMP);
                 }
-                preparedStmt.setLong(4, cpE.getManufacturer());
+                if (cpE.getManufacturer() != 0) {
+                    preparedStmt.setLong(4, cpE.getManufacturer());
+                } else {
+                    preparedStmt.setNull(4, java.sql.Types.BIGINT);
+                }
                 preparedStmt.setLong(5, cpE.getId());
                 preparedStmt.executeUpdate();
                 logger.info("Computer " + cpE.getId() + " updated ");
             } catch (SQLException e) {
                 logger.error("Computer not updated ");
+                e.printStackTrace();
                 throw new ComputerDBException("Computer not updated ", e);
             }
     }
@@ -227,6 +231,71 @@ public enum ComputerDAO implements ComputerDAOInterface {
             throw new ComputerDBException("Computer not found ", e);
         }
         return -1;
+    }
+
+    /**
+     * @return nbComputer
+     */
+    @Override
+    public int countLike(String search) throws ComputerDBException {
+
+        String sql = "SELECT count(*) FROM computer c WHERE c.name LIKE ? ;";
+        try (PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
+            preparedStmt.setString(1, "%" + search + "%");
+            preparedStmt.execute();
+            try (ResultSet result = preparedStmt.getResultSet();) {
+                while (result.next()) {
+                    return result.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            logger.error("Computer not found ");
+            throw new ComputerDBException("Computer not found ", e);
+        }
+        return -1;
+    }
+
+    /**
+     * @return nbComputer
+     */
+    @Override
+    public List<Computer> like(String search) throws ComputerDBException {
+
+        List<ComputerEntity> lcpE = new ArrayList<ComputerEntity>();
+        String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c WHERE c.name LIKE ? LIMIT ? OFFSET ? ;";
+
+        try (PreparedStatement preparedStmt = this.conn.prepareStatement(sql);) {
+
+            preparedStmt.setString(1, "%" + search + "%");
+            preparedStmt.setInt(2, Page.mAXNUMBEROFOBJECTS);
+            preparedStmt.setInt(3, (Page.PAGE.getIndex()) * Page.mAXNUMBEROFOBJECTS);
+            preparedStmt.execute();
+
+            try (ResultSet result = preparedStmt.getResultSet();) {
+                while (result.next()) {
+                    cpE = new ComputerEntity.Builder().id(result.getLong("c.id")).name(result.getString("c.name")).di(null)
+                            .dd(null).manufacturer(result.getInt("c.company_id")).build();
+
+                    if (result.getDate("c.introduced") != null) {
+                        cpE.setdIntroduced(result.getDate("c.introduced").toLocalDate());
+                    }
+                    if (result.getDate("c.discontinued") != null) {
+                        cpE.setdDiscontinued(result.getDate("c.discontinued").toLocalDate());
+                    }
+
+                    lcpE.add(cpE);
+                }
+                logger.info("Computers selected ");
+            }
+        } catch (SQLException e) {
+            logger.error("Computers not found ");
+            throw new ComputerDBException("Computers not found ", e);
+        }
+        List<Computer> lcp = new ArrayList<Computer>();
+        for (int i = 0; i < lcpE.size(); i++) {
+            lcp.add(new ComputerMapperEntity(lcpE.get(i)).getCp());
+        }
+        return lcp;
     }
 
 }

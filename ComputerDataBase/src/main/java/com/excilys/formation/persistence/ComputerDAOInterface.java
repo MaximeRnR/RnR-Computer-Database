@@ -33,8 +33,20 @@ public interface ComputerDAOInterface {
     int count();
 
     /**
+     * @param search String
+     * @return nbComputer
+     */
+    int countLike(String search);
+
+    /**
      * @return List<Computer>
      */
     List<Computer> page();
+
+    /**
+     * @param search String
+     * @return List<Computer>
+     */
+    List<Computer> like(String search);
 
 }

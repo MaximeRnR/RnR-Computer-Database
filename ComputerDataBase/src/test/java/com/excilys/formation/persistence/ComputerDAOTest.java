@@ -78,7 +78,6 @@ public class ComputerDAOTest {
         long generateKey = cpDAO.createComputer(cp);
         cp.setId(generateKey);
         cp.setName("Test_modif");
-        System.out.println(cp.toString());
         cpDAO.update(cp);
         cp = cpDAO.find(generateKey);
         assertEquals("Test_modif", cp.getName());

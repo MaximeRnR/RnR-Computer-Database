@@ -48,7 +48,8 @@ public class ComputerMapperEntity {
                     .name(this.cp.getName())
                     .di(this.cp.getdIntroduced())
                     .dd(this.cp.getdDiscontinued())
-                    .manufacturer(cp.getCy().getId()).build();
+                    .manufacturer(cp.getCy().getId())
+                    .build();
         } else {
             this.cpE = null;
             this.cyE = null;

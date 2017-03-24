@@ -66,45 +66,48 @@ public class EditComputerServlet extends HttpServlet {
 
         String sid = request.getParameter("id");
         String name = request.getParameter("name");
-        String dI = request.getParameter("dI");
-        String dD = request.getParameter("dD");
+        String dI = request.getParameter("introduced");
+        String dD = request.getParameter("discontinued");
         long id = 0;
         lcydto = cyS.findAll();
+        System.out.println(lcydto.size());
+        System.out.println(lcydto.get(0).toString());
         request.setAttribute("lcydto", lcydto);
         if (Integer.parseInt(request.getParameter("companyId")) == 0 || request.getParameter("companyId") == null) {
             cy = new CompanyDTO(0);
         } else {
             cy = new CompanyDTO(Integer.parseInt(request.getParameter("companyId")));
         }
-        if (Integer.parseInt(sid) == 0 || request.getParameter(sid) == null) {
-            System.out.println("Nope");
+        if (Integer.parseInt(sid) == 0 || sid == null) {
+            System.out.println("Nope1");
             request.setAttribute("lcydto", lcydto);
             request.setAttribute("error", 1);
             request.getRequestDispatcher("/WEB-INF/views/editComputer.jsp").forward(request, response);
         } else {
             id = Integer.parseInt(request.getParameter("id"));
         }
-        if (name != null && !name.isEmpty() && name.matches("^[a-zA-Z ]+$")) {
-            if (dI != null && !dI.isEmpty() && dI.matches("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$")) {
-                if (dD != null && !dD.isEmpty() && dI.matches("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$")) {
-                    cp = new ComputerDTO.Builder()
-                            .id(id)
-                            .name(request.getParameter("name"))
-                            .di(dI)
-                            .dd(dD)
-                            .cydto(cy)
-                            .build();
+        if (name != null && name.matches("^[a-zA-Z ]+$")) {
+            if ((dI != null && dI.matches("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$")) || dI == "") {
+                if ((dD != null && dD.matches("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$")) || dD == "") {
+                    cp = new ComputerDTO.Builder().id(id).name(request.getParameter("name")).di(dI).dd(dD).cydto(cy).build();
                     cpS.update(cp);
                     request.setAttribute("success", 1);
-                    request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/views/editComputer.jsp").forward(request, response);
+                } else {
+                    System.out.println("Nope1");
+                    request.setAttribute("error", 1);
+                    request.getRequestDispatcher("/WEB-INF/views/editComputer.jsp").forward(request, response);
                 }
+            } else {
+                System.out.println("Nope2");
+                request.setAttribute("error", 1);
+                request.getRequestDispatcher("/WEB-INF/views/editComputer.jsp").forward(request, response);
             }
         } else {
-            System.out.println("Nope");
+            System.out.println("Nope3");
             request.setAttribute("error", 1);
-            request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/views/editComputer.jsp").forward(request, response);
         }
-
 
 
     }

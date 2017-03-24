@@ -49,7 +49,7 @@ public class CompanyDAOTest {
     @Test
     public void findAllTest() {
 
-        assertEquals(41, cydaoi.findAll().size());
+        assertEquals(42, cydaoi.findAll().size());
 
     }
 

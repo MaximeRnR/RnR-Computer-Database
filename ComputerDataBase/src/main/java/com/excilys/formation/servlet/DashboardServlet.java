@@ -47,11 +47,19 @@ public class DashboardServlet extends HttpServlet {
      * @throws IOException ioexc
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println(Page.PAGE.getIndex());
-        count = cpS.count();
-        indexPage = Page.PAGE.getIndex();
+
         System.out.println("get");
-        lcpdto = cpS.page();
+        if (request.getParameter("search") != null && request.getParameter("search") != "") {
+            count = cpS.countLike(request.getParameter("search"));
+            lcpdto = cpS.like(request.getParameter("search"));
+            nbPage = cpS.pageNumberSearch(request.getParameter("search"));
+            request.setAttribute("search", request.getParameter("search"));
+        } else {
+            count = cpS.count();
+            lcpdto = cpS.page();
+        }
+        indexPage = Page.PAGE.getIndex();
+        System.out.println(indexPage);
         request.setAttribute("count", count);
         request.setAttribute("index", indexPage);
         request.setAttribute("lcpdto", lcpdto);
@@ -66,6 +74,8 @@ public class DashboardServlet extends HttpServlet {
      * @throws IOException ioexc
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        System.out.println("post");
         if (request.getParameter("action") != null) {
             if (request.getParameter("action").equals("next")) {
                 Page.PAGE.next();
@@ -90,17 +100,26 @@ public class DashboardServlet extends HttpServlet {
 
                 } else {
                     Page.setMAXNUMBEROFOBJECTS(Integer.parseInt(request.getParameter("num")));
-                    nbPage = cpS.pageNumber();
+                    if (request.getParameter("search") != null && request.getParameter("search") != "") {
+                        nbPage = cpS.pageNumberSearch(request.getParameter("search"));
+                    } else {
+                        nbPage = cpS.pageNumber();
+                    }
                     Page.PAGE.setIndex(0);
                 }
 
             }
         }
-        lcpdto = cpS.page();
         System.out.println(Page.PAGE.getIndex());
-        System.out.println("post");
         indexPage = Page.PAGE.getIndex();
-        count = cpS.count();
+        if (request.getParameter("search") != null && request.getParameter("search") != "") {
+            count = cpS.countLike(request.getParameter("search"));
+            lcpdto = cpS.like(request.getParameter("search"));
+            request.setAttribute("search", request.getParameter("search"));
+        } else {
+            count = cpS.count();
+            lcpdto = cpS.page();
+        }
         request.setAttribute("count", count);
         request.setAttribute("index", indexPage);
         request.setAttribute("lcpdto", lcpdto);

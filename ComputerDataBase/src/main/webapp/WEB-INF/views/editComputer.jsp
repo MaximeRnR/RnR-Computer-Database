@@ -28,12 +28,12 @@
                     </div>
                     <h1>Edit Computer</h1>
 
-                    <form action="editComputer" method="POST">
-                        <input type="hidden" value="${cp.id}" id="id"/>
+                    <form action="edit" method="POST">
+                        <input type="hidden" name="id" value="${cp.id}" id="id"/>
                         <fieldset>
                             <div class="form-group">
                                 <label for="computerName">Computer name</label>
-                                <input type="text" class="form-control" name="computerName" id="computerName" placeholder="Computer name" 
+                                <input type="text" class="form-control" name="name" id="computerName" placeholder="Computer name" 
                                 value="${cp.name}">
                             </div>
                             <div class="form-group">
@@ -49,7 +49,7 @@
                             <div class="form-group">
                                 <label for="companyId">Company</label>
                                 <select name="companyId" class="form-control" id="companyId" >
-                                    <option value="0">--</option>
+                                	<option value='0'> -- </option>
                                     <c:forEach items="${lcydto}" var="cydto">
 										<option value="<c:out value="${cydto.id}"/>">
 											<c:out value="${cydto.name}" /></option>
