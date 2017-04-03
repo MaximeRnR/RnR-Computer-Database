@@ -64,10 +64,11 @@ public enum ComputerService {
 
     /**
      * @param search String
+     * @param by String
      * @return int pageNumber
      */
-    public int pageNumberSearch(String search) {
-        return cpdaoi.countLike(search) / Page.mAXNUMBEROFOBJECTS;
+    public int pageNumberSearch(String search, String by) {
+        return cpdaoi.countLike(search, by) / Page.mAXNUMBEROFOBJECTS;
     }
 
     /**
@@ -79,10 +80,11 @@ public enum ComputerService {
 
     /**
      * @param search String
+     * @param by String
      * @return int nbComputer
      */
-    public int countLike(String search) {
-        return cpdaoi.countLike(search);
+    public int countLike(String search, String by) {
+        return cpdaoi.countLike(search, by);
     }
 
     /**
@@ -98,10 +100,11 @@ public enum ComputerService {
     }
     /**
      * @param search String
+     * @param by String
      * @return List<ComputerDTO>
      */
-    public List<ComputerDTO> like(String search) {
-        List<Computer> lcp = cpdaoi.like(search);
+    public List<ComputerDTO> like(String search, String by) {
+        List<Computer> lcp = cpdaoi.like(search, by);
         List<ComputerDTO> lcpdto = new ArrayList<ComputerDTO>();
         for (int i = 0; i < lcp.size(); i++) {
             lcpdto.add(new ComputerMapperService(lcp.get(i)).getCpdto());

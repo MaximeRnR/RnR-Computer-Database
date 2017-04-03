@@ -29,7 +29,6 @@ $(document).ready(function(){
 	});
 
 	$('#introduced').change(function(){
-		alert($('#introduced').val());
 		if($('#introduced').val().match("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$") || $('#introduced').val()=="") {
 
 			$('#introduced').parent().removeClass('has-error');

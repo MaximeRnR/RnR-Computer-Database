@@ -260,23 +260,65 @@ public enum ComputerDAO implements ComputerDAOInterface {
      * @return nbComputer
      */
     @Override
-    public int countLike(String search) throws ComputerDBException {
+    public int countLike(String search, String by) throws ComputerDBException {
 
-        final String sql = "SELECT count(*) FROM computer c WHERE c.name LIKE ? ;";
-        try (Connection conn = ConnectionDB.CONNECTION.getConn();
-                PreparedStatement preparedStmt = conn.prepareStatement(sql);
-                ) {
-            preparedStmt.setString(1, "%" + search + "%");
-            preparedStmt.execute();
-            try (ResultSet result = preparedStmt.getResultSet();) {
-                while (result.next()) {
-                    return result.getInt(1);
+        if (by.equals("cp")) {
+            String sql = "SELECT count(*) FROM computer c WHERE c.name LIKE ? ;";
+            try (Connection conn = ConnectionDB.CONNECTION.getConn();
+                    PreparedStatement preparedStmt = conn.prepareStatement(sql);
+                    ) {
+                preparedStmt.setString(1, "%" + search + "%");
+                preparedStmt.execute();
+                try (ResultSet result = preparedStmt.getResultSet();) {
+                    while (result.next()) {
+                        return result.getInt(1);
+                    }
                 }
+            } catch (SQLException e) {
+                logger.error("Computer Count not found ");
+                throw new ComputerDBException("Computer Count not found ", e);
             }
-        } catch (SQLException e) {
-            logger.error("Computer not found ");
-            throw new ComputerDBException("Computer not found ", e);
         }
+        if (by.equals("cy")) {
+            String companyQuery = "SELECT c.id FROM company c WHERE c.name LIKE ?";
+            try (Connection conn = ConnectionDB.CONNECTION.getConn();
+                    PreparedStatement preparedStmt = conn.prepareStatement(companyQuery);
+                    ) {
+                preparedStmt.setString(1, "%" + search + "%");
+                preparedStmt.execute();
+                try (ResultSet result = preparedStmt.getResultSet();) {
+                    String sql = "SELECT count(*) FROM computer c WHERE c.company_id = ?";
+                    boolean first = true;
+                    while (result.next()) {
+                        if (!first) {
+                            sql += " OR c.company_id = ?";
+                        }
+                        first = false;
+                    }
+                    sql += ";";
+                    try (PreparedStatement preparedStmt2 = conn.prepareStatement(sql);) {
+                        result.absolute(0);
+                        int i = 1;
+                        while (result.next()) {
+                            preparedStmt2.setInt(i, result.getInt(1));
+                            i++;
+                        }
+                        preparedStmt2.execute();
+                        try (ResultSet result2 = preparedStmt2.getResultSet();) {
+                            while (result2.next()) {
+                                return result2.getInt(1);
+                            }
+                        }
+
+                    }
+                }
+            } catch (SQLException e) {
+                logger.error("Computer Count not found ");
+                e.printStackTrace();
+                throw new ComputerDBException("Computer Count not found ", e);
+            }
+        }
+
         return -1;
     }
 
@@ -284,45 +326,102 @@ public enum ComputerDAO implements ComputerDAOInterface {
      * @return nbComputer
      */
     @Override
-    public List<Computer> like(String search) throws ComputerDBException {
-
+    public List<Computer> like(String search, String by) throws ComputerDBException  {
         List<ComputerEntity> lcpE = new ArrayList<ComputerEntity>();
-        final String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c WHERE c.name LIKE ? LIMIT ? OFFSET ? ;";
+        if (by.equals("cp")) {
 
-        try (Connection conn = ConnectionDB.CONNECTION.getConn();
-                PreparedStatement preparedStmt = conn.prepareStatement(sql);
-                ) {
+            final String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c WHERE c.name LIKE ? LIMIT ? OFFSET ? ;";
 
-            preparedStmt.setString(1, "%" + search + "%");
-            preparedStmt.setInt(2, Page.mAXNUMBEROFOBJECTS);
-            preparedStmt.setInt(3, (Page.PAGE.getIndex()) * Page.mAXNUMBEROFOBJECTS);
-            preparedStmt.execute();
+            try (Connection conn = ConnectionDB.CONNECTION.getConn();
+                    PreparedStatement preparedStmt = conn.prepareStatement(sql);
+                    ) {
 
-            try (ResultSet result = preparedStmt.getResultSet();) {
-                while (result.next()) {
-                    cpE = new ComputerEntity.Builder().id(result.getLong("c.id")).name(result.getString("c.name")).di(null)
-                            .dd(null).manufacturer(result.getInt("c.company_id")).build();
+                preparedStmt.setString(1, "%" + search + "%");
+                preparedStmt.setInt(2, Page.mAXNUMBEROFOBJECTS);
+                preparedStmt.setInt(3, (Page.PAGE.getIndex()) * Page.mAXNUMBEROFOBJECTS);
+                preparedStmt.execute();
 
-                    if (result.getDate("c.introduced") != null) {
-                        cpE.setdIntroduced(result.getDate("c.introduced").toLocalDate());
+                try (ResultSet result = preparedStmt.getResultSet();) {
+                    while (result.next()) {
+                        cpE = new ComputerEntity.Builder().id(result.getLong("c.id")).name(result.getString("c.name")).di(null)
+                                .dd(null).manufacturer(result.getInt("c.company_id")).build();
+
+                        if (result.getDate("c.introduced") != null) {
+                            cpE.setdIntroduced(result.getDate("c.introduced").toLocalDate());
+                        }
+                        if (result.getDate("c.discontinued") != null) {
+                            cpE.setdDiscontinued(result.getDate("c.discontinued").toLocalDate());
+                        }
+
+                        lcpE.add(cpE);
                     }
-                    if (result.getDate("c.discontinued") != null) {
-                        cpE.setdDiscontinued(result.getDate("c.discontinued").toLocalDate());
-                    }
+                    logger.info("Computers selected ");
+                }
+            } catch (SQLException e) {
+                logger.error("Computers not found ");
+                throw new ComputerDBException("Computers not found ", e);
+            }
+        }
 
-                    lcpE.add(cpE);
+        if (by.equals("cy")) {
+            String companyQuery = "SELECT c.id FROM company c WHERE c.name LIKE ?";
+            try (Connection conn = ConnectionDB.CONNECTION.getConn();
+                    PreparedStatement preparedStmt = conn.prepareStatement(companyQuery);
+                    ) {
+                preparedStmt.setString(1, "%" + search + "%");
+                preparedStmt.execute();
+                try (ResultSet result = preparedStmt.getResultSet();) {
+                    String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c WHERE c.company_id = ?";
+                    boolean first = true;
+                    while (result.next()) {
+                        if (!first) {
+                            sql += " OR c.company_id = ?";
+                        }
+                        first = false;
+                    }
+                    sql += " LIMIT ? OFFSET ?;";
+                    try (PreparedStatement preparedStmt2 = conn.prepareStatement(sql);) {
+                        result.absolute(0);
+                        int i = 1;
+                        while (result.next()) {
+                            preparedStmt2.setInt(i, result.getInt(1));
+                            i++;
+                        }
+                        preparedStmt2.setInt(i, Page.mAXNUMBEROFOBJECTS);
+                        preparedStmt2.setInt(i + 1, (Page.PAGE.getIndex()) * Page.mAXNUMBEROFOBJECTS);
+                        System.out.println(preparedStmt2.toString());
+                        preparedStmt2.execute();
+                        try (ResultSet result2 = preparedStmt2.getResultSet();) {
+                            while (result2.next()) {
+                                cpE = new ComputerEntity.Builder().id(result2.getLong("c.id")).name(result2.getString("c.name")).di(null)
+                                        .dd(null).manufacturer(result2.getInt("c.company_id")).build();
+
+                                if (result2.getDate("c.introduced") != null) {
+                                    cpE.setdIntroduced(result2.getDate("c.introduced").toLocalDate());
+                                }
+                                if (result2.getDate("c.discontinued") != null) {
+                                    cpE.setdDiscontinued(result2.getDate("c.discontinued").toLocalDate());
+                                }
+
+                                lcpE.add(cpE);
+                            }
+                        }
+
+                    }
                 }
                 logger.info("Computers selected ");
+            } catch (SQLException e) {
+                logger.error("Computers not found");
+                e.printStackTrace();
+                throw new ComputerDBException("Computers not found", e);
             }
-        } catch (SQLException e) {
-            logger.error("Computers not found ");
-            throw new ComputerDBException("Computers not found ", e);
         }
         List<Computer> lcp = new ArrayList<Computer>();
         for (int i = 0; i < lcpE.size(); i++) {
             lcp.add(new ComputerMapperEntity(lcpE.get(i)).getCp());
         }
         return lcp;
+
     }
 
 }

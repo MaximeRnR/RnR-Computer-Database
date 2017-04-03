@@ -34,9 +34,10 @@ public interface ComputerDAOInterface {
 
     /**
      * @param search String
+     * @param by String
      * @return nbComputer
      */
-    int countLike(String search);
+    int countLike(String search, String by);
 
     /**
      * @return List<Computer>
@@ -45,8 +46,9 @@ public interface ComputerDAOInterface {
 
     /**
      * @param search String
+     * @param by String
      * @return List<Computer>
      */
-    List<Computer> like(String search);
+    List<Computer> like(String search, String by);
 
 }

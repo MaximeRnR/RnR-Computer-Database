@@ -18,7 +18,7 @@
 <body>
 	<header class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="dashboard"> Application - Computer
+			<a id="dashboard_button" class="navbar-brand" href="dashboard"> Application - Computer
 				Database </a>
 		</div>
 	</header>
@@ -58,10 +58,10 @@
 							</div>
 						</fieldset>
 						<c:if test="${success==1}">
-								<div class="alert alert-success pull-left" role="alert">Computer Succesfully Added</div>
+								<div id="success" class="alert alert-success pull-left" role="alert">Computer Succesfully Added</div>
 						</c:if>
 						<c:if test="${error==1}">
-							<div class="alert alert-danger pull-left" role="alert">Computer not Added</div>
+							<div id="error" class="alert alert-danger pull-left" role="alert">Computer not Added</div>
 						</c:if>
 						<div class="actions pull-right">
 							<input type="submit" id="submit" value="Add" class="btn btn-primary">

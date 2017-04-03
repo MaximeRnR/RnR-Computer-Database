@@ -49,15 +49,16 @@ public class DashboardServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         System.out.println("get");
-        if (request.getParameter("search") != null && request.getParameter("search") != "") {
-
-            nbPage = cpS.pageNumberSearch(request.getParameter("search"));
-            if (nbPage < Page.PAGE.getIndex()) {
-                Page.PAGE.setIndex(0);
-            }
-            count = cpS.countLike(request.getParameter("search"));
-            lcpdto = cpS.like(request.getParameter("search"));
-            request.setAttribute("search", request.getParameter("search"));
+        if (request.getParameter("search") != null && request.getParameter("search") != ""
+            && request.getParameter("by") != null && request.getParameter("by") != "") {
+                nbPage = cpS.pageNumberSearch(request.getParameter("search"), request.getParameter("by"));
+                if (nbPage < Page.PAGE.getIndex()) {
+                    Page.PAGE.setIndex(0);
+                }
+                count = cpS.countLike(request.getParameter("search"), request.getParameter("by"));
+                lcpdto = cpS.like(request.getParameter("search"), request.getParameter("by"));
+                request.setAttribute("search", request.getParameter("search"));
+                request.setAttribute("by", request.getParameter("by"));
         } else {
             count = cpS.count();
             lcpdto = cpS.page();
@@ -110,8 +111,9 @@ public class DashboardServlet extends HttpServlet {
 
                 } else {
                     Page.setMAXNUMBEROFOBJECTS(Integer.parseInt(request.getParameter("num")));
-                    if (request.getParameter("search") != null && request.getParameter("search") != "") {
-                        nbPage = cpS.pageNumberSearch(request.getParameter("search"));
+                    if (request.getParameter("search") != null && request.getParameter("search") != ""
+                         && request.getParameter("by") != null && request.getParameter("by") != "") {
+                        nbPage = cpS.pageNumberSearch(request.getParameter("search"), request.getParameter("by"));
                     } else {
                         nbPage = cpS.pageNumber();
                     }
@@ -122,10 +124,12 @@ public class DashboardServlet extends HttpServlet {
         }
         System.out.println(Page.PAGE.getIndex());
         indexPage = Page.PAGE.getIndex();
-        if (request.getParameter("search") != null && request.getParameter("search") != "") {
-            count = cpS.countLike(request.getParameter("search"));
-            lcpdto = cpS.like(request.getParameter("search"));
+        if (request.getParameter("search") != null && request.getParameter("search") != ""
+            && request.getParameter("by") != null && request.getParameter("by") != "") {
+            count = cpS.countLike(request.getParameter("search"), request.getParameter("by"));
+            lcpdto = cpS.like(request.getParameter("search"), request.getParameter("by"));
             request.setAttribute("search", request.getParameter("search"));
+            request.setAttribute("by", request.getParameter("by"));
         } else {
             count = cpS.count();
             lcpdto = cpS.page();
