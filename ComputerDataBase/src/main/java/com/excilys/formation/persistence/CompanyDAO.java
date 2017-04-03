@@ -29,13 +29,13 @@ public enum CompanyDAO implements CompanyDAOInterface {
     }
 
     /**
-    * @param id Id
-    * @throws ComputerDBException cdbex
-    * @return Company
-    */
+     * @param id Id
+     * @throws ComputerDBException cdbex
+     * @return Company
+     */
     public Company find(long id) throws ComputerDBException {
         cyE = new CompanyEntity();
-        String sql = "SELECT c.id, c.name FROM company c WHERE c.id=?";
+        final String sql = "SELECT c.id, c.name FROM company c WHERE c.id=?";
 
         try (Connection conn = ConnectionDB.CONNECTION.getConn();
                 PreparedStatement preparedStmt = conn.prepareStatement(sql);) {
@@ -69,10 +69,10 @@ public enum CompanyDAO implements CompanyDAOInterface {
      */
     public List<Company> findAll() throws ComputerDBException {
         List<CompanyEntity> lcyE = new ArrayList<CompanyEntity>();
-        String sql = "SELECT c.id, c.name FROM company c;";
+        final String sql = "SELECT c.id, c.name FROM company c;";
         try (Connection conn = ConnectionDB.CONNECTION.getConn();
                 ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
-                .executeQuery(sql);) {
+                        .executeQuery(sql);) {
             while (result.next()) {
                 cyE = new CompanyEntity(result.getLong("c.id"), result.getString("c.name"));
                 lcyE.add(cyE);
@@ -87,6 +87,41 @@ public enum CompanyDAO implements CompanyDAOInterface {
             lcy.add(new CompanyMapperEntity(lcyE.get(i)).getCy());
         }
         return lcy;
+    }
+
+
+    /**
+     * @param id Id
+     */
+    @Override
+    public void deleteCompany(long id) {
+        final String queryDeleteComputer = "delete from computer where company_id = ?";
+        final String queryDeleteCompany = "delete from company where id = ?";
+
+        try (Connection conn = ConnectionDB.CONNECTION.getConn()) {
+            try (PreparedStatement preparedStmt = conn.prepareStatement(queryDeleteComputer);) {
+                conn.setAutoCommit(false);
+                preparedStmt.setLong(1, id);
+                preparedStmt.executeQuery();
+                try (
+                        PreparedStatement preparedStmtCompany = conn.prepareStatement(queryDeleteCompany)) {
+                    preparedStmtCompany.setLong(1, id);
+                    preparedStmtCompany.executeQuery();
+                    conn.commit();
+                    conn.setAutoCommit(true);
+                }
+
+            } catch (SQLException e) {
+                conn.rollback();
+                conn.setAutoCommit(true);
+                logger.error("Companies not deleted");
+                throw new ComputerDBException("deleteCompany " + e);
+            }
+        } catch (SQLException e1) {
+            logger.error("Companies not deleted");
+            throw new ComputerDBException("deleteCompany " + e1);
+        }
+
     }
 
 }

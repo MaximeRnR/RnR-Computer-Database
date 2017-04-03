@@ -44,7 +44,7 @@ public class ComputerDAOTest {
     public void findTest() {
         cp = new Computer.Builder()
                 .id(574)
-                .name("iPhone4S")
+                .name("iPhone 4S")
                 .di(LocalDate.of(2011, 10, 14))
                 .dd(null)
                 .cy(new Company(1))
@@ -66,7 +66,6 @@ public class ComputerDAOTest {
         cpDAO.delete("" + cp.getId());
         assertTrue(cpDAO.find(cp.getId()) == null);
 
-
         cp.setId(cpDAO.createComputer(cp));
 
         String ids = "";
@@ -78,7 +77,6 @@ public class ComputerDAOTest {
         cp.setId(cpDAO.createComputer(cp));
         long id2 = cp.getId();
         ids = ids + "," + cp.getId();
-        System.out.println(ids);
         cpDAO.delete(ids);
         assertTrue(cpDAO.find(id1) == null);
         assertTrue(cpDAO.find(id2) == null);

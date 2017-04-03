@@ -38,7 +38,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
      */
     public long createComputer(Computer cp) throws ComputerDBException {
         cpE = new ComputerMapperEntity(cp).getCpE();
-        String query = "insert into computer" + "(name,introduced,discontinued,company_id)" + "values (?,?,?,?)";
+        final String query = "insert into computer" + "(name,introduced,discontinued,company_id)" + "values (?,?,?,?)";
         try (Connection conn = ConnectionDB.CONNECTION.getConn();
                 PreparedStatement preparedStmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
                 ) {
@@ -82,24 +82,24 @@ public enum ComputerDAO implements ComputerDAOInterface {
     public void delete(String ids) throws ComputerDBException {
         String query = "DELETE FROM computer WHERE id = ?";
         String[] idTab = ids.split(",");
-        System.out.println(idTab.length);
-        if (idTab.length > 2) {
-            for (int i = 0; i < idTab.length; i++) {
-                query = query + "OR id = ?";
+        if (idTab.length > 1) {
+            for (int i = 0; i < idTab.length - 1; i++) {
+                query = query + " OR id = ?";
             }
         }
+
         try (Connection conn = ConnectionDB.CONNECTION.getConn();
                 PreparedStatement preparedStmt = conn.prepareStatement(query);
                 ) {
             this.cpE = new ComputerMapperEntity(find(Integer.parseInt(idTab[0]))).getCpE();
             preparedStmt.setLong(1, cpE.getId());
-            if (idTab.length > 2) {
+            if (idTab.length > 1) {
                 for (int i = 1; i < idTab.length; i++) {
                     this.cpE = new ComputerMapperEntity(find(Integer.parseInt(idTab[i]))).getCpE();
                     preparedStmt.setLong((i + 1), cpE.getId());
                 }
             }
-            System.out.println(preparedStmt.toString());
+
             preparedStmt.execute();
             logger.info("Computer " + cpE.getId() + " deleted");
         } catch (SQLException e) {
@@ -115,7 +115,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
      */
     public void update(Computer cp) throws ComputerDBException {
         cpE = new ComputerMapperEntity(cp).getCpE();
-        String query = "UPDATE computer SET name = ?, introduced = ?, discontinued = ?, company_id = ? WHERE id = ?";
+        final String query = "UPDATE computer SET name = ?, introduced = ?, discontinued = ?, company_id = ? WHERE id = ?";
 
         try (Connection conn = ConnectionDB.CONNECTION.getConn();
                 PreparedStatement preparedStmt = conn.prepareStatement(query);
@@ -153,7 +153,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
      */
     public Computer find(long id) throws ComputerDBException {
         cpE = null;
-        String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c WHERE c.id=?;";
+        final String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c WHERE c.id=?;";
         try (Connection conn = ConnectionDB.CONNECTION.getConn();
                 PreparedStatement preparedStmt = conn.prepareStatement(sql);
                 ) {
@@ -194,7 +194,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
     public List<Computer> page() throws ComputerDBException {
 
         List<ComputerEntity> lcpE = new ArrayList<ComputerEntity>();
-        String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c LIMIT ? OFFSET ?;";
+        final String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c LIMIT ? OFFSET ?;";
 
         try (Connection conn = ConnectionDB.CONNECTION.getConn();
                 PreparedStatement preparedStmt = conn.prepareStatement(sql);
@@ -237,7 +237,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
     @Override
     public int count() throws ComputerDBException {
 
-        String sql = "SELECT count(*) FROM computer c;";
+        final String sql = "SELECT count(*) FROM computer c;";
         try (Connection conn = ConnectionDB.CONNECTION.getConn();
                 PreparedStatement preparedStmt = conn.prepareStatement(sql);
                 ) {
@@ -262,7 +262,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
     @Override
     public int countLike(String search) throws ComputerDBException {
 
-        String sql = "SELECT count(*) FROM computer c WHERE c.name LIKE ? ;";
+        final String sql = "SELECT count(*) FROM computer c WHERE c.name LIKE ? ;";
         try (Connection conn = ConnectionDB.CONNECTION.getConn();
                 PreparedStatement preparedStmt = conn.prepareStatement(sql);
                 ) {
@@ -287,7 +287,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
     public List<Computer> like(String search) throws ComputerDBException {
 
         List<ComputerEntity> lcpE = new ArrayList<ComputerEntity>();
-        String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c WHERE c.name LIKE ? LIMIT ? OFFSET ? ;";
+        final String sql = "SELECT c.id, c.name, c.introduced, c.discontinued, c.company_id FROM computer c WHERE c.name LIKE ? LIMIT ? OFFSET ? ;";
 
         try (Connection conn = ConnectionDB.CONNECTION.getConn();
                 PreparedStatement preparedStmt = conn.prepareStatement(sql);

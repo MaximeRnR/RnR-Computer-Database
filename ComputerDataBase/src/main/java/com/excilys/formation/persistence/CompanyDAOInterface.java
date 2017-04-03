@@ -16,4 +16,8 @@ public interface CompanyDAOInterface {
      * @return List<Company>
      */
     List<Company> findAll();
+    /**
+     * @param id Id
+     */
+    void deleteCompany(long id);
 }
