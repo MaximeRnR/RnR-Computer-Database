@@ -23,19 +23,19 @@ public class AddComputerServlet extends HttpServlet {
      */
     private static final long serialVersionUID = 6735463320851848975L;
 
-    private ComputerService cpS;
-    private CompanyService cyS;
-    private List<CompanyDTO> lcydto;
-    private CompanyDTO cy;
-    private ComputerDTO cp;
+    private ComputerService computerService;
+    private CompanyService companyService;
+    private List<CompanyDTO> companiesDto;
+    private CompanyDTO company;
+    private ComputerDTO computer;
 
     /**
      * @throws ServletException serlvetexcp
      */
     public void init() throws ServletException {
-        cpS = ComputerService.COMPUTERSERVICE;
-        cyS = CompanyService.COMPANYSERVICE;
-        lcydto = cyS.findAll();
+        computerService = ComputerService.COMPUTERSERVICE;
+        companyService = CompanyService.COMPANYSERVICE;
+        companiesDto = companyService.findAll();
 
     }
 
@@ -46,7 +46,7 @@ public class AddComputerServlet extends HttpServlet {
      * @throws IOException ioexc
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("lcydto", lcydto);
+        request.setAttribute("companiesDto", companiesDto);
         request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
     }
 
@@ -60,21 +60,19 @@ public class AddComputerServlet extends HttpServlet {
 
         String name = request.getParameter("name");
         String dI = request.getParameter("dI");
-        System.out.println("DI vaut :" + dI);
         String dD = request.getParameter("dD");
-        lcydto = cyS.findAll();
-        request.setAttribute("lcydto", lcydto);
+        companiesDto = companyService.findAll();
+        request.setAttribute("companiesDto", companiesDto);
         if (Integer.parseInt(request.getParameter("companyId")) == 0 || request.getParameter("companyId") == null) {
-            cy = new CompanyDTO(0);
+            company = new CompanyDTO(0);
         } else {
-            cy = new CompanyDTO(Integer.parseInt(request.getParameter("companyId")));
+            company = new CompanyDTO(Integer.parseInt(request.getParameter("companyId")));
         }
         if (name != null && !name.isEmpty() && name.matches("^[a-zA-Z ]+$")) {
             if ((dI != null && dI.matches("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$")) || dI == "") {
                 if ((dD != null && dD.matches("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$")) || dD == "") {
-                    cp = new ComputerDTO.Builder().name(request.getParameter("name")).di(dI).dd(dD).cydto(cy).build();
-                    System.out.println(cp.toString());
-                    cpS.createComputer(cp);
+                    computer = new ComputerDTO.Builder().name(request.getParameter("name")).di(dI).dd(dD).cydto(company).build();
+                    computerService.create(computer);
                     request.setAttribute("success", 1);
                     request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
                 } else {

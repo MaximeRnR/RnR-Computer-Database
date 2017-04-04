@@ -7,6 +7,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -121,6 +122,8 @@ public class SeleniumTest {
         driver.findElement(By.id("editComputer")).click();
         tableRows.get((tableRows.size() - 1)).findElements(By.tagName("td")).get(0).findElement(By.className("cb")).click();
         driver.findElement(By.id("deleteSelected")).click();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
 
 
 

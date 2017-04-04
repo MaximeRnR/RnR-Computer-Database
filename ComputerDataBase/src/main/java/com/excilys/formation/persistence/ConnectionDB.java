@@ -9,7 +9,7 @@ import java.util.Properties;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.excilys.formation.util.ComputerDBException;
+import com.excilys.formation.util.PersistenceException;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -22,29 +22,28 @@ public enum ConnectionDB {
     private Logger logger = LogManager.getRootLogger();
 
     /**
-     * @throws ComputerDBException cdbexc
+     * @throws PersistenceException cdbexc
      */
-    ConnectionDB() throws ComputerDBException {
-      try {
-        final String resourceName = "hikari.properties";
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        Properties props = new Properties();
-        try (InputStream resourceStream = loader.getResourceAsStream(resourceName)) {
-          props.load(resourceStream);
-          config = new HikariConfig(props);
+    ConnectionDB() throws PersistenceException {
+        try {
+            final String resourceName = "hikari.properties";
+            ClassLoader loader = Thread.currentThread().getContextClassLoader();
+            Properties props = new Properties();
+            try (InputStream resourceStream = loader.getResourceAsStream(resourceName)) {
+                props.load(resourceStream);
+                config = new HikariConfig(props);
 
-          config.setMaximumPoolSize(20);
-          config.setMinimumIdle(5);
-          config.setIdleTimeout(60 * 1000);
-          config.setPassword("qwerty1234");
-          config.setConnectionTimeout(1000);
-          config.setMaxLifetime(287400);
-          hs = new HikariDataSource(config);
+                config.setMaximumPoolSize(20);
+                config.setMinimumIdle(5);
+                config.setIdleTimeout(60 * 1000);
+                config.setConnectionTimeout(1000);
+                config.setMaxLifetime(287400);
+                hs = new HikariDataSource(config);
+            }
+        } catch (IllegalArgumentException | IOException e) {
+            logger.error("ConnectionDB : cannot be instanciated");
+            throw new PersistenceException(e);
         }
-      } catch (IOException e) {
-          logger.error("ConnectionDB : cannot be instanciated");
-        throw new ComputerDBException(e);
-      }
     }
     /**
      * @return Connection conn;
@@ -54,8 +53,8 @@ public enum ConnectionDB {
             return hs.getConnection();
         } catch (SQLException e) {
             logger.error("Conn : cannot be instanciated");
-            throw new ComputerDBException(e);
+            throw new PersistenceException(e);
         }
-      }
+    }
 
 }

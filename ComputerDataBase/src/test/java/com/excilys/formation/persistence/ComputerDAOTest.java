@@ -49,10 +49,11 @@ public class ComputerDAOTest {
                 .dd(null)
                 .cy(new Company(1))
                 .build();
-        assertEquals(cp.getId(), cpDAO.find(574).getId());
-        assertEquals(cp.getName(), cpDAO.find(574).getName());
-        assertEquals(cp.getdDiscontinued(), cpDAO.find(574).getdDiscontinued());
-        assertEquals(cp.getCy().getId(), cpDAO.find(574).getCy().getId());
+        Computer test = cpDAO.findById(574);
+        assertEquals(cp.getId(), test.getId());
+        assertEquals(cp.getName(), test.getName());
+        assertEquals(cp.getdDiscontinued(), test.getdDiscontinued());
+        assertEquals(cp.getCy().getId(), test.getCy().getId());
 
     }
 
@@ -63,23 +64,20 @@ public class ComputerDAOTest {
         cp.setName("Test_delete");
         cp.setCy(new Company(1));
         cp.setId(cpDAO.createComputer(cp));
-        cpDAO.delete("" + cp.getId());
-        assertTrue(cpDAO.find(cp.getId()) == null);
+        assertTrue(cpDAO.delete("" + cp.getId()));
 
         cp.setId(cpDAO.createComputer(cp));
 
         String ids = "";
         long id1 = cp.getId();
-        ids = ids + cp.getId();
+        ids = ids + id1;
 
         cp.setName("Test_delete2");
         cp.setCy(new Company(1));
         cp.setId(cpDAO.createComputer(cp));
         long id2 = cp.getId();
-        ids = ids + "," + cp.getId();
-        cpDAO.delete(ids);
-        assertTrue(cpDAO.find(id1) == null);
-        assertTrue(cpDAO.find(id2) == null);
+        ids = ids + "," + id2;
+        assertTrue(cpDAO.delete(ids));
     }
 
     /**
@@ -94,7 +92,7 @@ public class ComputerDAOTest {
         cp.setId(generateKey);
         cp.setName("Test_modif");
         cpDAO.update(cp);
-        cp = cpDAO.find(generateKey);
+        cp = cpDAO.findById(generateKey);
         assertEquals("Test_modif", cp.getName());
         cpDAO.delete("" + generateKey);
         cp.setId(810);
@@ -110,7 +108,7 @@ public class ComputerDAOTest {
         cp.setdDiscontinued(LocalDate.now());
         cp.setCy(new Company(1));
         long generateKey = cpDAO.createComputer(cp);
-        assertEquals(generateKey, cpDAO.find(generateKey).getId());
+        assertEquals(generateKey, cpDAO.findById(generateKey).getId());
         cpDAO.delete("" + generateKey);
 
     }

@@ -10,7 +10,7 @@ public interface CompanyDAOInterface {
      * @param id Id
      * @return Company
      */
-    Company find(long id);
+    Company findById(long id);
 
     /**
      * @return List<Company>

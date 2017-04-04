@@ -20,11 +20,11 @@ import com.excilys.formation.service.ComputerService;
 // Extend HttpServlet class
 @WebServlet(name = "EditComputerServlet", urlPatterns = { "/edit" })
 public class EditComputerServlet extends HttpServlet {
-    private ComputerService cpS;
-    private CompanyService cyS;
-    private List<CompanyDTO> lcydto;
-    private CompanyDTO cy;
-    private ComputerDTO cp;
+    private ComputerService computerService;
+    private CompanyService companyService;
+    private List<CompanyDTO> companiesDto;
+    private CompanyDTO company;
+    private ComputerDTO computer;
 
     /**
      */
@@ -34,9 +34,9 @@ public class EditComputerServlet extends HttpServlet {
      * @throws ServletException serlvetexcp
      */
     public void init() throws ServletException {
-        cpS = ComputerService.COMPUTERSERVICE;
-        cyS = CompanyService.COMPANYSERVICE;
-        lcydto = cyS.findAll();
+        computerService = ComputerService.COMPUTERSERVICE;
+        companyService = CompanyService.COMPANYSERVICE;
+        companiesDto = companyService.findAll();
 
     }
 
@@ -49,10 +49,10 @@ public class EditComputerServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("id") != null) {
             long id = Integer.parseInt(request.getParameter("id"));
-            cp = cpS.find(id);
-            request.setAttribute("cp", cp);
+            computer = computerService.findById(id);
+            request.setAttribute("computer", computer);
             }
-        request.setAttribute("lcydto", lcydto);
+        request.setAttribute("companiesDto", companiesDto);
         request.getRequestDispatcher("/WEB-INF/views/editComputer.jsp").forward(request, response);
     }
 
@@ -69,18 +69,16 @@ public class EditComputerServlet extends HttpServlet {
         String dI = request.getParameter("introduced");
         String dD = request.getParameter("discontinued");
         long id = 0;
-        lcydto = cyS.findAll();
-        System.out.println(lcydto.size());
-        System.out.println(lcydto.get(0).toString());
-        request.setAttribute("lcydto", lcydto);
+        companiesDto = companyService.findAll();
+        request.setAttribute("companiesDto", companiesDto);
         if (Integer.parseInt(request.getParameter("companyId")) == 0 || request.getParameter("companyId") == null) {
-            cy = new CompanyDTO(0);
+            company = new CompanyDTO(0);
         } else {
-            cy = new CompanyDTO(Integer.parseInt(request.getParameter("companyId")));
+            company = new CompanyDTO(Integer.parseInt(request.getParameter("companyId")));
         }
         if (Integer.parseInt(sid) == 0 || sid == null) {
             System.out.println("Nope1");
-            request.setAttribute("lcydto", lcydto);
+            request.setAttribute("companiesDto", companiesDto);
             request.setAttribute("error", 1);
             request.getRequestDispatcher("/WEB-INF/views/editComputer.jsp").forward(request, response);
         } else {
@@ -89,8 +87,8 @@ public class EditComputerServlet extends HttpServlet {
         if (name != null && name.matches("^[a-zA-Z ]+$")) {
             if ((dI != null && dI.matches("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$")) || dI == "") {
                 if ((dD != null && dD.matches("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$")) || dD == "") {
-                    cp = new ComputerDTO.Builder().id(id).name(request.getParameter("name")).di(dI).dd(dD).cydto(cy).build();
-                    cpS.update(cp);
+                    computer = new ComputerDTO.Builder().id(id).name(request.getParameter("name")).di(dI).dd(dD).cydto(company).build();
+                    computerService.update(computer);
                     request.setAttribute("success", 1);
                     request.getRequestDispatcher("/WEB-INF/views/editComputer.jsp").forward(request, response);
                 } else {

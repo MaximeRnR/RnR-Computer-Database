@@ -3,6 +3,7 @@ package com.excilys.formation.persistence;
 import java.util.List;
 
 import com.excilys.formation.model.Computer;
+import com.excilys.formation.ui.Page;
 
 public interface ComputerDAOInterface {
     /**
@@ -15,12 +16,13 @@ public interface ComputerDAOInterface {
      * @param id id
      * @return Computer
      */
-    Computer find(long id);
+    Computer findById(long id);
 
     /**
      * @param ids Ids
+     * @return boolean boolean
      */
-    void delete(String ids);
+    boolean delete(String ids);
 
     /**
      * @param computer Computer
@@ -30,25 +32,38 @@ public interface ComputerDAOInterface {
     /**
      * @return nbComputer
      */
-    int count();
+    int getCountOfAllComputers();
+
+    /**
+     * @return List<Computer>
+     * @param page page
+     */
+    List<Computer> getPageOfComputers(Page page);
 
     /**
      * @param search String
-     * @param by String
      * @return nbComputer
      */
-    int countLike(String search, String by);
-
-    /**
-     * @return List<Computer>
-     */
-    List<Computer> page();
+    int getCountOfComputersByName(String search);
 
     /**
      * @param search String
-     * @param by String
+     * @return nbComputer
+     */
+    int getCountOfComputersByCompanyName(String search);
+
+    /**
+     * @param search String
+     * @param page page
      * @return List<Computer>
      */
-    List<Computer> like(String search, String by);
+    List<Computer> getPageOfComputersByName(String search, Page page);
+
+    /**
+     * @param search String
+     * @param page page
+     * @return List<Computer>
+     */
+    List<Computer> getPageOfComputersByCompanyName(String search, Page page);
 
 }

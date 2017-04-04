@@ -10,83 +10,73 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.excilys.formation.entity.CompanyEntity;
-import com.excilys.formation.mapper.CompanyMapperEntity;
 import com.excilys.formation.model.Company;
-import com.excilys.formation.util.ComputerDBException;
+import com.excilys.formation.util.PersistenceException;
 
 //DAO of Company
 public enum CompanyDAO implements CompanyDAOInterface {
     COMPANYDAO;
     static Logger logger = LogManager.getRootLogger();
-    private CompanyEntity cyE;
 
     /**
-     * @throws ComputerDBException cdbex
+     * @throws PersistenceException cdbex
      */
-    CompanyDAO() throws ComputerDBException {
+    CompanyDAO() {
 
     }
 
     /**
      * @param id Id
-     * @throws ComputerDBException cdbex
+     * @throws PersistenceException cdbex
      * @return Company
      */
-    public Company find(long id) throws ComputerDBException {
-        cyE = new CompanyEntity();
+    public Company findById(long id) throws PersistenceException {
         final String sql = "SELECT c.id, c.name FROM company c WHERE c.id=?";
-
         try (Connection conn = ConnectionDB.CONNECTION.getConn();
                 PreparedStatement preparedStmt = conn.prepareStatement(sql);) {
 
             preparedStmt.setLong(1, id);
             preparedStmt.execute();
             try (ResultSet result = preparedStmt.getResultSet();) {
-
+                Company company = new Company(0);
                 if (result.first()) {
                     if (result.getInt("c.id") != 0) {
-                        cyE.setId(result.getInt("c.id"));
+                        company.setId(result.getInt("c.id"));
                     }
                     if (result.getString("c.name") != null) {
-                        cyE.setName(result.getString("c.name"));
+                        company.setName(result.getString("c.name"));
                     }
                 }
-                logger.info("Company " + cyE.getId() + " selected");
+                logger.info("Company " + company.getId() + " selected");
+                return company;
             }
-        } catch (ComputerDBException | SQLException e) {
+        } catch (SQLException e) {
             logger.error("Company not selected ");
-            throw new ComputerDBException("This company does'nt exist", e);
+            throw new PersistenceException("This company does'nt exist", e);
         }
-
-        return new CompanyMapperEntity(cyE).getCy();
     }
 
 
     /**
-     * @throws ComputerDBException cdbex
+     * @throws PersistenceException cdbex
      * @return List<Company>
      */
-    public List<Company> findAll() throws ComputerDBException {
-        List<CompanyEntity> lcyE = new ArrayList<CompanyEntity>();
+    public List<Company> findAll() throws PersistenceException {
         final String sql = "SELECT c.id, c.name FROM company c;";
         try (Connection conn = ConnectionDB.CONNECTION.getConn();
                 ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
                         .executeQuery(sql);) {
+            List<Company> companies = new ArrayList<>();
             while (result.next()) {
-                cyE = new CompanyEntity(result.getLong("c.id"), result.getString("c.name"));
-                lcyE.add(cyE);
+                Company company = new Company(result.getLong("c.id"), result.getString("c.name"));
+                companies.add(company);
             }
             logger.info("Companies selected");
-        } catch (ComputerDBException | SQLException e) {
+            return companies;
+        } catch (SQLException e) {
             logger.error("Company not selected ");
-            throw new ComputerDBException("Company not selected", e);
+            throw new PersistenceException("Company not selected", e);
         }
-        List<Company> lcy = new ArrayList<Company>();
-        for (int i = 0; i < lcyE.size(); i++) {
-            lcy.add(new CompanyMapperEntity(lcyE.get(i)).getCy());
-        }
-        return lcy;
     }
 
 
@@ -114,12 +104,12 @@ public enum CompanyDAO implements CompanyDAOInterface {
             } catch (SQLException e) {
                 conn.rollback();
                 conn.setAutoCommit(true);
-                logger.error("Companies not deleted");
-                throw new ComputerDBException("deleteCompany " + e);
+                logger.error("Company not deleted");
+                throw new PersistenceException("deleteCompany " + e);
             }
         } catch (SQLException e1) {
-            logger.error("Companies not deleted");
-            throw new ComputerDBException("deleteCompany " + e1);
+            logger.error("Company not deleted");
+            throw new PersistenceException("deleteCompany " + e1);
         }
 
     }

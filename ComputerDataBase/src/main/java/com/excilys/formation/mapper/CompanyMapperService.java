@@ -5,38 +5,38 @@ import com.excilys.formation.model.Company;
 import com.excilys.formation.util.ComputerDBException;
 
 public class CompanyMapperService {
-    private Company cy;
-    private CompanyDTO cydto;
+    private Company company;
+    private CompanyDTO companyDto;
 
     /**
-     * @param cy Company
+     * @param company Company
      * @throws ComputerDBException cdbex
      */
-    public CompanyMapperService(Company cy) throws ComputerDBException {
+    public CompanyMapperService(Company company) throws ComputerDBException {
 
-        this.cy = cy;
-        this.cydto = new CompanyDTO(this.cy.getId(), this.cy.getName());
+        this.company = company;
+        this.companyDto = new CompanyDTO(this.company.getId(), this.company.getName());
 
     }
 
     /**
-     * @param cydto CompanyDTO
+     * @param companyDto CompanyDTO
      * @throws ComputerDBException cdbex
      */
-    public CompanyMapperService(CompanyDTO cydto) throws ComputerDBException {
+    public CompanyMapperService(CompanyDTO companyDto) throws ComputerDBException {
 
-        this.cydto = cydto;
-        this.cy = new Company(this.cydto.getId(), this.cydto.getName());
+        this.companyDto = companyDto;
+        this.company = new Company(this.companyDto.getId(), this.companyDto.getName());
 
     }
 
-    public Company getCy() {
-        return cy;
+    public Company getCompany() {
+        return company;
     }
 
 
-    public CompanyDTO getCydto() {
-        return cydto;
+    public CompanyDTO getCompanyDto() {
+        return companyDto;
     }
 
 

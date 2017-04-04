@@ -16,7 +16,7 @@ public class CompanyUI {
      */
     public CompanyDTO findAssociatedCompany(long id) {
         cyS = CompanyService.COMPANYSERVICE;
-        cy = cyS.find(id);
+        cy = cyS.findById(id);
         return cy;
 
     }

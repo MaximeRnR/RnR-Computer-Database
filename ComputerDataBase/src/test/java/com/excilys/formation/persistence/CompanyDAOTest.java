@@ -7,19 +7,19 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.excilys.formation.entity.CompanyEntity;
+import com.excilys.formation.model.Company;
 
 public class CompanyDAOTest {
-    private CompanyEntity cp;
-    private CompanyDAOInterface cydaoi;
+    private Company company;
+    private CompanyDAOInterface companyDaoI;
 
     /**
      */
     @Before
     public void beforeEachTest() {
 
-        cp = new CompanyEntity();
-        cydaoi = CompanyDAO.COMPANYDAO;
+        company = new Company(0);
+        companyDaoI = CompanyDAO.COMPANYDAO;
 
     }
 
@@ -28,8 +28,8 @@ public class CompanyDAOTest {
     @After
     public void afterEachTest() {
 
-        cp = null;
-        cydaoi = null;
+        company = null;
+        companyDaoI = null;
 
     }
 
@@ -37,10 +37,10 @@ public class CompanyDAOTest {
      */
     @Test
     public void findTest() {
-        cp.setId(1);
-        cp.setName("Apple Inc.");
-        assertEquals(cp.getId(), cydaoi.find(1).getId());
-        assertEquals(cp.getName(), cydaoi.find(1).getName());
+        company.setId(1);
+        company.setName("Apple Inc.");
+        assertEquals(company.getId(), companyDaoI.findById(1).getId());
+        assertEquals(company.getName(), companyDaoI.findById(1).getName());
 
     }
 
@@ -49,7 +49,7 @@ public class CompanyDAOTest {
     @Test
     public void findAllTest() {
 
-        assertEquals(42, cydaoi.findAll().size());
+        assertEquals(42, companyDaoI.findAll().size());
 
     }
 

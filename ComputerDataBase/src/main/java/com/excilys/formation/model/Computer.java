@@ -6,30 +6,30 @@ import java.time.LocalDate;
 public class Computer {
     private long id;
     private String name;
-    private LocalDate dIntroduced;
-    private LocalDate dDiscontinued;
+    private LocalDate dateIntroduced;
+    private LocalDate dateDiscontinued;
     private Company cy;
 
     // Constructor
     /**
      * @param id Id
      * @param name Name
-     * @param dIntroduced Di
-     * @param dDiscontinued DD
+     * @param dateIntroduced Di
+     * @param dateDiscontinued DD
      * @param cy Cy
      */
-    private Computer(long id, String name, LocalDate dIntroduced, LocalDate dDiscontinued, Company cy) {
+    private Computer(long id, String name, LocalDate dateIntroduced, LocalDate dateDiscontinued, Company cy) {
         this.id = id;
         this.name = name;
-        this.dIntroduced = dIntroduced;
-        this.dDiscontinued = dDiscontinued;
+        this.dateIntroduced = dateIntroduced;
+        this.dateDiscontinued = dateDiscontinued;
         this.cy = cy;
     }
 
     @Override
     public String toString() {
-        return "Computer [id=" + id + ", name=" + name + ", dIntroduced=" + dIntroduced + ", dDiscontinued="
-                + dDiscontinued + ", cy=" + cy + "]";
+        return "Computer [id=" + id + ", name=" + name + ", dateIntroduced=" + dateIntroduced + ", dateDiscontinued="
+                + dateDiscontinued + ", cy=" + cy + "]";
     }
 
     /**
@@ -64,28 +64,28 @@ public class Computer {
      * @return Date intro
      */
     public LocalDate getdIntroduced() {
-        return dIntroduced;
+        return dateIntroduced;
     }
 
     /**
-     * @param dIntroduced Date intro
+     * @param dateIntroduced Date intro
      */
-    public void setdIntroduced(LocalDate dIntroduced) {
-        this.dIntroduced = dIntroduced;
+    public void setdIntroduced(LocalDate dateIntroduced) {
+        this.dateIntroduced = dateIntroduced;
     }
 
     /**
      * @return Date discontinued
      */
     public LocalDate getdDiscontinued() {
-        return dDiscontinued;
+        return dateDiscontinued;
     }
 
     /**
-     * @param dDiscontinued Date discontinued
+     * @param dateDiscontinued Date discontinued
      */
-    public void setdDiscontinued(LocalDate dDiscontinued) {
-        this.dDiscontinued = dDiscontinued;
+    public void setdDiscontinued(LocalDate dateDiscontinued) {
+        this.dateDiscontinued = dateDiscontinued;
     }
 
     /**
@@ -109,8 +109,8 @@ public class Computer {
     public static class Builder {
         private long id;
         private String name;
-        private LocalDate dIntroduced;
-        private LocalDate dDiscontinued;
+        private LocalDate dateIntroduced;
+        private LocalDate dateDiscontinued;
         private Company cy;
 
         /**
@@ -143,7 +143,7 @@ public class Computer {
          * @return builder Builder
          */
         public Builder di(LocalDate di) {
-            this.dIntroduced = di;
+            this.dateIntroduced = di;
             return this;
 
         }
@@ -153,7 +153,7 @@ public class Computer {
          * @return builder Builder
          */
         public Builder dd(LocalDate dd) {
-            this.dDiscontinued = dd;
+            this.dateDiscontinued = dd;
             return this;
 
         }
@@ -172,7 +172,7 @@ public class Computer {
          * @return Computer Computer
          */
         public Computer build() {
-            return new Computer(this.id, this.name, this.dIntroduced, this.dDiscontinued, this.cy);
+            return new Computer(this.id, this.name, this.dateIntroduced, this.dateDiscontinued, this.cy);
 
         }
     }

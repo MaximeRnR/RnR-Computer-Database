@@ -27,7 +27,7 @@
 
 	<section id="main">
 		<div class="container">
-			<h1 id="homeTitle">${count}Computersfound</h1>
+			<h1 id="homeTitle">${nbComputers} Computers found</h1>
 
 			<div id="actions" class="form-horizontal">
 				<div class="pull-left">
@@ -83,15 +83,15 @@
 				<!-- Browse attribute computers -->
 				<tbody id="results">
 
-					<c:forEach items="${lcpdto}" var="cpdto">
+					<c:forEach items="${computersDto}" var="computerDto">
 						<tr>
 							<td class="editMode" style="display: none"><input
-								type="checkbox" class="cb" value="<c:out value="${cpdto.id}"/>" /></td>
-							<td><a href="edit?id=<c:out value="${cpdto.id}"/>"><c:out
-										value="${cpdto.name}" /></a></td>
-							<td><c:out value="${cpdto.dIntroduced}" /></td>
-							<td><c:out value="${cpdto.dDiscontinued}" /></td>
-							<td><c:out value="${cpdto.cydto.name}" /></td>
+								type="checkbox" class="cb" value="<c:out value="${computerDto.id}"/>" /></td>
+							<td><a href="edit?id=<c:out value="${computerDto.id}"/>"><c:out
+										value="${computerDto.name}" /></a></td>
+							<td><c:out value="${computerDto.dIntroduced}" /></td>
+							<td><c:out value="${computerDto.dDiscontinued}" /></td>
+							<td><c:out value="${computerDto.cydto.name}" /></td>
 						</tr>
 					</c:forEach>
 

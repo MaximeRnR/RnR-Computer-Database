@@ -24,20 +24,22 @@ public class DashboardServlet extends HttpServlet {
      */
     private static final long serialVersionUID = 458516061330357823L;
 
-    private ComputerService cpS;
-    private List<ComputerDTO> lcpdto;
-    private int nbPage;
+    private ComputerService computerService;
+    private List<ComputerDTO> computersDto;
+    private int nbPages;
     private int indexPage;
-    private int count;
+    private int nbComputers;
+    private Page page;
 
     /**
      * @throws ServletException serlvetexcp
      */
     public void init() throws ServletException {
-        cpS = ComputerService.COMPUTERSERVICE;
-        nbPage = cpS.pageNumber();
-        indexPage = Page.PAGE.getIndex();
-        count = cpS.count();
+        page = new Page();
+        computerService = ComputerService.COMPUTERSERVICE;
+        nbPages = computerService.getNumberOfPageOfAllComputers(page);
+        indexPage = page.getIndex();
+        nbComputers = computerService.getCountOfAllComputers();
     }
 
     /**
@@ -48,28 +50,39 @@ public class DashboardServlet extends HttpServlet {
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        System.out.println("get");
         if (request.getParameter("search") != null && request.getParameter("search") != ""
-            && request.getParameter("by") != null && request.getParameter("by") != "") {
-                nbPage = cpS.pageNumberSearch(request.getParameter("search"), request.getParameter("by"));
-                if (nbPage < Page.PAGE.getIndex()) {
-                    Page.PAGE.setIndex(0);
+                && request.getParameter("by") != null && request.getParameter("by") != "") {
+            if (request.getParameter("by").equals("cp")) {
+                nbPages = computerService.getNumberOfPageOfComputersByName(request.getParameter("search"), page);
+                if (nbPages < page.getIndex()) {
+                    page.setIndex(0);
                 }
-                count = cpS.countLike(request.getParameter("search"), request.getParameter("by"));
-                lcpdto = cpS.like(request.getParameter("search"), request.getParameter("by"));
+                nbComputers = computerService.getCountOfComputersByName(request.getParameter("search"));
+                computersDto = computerService.getPageOfComputersByName(request.getParameter("search"), page);
                 request.setAttribute("search", request.getParameter("search"));
                 request.setAttribute("by", request.getParameter("by"));
+            }
+            if (request.getParameter("by").equals("cy")) {
+                nbPages = computerService.getNumberOfPageOfComputersByCompanyName(request.getParameter("search"), page);
+                if (nbPages < page.getIndex()) {
+                    page.setIndex(0);
+                }
+                nbComputers = computerService.getCountOfComputersByCompanyName(request.getParameter("search"));
+                computersDto = computerService.getPageOfComputersByCompanyName(request.getParameter("search"), page);
+                request.setAttribute("search", request.getParameter("search"));
+                request.setAttribute("by", request.getParameter("by"));
+            }
+
         } else {
-            count = cpS.count();
-            lcpdto = cpS.page();
-            nbPage = cpS.pageNumber();
+            nbComputers = computerService.getCountOfAllComputers();
+            computersDto = computerService.getPageOfComputers(page);
+            nbPages = computerService.getNumberOfPageOfAllComputers(page);
         }
-        indexPage = Page.PAGE.getIndex();
-        System.out.println(indexPage);
-        request.setAttribute("count", count);
+        indexPage = page.getIndex();
+        request.setAttribute("nbComputers", nbComputers);
         request.setAttribute("index", indexPage);
-        request.setAttribute("lcpdto", lcpdto);
-        request.setAttribute("nbpage", nbPage);
+        request.setAttribute("computersDto", computersDto);
+        request.setAttribute("nbpage", nbPages);
         request.getRequestDispatcher("/WEB-INF/views/dashboard.jsp").forward(request, response);
     }
 
@@ -81,27 +94,25 @@ public class DashboardServlet extends HttpServlet {
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        System.out.println("post");
         if (request.getParameter("selection") != null && request.getParameter("selection").matches("^[0-9,]+$")) {
-            System.out.println(request.getParameter("selection"));
-            cpS.delete(request.getParameter("selection"));
+            computerService.delete(request.getParameter("selection"));
         }
 
         if (request.getParameter("action") != null) {
             if (request.getParameter("action").equals("next")) {
-                Page.PAGE.next();
+                page.next();
             }
             if (request.getParameter("action").equals("page")) {
-                nbPage = cpS.pageNumber();
+                nbPages = computerService.getNumberOfPageOfAllComputers(page);
                 if (Integer.parseInt(request.getParameter("num")) < 0
-                        || Integer.parseInt(request.getParameter("num")) > nbPage) {
+                        || Integer.parseInt(request.getParameter("num")) > nbPages) {
                     System.out.println("tentative");
                 } else {
-                    Page.PAGE.setIndex(Integer.parseInt(request.getParameter("num")));
+                    page.setIndex(Integer.parseInt(request.getParameter("num")));
                 }
             }
             if (request.getParameter("action").equals("previous")) {
-                Page.PAGE.previous();
+                page.previous();
             }
             if (request.getParameter("action").equals("change_max_obj")) {
                 if (Integer.parseInt(request.getParameter("num")) != 10
@@ -110,34 +121,54 @@ public class DashboardServlet extends HttpServlet {
                     System.out.println("tentative");
 
                 } else {
-                    Page.setMAXNUMBEROFOBJECTS(Integer.parseInt(request.getParameter("num")));
+                    page.setMaxNumberOfObject(Integer.parseInt(request.getParameter("num")));
                     if (request.getParameter("search") != null && request.getParameter("search") != ""
-                         && request.getParameter("by") != null && request.getParameter("by") != "") {
-                        nbPage = cpS.pageNumberSearch(request.getParameter("search"), request.getParameter("by"));
+                            && request.getParameter("by") != null && request.getParameter("by") != "") {
+
+                        if (request.getParameter("by").equals("cp")) {
+                            nbPages = computerService.getNumberOfPageOfComputersByName(request.getParameter("search"), page);
+                            request.setAttribute("search", request.getParameter("search"));
+                            request.setAttribute("by", request.getParameter("by"));
+                        }
+                        if (request.getParameter("by").equals("cy")) {
+                            nbPages = computerService.getNumberOfPageOfComputersByCompanyName(request.getParameter("search"), page);
+                            request.setAttribute("search", request.getParameter("search"));
+                            request.setAttribute("by", request.getParameter("by"));
+                        }
+
                     } else {
-                        nbPage = cpS.pageNumber();
+                        nbPages = computerService.getNumberOfPageOfAllComputers(page);
                     }
-                    Page.PAGE.setIndex(0);
+                    page.setIndex(0);
                 }
 
             }
         }
-        System.out.println(Page.PAGE.getIndex());
-        indexPage = Page.PAGE.getIndex();
+        indexPage = page.getIndex();
         if (request.getParameter("search") != null && request.getParameter("search") != ""
-            && request.getParameter("by") != null && request.getParameter("by") != "") {
-            count = cpS.countLike(request.getParameter("search"), request.getParameter("by"));
-            lcpdto = cpS.like(request.getParameter("search"), request.getParameter("by"));
-            request.setAttribute("search", request.getParameter("search"));
-            request.setAttribute("by", request.getParameter("by"));
+                && request.getParameter("by") != null && request.getParameter("by") != "") {
+
+            if (request.getParameter("by").equals("cp")) {
+                nbComputers = computerService.getCountOfComputersByName(request.getParameter("search"));
+                computersDto = computerService.getPageOfComputersByName(request.getParameter("search"), page);
+                request.setAttribute("search", request.getParameter("search"));
+                request.setAttribute("by", request.getParameter("by"));
+            }
+            if (request.getParameter("by").equals("cy")) {
+                nbComputers = computerService.getCountOfComputersByCompanyName(request.getParameter("search"));
+                computersDto = computerService.getPageOfComputersByCompanyName(request.getParameter("search"), page);
+                request.setAttribute("search", request.getParameter("search"));
+                request.setAttribute("by", request.getParameter("by"));
+            }
+
         } else {
-            count = cpS.count();
-            lcpdto = cpS.page();
+            nbComputers = computerService.getCountOfAllComputers();
+            computersDto = computerService.getPageOfComputers(page);
         }
-        request.setAttribute("count", count);
+        request.setAttribute("nbComputers", nbComputers);
         request.setAttribute("index", indexPage);
-        request.setAttribute("lcpdto", lcpdto);
-        request.setAttribute("nbpage", nbPage);
+        request.setAttribute("computersDto", computersDto);
+        request.setAttribute("nbpage", nbPages);
         request.getRequestDispatcher("/WEB-INF/views/dashboard.jsp").forward(request, response);
     }
 

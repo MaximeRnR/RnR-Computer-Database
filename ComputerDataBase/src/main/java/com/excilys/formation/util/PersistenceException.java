@@ -2,22 +2,22 @@ package com.excilys.formation.util;
 
 
 
-public class ComputerDBException extends RuntimeException {
+public class PersistenceException extends RuntimeException {
 
     /**
      */
-    private static final long serialVersionUID = -5131754047126066742L;
+    private static final long serialVersionUID = 7610623136757332515L;
 
     /**
      */
-    public ComputerDBException() {
+    public PersistenceException() {
         super();
     }
 
     /**
      * @param message message
      */
-    public ComputerDBException(String message) {
+    public PersistenceException(String message) {
         super(message);
     }
 
@@ -25,14 +25,14 @@ public class ComputerDBException extends RuntimeException {
      * @param message message
      * @param cause cause
      */
-    public ComputerDBException(String message, Throwable cause) {
+    public PersistenceException(String message, Throwable cause) {
         super(message, cause);
     }
 
     /**
      * @param cause cause
      */
-    public ComputerDBException(Throwable cause) {
+    public PersistenceException(Throwable cause) {
         super(cause);
     }
 

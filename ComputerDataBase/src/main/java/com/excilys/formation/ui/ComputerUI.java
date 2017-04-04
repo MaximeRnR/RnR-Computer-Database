@@ -35,7 +35,7 @@ public class ComputerUI {
         }
         cy = new CompanyDTO(44);
         cp = new ComputerDTO.Builder().name(name).di(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))).dd(null).cydto(cy).build();
-        cpS.createComputer(cp);
+        cpS.create(cp);
     }
 
     /**
@@ -74,7 +74,7 @@ public class ComputerUI {
         } catch (ComputerDBException | InputMismatchException e) {
             throw new ComputerDBException("Not a Number", e);
         }
-        cp = cpS.find(id);
+        cp = cpS.findById(id);
         System.out.println("What do you want to update");
         System.out.println("\t 1 - Name");
         System.out.println("\t 2 - Discontinued");
@@ -121,7 +121,7 @@ public class ComputerUI {
             throw new ComputerDBException("Not a Number", e);
         }
         System.out.println();
-        cp = cpS.find(id);
+        cp = cpS.findById(id);
         return cp;
 
     }
@@ -134,7 +134,7 @@ public class ComputerUI {
 
         cpS = ComputerService.COMPUTERSERVICE;
         page = Page.PAGE;
-        System.out.println("There are " + cpS.pageNumber() + ".");
+        System.out.println("There are " + cpS.getNumberOfPageOfAllComputers() + ".");
         System.out.print("Enter a page : ");
         System.out.println();
         Scanner scan = new Scanner(System.in);
@@ -146,7 +146,7 @@ public class ComputerUI {
         }
         page.setIndex(index);
 
-        return cpS.page();
+        return cpS.getPageOfComputers();
     }
 
     /**
@@ -155,7 +155,7 @@ public class ComputerUI {
      */
     public List<ComputerDTO> page() throws ComputerDBException {
 
-        return cpS.page();
+        return cpS.getPageOfComputers();
     }
 
 }

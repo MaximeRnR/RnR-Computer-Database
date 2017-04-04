@@ -12,7 +12,7 @@ import com.excilys.formation.ui.Page;
 
 public enum ComputerService {
     COMPUTERSERVICE;
-    private ComputerDAOInterface cpdaoi = ComputerDAO.COMPUTERDAO;
+    private ComputerDAOInterface computerDaoI = ComputerDAO.COMPUTERDAO;
 
     /**
      */
@@ -21,12 +21,12 @@ public enum ComputerService {
     }
 
     /**
-     * @param cpdto cpdto
+     * @param computerDto computerDto
      * @return long generatedKey
      */
-    public long createComputer(ComputerDTO cpdto) {
+    public long create(ComputerDTO computerDto) {
 
-        return cpdaoi.createComputer(new ComputerMapperService(cpdto).getCp());
+        return computerDaoI.createComputer(new ComputerMapperService(computerDto).getComputer());
 
     }
 
@@ -35,81 +35,129 @@ public enum ComputerService {
      */
     public void delete(String ids) {
 
-        cpdaoi.delete(ids);
+        computerDaoI.delete(ids);
     }
 
     /**
-     * @param cpdto cpdto
+     * @param computerDto computerDto
      */
-    public void update(ComputerDTO cpdto) {
+    public void update(ComputerDTO computerDto) {
 
-        cpdaoi.update(new ComputerMapperService(cpdto).getCp());
+        computerDaoI.update(new ComputerMapperService(computerDto).getComputer());
     }
 
     /**
      * @param id id
-     * @return cpdto cpdto
+     * @return computerDto computerDto
      */
-    public ComputerDTO find(long id) {
+    public ComputerDTO findById(long id) {
 
-        return new ComputerMapperService(cpdaoi.find(id)).getCpdto();
+        return new ComputerMapperService(computerDaoI.findById(id)).getComputerDto();
     }
 
     /**
      * @return int pageNumber
+     * @param page page
      */
-    public int pageNumber() {
-        return cpdaoi.count() / Page.mAXNUMBEROFOBJECTS;
+    public int getNumberOfPageOfAllComputers(Page page) {
+        int count = computerDaoI.getCountOfAllComputers();
+        if (count %  page.maxNumberOfObject == 0) {
+            return (count / page.maxNumberOfObject) - 1;
+        } else {
+            return  count / page.maxNumberOfObject;
+        }
     }
 
     /**
      * @param search String
-     * @param by String
+     * @param page page
      * @return int pageNumber
      */
-    public int pageNumberSearch(String search, String by) {
-        return cpdaoi.countLike(search, by) / Page.mAXNUMBEROFOBJECTS;
+    public int getNumberOfPageOfComputersByName(String search, Page page) {
+        int count = computerDaoI.getCountOfComputersByName(search);
+        if (count %  page.maxNumberOfObject == 0) {
+            return count / page.maxNumberOfObject - 1;
+        } else {
+            return  count / page.maxNumberOfObject;
+        }
+    }
+
+    /**
+     * @param search String
+     * @param page page
+     * @return int pageNumber
+     */
+    public int getNumberOfPageOfComputersByCompanyName(String search, Page page) {
+        int count = computerDaoI.getCountOfComputersByCompanyName(search);
+        if (count % page.maxNumberOfObject == 0) {
+            return count / page.maxNumberOfObject - 1;
+        } else {
+            return  count / page.maxNumberOfObject;
+        }
+
     }
 
     /**
      * @return int nbComputer
      */
-    public int count() {
-        return cpdaoi.count();
+    public int getCountOfAllComputers() {
+        return computerDaoI.getCountOfAllComputers();
     }
 
     /**
      * @param search String
-     * @param by String
      * @return int nbComputer
      */
-    public int countLike(String search, String by) {
-        return cpdaoi.countLike(search, by);
+    public int getCountOfComputersByName(String search) {
+        return computerDaoI.getCountOfComputersByName(search);
+    }
+
+    /**
+     * @param search String
+     * @return int nbComputer
+     */
+    public int getCountOfComputersByCompanyName(String search) {
+        return computerDaoI.getCountOfComputersByCompanyName(search);
     }
 
     /**
      * @return List<ComputerDTO> lcpdto
+     * @param page page
      */
-    public List<ComputerDTO> page() {
-        List<Computer> lcp = cpdaoi.page();
-        List<ComputerDTO> lcpdto = new ArrayList<ComputerDTO>();
-        for (int i = 0; i < lcp.size(); i++) {
-            lcpdto.add(new ComputerMapperService(lcp.get(i)).getCpdto());
+    public List<ComputerDTO> getPageOfComputers(Page page) {
+        List<Computer> computers = computerDaoI.getPageOfComputers(page);
+        List<ComputerDTO> computersDto = new ArrayList<>();
+        for (int i = 0; i < computers.size(); i++) {
+            computersDto.add(new ComputerMapperService(computers.get(i)).getComputerDto());
         }
-        return lcpdto;
+        return computersDto;
     }
     /**
      * @param search String
-     * @param by String
+     * @param page page
      * @return List<ComputerDTO>
      */
-    public List<ComputerDTO> like(String search, String by) {
-        List<Computer> lcp = cpdaoi.like(search, by);
-        List<ComputerDTO> lcpdto = new ArrayList<ComputerDTO>();
-        for (int i = 0; i < lcp.size(); i++) {
-            lcpdto.add(new ComputerMapperService(lcp.get(i)).getCpdto());
+    public List<ComputerDTO> getPageOfComputersByName(String search, Page page) {
+        List<Computer> computers = computerDaoI.getPageOfComputersByName(search, page);
+        List<ComputerDTO> computersDto = new ArrayList<>();
+        for (int i = 0; i < computers.size(); i++) {
+            computersDto.add(new ComputerMapperService(computers.get(i)).getComputerDto());
         }
-        return lcpdto;
+        return computersDto;
+    }
+
+    /**
+     * @param search String
+     * @param page page
+     * @return List<ComputerDTO>
+     */
+    public List<ComputerDTO> getPageOfComputersByCompanyName(String search, Page page) {
+        List<Computer> computers = computerDaoI.getPageOfComputersByCompanyName(search, page);
+        List<ComputerDTO> computersDto = new ArrayList<>();
+        for (int i = 0; i < computers.size(); i++) {
+            computersDto.add(new ComputerMapperService(computers.get(i)).getComputerDto());
+        }
+        return computersDto;
     }
 
 }
