@@ -103,19 +103,19 @@
 	<footer class="navbar-fixed-bottom">
 		<div class="container text-center">
 			<ul class="pagination">
-				<li id='first' class="pages" position="0"><a id="afirst"
-					href='#' position="0" aria-label='First'><span position="0"
+				<li id='first' class="pages"><a id="afirst" position="0"
+					href='?search=${search}&by=${by}&page=1&maxObj=${maxObj}'  aria-label='First'><span position="0"
 						aria-hidden='true'>&laquo;&laquo;</span></a></li>
-				<ex:Page index="${index}" nbPage="${nbpage}"></ex:Page>
-				<li id='last' class="pages" position="${nbpage}"><a id="alast"
-					href='#' position="${nbpage}" aria-label='Last'><span
-						position="${nbpage}" aria-hidden='true'>&raquo;&raquo;</span></a></li>
+				<ex:Page index="${index}" nbPage="${nbpage}" reSearch="${search}" by="${by}" maxObj="${maxObj}"></ex:Page>
+				<li id='last' class="pages" ><a id="alast" position="${nbpage}"
+					href='?search=${search}&by=${by}&page=${nbpage+1}&maxObj=${maxObj}' aria-label='Last'><span
+						position="${nbpage+1}" aria-hidden='true'>&raquo;&raquo;</span></a></li>
 			</ul>
 
 			<div class="btn-group btn-group-sm pull-right" role="group">
-				<button type="button" class="max_obj btn btn-default">10</button>
-				<button type="button" class="max_obj btn btn-default">50</button>
-				<button type="button" class="max_obj btn btn-default">100</button>
+				<a href='?search=${search}&by=${by}&page=${index}&maxObj=10'><button type="button" class="max_obj btn btn-default">10</button></a>
+				<a href='?search=${search}&by=${by}&page=${index}&maxObj=50'><button type="button" class="max_obj btn btn-default">50</button></a>
+				<a href='?search=${search}&by=${by}&page=${index}&maxObj=100'><button type="button" class="max_obj btn btn-default">100</button></a>
 			</div>
 		</div>
 	</footer>

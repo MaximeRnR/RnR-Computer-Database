@@ -27,20 +27,6 @@ public class Page {
         this.index = index;
     }
 
-    /**
-     */
-    public void next() {
-        this.index = this.index + 1;
-    }
-
-    /**
-     */
-    public void previous() {
-
-        this.index = this.index - 1;
-
-    }
-
     public int getMaxNumberOfObject() {
         return maxNumberOfObject;
     }

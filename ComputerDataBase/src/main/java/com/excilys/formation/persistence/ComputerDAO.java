@@ -90,12 +90,12 @@ public enum ComputerDAO implements ComputerDAOInterface {
                     preparedStmt.setLong((i + 1), computer.getId());
                 }
             }
-
             preparedStmt.execute();
             logger.info("Computer " + computer.getId() + " deleted");
             return true;
         } catch (NumberFormatException | SQLException e) {
             logger.error("Computer not deleted ");
+            e.printStackTrace();
             throw new PersistenceException("Computer not deleted ", e);
         }
     }

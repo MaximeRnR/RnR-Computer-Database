@@ -33,7 +33,7 @@ public enum ConnectionDB {
                 props.load(resourceStream);
                 config = new HikariConfig(props);
 
-                config.setMaximumPoolSize(20);
+                config.setMaximumPoolSize(100);
                 config.setMinimumIdle(5);
                 config.setIdleTimeout(60 * 1000);
                 config.setConnectionTimeout(1000);
@@ -49,12 +49,29 @@ public enum ConnectionDB {
      * @return Connection conn;
      */
     public Connection getConn() {
-        try {
-            return hs.getConnection();
-        } catch (SQLException e) {
-            logger.error("Conn : cannot be instanciated");
-            throw new PersistenceException(e);
-        }
-    }
+        ThreadLocal<Connection> threadLocalConnection = new ThreadLocal<Connection>() {
+
+          @Override
+          protected Connection initialValue() {
+            try {
+              return hs.getConnection();
+            } catch (SQLException e) {
+              throw new PersistenceException(e.getMessage());
+            }
+          }
+
+          @Override
+          public void remove() {
+            super.remove();
+            try {
+              this.get().close();
+            } catch (Exception e) {
+              throw new PersistenceException(e.getMessage());
+            }
+          }
+
+        };
+        return threadLocalConnection.get();
+      }
 
 }

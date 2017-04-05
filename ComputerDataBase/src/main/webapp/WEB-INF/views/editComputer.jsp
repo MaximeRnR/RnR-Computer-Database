@@ -24,27 +24,27 @@
             <div class="row">
                 <div class="col-xs-8 col-xs-offset-2 box">
                     <div class="label label-default pull-right">
-                        id: ${cp.id}
+                        id: ${computer.id}
                     </div>
                     <h1>Edit Computer</h1>
 
                     <form action="edit" method="POST">
-                        <input type="hidden" name="id" value="${cp.id}" id="id"/>
+                        <input type="hidden" name="id" value="${computer.id}" id="id"/>
                         <fieldset>
                             <div class="form-group">
                                 <label for="computerName">Computer name</label>
                                 <input type="text" class="form-control" name="name" id="computerName" placeholder="Computer name" 
-                                value="${cp.name}">
+                                value="${computer.name}">
                             </div>
                             <div class="form-group">
                                 <label for="introduced">Introduced date</label>
                                 <input type="date" class="form-control" name="introduced" id="introduced" placeholder="Introduced date" 
-                                value="${cp.dIntroduced}">
+                                value="${computer.dIntroduced}">
                             </div>
                             <div class="form-group">
                                 <label for="discontinued">Discontinued date</label>
                                 <input type="date" class="form-control" name="discontinued" id="discontinued" placeholder="Discontinued date" 
-                                value="${cp.dDiscontinued}">
+                                value="${computer.dDiscontinued}">
                             </div>
                             <div class="form-group">
                                 <label for="companyId">Company</label>

@@ -114,8 +114,7 @@ public class SeleniumTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("submit")));
         driver.findElement(By.id("submit")).click();
         driver.navigate().to(homeDir + "/dashboard");
-        driver.findElement(By.id("alast")).click();
-        driver.navigate().to(homeDir + "/dashboard");
+        driver.navigate().to(homeDir + "/dashboard?page=" + driver.findElement(By.id("alast")).getAttribute("position"));
         List<WebElement> tableRows = driver.findElements(By.tagName("tr"));
         element = tableRows.get((tableRows.size() - 1)).findElements(By.tagName("td")).get(1);
         Assert.assertEquals("Test", element.getText());

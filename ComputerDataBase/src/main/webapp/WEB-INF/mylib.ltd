@@ -19,5 +19,13 @@
       <required>true</required>
      <rtexprvalue>true</rtexprvalue>
     </attribute>
+    <attribute>
+      <name>reSearch</name>
+     <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>by</name>
+     <rtexprvalue>true</rtexprvalue>
+    </attribute>
   </tag>
 </taglib>

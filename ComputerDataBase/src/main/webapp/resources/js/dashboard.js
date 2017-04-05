@@ -93,7 +93,7 @@ $(document).keydown(function(e) {
 });
 
 
-
+/*
 //Next page function
 $("#next").click(function(e){
 	$.post( window.location, {action:"next"}, function( data ) {
@@ -114,12 +114,13 @@ $(".pages").click(function(e){
 	});
 	location.reload();
 });
+
 //Change obj par page
 $(".max_obj").click(function(e){
 	$.post( window.location, {action:"change_max_obj", num:$(e.target).text()}, function( data ) {
 	});
 	location.reload();
 });
-
+*/
 
 
