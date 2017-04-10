@@ -88,7 +88,6 @@ public class App {
                     }
                     switch (pageTest) {
                         case 1:
-                            Page.PAGE.previous();
                             lcp = cpui.page();
                             for (int i = 0; i < lcp.size(); i++) {
 
@@ -97,7 +96,6 @@ public class App {
                             }
                             break;
                         case 2:
-                            Page.PAGE.next();
                             lcp = cpui.page();
                             for (int i = 0; i < lcp.size(); i++) {
 

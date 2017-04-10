@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 	$('#computerName').change(function(){
 
-		if(!$('#computerName').val().match("^[a-zA-Z ]+$")) {
+		if(!$('#computerName').val().match("^[a-zA-Z0-9 -._]+$")) {
 			$('#computerName').parent().addClass('has-error');
 			nameisok = false;
 			allisright();

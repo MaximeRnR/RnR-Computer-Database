@@ -22,7 +22,7 @@ public interface ComputerDAOInterface {
      * @param ids Ids
      * @return boolean boolean
      */
-    boolean delete(String ids);
+    boolean delete(List<Long> ids);
 
     /**
      * @param computer Computer

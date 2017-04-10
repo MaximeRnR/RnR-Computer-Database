@@ -13,6 +13,7 @@ import com.excilys.formation.ui.Page;
 public enum ComputerService {
     COMPUTERSERVICE;
     private ComputerDAOInterface computerDaoI = ComputerDAO.COMPUTERDAO;
+    private int nbComputers = 0;
 
     /**
      */
@@ -25,7 +26,7 @@ public enum ComputerService {
      * @return long generatedKey
      */
     public long create(ComputerDTO computerDto) {
-
+        nbComputers++;
         return computerDaoI.createComputer(new ComputerMapperService(computerDto).getComputer());
 
     }
@@ -33,8 +34,8 @@ public enum ComputerService {
     /**
      * @param ids ids
      */
-    public void delete(String ids) {
-
+    public void delete(List<Long> ids) {
+        nbComputers--;
         computerDaoI.delete(ids);
     }
 
@@ -60,7 +61,12 @@ public enum ComputerService {
      * @param page page
      */
     public int getNumberOfPageOfAllComputers(Page page) {
-        int count = computerDaoI.getCountOfAllComputers();
+        int count = 0;
+        if (nbComputers != 0) {
+            count = nbComputers;
+        } else {
+            count = computerDaoI.getCountOfAllComputers();
+        }
         if (count %  page.maxNumberOfObject == 0) {
             return (count / page.maxNumberOfObject) - 1;
         } else {
@@ -101,7 +107,12 @@ public enum ComputerService {
      * @return int nbComputer
      */
     public int getCountOfAllComputers() {
-        return computerDaoI.getCountOfAllComputers();
+        if (nbComputers != 0) {
+            return nbComputers;
+        } else {
+        nbComputers = computerDaoI.getCountOfAllComputers();
+        return  nbComputers;
+        }
     }
 
     /**
@@ -127,6 +138,7 @@ public enum ComputerService {
     public List<ComputerDTO> getPageOfComputers(Page page) {
         List<Computer> computers = computerDaoI.getPageOfComputers(page);
         List<ComputerDTO> computersDto = new ArrayList<>();
+        System.out.println();
         for (int i = 0; i < computers.size(); i++) {
             computersDto.add(new ComputerMapperService(computers.get(i)).getComputerDto());
         }
@@ -143,6 +155,7 @@ public enum ComputerService {
         for (int i = 0; i < computers.size(); i++) {
             computersDto.add(new ComputerMapperService(computers.get(i)).getComputerDto());
         }
+
         return computersDto;
     }
 

@@ -87,7 +87,7 @@
 						<tr>
 							<td class="editMode" style="display: none"><input
 								type="checkbox" class="cb" value="<c:out value="${computerDto.id}"/>" /></td>
-							<td><a href="edit?id=<c:out value="${computerDto.id}"/>"><c:out
+							<td><a id='id' href="edit?id=<c:out value="${computerDto.id}"/>"><c:out
 										value="${computerDto.name}" /></a></td>
 							<td><c:out value="${computerDto.dIntroduced}" /></td>
 							<td><c:out value="${computerDto.dDiscontinued}" /></td>

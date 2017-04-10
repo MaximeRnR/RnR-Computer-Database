@@ -1,6 +1,7 @@
 package com.excilys.formation.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 // Import required java libraries
 
@@ -12,9 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
 import com.excilys.formation.dto.ComputerDTO;
 import com.excilys.formation.service.ComputerService;
 import com.excilys.formation.ui.Page;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // Extend HttpServlet class
 @WebServlet(name = "DashboardServlet", urlPatterns = { "/dashboard" })
@@ -26,10 +32,7 @@ public class DashboardServlet extends HttpServlet {
 
     private ComputerService computerService;
     private List<ComputerDTO> computersDto;
-    private int nbPages;
-    private int indexPage;
-    private int nbComputers;
-    private Page page;
+    private Logger logger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 
     /**
      * @throws ServletException serlvetexcp
@@ -47,6 +50,10 @@ public class DashboardServlet extends HttpServlet {
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        int nbPages;
+        int indexPage;
+        int nbComputers = computerService.getCountOfAllComputers();
+        Page page;
         page = new Page();
         nbPages = computerService.getNumberOfPageOfAllComputers(page);
         request.setAttribute("search", "");
@@ -55,7 +62,8 @@ public class DashboardServlet extends HttpServlet {
         if (request.getParameter("page") != null && request.getParameter("page") != "") {
             if (Integer.parseInt(request.getParameter("page")) < 1
                     || Integer.parseInt(request.getParameter("page")) > nbPages + 1) {
-                System.out.println("tentative");
+                //System.out.println("tentative");
+                logger.error("DASHSERVLET page");
             } else {
                 page.setIndex(Integer.parseInt(request.getParameter("page")) - 1);
             }
@@ -64,7 +72,8 @@ public class DashboardServlet extends HttpServlet {
             if (Integer.parseInt(request.getParameter("maxObj")) != 10
                     && Integer.parseInt(request.getParameter("maxObj")) != 50
                     && Integer.parseInt(request.getParameter("maxObj")) != 100) {
-                System.out.println("tentative2");
+                //System.out.println("tentative2");
+                logger.error("DASHSERVLET maxObj");
 
             } else {
                 request.setAttribute("maxObj", request.getParameter("maxObj"));
@@ -116,7 +125,12 @@ public class DashboardServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         if (request.getParameter("selection") != null && request.getParameter("selection").matches("^[0-9,]+$")) {
-            computerService.delete(request.getParameter("selection"));
+           String[] selection = request.getParameter("selection").split(",");
+           List<Long> idTab = new ArrayList<Long>();
+            for (int i = 0; i < selection.length; i++) {
+                idTab.add(i, (long) Integer.parseInt(selection[i]));
+            }
+            computerService.delete(idTab);
         }
 
         this.doGet(request, response);

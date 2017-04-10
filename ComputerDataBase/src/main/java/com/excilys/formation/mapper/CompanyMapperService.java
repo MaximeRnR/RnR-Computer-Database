@@ -13,10 +13,13 @@ public class CompanyMapperService {
      * @throws ComputerDBException cdbex
      */
     public CompanyMapperService(Company company) throws ComputerDBException {
-
-        this.company = company;
-        this.companyDto = new CompanyDTO(this.company.getId(), this.company.getName());
-
+        if (company == null) {
+            this.company = new Company(0, null);
+            this.companyDto = new CompanyDTO(0, null);
+        } else {
+            this.company = company;
+            this.companyDto = new CompanyDTO(this.company.getId(), this.company.getName());
+        }
     }
 
     /**
@@ -25,9 +28,13 @@ public class CompanyMapperService {
      */
     public CompanyMapperService(CompanyDTO companyDto) throws ComputerDBException {
 
-        this.companyDto = companyDto;
-        this.company = new Company(this.companyDto.getId(), this.companyDto.getName());
-
+        if (companyDto == null) {
+            this.company = new Company(0, null);
+            this.companyDto = new CompanyDTO(0, null);
+        } else {
+            this.companyDto = companyDto;
+            this.company = new Company(this.companyDto.getId(), this.companyDto.getName());
+        }
     }
 
     public Company getCompany() {

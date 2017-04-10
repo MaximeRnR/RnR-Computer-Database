@@ -6,8 +6,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.excilys.formation.util.PersistenceException;
 import com.zaxxer.hikari.HikariConfig;
@@ -19,7 +19,8 @@ public enum ConnectionDB {
     private Connection conn;
     HikariConfig config;
     HikariDataSource hs;
-    private Logger logger = LogManager.getRootLogger();
+    private Logger logger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
+    private final ThreadLocal<Connection> threadLocal = new ThreadLocal<>();
 
     /**
      * @throws PersistenceException cdbexc
@@ -32,7 +33,6 @@ public enum ConnectionDB {
             try (InputStream resourceStream = loader.getResourceAsStream(resourceName)) {
                 props.load(resourceStream);
                 config = new HikariConfig(props);
-
                 config.setMaximumPoolSize(100);
                 config.setMinimumIdle(5);
                 config.setIdleTimeout(60 * 1000);
@@ -40,38 +40,32 @@ public enum ConnectionDB {
                 config.setMaxLifetime(287400);
                 hs = new HikariDataSource(config);
             }
-        } catch (IllegalArgumentException | IOException e) {
-            logger.error("ConnectionDB : cannot be instanciated");
+        } catch (IOException e) {
+            logger.error("ConnectionDB : " + e.getMessage());
             throw new PersistenceException(e);
         }
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                hs.close();
+            }
+        });
     }
     /**
      * @return Connection conn;
      */
     public Connection getConn() {
-        ThreadLocal<Connection> threadLocalConnection = new ThreadLocal<Connection>() {
 
-          @Override
-          protected Connection initialValue() {
-            try {
-              return hs.getConnection();
-            } catch (SQLException e) {
-              throw new PersistenceException(e.getMessage());
+
+        try {
+            if (threadLocal.get() == null || threadLocal.get().isClosed()) {
+                threadLocal.set(hs.getConnection());
+
             }
-          }
-
-          @Override
-          public void remove() {
-            super.remove();
-            try {
-              this.get().close();
-            } catch (Exception e) {
-              throw new PersistenceException(e.getMessage());
-            }
-          }
-
-        };
-        return threadLocalConnection.get();
-      }
+        } catch (SQLException e) {
+            throw new PersistenceException(e.getMessage());
+        }
+        return threadLocal.get();
+    }
 
 }

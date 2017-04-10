@@ -50,9 +50,10 @@
                                 <label for="companyId">Company</label>
                                 <select name="companyId" class="form-control" id="companyId" >
                                 	<option value='0'> -- </option>
-                                    <c:forEach items="${lcydto}" var="cydto">
-										<option value="<c:out value="${cydto.id}"/>">
-											<c:out value="${cydto.name}" /></option>
+                                    <c:forEach items="${companiesDto}" var="companydto">
+										<option value="<c:out value="${companydto.id}"/>" 
+										<c:if test="${computer.cydto.id == companydto.id}"> selected="selected" </c:if>>
+											<c:out value="${companydto.name}" /></option>
 									</c:forEach>
                                 </select>
                             </div>            
