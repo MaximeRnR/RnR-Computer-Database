@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
 import com.excilys.formation.dto.ComputerDTO;
 import com.excilys.formation.service.ComputerService;
 import com.excilys.formation.ui.Page;

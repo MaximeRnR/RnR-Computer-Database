@@ -2,6 +2,7 @@ package com.excilys.formation.ui;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -49,12 +50,14 @@ public class ComputerUI {
         System.out.println();
         Scanner scan = new Scanner(System.in);
         String ids = "0";
+        List<Long> idTabs = new ArrayList<>();
         try {
             ids = scan.next();
+            idTabs.add((long) Integer.parseInt(ids));
         } catch (ComputerDBException | InputMismatchException e) {
             throw new ComputerDBException("Not a Number", e);
         }
-        cpS.delete(ids);
+        cpS.delete(idTabs);
 
     }
 
@@ -133,8 +136,7 @@ public class ComputerUI {
     public List<ComputerDTO> firstPage() throws ComputerDBException {
 
         cpS = ComputerService.COMPUTERSERVICE;
-        page = Page.PAGE;
-        System.out.println("There are " + cpS.getNumberOfPageOfAllComputers() + ".");
+        System.out.println("There are " + cpS.getNumberOfPageOfAllComputers(page) + ".");
         System.out.print("Enter a page : ");
         System.out.println();
         Scanner scan = new Scanner(System.in);
@@ -146,7 +148,7 @@ public class ComputerUI {
         }
         page.setIndex(index);
 
-        return cpS.getPageOfComputers();
+        return cpS.getPageOfComputers(page);
     }
 
     /**
@@ -155,7 +157,7 @@ public class ComputerUI {
      */
     public List<ComputerDTO> page() throws ComputerDBException {
 
-        return cpS.getPageOfComputers();
+        return cpS.getPageOfComputers(page);
     }
 
 }

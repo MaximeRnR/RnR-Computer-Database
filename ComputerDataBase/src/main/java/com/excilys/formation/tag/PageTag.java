@@ -7,6 +7,7 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 
+
 public class PageTag extends SimpleTagSupport {
     private int nbPage;
     private int index;

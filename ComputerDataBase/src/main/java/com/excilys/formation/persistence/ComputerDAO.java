@@ -272,25 +272,27 @@ public enum ComputerDAO implements ComputerDAOInterface {
                 sql += ";";
                 try (PreparedStatement preparedStmt2 = conn.prepareStatement(sql);) {
                     result.absolute(0);
-                    int i = 1;
-                    while (result.next()) {
-                        preparedStmt2.setInt(i, result.getInt(1));
-                        i++;
-                    }
-                    preparedStmt2.execute();
-                    try (ResultSet result2 = preparedStmt2.getResultSet();) {
-                        while (result2.next()) {
-                            return result2.getInt(1);
+                    if (result.first()) {
+                        result.absolute(0);
+                        int i = 1;
+                        while (result.next()) {
+                            preparedStmt2.setInt(i, result.getInt(1));
+                            i++;
+                        }
+                        preparedStmt2.execute();
+                        try (ResultSet result2 = preparedStmt2.getResultSet();) {
+                            while (result2.next()) {
+                                return result2.getInt(1);
+                            }
                         }
                     }
-
+                    return 0;
                 }
             }
         } catch (SQLException e) {
             logger.error("Computer Count By Company Name not found");
             throw new PersistenceException("Computer Count By Company Name not found", e);
         }
-        throw new PersistenceException("Computer Count By Company Name not found");
     }
 
 
@@ -357,13 +359,21 @@ public enum ComputerDAO implements ComputerDAOInterface {
                 sql += " LIMIT ? OFFSET ?;";
                 try (PreparedStatement preparedStmt2 = conn.prepareStatement(sql);) {
                     result.absolute(0);
-                    int i = 1;
-                    while (result.next()) {
-                        preparedStmt2.setInt(i, result.getInt(1));
-                        i++;
+                    if (result.first()) {
+                        result.absolute(0);
+                        int i = 1;
+                        while (result.next()) {
+                            preparedStmt2.setInt(i, result.getInt(1));
+                            i++;
+                        }
+                        preparedStmt2.setInt(i, page.maxNumberOfObject);
+                        preparedStmt2.setInt(i + 1, (page.getIndex()) * page.maxNumberOfObject);
+                    } else {
+                        preparedStmt2.setInt(1, 0);
+                        preparedStmt2.setInt(2, page.maxNumberOfObject);
+                        preparedStmt2.setInt(3, (page.getIndex()) * page.maxNumberOfObject);
                     }
-                    preparedStmt2.setInt(i, page.maxNumberOfObject);
-                    preparedStmt2.setInt(i + 1, (page.getIndex()) * page.maxNumberOfObject);
+                    System.out.println(preparedStmt2.toString());
                     preparedStmt2.execute();
                     try (ResultSet result2 = preparedStmt2.getResultSet();) {
                         Computer computer;

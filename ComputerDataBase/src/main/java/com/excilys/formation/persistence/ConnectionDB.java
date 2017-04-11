@@ -16,7 +16,6 @@ import com.zaxxer.hikari.HikariDataSource;
 //Singleton Connection
 public enum ConnectionDB {
     CONNECTION;
-    private Connection conn;
     HikariConfig config;
     HikariDataSource hs;
     private Logger logger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);

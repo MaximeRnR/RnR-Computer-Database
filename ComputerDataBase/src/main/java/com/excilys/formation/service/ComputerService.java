@@ -13,7 +13,6 @@ import com.excilys.formation.ui.Page;
 public enum ComputerService {
     COMPUTERSERVICE;
     private ComputerDAOInterface computerDaoI = ComputerDAO.COMPUTERDAO;
-    private int nbComputers = 0;
 
     /**
      */
@@ -26,7 +25,6 @@ public enum ComputerService {
      * @return long generatedKey
      */
     public long create(ComputerDTO computerDto) {
-        nbComputers++;
         return computerDaoI.createComputer(new ComputerMapperService(computerDto).getComputer());
 
     }
@@ -35,7 +33,6 @@ public enum ComputerService {
      * @param ids ids
      */
     public void delete(List<Long> ids) {
-        nbComputers--;
         computerDaoI.delete(ids);
     }
 
@@ -61,12 +58,7 @@ public enum ComputerService {
      * @param page page
      */
     public int getNumberOfPageOfAllComputers(Page page) {
-        int count = 0;
-        if (nbComputers != 0) {
-            count = nbComputers;
-        } else {
-            count = computerDaoI.getCountOfAllComputers();
-        }
+        int count = computerDaoI.getCountOfAllComputers();
         if (count %  page.maxNumberOfObject == 0) {
             return (count / page.maxNumberOfObject) - 1;
         } else {
@@ -107,13 +99,8 @@ public enum ComputerService {
      * @return int nbComputer
      */
     public int getCountOfAllComputers() {
-        if (nbComputers != 0) {
-            return nbComputers;
-        } else {
-        nbComputers = computerDaoI.getCountOfAllComputers();
-        return  nbComputers;
+            return computerDaoI.getCountOfAllComputers();
         }
-    }
 
     /**
      * @param search String
