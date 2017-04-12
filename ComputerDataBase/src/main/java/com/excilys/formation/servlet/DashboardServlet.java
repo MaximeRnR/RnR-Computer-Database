@@ -21,7 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 // Extend HttpServlet class
-@WebServlet(name = "Dashboard", urlPatterns = { "/dashboard" })
+@WebServlet(name = "DashboardServlet", urlPatterns = { "/dashboard" })
 public class DashboardServlet extends HttpServlet {
 
     /**

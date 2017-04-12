@@ -19,7 +19,7 @@ import com.excilys.formation.service.CompanyService;
 import com.excilys.formation.service.ComputerService;
 
 // Extend HttpServlet class
-@WebServlet(name = "AddComputer", urlPatterns = { "/add" })
+@WebServlet(name = "AddComputerServlet", urlPatterns = { "/add" })
 public class AddComputerServlet extends HttpServlet {
 
     /**

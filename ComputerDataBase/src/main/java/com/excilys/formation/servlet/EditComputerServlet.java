@@ -21,7 +21,7 @@ import com.excilys.formation.service.CompanyService;
 import com.excilys.formation.service.ComputerService;
 
 // Extend HttpServlet class
-@WebServlet(name = "EditComputer", urlPatterns = { "/edit" })
+@WebServlet(name = "EditComputerServlet", urlPatterns = { "/edit" })
 public class EditComputerServlet extends HttpServlet {
     private ComputerService computerService;
     private CompanyService companyService;

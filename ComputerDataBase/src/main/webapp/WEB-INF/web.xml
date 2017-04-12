@@ -6,21 +6,21 @@
 	<display-name>CDB-app</display-name>
 
 	<servlet>
-		<servlet-name>Dashboard</servlet-name>
+		<servlet-name>DashboardServlet</servlet-name>
 		<servlet-class>DashboardServlet</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>AddComputer</servlet-name>
+		<servlet-name>AddComputerServlet</servlet-name>
 		<servlet-class>AddComputerServlet</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>EditComputer</servlet-name>
+		<servlet-name>EditComputerServlet</servlet-name>
 		<servlet-class>EditComputerServlet</servlet-class>
 	</servlet>
 	
 
 	<welcome-file-list>
-		<welcome-file>dashboard</welcome-file>
+		<welcome-file>/dashboard</welcome-file>
 	</welcome-file-list>
 
 	<jsp-config>
