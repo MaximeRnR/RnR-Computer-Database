@@ -7,15 +7,15 @@
 
 	<servlet>
 		<servlet-name>DashboardServlet</servlet-name>
-		<servlet-class>DashboardServlet</servlet-class>
+		<servlet-class>com.excilys.formation.servlet.DashboardServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>AddComputerServlet</servlet-name>
-		<servlet-class>AddComputerServlet</servlet-class>
+		<servlet-class>com.excilys.formation.servlet.AddComputerServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>EditComputerServlet</servlet-name>
-		<servlet-class>EditComputerServlet</servlet-class>
+		<servlet-class>com.excilys.formation.servlet.EditComputerServlet</servlet-class>
 	</servlet>
 	
 
