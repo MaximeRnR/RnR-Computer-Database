@@ -17,18 +17,6 @@
 		<servlet-name>EditComputer</servlet-name>
 		<servlet-class>EditComputerServlet</servlet-class>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>Dashboard</servlet-name>
-		<url-pattern>/dashboard</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>AddComputer</servlet-name>
-		<url-pattern>/add</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>EditComputer</servlet-name>
-		<url-pattern>/edit</url-pattern>
-	</servlet-mapping>
 
 	<welcome-file-list>
 		<welcome-file>dashboard</welcome-file>
