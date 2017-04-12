@@ -27,5 +27,9 @@
       <name>by</name>
      <rtexprvalue>true</rtexprvalue>
     </attribute>
+    <attribute>
+      <name>maxObj</name>
+     <rtexprvalue>true</rtexprvalue>
+    </attribute>
   </tag>
 </taglib>
