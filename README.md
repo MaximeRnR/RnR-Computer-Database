@@ -17,7 +17,7 @@
 14. selenium-server
 
 
-### Docker 
+# Docker 
 
 ## Setup des dockers
 
@@ -33,7 +33,7 @@ docker build -t mrnrtomcat .
 
 ## Run on host
 
-# Run your own jenkins and configure it
+Run your own jenkins and configure it
 
 ```bash
 docker run -d --name MrnrJenkins --network network_cdb --ip 172.18.0.3  -v CDB_Volume:/cdb -v WAR:/cdb_war -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker -p 8085:8080 mrnrjenkins
@@ -44,7 +44,7 @@ Configure jenkins jobs
 
 ## Run in jenkins container
 
-# Test job 
+### Test job 
 
 ```bash
 sudo cp -rf /var/jenkins_home/workspace/ComputerDatabase_test/ComputerDataBase/. /cdb
@@ -53,7 +53,7 @@ sudo docker run -d -it --name MrnrMysqlTest --network network_cdb --ip 172.18.0.
 sudo docker run --network network_cdb --ip 172.18.0.7 --name MrnrMavenTest -v CDB_Volume:/usr/src/app mrnrmaventest:3-jdk-8
 ```
 
-# Prod job 
+### Prod job 
 
 ```bash
 sudo docker stop MrnrMysqlTest MrnrMavenTest
