@@ -22,7 +22,8 @@
 ## Setup des dockers
 
 ```bash
-docker network create network_cdb
+docker network create --subnet 172.20.0.0/16 --gateway 172.20.0.1 --driver bridge prod_network
+docker network create --subnet 172.18.0.0/16 --gateway 172.18.0.1 --driver bridge prod_network
 
 docker volume create --name WAR
 docker volume create --name CDB_Volume
@@ -31,15 +32,15 @@ docker build -t mrnrjenkins .
 docker build -t mrnrmaventest:3-jdk-8 .
 docker build -t mrnrmavenprod:3-jd-8 .
 docker build -t mrnrtomcat .
-
 ```
+
 ## Run on host
 
 Run your own jenkins and configure it
 
 ```bash
-docker run -d --name MrnrJenkins --network network_cdb --ip 172.18.0.3  -v CDB_Volume:/cdb -v WAR:/cdb_war -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker -p 8085:8080 mrnrjenkins
-docker exec Mrnrjenkins cat /var/jenkins_home/secrets/initialAdminPassword
+docker run -d --name MrnrJenkins  -v CDB_Volume:/cdb -v WAR:/cdb_war -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker -p 8085:8080 mrnrjenkins
+docker exec MrnrJenkins cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 
 Configure jenkins jobs 
@@ -51,8 +52,8 @@ Configure jenkins jobs
 ```bash
 sudo cp -rf /var/jenkins_home/workspace/ComputerDatabase_test/ComputerDataBase/. /cdb
 sudo rm -rf ./*
-sudo docker run -d -it --name MrnrMysqlTest --network network_cdb --ip 172.18.0.6 mrnrmysql:5.5
-sudo docker run --network network_cdb --ip 172.18.0.7 --name MrnrMavenTest -v CDB_Volume:/usr/src/app mrnrmaventest:3-jdk-8
+sudo docker run -d -it --name MrnrMysqlTest --network test_network --ip 172.18.0.6 mrnrmysql:5.5
+sudo docker run --network test_network --ip 172.18.0.7 --name MrnrMavenTest -v CDB_Volume:/usr/src/app mrnrmaventest:3-jdk-8
 ```
 
 ### Prod job 
@@ -62,15 +63,15 @@ sudo docker stop MrnrMysqlTest MrnrMavenTest
 sudo docker rm MrnrMysqlTest MrnrMavenTest
 
 if [ ! "$(sudo docker ps -q -f name=MrnrTomcatProd)" ]; then
-	sudo docker run -d --network=network_cdb --ip 172.18.0.5 -it -p 8888:8181 --name MrnrTomcatProd -v WAR:/usr/local/tomcat/webapps mrnrtomcat
+	sudo docker run -d --network prod_network --ip 172.20.0.5 -it -p 8888:8181 --name MrnrTomcatProd -v WAR:/usr/local/tomcat/webapps mrnrtomcat
 fi
 
 if [ ! "$(sudo docker ps -q -f name=MrnrMysqlProd)" ]; then
-	sudo docker run -d -it --name MrnrMysqlProd --network network_cdb --ip 172.18.0.2 mrnrmysql:5.5
+	sudo docker run -d -it --name MrnrMysqlProd --network prod_network --ip 172.20.0.2 mrnrmysql:5.5
 fi
 
 if [ ! "$(sudo docker ps -a -q -f name=MrnrMavenProd)" ]; then
-	sudo docker run --network network_cdb --ip 172.18.0.4 --name MrnrMavenProd -v CDB_Volume:/usr/src/app mrnrmavenprod:3-jdk-8
+	sudo docker run --network prod_network--ip 172.20.0.4 --name MrnrMavenProd -v CDB_Volume:/usr/src/app mrnrmavenprod:3-jdk-8
 else 
 	sudo docker start -i MrnrMavenProd
 fi
