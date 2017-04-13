@@ -1,0 +1,9 @@
+FROM tomcat:8.0-jre8
+RUN mkdir -p /cdb
+
+
+RUN sed -ie 's/port="8080"/port="8181"/g' conf/server.xml
+RUN sed -ie 's/port="8009"/port="8010"/g' conf/server.xml
+
+RUN ./bin/catalina.sh start
+
