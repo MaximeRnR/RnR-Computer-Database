@@ -35,8 +35,10 @@ docker build -t mrnrtomcat .
 
 # Run your own jenkins and configure it
 
+```bash
 docker run -d --name MrnrJenkins --network network_cdb --ip 172.18.0.3  -v CDB_Volume:/cdb -v WAR:/cdb_war -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker -p 8085:8080 mrnrjenkins
 docker exec Mrnrjenkins cat /var/jenkins_home/secrets/initialAdminPassword
+```
 
 Configure jenkins jobs 
 
