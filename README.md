@@ -23,7 +23,7 @@
 
 ```bash
 docker network create --subnet 172.20.0.0/16 --gateway 172.20.0.1 --driver bridge prod_network
-docker network create --subnet 172.18.0.0/16 --gateway 172.18.0.1 --driver bridge prod_network
+docker network create --subnet 172.18.0.0/16 --gateway 172.18.0.1 --driver bridge test_network
 
 docker volume create --name WAR
 docker volume create --name CDB_Volume
