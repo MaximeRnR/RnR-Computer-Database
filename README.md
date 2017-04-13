@@ -27,23 +27,51 @@ docker volume create --name WAR
 docker volume create --name CDB_Volume
 
 docker build -t mrnrjenkins .
-docker build -t mrnrmaven:3-jdk-8 .
+docker build -t mrnrmaventest:3-jdk-8 .
+docker build -t mrnrmavenprod:3-jd-8 .
 docker build -t mrnrtomcat .
 
-## RUN
+## Run on host
 
-docker run -d -it --name MrnrMysql --network network_cdb --ip 172.18.0.2 mrnrmysql
+# Run your own jenkins and configure it
+
 docker run -d --name MrnrJenkins --network network_cdb --ip 172.18.0.3  -v CDB_Volume:/cdb -v WAR:/cdb_war -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker -p 8085:8080 mrnrjenkins
 docker exec Mrnrjenkins cat /var/jenkins_home/secrets/initialAdminPassword
-docker run --network=network_cdb --network network_cdb --ip 172.18.0.4 --name MrnrMaven -v CDB_Volume:/usr/src/app mrnrmaven
-docker run --network=network_cdb --ip 172.18.0.5 -it -p 8888:8181 --name MrnrTomcat -v WAR:/usr/local/tomcat/webapps mrnrtomcat
 
+Configure jenkins jobs 
 
-## Dans le build Jenkins 
+## Run in jenkins container
 
-sudo cp -rf /var/jenkins_home/workspace/ComputerDatabase/ComputerDataBase/. /cdb
+# Test job 
+
+```bash
+sudo cp -rf /var/jenkins_home/workspace/ComputerDatabase_test/ComputerDataBase/. /cdb
 sudo rm -rf ./*
-sudo docker start -i MrnrMaven
+sudo docker run -d -it --name MrnrMysqlTest --network network_cdb --ip 172.18.0.6 mrnrmysql:5.5
+sudo docker run --network network_cdb --ip 172.18.0.7 --name MrnrMavenTest -v CDB_Volume:/usr/src/app mrnrmaventest:3-jdk-8
+```
+
+# Prod job 
+
+```bash
+sudo docker stop MrnrMysqlTest MrnrMavenTest
+sudo docker rm MrnrMysqlTest MrnrMavenTest
+
+if [ ! "$(sudo docker ps -q -f name=MrnrTomcatProd)" ]; then
+	sudo docker run -d --network=network_cdb --ip 172.18.0.5 -it -p 8888:8181 --name MrnrTomcatProd -v WAR:/usr/local/tomcat/webapps mrnrtomcat
+fi
+
+if [ ! "$(sudo docker ps -q -f name=MrnrMysqlProd)" ]; then
+	sudo docker run -d -it --name MrnrMysqlProd --network network_cdb --ip 172.18.0.2 mrnrmysql:5.5
+fi
+
+if [ ! "$(sudo docker ps -a -q -f name=MrnrMavenProd)" ]; then
+	sudo docker run --network network_cdb --ip 172.18.0.4 --name MrnrMavenProd -v CDB_Volume:/usr/src/app mrnrmavenprod:3-jdk-8
+else 
+	sudo docker start -i MrnrMavenProd
+fi
+
 sudo cp -a /cdb/target/ComputerDatabase-0.0.1-SNAPSHOT.war /cdb_war
 sudo rm -rf /cdb/*
+```
 
