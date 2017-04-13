@@ -21,6 +21,7 @@
 
 ## Setup des dockers
 
+```bash
 docker network create network_cdb
 
 docker volume create --name WAR
@@ -31,6 +32,7 @@ docker build -t mrnrmaventest:3-jdk-8 .
 docker build -t mrnrmavenprod:3-jd-8 .
 docker build -t mrnrtomcat .
 
+```
 ## Run on host
 
 Run your own jenkins and configure it
