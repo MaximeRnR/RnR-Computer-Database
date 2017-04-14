@@ -113,9 +113,9 @@
 			</ul>
 
 			<div class="btn-group btn-group-sm pull-right" role="group">
-				<a href='?search=${search}&by=${by}&page=${index}&maxObj=10'><button type="button" class="max_obj btn btn-default">10</button></a>
-				<a href='?search=${search}&by=${by}&page=${index}&maxObj=50'><button type="button" class="max_obj btn btn-default">50</button></a>
-				<a href='?search=${search}&by=${by}&page=${index}&maxObj=100'><button type="button" class="max_obj btn btn-default">100</button></a>
+				<a href='?search=${search}&by=${by}&page=1&maxObj=10'><button type="button" class="max_obj btn btn-default">10</button></a>
+				<a href='?search=${search}&by=${by}&page=1&maxObj=50'><button type="button" class="max_obj btn btn-default">50</button></a>
+				<a href='?search=${search}&by=${by}&page=1&maxObj=100'><button type="button" class="max_obj btn btn-default">100</button></a>
 			</div>
 		</div>
 	</footer>
