@@ -42,6 +42,7 @@ docker build -t mrnrjenkins .
 docker build -t mrnrmaventest:3-jdk-8 .
 docker build -t mrnrmavenprod:3-jd-8 .
 docker build -t mrnrtomcat .
+docker build -t mrnrmysql:5.5 .
 ```
 
 ## Run on host
