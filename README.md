@@ -80,3 +80,106 @@ sudo cp -a /cdb/target/ComputerDatabase-0.0.1-SNAPSHOT.war /cdb_war
 sudo rm -rf /cdb/*
 ```
 
+# Docker Cloud
+
+## Setup des dockers
+
+Use images from maximernr docker hub
+
+Configure containers carefully : Volumes & Ports
+
+Configure jenkins jobs 
+
+## Run in jenkins container
+
+Change container's ids by yours,
+you can find them by using this command in jenkins bash.
+```bash
+sudo docker ps -a
+```
+
+### Test job 
+
+```bash
+sudo cp -rf /var/jenkins_home/workspace/ComputerDatabase_test/ComputerDataBase/. /cdb
+sudo rm -rf ./*
+
+if [ ! "$(sudo docker network inspect prod_network )" ]; then
+	sudo docker network create --subnet 172.20.0.0/16 --gateway 172.20.0.1 --driver bridge prod_network
+fi
+
+if [ ! "$(sudo docker network inspect test_network )" ]; then
+	sudo docker network create --subnet 172.21.0.0/16 --gateway 172.21.0.1 --driver bridge test_network
+fi
+
+#Maven
+if [ "$(sudo docker ps -q -f id=bd2c16a29141 )" ]; then
+	sudo docker stop bd2c16a29141
+fi
+
+#Mysql
+if [ "$(sudo docker ps -q -f id=a39b2ba6ea58 )" ]; then
+	sudo docker stop a39b2ba6ea58
+fi
+
+sudo docker start a39b2ba6ea58
+
+
+#Mysql
+sudo docker network disconnect test_network a39b2ba6ea58
+sudo docker network connect --ip 172.21.0.6 test_network a39b2ba6ea58
+
+#Maven
+sudo docker network disconnect test_network bd2c16a29141
+sudo docker network connect --ip 172.21.0.7 test_network bd2c16a29141
+
+sudo docker start -i bd2c16a29141
+
+
+#Mysql
+sudo docker network disconnect test_network a39b2ba6ea58
+sudo docker network connect --ip 172.21.0.6 test_network a39b2ba6ea58
+
+#Maven
+sudo docker network disconnect test_network bd2c16a29141
+sudo docker network connect --ip 172.21.0.7 test_network bd2c16a29141
+
+sudo docker start -i bd2c16a29141
+
+```
+
+### Prod job 
+
+```bash
+#Tomcat
+sudo docker network disconnect prod_network 431dc7511b20 
+sudo docker network connect --ip 172.20.0.5 prod_network 431dc7511b20 
+
+if [ ! "$(sudo docker ps -q -f id=26ee93b31147)" ]; then
+	sudo docker start 431dc7511b20
+fi
+
+#Mysql
+sudo docker network disconnect prod_network 4e075fdf6f6d 
+sudo docker network connect --ip 172.20.0.2 prod_network 4e075fdf6f6d 
+
+if [ ! "$(sudo docker ps -q -f id=4e075fdf6f6d)" ]; then
+	sudo docker start 4e075fdf6f6d
+fi
+
+#Maven
+sudo docker network disconnect prod_network 48725ef1af53 
+sudo docker network connect --ip 172.20.0.4 prod_network 48725ef1af53 
+
+if [ ! "$(sudo docker ps -q -f id=48725ef1af53)" ]; then
+	sudo docker start -i 48725ef1af53
+fi
+
+
+sudo cp -a /cdb/target/ComputerDatabase-0.0.1-SNAPSHOT.war /cdb_war
+sudo mv /cdb_war/ComputerDatabase-0.0.1-SNAPSHOT /cdb_war/ComputerDatabase
+sudo rm -rf /cdb/*
+```
+
+
+
