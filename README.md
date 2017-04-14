@@ -4,10 +4,13 @@
 
 A 2-month fulltime java training around an incremental project. Java / JSP / Servlet / Maven / JUnit / Mockito / Selenium / Spring / Hibernate / JPA / Hikari CP / Jackson / Spring MVC / Spring Security / Gatling / Docker
 
+[WebSite of my project](http://52.53.230.21:32810/ComputerDatabase/dashboard "Website")
+
 
 
 
 ### Dependencies
+
 1. JRE 8
 2. JUnit 4
 3. commons-db-utils1.6
