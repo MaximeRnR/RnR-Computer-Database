@@ -1,5 +1,12 @@
 # RnR-Computer-Database
 
+[Excilys Training formation](https://github.com/excilys/training-java "Github of the formation")
+
+A 2-month fulltime java training around an incremental project. Java / JSP / Servlet / Maven / JUnit / Mockito / Selenium / Spring / Hibernate / JPA / Hikari CP / Jackson / Spring MVC / Spring Security / Gatling / Docker
+
+
+
+
 ### Dependencies
 1. JRE 8
 2. JUnit 4
@@ -84,7 +91,7 @@ sudo rm -rf /cdb/*
 
 ## Setup des dockers
 
-Use images from maximernr docker hub
+Use images from [maximernr](https://hub.docker.com/r/maximernr/ "MaximeRnr's docker hub") docker hub
 
 Configure containers carefully : Volumes & Ports
 
