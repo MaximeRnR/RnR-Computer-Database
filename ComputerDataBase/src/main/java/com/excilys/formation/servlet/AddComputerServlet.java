@@ -17,6 +17,7 @@ import com.excilys.formation.dto.CompanyDTO;
 import com.excilys.formation.dto.ComputerDTO;
 import com.excilys.formation.service.CompanyService;
 import com.excilys.formation.service.ComputerService;
+import com.excilys.formation.validator.ParameterValidator;
 
 // Extend HttpServlet class
 @WebServlet(name = "AddComputerServlet", urlPatterns = { "/add" })
@@ -26,21 +27,8 @@ public class AddComputerServlet extends HttpServlet {
      */
     private static final long serialVersionUID = 6735463320851848975L;
     private Logger logger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
-    private ComputerService computerService;
-    private CompanyService companyService;
-    private List<CompanyDTO> companiesDto;
-    private CompanyDTO company;
     private ComputerDTO computer;
 
-    /**
-     * @throws ServletException serlvetexcp
-     */
-    public void init() throws ServletException {
-        computerService = ComputerService.COMPUTERSERVICE;
-        companyService = CompanyService.COMPANYSERVICE;
-        companiesDto = companyService.findAll();
-
-    }
 
     /**
      * @param request request
@@ -49,7 +37,8 @@ public class AddComputerServlet extends HttpServlet {
      * @throws IOException ioexc
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("companiesDto", companiesDto);
+
+        populateCompanies(request);
         request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
     }
 
@@ -61,43 +50,13 @@ public class AddComputerServlet extends HttpServlet {
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-        String name = request.getParameter("name");
-        String dI = request.getParameter("dI");
-        String dD = request.getParameter("dD");
-        companiesDto = companyService.findAll();
-        request.setAttribute("companiesDto", companiesDto);
-        if (Integer.parseInt(request.getParameter("companyId")) == 0 || request.getParameter("companyId") == null) {
-            company = new CompanyDTO(0);
+        populateCompanies(request);
+        Parameters parameters = new Parameters(request, response);
+        if (isValid(parameters)) {
+            process(parameters, request, response);
         } else {
-            company = new CompanyDTO(Integer.parseInt(request.getParameter("companyId")));
+            error(parameters, request, response);
         }
-        if (name != null && !name.isEmpty() && name.matches("^[a-zA-Z0-9 -._]+$")) {
-            if ((dI != null && dI.matches("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$")) || dI == "") {
-                if ((dD != null && dD.matches("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$")) || dD == "") {
-                    computer = new ComputerDTO.Builder().name(request.getParameter("name")).di(dI).dd(dD).cydto(company).build();
-                    computerService.create(computer);
-                    request.setAttribute("success", 1);
-                    request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
-                } else {
-                    //System.out.println("Nope");
-                    logger.error("ADDSERVLET dD");
-                    request.setAttribute("error", 1);
-                    request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
-                }
-            } else {
-                //System.out.println("Nope");
-                logger.error("ADDSERVLET dI");
-                request.setAttribute("error", 1);
-                request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
-            }
-        } else {
-            //System.out.println("Nope");
-            logger.error("ADDSERVLET name " + name);
-            request.setAttribute("error", 1);
-            request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
-        }
-
 
     }
 
@@ -105,5 +64,114 @@ public class AddComputerServlet extends HttpServlet {
      */
     public void destroy() {
         // do nothing.
+    }
+
+
+
+    /**
+     * @param parameters parameters
+     * @return boolean  true/false
+     */
+    private boolean isValid(Parameters parameters) {
+
+        return ParameterValidator.checkName(parameters.getName())
+                && ParameterValidator.checkDateIntroduced(parameters.getDateIntroduced())
+                && ParameterValidator.checkDateDiscontinued(parameters.getDateDiscontinued());
+    }
+
+    /**
+     * Do the stuff.
+     * @param parameters parameters
+     * @param request request
+     * @param response response
+     * @throws ServletException servletExc
+     * @throws IOException ioexc
+     */
+    private void process(Parameters parameters, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        computer = new ComputerDTO.Builder()
+                .name(parameters.getName())
+                .di(parameters.getDateIntroduced())
+                .dd(parameters.getDateDiscontinued())
+                .cydto(parameters.getCompanyDTO())
+                .build();
+        ComputerService.INSTANCE.create(computer);
+        request.setAttribute("success", 1);
+        request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp")
+            .forward(request, response);
+
+    }
+
+    /**
+     * @param parameters parameters
+     * @param request request
+     * @param response response
+     * @throws ServletException servletExc
+     * @throws IOException ioexc
+     */
+    private void error(Parameters parameters, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        logger.error("AddServlet : " + parameters.toString());
+        request.setAttribute("error", 1);
+        request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
+
+    }
+
+    /**
+     * @param request request
+     */
+    private void populateCompanies(HttpServletRequest request) {
+        List<CompanyDTO> companiesDto = CompanyService.INSTANCE.findAll();
+        request.setAttribute("companiesDto", companiesDto);
+
+    }
+
+    private class Parameters {
+        private String name;
+        private String dateIntroduced;
+        private String dateDiscontinued;
+        private CompanyDTO companyDto;
+
+        /**
+         * @param request request
+         * @param response response
+         */
+        private Parameters(HttpServletRequest request, HttpServletResponse response) {
+
+            name = request.getParameter("name");
+            dateIntroduced = request.getParameter("dI");
+            dateDiscontinued = request.getParameter("dD");
+            if (Integer.parseInt(request.getParameter("companyId")) == 0 || request.getParameter("companyId") == null) {
+                companyDto = new CompanyDTO(0);
+            } else {
+                companyDto = new CompanyDTO(Integer.parseInt(request.getParameter("companyId")));
+            }
+
+
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getDateIntroduced() {
+            return dateIntroduced;
+        }
+
+        public String getDateDiscontinued() {
+            return dateDiscontinued;
+        }
+
+        public CompanyDTO getCompanyDTO() {
+            return companyDto;
+        }
+
+        @Override
+        public String toString() {
+            return "Parameters [name=" + name + ", dateIntroduced=" + dateIntroduced + ", dateDiscontinued="
+                    + dateDiscontinued + ", companyDto=" + companyDto + "]";
+        }
+
+
     }
 }

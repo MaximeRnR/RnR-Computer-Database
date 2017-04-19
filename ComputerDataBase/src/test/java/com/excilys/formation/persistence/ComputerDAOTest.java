@@ -26,7 +26,7 @@ public class ComputerDAOTest {
     public void beforeEachTest() {
 
         cp = new Computer.Builder().build();
-        cpDAOi = ComputerDAO.COMPUTERDAO;
+        cpDAOi = ComputerDAO.INSTANCE;
 
     }
 

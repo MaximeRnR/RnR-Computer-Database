@@ -21,7 +21,7 @@
 	<header class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<a id="dashboard_button" class="navbar-brand" href="dashboard">
-				Application - Computer Database RELEASE </a>
+				Application - Computer Database </a>
 		</div>
 	</header>
 

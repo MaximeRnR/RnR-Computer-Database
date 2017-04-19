@@ -19,7 +19,7 @@ public class CompanyDAOTest {
     public void beforeEachTest() {
 
         company = new Company(0);
-        companyDaoI = CompanyDAO.COMPANYDAO;
+        companyDaoI = CompanyDAO.INSTANCE;
 
     }
 

@@ -11,7 +11,7 @@ public class ConnectionDBTest {
      */
     @Before
     public void beforeEachTest() {
-        connDB = connDB.CONNECTION;
+        connDB = connDB.INSTANCE;
 
     }
 

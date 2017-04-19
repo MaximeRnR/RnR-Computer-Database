@@ -25,7 +25,7 @@ public class ComputerUI {
      */
     public void addComputer() throws ComputerDBException {
 
-        cpS = ComputerService.COMPUTERSERVICE;
+        cpS = ComputerService.INSTANCE;
         System.out.println("Add a computer");
         System.out.print("Enter a name : ");
         System.out.println();
@@ -44,7 +44,7 @@ public class ComputerUI {
      */
     public void removeComputer() throws ComputerDBException {
 
-        cpS = ComputerService.COMPUTERSERVICE;
+        cpS = ComputerService.INSTANCE;
         System.out.println("Remove a computer");
         System.out.print("Enter a id : ");
         System.out.println();
@@ -66,7 +66,7 @@ public class ComputerUI {
      */
     public void updateComputer() throws ComputerDBException {
 
-        cpS = ComputerService.COMPUTERSERVICE;
+        cpS = ComputerService.INSTANCE;
         System.out.println("Update a computer");
         System.out.print("Enter a id : ");
         System.out.println();
@@ -113,7 +113,7 @@ public class ComputerUI {
      */
     public ComputerDTO findComputer() throws ComputerDBException {
 
-        cpS = ComputerService.COMPUTERSERVICE;
+        cpS = ComputerService.INSTANCE;
         System.out.println("Find a computer");
         System.out.print("Enter a id : ");
         Scanner scan = new Scanner(System.in);
@@ -135,7 +135,7 @@ public class ComputerUI {
      */
     public List<ComputerDTO> firstPage() throws ComputerDBException {
 
-        cpS = ComputerService.COMPUTERSERVICE;
+        cpS = ComputerService.INSTANCE;
         System.out.println("There are " + cpS.getNumberOfPageOfAllComputers(page) + ".");
         System.out.print("Enter a page : ");
         System.out.println();

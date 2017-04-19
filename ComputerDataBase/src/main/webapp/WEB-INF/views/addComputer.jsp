@@ -50,7 +50,7 @@
 								<label for="companyId">Company</label> <select
 									class="form-control" name="companyId" id="companyId">
 									<option value="0">--</option>
-									<c:forEach items="${lcydto}" var="cydto">
+									<c:forEach items="${companiesDto}" var="cydto">
 										<option value="<c:out value="${cydto.id}"/>">
 											<c:out value="${cydto.name}" /></option>
 									</c:forEach>
