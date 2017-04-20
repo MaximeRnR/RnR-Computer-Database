@@ -18,7 +18,7 @@ import com.excilys.formation.model.Computer;
 
 public class ComputerDAOTest {
     private Computer cp;
-    private ComputerDAOInterface cpDAOi;
+    private ComputerDao cpDAOi;
 
     /**
      */
@@ -26,7 +26,6 @@ public class ComputerDAOTest {
     public void beforeEachTest() {
 
         cp = new Computer.Builder().build();
-        cpDAOi = ComputerDAO.INSTANCE;
 
     }
 

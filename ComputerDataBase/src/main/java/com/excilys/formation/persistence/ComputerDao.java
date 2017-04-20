@@ -5,7 +5,7 @@ import java.util.List;
 import com.excilys.formation.model.Computer;
 import com.excilys.formation.ui.Page;
 
-public interface ComputerDAOInterface {
+public interface ComputerDao {
     /**
      * @param computer Computer
      * @return long id

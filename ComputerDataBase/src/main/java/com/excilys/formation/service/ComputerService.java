@@ -3,16 +3,20 @@ package com.excilys.formation.service;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import com.excilys.formation.dto.ComputerDTO;
 import com.excilys.formation.mapper.ComputerMapperService;
 import com.excilys.formation.model.Computer;
-import com.excilys.formation.persistence.ComputerDAO;
+import com.excilys.formation.persistence.ComputerDao;
 import com.excilys.formation.ui.Page;
-import com.excilys.formation.util.CountTotal;
 
-public enum ComputerService {
-    INSTANCE;
+public class ComputerService {
 
+    private ComputerDao computerDao;
+
+    public void setComputerDao(ComputerDao computerDao) {
+        this.computerDao = computerDao;
+    }
     /**
      */
     ComputerService() {
@@ -24,8 +28,7 @@ public enum ComputerService {
      * @return long generatedKey
      */
     public long create(ComputerDTO computerDto) {
-        CountTotal.INSTANCE.increaseCountTotal();
-        return ComputerDAO.INSTANCE.createComputer(ComputerMapperService.INSTANCE.toComputer(computerDto));
+        return computerDao.createComputer(ComputerMapperService.INSTANCE.toComputer(computerDto));
 
     }
 
@@ -33,8 +36,7 @@ public enum ComputerService {
      * @param ids ids
      */
     public void delete(List<Long> ids) {
-        ComputerDAO.INSTANCE.delete(ids);
-        CountTotal.INSTANCE.decreaseCountTotal();
+        computerDao.delete(ids);
     }
 
     /**
@@ -42,7 +44,7 @@ public enum ComputerService {
      */
     public void update(ComputerDTO computerDto) {
 
-        ComputerDAO.INSTANCE.update(ComputerMapperService.INSTANCE.toComputer(computerDto));
+        computerDao.update(ComputerMapperService.INSTANCE.toComputer(computerDto));
     }
 
     /**
@@ -51,7 +53,7 @@ public enum ComputerService {
      */
     public ComputerDTO findById(long id) {
 
-        return ComputerMapperService.INSTANCE.toComputerDto(ComputerDAO.INSTANCE.findById(id));
+        return ComputerMapperService.INSTANCE.toComputerDto(computerDao.findById(id));
     }
 
     /**
@@ -60,7 +62,7 @@ public enum ComputerService {
      */
     public int getNumberOfPageOfAllComputers(Page page) {
 
-        int count = ComputerDAO.INSTANCE.getCountOfAllComputers();
+        int count = computerDao.getCountOfAllComputers();
         if (count %  page.maxNumberOfObject == 0) {
             return (count / page.maxNumberOfObject) - 1;
         } else {
@@ -74,7 +76,7 @@ public enum ComputerService {
      * @return int pageNumber
      */
     public int getNumberOfPageOfComputersByName(String search, Page page) {
-        int count = ComputerDAO.INSTANCE.getCountOfComputersByName(search);
+        int count = computerDao.getCountOfComputersByName(search);
         if (count %  page.maxNumberOfObject == 0) {
             return count / page.maxNumberOfObject - 1;
         } else {
@@ -88,7 +90,7 @@ public enum ComputerService {
      * @return int pageNumber
      */
     public int getNumberOfPageOfComputersByCompanyName(String search, Page page) {
-        int count = ComputerDAO.INSTANCE.getCountOfComputersByCompanyName(search);
+        int count = computerDao.getCountOfComputersByCompanyName(search);
         if (count % page.maxNumberOfObject == 0) {
             return count / page.maxNumberOfObject - 1;
         } else {
@@ -101,23 +103,16 @@ public enum ComputerService {
      * @return int nbComputer
      */
     public int getCountOfAllComputers() {
-        return CountTotal.INSTANCE.getCountTotal();
+        return computerDao.getCountOfAllComputers();
     }
 
-    /**
-     * @return int int
-     */
-    public int getCountOfAllComputersFromDB() {
-
-        return ComputerDAO.INSTANCE.getCountOfAllComputers();
-    }
 
     /**
      * @param search String
      * @return int nbComputer
      */
     public int getCountOfComputersByName(String search) {
-        return ComputerDAO.INSTANCE.getCountOfComputersByName(search);
+        return computerDao.getCountOfComputersByName(search);
     }
 
     /**
@@ -125,7 +120,7 @@ public enum ComputerService {
      * @return int nbComputer
      */
     public int getCountOfComputersByCompanyName(String search) {
-        return ComputerDAO.INSTANCE.getCountOfComputersByCompanyName(search);
+        return computerDao.getCountOfComputersByCompanyName(search);
     }
 
     /**
@@ -133,7 +128,7 @@ public enum ComputerService {
      * @param page page
      */
     public List<ComputerDTO> getPageOfComputers(Page page) {
-        List<Computer> computers = ComputerDAO.INSTANCE.getPageOfComputers(page);
+        List<Computer> computers = computerDao.getPageOfComputers(page);
         List<ComputerDTO> computersDto = new ArrayList<>();
         System.out.println();
         for (int i = 0; i < computers.size(); i++) {
@@ -147,7 +142,7 @@ public enum ComputerService {
      * @return List<ComputerDTO>
      */
     public List<ComputerDTO> getPageOfComputersByName(String search, Page page) {
-        List<Computer> computers = ComputerDAO.INSTANCE.getPageOfComputersByName(search, page);
+        List<Computer> computers = computerDao.getPageOfComputersByName(search, page);
         List<ComputerDTO> computersDto = new ArrayList<>();
         for (int i = 0; i < computers.size(); i++) {
             computersDto.add(ComputerMapperService.INSTANCE.toComputerDto(computers.get(i)));
@@ -162,7 +157,7 @@ public enum ComputerService {
      * @return List<ComputerDTO>
      */
     public List<ComputerDTO> getPageOfComputersByCompanyName(String search, Page page) {
-        List<Computer> computers = ComputerDAO.INSTANCE.getPageOfComputersByCompanyName(search, page);
+        List<Computer> computers = computerDao.getPageOfComputersByCompanyName(search, page);
         List<ComputerDTO> computersDto = new ArrayList<>();
         for (int i = 0; i < computers.size(); i++) {
             computersDto.add(ComputerMapperService.INSTANCE.toComputerDto(computers.get(i)));

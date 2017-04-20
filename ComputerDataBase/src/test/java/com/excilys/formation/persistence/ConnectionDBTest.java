@@ -5,13 +5,12 @@ import org.junit.Before;
 
 
 public class ConnectionDBTest {
-    public ConnectionDB connDB;
+    public ConnectionDb connDB;
 
     /**
      */
     @Before
     public void beforeEachTest() {
-        connDB = connDB.INSTANCE;
 
     }
 

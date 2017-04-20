@@ -11,7 +11,7 @@ import com.excilys.formation.model.Company;
 
 public class CompanyDAOTest {
     private Company company;
-    private CompanyDAOInterface companyDaoI;
+    private CompanyDao companyDaoI;
 
     /**
      */
@@ -19,7 +19,6 @@ public class CompanyDAOTest {
     public void beforeEachTest() {
 
         company = new Company(0);
-        companyDaoI = CompanyDAO.INSTANCE;
 
     }
 

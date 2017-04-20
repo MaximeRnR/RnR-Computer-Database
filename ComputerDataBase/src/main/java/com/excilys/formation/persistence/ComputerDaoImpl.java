@@ -17,10 +17,10 @@ import com.excilys.formation.model.Company;
 import com.excilys.formation.model.Computer;
 import com.excilys.formation.ui.Page;
 import com.excilys.formation.util.PersistenceException;
+import com.zaxxer.hikari.HikariDataSource;
 
 
-public enum ComputerDAO implements ComputerDAOInterface {
-    INSTANCE;
+public class ComputerDaoImpl implements ComputerDao {
     final String createQuery = "insert into computer(name,introduced,discontinued,company_id)values (?,?,?,?)";
     final String findByIdQuery = "select cp.id, cp.name, cp.introduced, cp.discontinued, cy.id, cy.name from computer cp "
             + "left join company cy on cp.company_id = cy.id where cp.id=?";
@@ -32,9 +32,15 @@ public enum ComputerDAO implements ComputerDAOInterface {
     final String updateQuery = "UPDATE computer SET name = ?, introduced = ?, discontinued = ?, company_id = ? WHERE id = ?";
     private Logger logger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 
+    private static HikariDataSource hs;
+
+    public void setHs(HikariDataSource hs) {
+        this.hs = hs;
+    }
+
     /**
      */
-    ComputerDAO() {
+    ComputerDaoImpl() {
 
     }
 
@@ -45,7 +51,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
      */
     public long createComputer(Computer computer) throws PersistenceException {
 
-        try (Connection conn = ConnectionDB.INSTANCE.getConn();
+        try (Connection conn = hs.getConnection();
                 PreparedStatement preparedStmt = conn.prepareStatement(createQuery, Statement.RETURN_GENERATED_KEYS);
                 ) {
 
@@ -78,7 +84,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
                 query = query + " OR id = ?";
             }
         }
-        try (Connection conn = ConnectionDB.INSTANCE.getConn();
+        try (Connection conn = hs.getConnection();
                 PreparedStatement preparedStmt = conn.prepareStatement(query);
                 ) {
             Computer computer = new Computer.Builder().id(idTab.get(0)).build();
@@ -105,7 +111,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
      */
     public void update(Computer computer) throws PersistenceException {
 
-        try (Connection conn = ConnectionDB.INSTANCE.getConn();
+        try (Connection conn = hs.getConnection();
                 PreparedStatement preparedStmt = conn.prepareStatement(updateQuery);
                 ) {
             this.prepareComputer(computer, preparedStmt);
@@ -125,7 +131,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
      * @return Computer
      */
     public Computer findById(long id) throws PersistenceException {
-        try (Connection conn = ConnectionDB.INSTANCE.getConn();
+        try (Connection conn = hs.getConnection();
                 PreparedStatement preparedStmt = conn.prepareStatement(findByIdQuery);
                 ) {
 
@@ -166,7 +172,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
      */
     public List<Computer> getPageOfComputers(Page page) throws PersistenceException {
 
-        try (Connection conn = ConnectionDB.INSTANCE.getConn();
+        try (Connection conn = hs.getConnection();
                 PreparedStatement preparedStmt = conn.prepareStatement(getPageOfComputerQuery);
                 ) {
 
@@ -208,7 +214,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
     @Override
     public int getCountOfAllComputers() throws PersistenceException {
 
-        try (Connection conn = ConnectionDB.INSTANCE.getConn();
+        try (Connection conn = hs.getConnection();
                 PreparedStatement preparedStmt = conn.prepareStatement(countQuery);
                 ) {
 
@@ -233,7 +239,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
     public int getCountOfComputersByName(String search) throws PersistenceException {
 
         String sql = "SELECT count(*) FROM computer c WHERE c.name LIKE ? ;";
-        try (Connection conn = ConnectionDB.INSTANCE.getConn();
+        try (Connection conn = hs.getConnection();
                 PreparedStatement preparedStmt = conn.prepareStatement(sql);
                 ) {
             preparedStmt.setString(1, search + "%");
@@ -255,7 +261,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
     public int getCountOfComputersByCompanyName(String search) throws PersistenceException {
 
         String companyQuery = "SELECT c.id FROM company c WHERE c.name LIKE ?";
-        try (Connection conn = ConnectionDB.INSTANCE.getConn();
+        try (Connection conn = hs.getConnection();
                 PreparedStatement preparedStmt = conn.prepareStatement(companyQuery);
                 ) {
             preparedStmt.setString(1, search + "%");
@@ -299,7 +305,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
     @Override
     public List<Computer> getPageOfComputersByName(String search, Page page) throws PersistenceException  {
 
-        try (Connection conn = ConnectionDB.INSTANCE.getConn();
+        try (Connection conn = hs.getConnection();
                 PreparedStatement preparedStmt = conn.prepareStatement(getPageOfComputerByNameQuery);
                 ) {
 
@@ -341,7 +347,7 @@ public enum ComputerDAO implements ComputerDAOInterface {
     public List<Computer> getPageOfComputersByCompanyName(String search, Page page) throws PersistenceException  {
 
         String companyQuery = "SELECT c.id FROM company c WHERE c.name LIKE ?";
-        try (Connection conn = ConnectionDB.INSTANCE.getConn();
+        try (Connection conn = hs.getConnection();
                 PreparedStatement preparedStmt = conn.prepareStatement(companyQuery);
                 ) {
             preparedStmt.setString(1, search + "%");

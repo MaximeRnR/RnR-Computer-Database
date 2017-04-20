@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- <bean id="computer" class="com.excilys.formation.model.Computer"> </bean>
+        <bean id="company" class="com.excilys.formation.model.Company"> </bean> <bean
+        id="computerDto" class="com.excilys.formation.dto.ComputerDto"> </bean> <bean
+        id="companyDto" class="com.excilys.formation.dto.CompanyDto"> </bean> -->
+
+    <!-- Persistence -->
+    <bean id="HikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <property name="poolName" value="springHikariCP" />
+        <property name="dataSourceClassName" value="org.mariadb.jdbc.MySQLDataSource" />
+        <property name="maximumPoolSize" value="100" />
+        <property name="idleTimeout" value="60000" />
+        <property name="ConnectionTimeout" value="1000"/>
+        <property name="MaxLifetime" value="287400"/>
+
+        <property name="dataSourceProperties">
+            <props>
+                <prop key="url">jdbc:mysql://localhost/computer-database-db-test?zeroDateTimeBehavior=convertToNull&amp;password=qwerty1234</prop>
+                <prop key="user">admincdb</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- HikariCP configuration -->
+    <bean id="HikariDataSource" class="com.zaxxer.hikari.HikariDataSource"
+        destroy-method="close" scope="singleton">
+        <constructor-arg ref="HikariConfig" />
+    </bean>
+
+    <bean id="ComputerDao" class="com.excilys.formation.persistence.ComputerDaoImpl"
+        scope="singleton">
+        <property name="hs" ref="HikariDataSource"></property>
+    </bean>
+
+    <bean id="CompanyDao" class="com.excilys.formation.persistence.CompanyDaoImpl"
+        scope="singleton">
+        <property name="hs" ref="HikariDataSource"></property>
+    </bean>
+
+    <!-- Service -->
+    <bean id="ComputerService" class="com.excilys.formation.service.ComputerService"
+        scope="singleton">
+        <property name="computerDao" ref="ComputerDao"></property>
+    </bean>
+
+    <bean id="CompanyService" class="com.excilys.formation.service.CompanyService"
+        scope="singleton">
+        <property name="companyDao" ref="CompanyDao"></property>
+    </bean>
+
+</beans>

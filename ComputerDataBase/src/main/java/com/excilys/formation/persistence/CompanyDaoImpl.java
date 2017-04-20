@@ -12,16 +12,21 @@ import org.slf4j.LoggerFactory;
 
 import com.excilys.formation.model.Company;
 import com.excilys.formation.util.PersistenceException;
+import com.zaxxer.hikari.HikariDataSource;
 
 //DAO of Company
-public enum CompanyDAO implements CompanyDAOInterface {
-    INSTANCE;
+public class CompanyDaoImpl implements CompanyDao {
     private Logger logger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 
+    private static HikariDataSource hs;
+
+    public void setHs(HikariDataSource hs) {
+        this.hs = hs;
+    }
     /**
      * @throws PersistenceException cdbex
      */
-    CompanyDAO() {
+    CompanyDaoImpl() {
 
     }
 
@@ -32,7 +37,7 @@ public enum CompanyDAO implements CompanyDAOInterface {
      */
     public Company findById(long id) throws PersistenceException {
         final String sql = "SELECT c.id, c.name FROM company c WHERE c.id=?";
-        try (Connection conn = ConnectionDB.INSTANCE.getConn();
+        try (Connection conn = hs.getConnection();
                 PreparedStatement preparedStmt = conn.prepareStatement(sql);) {
 
             preparedStmt.setLong(1, id);
@@ -63,7 +68,7 @@ public enum CompanyDAO implements CompanyDAOInterface {
      */
     public List<Company> findAll() throws PersistenceException {
         final String sql = "SELECT c.id, c.name FROM company c;";
-        try (Connection conn = ConnectionDB.INSTANCE.getConn();
+        try (Connection conn = hs.getConnection();
                 ResultSet result = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
                         .executeQuery(sql);) {
             List<Company> companies = new ArrayList<>();
@@ -88,7 +93,7 @@ public enum CompanyDAO implements CompanyDAOInterface {
         final String queryDeleteComputer = "delete from computer where company_id = ?";
         final String queryDeleteCompany = "delete from company where id = ?";
 
-        try (Connection conn = ConnectionDB.INSTANCE.getConn()) {
+        try (Connection conn = hs.getConnection();) {
             try (PreparedStatement preparedStmt = conn.prepareStatement(queryDeleteComputer);) {
                 conn.setAutoCommit(false);
                 preparedStmt.setLong(1, id);

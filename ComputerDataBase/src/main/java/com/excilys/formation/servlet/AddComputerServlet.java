@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.excilys.formation.dto.CompanyDTO;
 import com.excilys.formation.dto.ComputerDTO;
@@ -22,6 +24,11 @@ import com.excilys.formation.validator.ParameterValidator;
 // Extend HttpServlet class
 @WebServlet(name = "AddComputerServlet", urlPatterns = { "/add" })
 public class AddComputerServlet extends HttpServlet {
+
+    ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+    private ComputerService computerService = (ComputerService) context.getBean("ComputerService");
+    private CompanyService companyService = (CompanyService) context.getBean("CompanyService");
+
 
     /**
      */
@@ -95,7 +102,7 @@ public class AddComputerServlet extends HttpServlet {
                 .dd(parameters.getDateDiscontinued())
                 .cydto(parameters.getCompanyDTO())
                 .build();
-        ComputerService.INSTANCE.create(computer);
+        computerService.create(computer);
         request.setAttribute("success", 1);
         request.getRequestDispatcher("/WEB-INF/views/addComputer.jsp")
             .forward(request, response);
@@ -121,7 +128,7 @@ public class AddComputerServlet extends HttpServlet {
      * @param request request
      */
     private void populateCompanies(HttpServletRequest request) {
-        List<CompanyDTO> companiesDto = CompanyService.INSTANCE.findAll();
+        List<CompanyDTO> companiesDto = companyService.findAll();
         request.setAttribute("companiesDto", companiesDto);
 
     }

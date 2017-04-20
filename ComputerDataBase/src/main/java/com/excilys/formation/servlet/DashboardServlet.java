@@ -22,10 +22,15 @@ import com.excilys.formation.validator.ParameterValidator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 // Extend HttpServlet class
 @WebServlet(name = "DashboardServlet", urlPatterns = { "/dashboard" })
 public class DashboardServlet extends HttpServlet {
+
+    ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+    private ComputerService computerService = (ComputerService) context.getBean("ComputerService");
 
     /**
      */
@@ -77,9 +82,9 @@ public class DashboardServlet extends HttpServlet {
             process(parameters, request, response, attributes);
 
         } else {
-            attributes.setNbComputers(ComputerService.INSTANCE.getCountOfAllComputers());
-            attributes.setComputersDto(ComputerService.INSTANCE.getPageOfComputers(attributes.getPage()));
-            attributes.setNbPages(ComputerService.INSTANCE.getNumberOfPageOfAllComputers(attributes.getPage()));
+            attributes.setNbComputers(computerService.getCountOfAllComputers());
+            attributes.setComputersDto(computerService.getPageOfComputers(attributes.getPage()));
+            attributes.setNbPages(computerService.getNumberOfPageOfAllComputers(attributes.getPage()));
         }
         attributes.setIndexPage(attributes.getPage().getIndex());
         populateRequest(request, attributes);
@@ -121,7 +126,7 @@ public class DashboardServlet extends HttpServlet {
             for (int i = 0; i < selection.length; i++) {
                 idTab.add(i, (long) Integer.parseInt(selection[i]));
             }
-            ComputerService.INSTANCE.delete(idTab);
+            computerService.delete(idTab);
         }
 
         this.doGet(request, response);
@@ -146,22 +151,22 @@ public class DashboardServlet extends HttpServlet {
     private void process(Parameters parameters, HttpServletRequest request, HttpServletResponse response, Attributes attributes) throws ServletException, IOException {
 
         if (parameters.getBy().equals("cp")) {
-            attributes.setNbPages(ComputerService.INSTANCE.getNumberOfPageOfComputersByName(parameters.getSearch(), attributes.getPage()));
+            attributes.setNbPages(computerService.getNumberOfPageOfComputersByName(parameters.getSearch(), attributes.getPage()));
             if (attributes.getNbPages() < attributes.getPage().getIndex()) {
                 attributes.getPage().setIndex(0);
             }
-            attributes.setNbComputers(ComputerService.INSTANCE.getCountOfComputersByName(parameters.getSearch()));
-            attributes.setComputersDto(ComputerService.INSTANCE.getPageOfComputersByName(parameters.getSearch(), attributes.getPage()));
+            attributes.setNbComputers(computerService.getCountOfComputersByName(parameters.getSearch()));
+            attributes.setComputersDto(computerService.getPageOfComputersByName(parameters.getSearch(), attributes.getPage()));
             request.setAttribute("search", parameters.getSearch());
             request.setAttribute("by", parameters.getBy());
         }
         if (parameters.getBy().equals("cy")) {
-            attributes.setNbPages(ComputerService.INSTANCE.getNumberOfPageOfComputersByCompanyName(parameters.getSearch(), attributes.getPage()));
+            attributes.setNbPages(computerService.getNumberOfPageOfComputersByCompanyName(parameters.getSearch(), attributes.getPage()));
             if (attributes.getNbPages() < attributes.getPage().getIndex()) {
                 attributes.getPage().setIndex(0);
             }
-            attributes.setNbComputers(ComputerService.INSTANCE.getCountOfComputersByCompanyName(parameters.getSearch()));
-            attributes.setComputersDto(ComputerService.INSTANCE.getPageOfComputersByCompanyName(parameters.getSearch(), attributes.getPage()));
+            attributes.setNbComputers(computerService.getCountOfComputersByCompanyName(parameters.getSearch()));
+            attributes.setComputersDto(computerService.getPageOfComputersByCompanyName(parameters.getSearch(), attributes.getPage()));
             request.setAttribute("search", parameters.getSearch());
             request.setAttribute("by", parameters.getBy());
         }
@@ -244,10 +249,10 @@ public class DashboardServlet extends HttpServlet {
         /**
          */
         private Attributes() {
-            nbComputers = ComputerService.INSTANCE.getCountOfAllComputers();
+            nbComputers = computerService.getCountOfAllComputers();
             page = new Page();
-            nbPages = ComputerService.INSTANCE.getNumberOfPageOfAllComputers(page);
-            computersDto = ComputerService.INSTANCE.getPageOfComputers(page);
+            nbPages = computerService.getNumberOfPageOfAllComputers(page);
+            computersDto = computerService.getPageOfComputers(page);
         }
 
         public int getNbPages() {
