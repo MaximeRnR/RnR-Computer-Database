@@ -14,7 +14,7 @@ local.properties
 .loadpath
 .recommenders
 .classpath
-.log
+*.log
 .MF
 WebContent/
 target/
