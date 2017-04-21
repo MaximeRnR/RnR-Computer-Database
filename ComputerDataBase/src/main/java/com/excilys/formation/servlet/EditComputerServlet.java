@@ -7,15 +7,16 @@ import javax.servlet.ServletException;
 
 // Import required java libraries
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.excilys.formation.dto.CompanyDTO;
 import com.excilys.formation.dto.ComputerDTO;
@@ -23,12 +24,15 @@ import com.excilys.formation.service.CompanyService;
 import com.excilys.formation.service.ComputerService;
 
 // Extend HttpServlet class
-@WebServlet(name = "EditComputerServlet", urlPatterns = { "/edit" })
+//@WebServlet(name = "EditComputerServlet", urlPatterns = { "/edit" })
+@Controller
+@RequestMapping("/edit")
 public class EditComputerServlet extends HttpServlet {
 
-    ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-    private ComputerService computerService = (ComputerService) context.getBean("ComputerService");
-    private CompanyService companyService = (CompanyService) context.getBean("CompanyService");
+    @Autowired
+    private ComputerService computerService;
+    @Autowired
+    private CompanyService companyService;
 
     private List<CompanyDTO> companiesDto;
     private CompanyDTO company;
@@ -36,6 +40,13 @@ public class EditComputerServlet extends HttpServlet {
     private Logger logger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 
 
+    public void setComputerService(ComputerService computerService) {
+        this.computerService = computerService;
+    }
+
+    public void setCompanyService(CompanyService companyService) {
+        this.companyService = companyService;
+    }
     /**
      */
     private static final long serialVersionUID = 458516061330357823L;
@@ -54,6 +65,7 @@ public class EditComputerServlet extends HttpServlet {
      * @throws ServletException servletExc
      * @throws IOException ioexc
      */
+    @RequestMapping(method = RequestMethod.GET)
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("id") != null) {
             long id = Integer.parseInt(request.getParameter("id"));
@@ -71,6 +83,7 @@ public class EditComputerServlet extends HttpServlet {
      * @throws ServletException servletExc
      * @throws IOException ioexc
      */
+    @RequestMapping(method = RequestMethod.POST)
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String sid = request.getParameter("id");

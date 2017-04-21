@@ -5,15 +5,16 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.excilys.formation.dto.CompanyDTO;
 import com.excilys.formation.dto.ComputerDTO;
@@ -22,13 +23,23 @@ import com.excilys.formation.service.ComputerService;
 import com.excilys.formation.validator.ParameterValidator;
 
 // Extend HttpServlet class
-@WebServlet(name = "AddComputerServlet", urlPatterns = { "/add" })
+//@WebServlet(name = "AddComputerServlet", urlPatterns = { "/add" })
+@Controller
+@RequestMapping("/add")
 public class AddComputerServlet extends HttpServlet {
 
-    ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-    private ComputerService computerService = (ComputerService) context.getBean("ComputerService");
-    private CompanyService companyService = (CompanyService) context.getBean("CompanyService");
+    @Autowired
+    private ComputerService computerService;
+    @Autowired
+    private CompanyService companyService;
 
+    public void setComputerService(ComputerService computerService) {
+        this.computerService = computerService;
+    }
+
+    public void setCompanyService(CompanyService companyService) {
+        this.companyService = companyService;
+    }
 
     /**
      */
@@ -43,6 +54,7 @@ public class AddComputerServlet extends HttpServlet {
      * @throws ServletException servletExc
      * @throws IOException ioexc
      */
+    @RequestMapping(method = RequestMethod.GET)
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         populateCompanies(request);
@@ -55,6 +67,7 @@ public class AddComputerServlet extends HttpServlet {
      * @throws ServletException servletExc
      * @throws IOException ioexc
      */
+    @RequestMapping(method = RequestMethod.POST)
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         populateCompanies(request);

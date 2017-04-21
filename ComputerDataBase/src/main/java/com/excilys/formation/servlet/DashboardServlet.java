@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,15 +21,23 @@ import com.excilys.formation.validator.ParameterValidator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 // Extend HttpServlet class
-@WebServlet(name = "DashboardServlet", urlPatterns = { "/dashboard" })
+@Controller
+@RequestMapping("/dashboard")
+//@WebServlet(name = "DashboardServlet", urlPatterns = { "/dashboard" })
 public class DashboardServlet extends HttpServlet {
 
-    ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-    private ComputerService computerService = (ComputerService) context.getBean("ComputerService");
+    @Autowired
+    private ComputerService computerService;
+
+    public void setComputerService(ComputerService computerService) {
+        this.computerService = computerService;
+    }
 
     /**
      */
@@ -50,6 +57,7 @@ public class DashboardServlet extends HttpServlet {
      * @throws ServletException servletExc
      * @throws IOException ioexc
      */
+    @RequestMapping(method = RequestMethod.GET)
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
@@ -118,6 +126,7 @@ public class DashboardServlet extends HttpServlet {
      * @throws ServletException servletExc
      * @throws IOException ioexc
      */
+    @RequestMapping(method = RequestMethod.POST)
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         if (request.getParameter("selection") != null && request.getParameter("selection").matches("^[0-9,]+$")) {

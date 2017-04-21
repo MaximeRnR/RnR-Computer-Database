@@ -6,10 +6,6 @@
 	<display-name>CDB-app</display-name>
 
 	<servlet>
-		<servlet-name>DashboardServlet</servlet-name>
-		<servlet-class>com.excilys.formation.servlet.DashboardServlet</servlet-class>
-	</servlet>
-	<servlet>
 		<servlet-name>AddComputerServlet</servlet-name>
 		<servlet-class>com.excilys.formation.servlet.AddComputerServlet</servlet-class>
 	</servlet>
@@ -29,4 +25,35 @@
 			<taglib-location>/WEB-INF/mylib.ltd</taglib-location>
 		</taglib>
 	</jsp-config>
+	 <context-param>
+	        <param-name>contextConfigLocation</param-name>
+	        <param-value>
+	             <!-- Spring application context declaration -->
+	              /WEB-INF/applicationContext.xml	              
+	        </param-value>
+    	</context-param>
+	 <servlet>
+	   <servlet-name>dispatcher</servlet-name>
+	   <servlet-class>
+	     org.springframework.web.servlet.DispatcherServlet
+	   </servlet-class>
+	   <init-param>
+	     <param-name>contextConfigLocation</param-name>
+	     <param-value>/WEB-INF/applicationContext.xml</param-value>
+	   </init-param>
+	   <load-on-startup>1</load-on-startup>
+ </servlet>
+
+ <servlet-mapping>
+   <servlet-name>dispatcher</servlet-name>
+   <url-pattern>/</url-pattern>
+ </servlet-mapping>
+ 
+ <listener>
+		        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+		        
+		</listener>
+		
+ 
+
 </web-app>

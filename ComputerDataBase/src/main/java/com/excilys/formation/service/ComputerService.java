@@ -3,6 +3,8 @@ package com.excilys.formation.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.excilys.formation.dto.ComputerDTO;
 import com.excilys.formation.mapper.ComputerMapperService;
@@ -10,8 +12,10 @@ import com.excilys.formation.model.Computer;
 import com.excilys.formation.persistence.ComputerDao;
 import com.excilys.formation.ui.Page;
 
+@Service
 public class ComputerService {
 
+    @Autowired
     private ComputerDao computerDao;
 
     public void setComputerDao(ComputerDao computerDao) {

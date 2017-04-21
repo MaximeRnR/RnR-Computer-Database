@@ -3,14 +3,19 @@ package com.excilys.formation.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.excilys.formation.dto.CompanyDTO;
 import com.excilys.formation.mapper.CompanyMapperService;
 import com.excilys.formation.model.Company;
 import com.excilys.formation.persistence.CompanyDao;
 
 
-
+@Service
 public class CompanyService {
+
+    @Autowired
     private CompanyDao companyDao;
 
     public void setCompanyDao(CompanyDao companyDao) {

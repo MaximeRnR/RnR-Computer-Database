@@ -9,16 +9,19 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.excilys.formation.model.Company;
 import com.excilys.formation.util.PersistenceException;
 import com.zaxxer.hikari.HikariDataSource;
 
-//DAO of Company
+@Repository
 public class CompanyDaoImpl implements CompanyDao {
     private Logger logger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 
-    private static HikariDataSource hs;
+    @Autowired
+    private HikariDataSource hs;
 
     public void setHs(HikariDataSource hs) {
         this.hs = hs;
