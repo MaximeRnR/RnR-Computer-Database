@@ -12,12 +12,21 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.excilys.formation.model.Company;
 import com.excilys.formation.model.Computer;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:applicationContext.xml" })
 public class ComputerDAOTest {
+
     private Computer cp;
+
+    @Autowired
     private ComputerDao cpDAOi;
 
     /**
@@ -35,7 +44,6 @@ public class ComputerDAOTest {
     public void afterEachTest() {
 
         cp = null;
-        cpDAOi = null;
 
     }
 

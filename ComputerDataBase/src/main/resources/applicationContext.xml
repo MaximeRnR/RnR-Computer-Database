@@ -14,10 +14,10 @@
     <bean id="HikariConfig" class="com.zaxxer.hikari.HikariConfig">
         <property name="poolName" value="springHikariCP" />
         <property name="dataSourceClassName" value="org.mariadb.jdbc.MySQLDataSource" />
-        <property name="maximumPoolSize" value="100" />
+        <property name="maximumPoolSize" value="20" />
         <property name="idleTimeout" value="60000" />
-        <property name="ConnectionTimeout" value="3000"/>
-        <property name="MaxLifetime" value="287400"/>
+        <property name="connectionTimeout" value="3000"/>
+        <property name="maxLifetime" value="287400"/>
 
         <property name="dataSourceProperties">
             <props>

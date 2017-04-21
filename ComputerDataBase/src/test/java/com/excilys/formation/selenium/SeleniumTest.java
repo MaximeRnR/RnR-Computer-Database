@@ -1,12 +1,19 @@
 package com.excilys.formation.selenium;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Test;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class SeleniumTest {
@@ -34,7 +41,6 @@ public class SeleniumTest {
 
     /**
      */
-    /*
     @Test
     public void testOpenDashboard() {
         driver.navigate().to(homeDir + "/dashboard");
@@ -42,10 +48,8 @@ public class SeleniumTest {
         element = driver.findElement(By.id("homeTitle"));
         Assert.assertNotNull(element);
     }
-    */
     /**
      */
-    /*
     @Test
     public void testOpenAddComputer() {
         driver.navigate().to(homeDir + "/add");
@@ -53,10 +57,8 @@ public class SeleniumTest {
         element = driver.findElement(By.id("main"));
         Assert.assertNotNull(element);
     }
-    */
     /**
      */
-    /*
     @Test
     public void testOpenEdit() {
         driver.navigate().to(homeDir + "/edit");
@@ -64,10 +66,8 @@ public class SeleniumTest {
         element = driver.findElement(By.id("main"));
         Assert.assertNotNull(element);
     }
-    */
     /**
      */
-    /*
     @Test
     public void testNavigateToDashboard() {
 
@@ -86,10 +86,8 @@ public class SeleniumTest {
         element = driver.findElement(By.id("homeTitle"));
         Assert.assertNotNull(element);
     }
-    */
     /**
      */
-    /*
     @Test
     public void testNavigateToAdd() {
 
@@ -99,10 +97,8 @@ public class SeleniumTest {
         Assert.assertNotNull(element);
 
     }
-    */
     /**
      */
-    /*
     @Test
     public void testAddComputer() {
 
@@ -124,6 +120,5 @@ public class SeleniumTest {
         Alert alert = driver.switchTo().alert();
         alert.accept();
     }
-    */
 
 }

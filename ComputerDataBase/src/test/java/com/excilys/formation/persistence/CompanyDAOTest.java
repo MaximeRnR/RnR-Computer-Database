@@ -6,11 +6,19 @@ import static org.junit.Assert.assertEquals;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.excilys.formation.model.Company;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:applicationContext.xml" })
 public class CompanyDAOTest {
     private Company company;
+
+    @Autowired
     private CompanyDao companyDaoI;
 
     /**
@@ -28,7 +36,6 @@ public class CompanyDAOTest {
     public void afterEachTest() {
 
         company = null;
-        companyDaoI = null;
 
     }
 
