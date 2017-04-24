@@ -241,7 +241,7 @@ public class ComputerDaoImpl implements ComputerDao {
     @Override
     public int getCountOfComputersByName(String search) throws PersistenceException {
 
-        String sql = "SELECT count(*) FROM computer c WHERE c.name LIKE ? ;";
+        String sql = "SELECT count(c.id) FROM computer c WHERE c.name LIKE ? ;";
         try (Connection conn = hs.getConnection();
                 PreparedStatement preparedStmt = conn.prepareStatement(sql);
                 ) {
