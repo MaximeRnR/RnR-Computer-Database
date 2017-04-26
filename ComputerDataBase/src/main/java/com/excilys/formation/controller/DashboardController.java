@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.websocket.server.PathParam;
 
 import com.excilys.formation.controller.request.DashboardRequest;
 import com.excilys.formation.controller.response.DashboardResponse;
@@ -24,6 +23,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 // Extend HttpServlet class
@@ -125,7 +125,7 @@ public class DashboardController {
      * @throws IOException ioexc
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView doPost(@ModelAttribute DashboardRequest dashboardRequest, @PathParam("selection") String selection) {
+    public ModelAndView doPost(@ModelAttribute DashboardRequest dashboardRequest, @RequestParam("selection") String selection) {
 
         if (selection != null && selection.matches("^[0-9,]+$")) {
 
