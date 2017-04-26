@@ -1,7 +1,12 @@
 package com.excilys.formation.model;
 
-//Model company
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Company {
+
+    @Id
     private long id;
     private String name;
 

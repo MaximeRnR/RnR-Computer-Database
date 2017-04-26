@@ -26,6 +26,7 @@ public class Computer {
     private LocalDate dateDiscontinued;
 
     @ManyToOne()
+    @Column(name = "`company_id`")
     private Company cy;
 
     // Constructor
