@@ -1,4 +1,4 @@
-package com.excilys.formation.persistence;
+package com.excilys.formation.persistence.implementation;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 
 import com.excilys.formation.model.Company;
 import com.excilys.formation.model.Computer;
+import com.excilys.formation.persistence.ComputerDao;
 import com.excilys.formation.ui.Page;
 import com.excilys.formation.util.PersistenceException;
 import com.zaxxer.hikari.HikariDataSource;

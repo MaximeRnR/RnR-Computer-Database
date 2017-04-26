@@ -1,4 +1,4 @@
-package com.excilys.formation.persistence;
+package com.excilys.formation.persistence.implementation.jdbc;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -17,6 +17,8 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.excilys.formation.model.Computer;
+import com.excilys.formation.persistence.ComputerDaoJdbc;
+import com.excilys.formation.persistence.ComputerRowMapper;
 import com.excilys.formation.ui.Page;
 import com.zaxxer.hikari.HikariDataSource;
 

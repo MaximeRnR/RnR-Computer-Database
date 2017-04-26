@@ -12,6 +12,7 @@ import org.hibernate.annotations.Type;
 //Model Computer
 @Entity(name = "computer")
 public class Computer {
+
     @Id
     private long id;
 

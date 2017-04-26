@@ -1,4 +1,4 @@
-package com.excilys.formation.persistence;
+package com.excilys.formation.persistence.implementation;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.excilys.formation.model.Company;
+import com.excilys.formation.persistence.CompanyDao;
 import com.excilys.formation.util.PersistenceException;
 import com.zaxxer.hikari.HikariDataSource;
 
