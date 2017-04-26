@@ -111,8 +111,8 @@ public class App {
                 break;
             case 3:
                 ComputerDTO cp = cpui.findComputer();
-                System.out.println(cp.getId() + " " + cp.getName() + " " + cp.getdIntroduced() + " "
-                        + cp.getdDiscontinued() + " " + cp.getCydto().getName());
+                System.out.println(cp.getId() + " " + cp.getName() + " " + cp.getDateIntroduced() + " "
+                        + cp.getDateDiscontinued() + " " + cp.getCydtoId());
 
                 break;
             case 4:

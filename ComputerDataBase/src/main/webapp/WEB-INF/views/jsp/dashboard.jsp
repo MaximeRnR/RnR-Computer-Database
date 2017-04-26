@@ -27,18 +27,18 @@
 
 	<section id="main">
 		<div class="container">
-			<h1 id="homeTitle">${nbComputers} Computers found </h1>
+			<h1 id="homeTitle">${model.nbComputers} Computers found </h1>
 
 			<div id="actions" class="form-horizontal">
 				<div class="pull-left">
 					<form id="searchForm" action="#" method="GET" class="form-inline">
 						<input type="search" id="searchbox" name="search"
-							class="form-control" placeholder="Search name" value="${search}" />
+							class="form-control" placeholder="Search name" value="${model.search}" />
 						<select class="form-control" name="by">
 							<option value='cp'
-							<c:if test="${by == 'cp'}"> selected</c:if>>
+							<c:if test="${model.by == 'cp'}"> selected</c:if>>
 							Computers</option>
-							<option value='cy' <c:if test="${by == 'cy'}"> selected</c:if>>
+							<option value='cy' <c:if test="${model.by == 'cy'}"> selected</c:if>>
 							Companies</option>
 						</select> <input type="submit" id="searchsubmit" value="Filter by name"
 							class="btn btn-primary" />
@@ -83,15 +83,15 @@
 				<!-- Browse attribute computers -->
 				<tbody id="results">
 
-					<c:forEach items="${computersDto}" var="computerDto">
+					<c:forEach items="${model.computersDto}" var="computerDto">
 						<tr>
 							<td class="editMode" style="display: none"><input
 								type="checkbox" class="cb" value="<c:out value="${computerDto.id}"/>" /></td>
 							<td><a id='id' href="edit?id=<c:out value="${computerDto.id}"/>"><c:out
 										value="${computerDto.name}" /></a></td>
-							<td><c:out value="${computerDto.dIntroduced}" /></td>
-							<td><c:out value="${computerDto.dDiscontinued}" /></td>
-							<td><c:out value="${computerDto.cydto.name}" /></td>
+							<td><c:out value="${computerDto.dateIntroduced}" /></td>
+							<td><c:out value="${computerDto.dateDiscontinued}" /></td>
+							<td><c:out value="${computerDto.cydtoName}" /></td>
 						</tr>
 					</c:forEach>
 
@@ -104,18 +104,18 @@
 		<div class="container text-center">
 			<ul class="pagination">
 				<li id='first' class="pages"><a id="afirst" position="0"
-					href='?search=${search}&by=${by}&page=1&maxObj=${maxObj}'  aria-label='First'><span position="0"
+					href='?search=${model.search}&by=${model.by}&page=1&maxObj=${model.maxObj}'  aria-label='First'><span position="0"
 						aria-hidden='true'>&laquo;&laquo;</span></a></li>
-				<ex:Page index="${index}" nbPage="${nbpage}" reSearch="${search}" by="${by}" maxObj="${maxObj}"></ex:Page>
-				<li id='last' class="pages" ><a id="alast" position="${nbpage}"
-					href='?search=${search}&by=${by}&page=${nbpage+1}&maxObj=${maxObj}' aria-label='Last'><span
-						position="${nbpage+1}" aria-hidden='true'>&raquo;&raquo;</span></a></li>
+				<ex:Page index="${model.index}" nbPage="${model.nbPages}" reSearch="${model.search}" by="${model.by}" maxObj="${model.maxObj}"></ex:Page>
+				<li id='last' class="pages" ><a id="alast" position="${model.nbPages}"
+					href='?search=${model.search}&by=${model.by}&page=${model.nbPages+1}&maxObj=${model.maxObj}' aria-label='Last'><span
+						position="${model.nbPages+1}" aria-hidden='true'>&raquo;&raquo;</span></a></li>
 			</ul>
 
 			<div class="btn-group btn-group-sm pull-right" role="group">
-				<a href='?search=${search}&by=${by}&page=1&maxObj=10'><button type="button" class="max_obj btn btn-default">10</button></a>
-				<a href='?search=${search}&by=${by}&page=1&maxObj=50'><button type="button" class="max_obj btn btn-default">50</button></a>
-				<a href='?search=${search}&by=${by}&page=1&maxObj=100'><button type="button" class="max_obj btn btn-default">100</button></a>
+				<a href='?search=${model.search}&by=${model.by}&page=1&maxObj=10'><button type="button" class="max_obj btn btn-default">10</button></a>
+				<a href='?search=${model.search}&by=${model.by}&page=1&maxObj=50'><button type="button" class="max_obj btn btn-default">50</button></a>
+				<a href='?search=${model.search}&by=${model.by}&page=1&maxObj=100'><button type="button" class="max_obj btn btn-default">100</button></a>
 			</div>
 		</div>
 	</footer>

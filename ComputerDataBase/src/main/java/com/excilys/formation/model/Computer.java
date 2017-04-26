@@ -2,12 +2,30 @@ package com.excilys.formation.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.Type;
+
 //Model Computer
+@Entity(name = "computer")
 public class Computer {
+    @Id
     private long id;
+
     private String name;
+
+    @Type(type = "LocalDateType")
+    @Column(name = "`introduced`")
     private LocalDate dateIntroduced;
+
+    @Type(type = "LocalDateType")
+    @Column(name = "`discontinued`")
     private LocalDate dateDiscontinued;
+
+    @ManyToOne()
     private Company cy;
 
     // Constructor
@@ -24,6 +42,12 @@ public class Computer {
         this.dateIntroduced = dateIntroduced;
         this.dateDiscontinued = dateDiscontinued;
         this.cy = cy;
+    }
+
+    /**
+     * DEfault Constructor.
+     */
+    public Computer() {
     }
 
     @Override

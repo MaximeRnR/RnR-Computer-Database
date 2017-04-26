@@ -109,14 +109,13 @@ public class ComputerDaoJdbcImpl implements ComputerDaoJdbc {
     @Override
     public void update(Computer computer) {
         jdbcTemplate = new JdbcTemplate(hs);
-        jdbcTemplate.queryForObject(
+        jdbcTemplate.update(
                 updateQuery,
                 new Object[] {computer.getName(),
                         computer.getdIntroduced(),
                         computer.getdDiscontinued(),
                         computer.getCy().getId(),
-                        computer.getId()},
-                computerRowMapper);
+                        computer.getId()});
     }
 
     @Override

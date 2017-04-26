@@ -34,7 +34,7 @@ public class ComputerUI {
             throw new ComputerDBException("Missing Name");
         }
         cy = new CompanyDTO(44);
-        cp = new ComputerDTO.Builder().name(name).di(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))).dd(null).cydto(cy).build();
+        cp = new ComputerDTO.Builder().name(name).di(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))).dd(null).cydtoId(cy.getId()).build();
         cpS.create(cp);
     }
 
@@ -96,8 +96,8 @@ public class ComputerUI {
                 cpS.update(cp);
                 break;
             case 2:
-                System.out.print(cp.getdDiscontinued() + " to (yyyy-MM-dd) : ");
-                cp.setdDiscontinued(scan.next());
+                System.out.print(cp.getDateDiscontinued() + " to (yyyy-MM-dd) : ");
+                cp.setDateDiscontinued(scan.next());
                 cpS.update(cp);
                 break;
 

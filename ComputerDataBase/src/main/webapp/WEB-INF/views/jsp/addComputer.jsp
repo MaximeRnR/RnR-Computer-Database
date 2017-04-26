@@ -38,17 +38,17 @@
 							</div>
 							<div class="form-group">
 								<label for="introduced">Introduced date</label> <input
-									type="date" class="form-control" name="dI" id="introduced"
+									type="date" class="form-control" name="dateIntroduced" id="introduced"
 									placeholder="Introduced date">
 							</div>
 							<div class="form-group">
 								<label for="discontinued">Discontinued date</label> <input
-									type="date" class="form-control" name="dD" id="discontinued"
+									type="date" class="form-control" name="dateDiscontinued" id="discontinued"
 									placeholder="Discontinued date">
 							</div>
 							<div class="form-group">
 								<label for="companyId">Company</label> <select
-									class="form-control" name="companyId" id="companyId">
+									class="form-control" name="cydtoId" id="companyId">
 									<option value="0">--</option>
 									<c:forEach items="${companiesDto}" var="cydto">
 										<option value="<c:out value="${cydto.id}"/>">

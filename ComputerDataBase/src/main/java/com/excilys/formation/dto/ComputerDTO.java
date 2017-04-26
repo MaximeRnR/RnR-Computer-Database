@@ -1,36 +1,51 @@
 package com.excilys.formation.dto;
 
 
-//Model Computer
+
+
 public class ComputerDTO {
     private long id;
     private String name;
-    private String dIntroduced;
-    private String dDiscontinued;
-    private CompanyDTO cydto;
+    private String dateIntroduced;
+    private String dateDiscontinued;
+    private long cydtoId;
+    private String cydtoName;
 
     // Constructor
     /**
      * @param id Id
      * @param name Name
-     * @param dIntroduced Di
-     * @param dDiscontinued DD
-     * @param cydto Cydto
+     * @param dateIntroduced Di
+     * @param dateDiscontinued DD
+     * @param cydtoId CydtoId
+     * @param cydtoName cydtoName
      */
-    private ComputerDTO(long id, String name, String dIntroduced, String dDiscontinued, CompanyDTO cydto) {
+    public ComputerDTO(long id, String name, String dateIntroduced, String dateDiscontinued, Long cydtoId, String cydtoName) {
         this.id = id;
         this.name = name;
-        this.dIntroduced = dIntroduced;
-        this.dDiscontinued = dDiscontinued;
-        this.cydto = cydto;
+        this.dateIntroduced = dateIntroduced;
+        this.dateDiscontinued = dateDiscontinued;
+        this.cydtoId = cydtoId;
+        this.cydtoName = cydtoName;
+    }
+    /**
+     * Default constructor.
+     */
+    public ComputerDTO() {
+
     }
 
     @Override
     public String toString() {
-        return "ComputerDTO [id=" + id + ", name=" + name + ", dIntroduced=" + dIntroduced + ", dDiscontinued="
-                + dDiscontinued + ", cydto=" + cydto + "]";
+        return "ComputerDTO [id=" + id + ", name=" + name + ", dateIntroduced=" + dateIntroduced + ", dateDiscontinued="
+                + dateDiscontinued + ", cydtoId=" + cydtoId + ", cydtoName=" + cydtoName + "]";
     }
-
+    public String getCydtoName() {
+        return cydtoName;
+    }
+    public void setCydtoName(String cydtoName) {
+        this.cydtoName = cydtoName;
+    }
     /**
      * @return Id
      */
@@ -62,43 +77,43 @@ public class ComputerDTO {
     /**
      * @return Date intro
      */
-    public String getdIntroduced() {
-        return dIntroduced;
+    public String getDateIntroduced() {
+        return dateIntroduced;
     }
 
     /**
      * @param dIntroduced Date intro
      */
-    public void setdIntroduced(String dIntroduced) {
-        this.dIntroduced = dIntroduced;
+    public void setDateIntroduced(String dIntroduced) {
+        this.dateIntroduced = dIntroduced;
     }
 
     /**
      * @return Date discontinued
      */
-    public String getdDiscontinued() {
-        return dDiscontinued;
+    public String getDateDiscontinued() {
+        return dateDiscontinued;
     }
 
     /**
      * @param dDiscontinued Date discontinued
      */
-    public void setdDiscontinued(String dDiscontinued) {
-        this.dDiscontinued = dDiscontinued;
+    public void setDateDiscontinued(String dDiscontinued) {
+        this.dateDiscontinued = dDiscontinued;
     }
 
     /**
      * @return CompanyDTO
      */
-    public CompanyDTO getCydto() {
-        return cydto;
+    public long getCydtoId() {
+        return cydtoId;
     }
 
     /**
      * @param cydto CompanyDTO
      */
-    public void setCydto(CompanyDTO cydto) {
-        this.cydto = cydto;
+    public void setCydtoId(long cydto) {
+        this.cydtoId = cydto;
     }
 
     /**
@@ -108,9 +123,10 @@ public class ComputerDTO {
     public static class Builder {
         private long id;
         private String name;
-        private String dIntroduced;
-        private String dDiscontinued;
-        private CompanyDTO cydto;
+        private String dateIntroduced;
+        private String dateDiscontinued;
+        private long cydto;
+        private String cydtoName;
 
         /**
          *
@@ -142,7 +158,7 @@ public class ComputerDTO {
          * @return builder Builder
          */
         public Builder di(String di) {
-            this.dIntroduced = di;
+            this.dateIntroduced = di;
             return this;
 
         }
@@ -152,7 +168,7 @@ public class ComputerDTO {
          * @return builder Builder
          */
         public Builder dd(String dd) {
-            this.dDiscontinued = dd;
+            this.dateDiscontinued = dd;
             return this;
 
         }
@@ -161,8 +177,18 @@ public class ComputerDTO {
          * @param cydto CompanyDTO
          * @return builder Builder
          */
-        public Builder cydto(CompanyDTO cydto) {
+        public Builder cydtoId(long cydto) {
             this.cydto = cydto;
+            return this;
+
+        }
+
+        /**
+         * @param cydtoName cydtoname
+         * @return builder Builder
+         */
+        public Builder cydtoName(String cydtoName) {
+            this.cydtoName = cydtoName;
             return this;
 
         }
@@ -171,7 +197,7 @@ public class ComputerDTO {
          * @return ComputerDTO ComputerDTO
          */
         public ComputerDTO build() {
-            return new ComputerDTO(this.id, this.name, this.dIntroduced, this.dDiscontinued, this.cydto);
+            return new ComputerDTO(this.id, this.name, this.dateIntroduced, this.dateDiscontinued, this.cydto, this.cydtoName);
 
         }
     }

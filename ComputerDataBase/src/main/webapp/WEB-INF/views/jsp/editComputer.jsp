@@ -38,21 +38,21 @@
                             </div>
                             <div class="form-group">
                                 <label for="introduced">Introduced date</label>
-                                <input type="date" class="form-control" name="introduced" id="introduced" placeholder="Introduced date" 
-                                value="${computer.dIntroduced}">
+                                <input type="date" class="form-control" name="dateIntroduced" id="introduced" placeholder="Introduced date" 
+                                value="${computer.dateIntroduced}">
                             </div>
                             <div class="form-group">
                                 <label for="discontinued">Discontinued date</label>
-                                <input type="date" class="form-control" name="discontinued" id="discontinued" placeholder="Discontinued date" 
-                                value="${computer.dDiscontinued}">
+                                <input type="date" class="form-control" name="dateDiscontinued" id="discontinued" placeholder="Discontinued date" 
+                                value="${computer.dateDiscontinued}">
                             </div>
                             <div class="form-group">
                                 <label for="companyId">Company</label>
-                                <select name="companyId" class="form-control" id="companyId" >
+                                <select name="cydtoId" class="form-control" id="companyId" >
                                 	<option value='0'> -- </option>
                                     <c:forEach items="${companiesDto}" var="companydto">
 										<option value="<c:out value="${companydto.id}"/>" 
-										<c:if test="${computer.cydto.id == companydto.id}"> selected="selected" </c:if>>
+										<c:if test="${computer.cydtoId == companydto.id}"> selected="selected" </c:if>>
 											<c:out value="${companydto.name}" /></option>
 									</c:forEach>
                                 </select>

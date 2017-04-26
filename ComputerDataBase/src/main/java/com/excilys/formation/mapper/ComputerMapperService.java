@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+import com.excilys.formation.dto.CompanyDTO;
 import com.excilys.formation.dto.ComputerDTO;
 import com.excilys.formation.model.Computer;
 import com.excilys.formation.util.ComputerDBException;
@@ -27,7 +28,8 @@ public enum ComputerMapperService {
                     .name(computer.getName())
                     .di(null)
                     .dd(null)
-                    .cydto(CompanyMapper.toCompanyDto(computer.getCy()));
+                    .cydtoId(CompanyMapper.toCompanyDto(computer.getCy()).getId())
+                    .cydtoName(CompanyMapper.toCompanyDto(computer.getCy()).getName());
             if (computer.getdIntroduced() != null) {
                 computerDtoB.di(computer.getdIntroduced().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             }
@@ -48,27 +50,28 @@ public enum ComputerMapperService {
         if (computerDto == null) {
             return new Computer.Builder().build();
         } else {
+            CompanyDTO companyDTO = new CompanyDTO(computerDto.getCydtoId(), computerDto.getCydtoName());
             Computer.Builder computerB = new Computer.Builder()
                     .id(computerDto.getId())
                     .name(computerDto.getName())
                     .di(null)
                     .dd(null)
-                    .cy(CompanyMapper.toCompany(computerDto.getCydto()));
+                    .cy(CompanyMapper.toCompany(companyDTO));
             try {
-                if (computerDto.getdIntroduced() != null && !computerDto.getdIntroduced().equals("")) {
-                    computerB.di(LocalDate.parse(computerDto.getdIntroduced(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                if (computerDto.getDateIntroduced() != null && !computerDto.getDateIntroduced().equals("")) {
+                    computerB.di(LocalDate.parse(computerDto.getDateIntroduced(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
                 }
-                if (computerDto.getdDiscontinued() != null && !computerDto.getdDiscontinued().equals("")) {
-                    computerB.dd(LocalDate.parse(computerDto.getdDiscontinued(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                if (computerDto.getDateDiscontinued() != null && !computerDto.getDateDiscontinued().equals("")) {
+                    computerB.dd(LocalDate.parse(computerDto.getDateDiscontinued(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
                 }
                 return computerB.build();
             } catch (DateTimeParseException e) {
                 try {
-                    if (computerDto.getdIntroduced() != null) {
-                        computerB.di(LocalDate.parse(computerDto.getdIntroduced(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                    if (computerDto.getDateIntroduced() != null) {
+                        computerB.di(LocalDate.parse(computerDto.getDateIntroduced(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                     }
-                    if (computerDto.getdDiscontinued() != null) {
-                        computerB.dd(LocalDate.parse(computerDto.getdDiscontinued(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                    if (computerDto.getDateDiscontinued() != null) {
+                        computerB.dd(LocalDate.parse(computerDto.getDateDiscontinued(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                     }
                     return computerB.build();
                 } catch (DateTimeParseException e2) {
