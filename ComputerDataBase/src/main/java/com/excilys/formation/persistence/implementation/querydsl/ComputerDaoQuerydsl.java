@@ -27,8 +27,8 @@ public class ComputerDaoQuerydsl implements ComputerDao {
         this.hs = hs;
     }
 
-    private static QCompany company = QCompany.company;
-    private static QComputer computer = QComputer.computer;
+    private static QCompany qCompany = QCompany.company;
+    private static QComputer qComputer = QComputer.computer;
 
     private SessionFactory sessionFactory;
 
@@ -52,66 +52,99 @@ public class ComputerDaoQuerydsl implements ComputerDao {
     @Transactional
     public Computer findById(long id) {
 
-
-
-
-        Computer computerResult = (Computer) queryFactory.get().select(computer)
-        .from(computer)
-        .leftJoin(company).on(computer.cy.id.eq(company.id))
-        .where(computer.id.eq((Long) id))
+        Computer computerResult = (Computer) queryFactory.get().select(qComputer)
+        .from(qComputer)
+        .leftJoin(qCompany).on(qComputer.cy.id.eq(qCompany.id))
+        .where(qComputer.id.eq((Long) id))
         .fetchOne();
 
-        System.out.println("flag1");
-        System.out.println(computerResult.toString());
-        System.out.println("flag2");
         return computerResult;
     }
 
     @Override
+    @Transactional
     public boolean delete(List<Long> ids) {
-        // TODO Auto-generated method stub
-        return false;
+
+        for (int i = 0; i < ids.size(); i++) {
+            queryFactory.get().delete(qComputer)
+            .where(qComputer.id.eq(ids.get(i))).execute();
+        }
+        return true;
     }
 
     @Override
+    @Transactional
     public void update(Computer computer) {
-        // TODO Auto-generated method stub
+
+        queryFactory.get().update(qComputer)
+        .where(qComputer.id.eq(computer.getId()))
+        .set(qComputer.name, computer.getName())
+        .set(qComputer.dateIntroduced, computer.getDateIntroduced())
+        .set(qComputer.dateDiscontinued, computer.getDateIntroduced())
+        .set(qComputer.cy, computer.getCy())
+        .execute();
     }
 
     @Override
+    @Transactional
     public int getCountOfAllComputers() {
-        // TODO Auto-generated method stub
-        return 0;
+        return  (int) queryFactory.get().from(qComputer).fetchCount();
     }
 
     @Override
+    @Transactional
     public List<Computer> getPageOfComputers(Page page) {
-        // TODO Auto-generated method stub
-        return null;
+        List<Computer> computersResult =  queryFactory.get()
+                .select(qComputer)
+                .from(qComputer)
+                .leftJoin(qCompany)
+                .on(qCompany.id.eq(qComputer.cy.id))
+                .limit(page.maxNumberOfObject)
+                .offset(page.maxNumberOfObject * page.getIndex())
+                .fetch();
+        return computersResult;
     }
 
     @Override
+    @Transactional
     public int getCountOfComputersByName(String search) {
-        // TODO Auto-generated method stub
-        return 0;
+        return  (int) queryFactory.get().from(qComputer).fetchCount();
     }
 
     @Override
+    @Transactional
     public int getCountOfComputersByCompanyName(String search) {
-        // TODO Auto-generated method stub
-        return 0;
+        return  (int) queryFactory.get().from(qComputer).where(qComputer.cy.name.like(search + "%")).fetchCount();
     }
 
     @Override
+    @Transactional
     public List<Computer> getPageOfComputersByName(String search, Page page) {
-        // TODO Auto-generated method stub
-        return null;
+        List<Computer> computersResult =  queryFactory.get()
+                .select(qComputer)
+                .from(qComputer)
+                .leftJoin(qCompany)
+                .on(qCompany.id.eq(qComputer.cy.id))
+                .where(qComputer.name.like(search + "%"))
+                .limit(page.maxNumberOfObject)
+                .offset(page.maxNumberOfObject * page.getIndex())
+                .fetch();
+        return computersResult;
     }
 
     @Override
+    @Transactional
     public List<Computer> getPageOfComputersByCompanyName(String search, Page page) {
-        // TODO Auto-generated method stub
-        return null;
+        List<Computer> computersResult =  queryFactory.get()
+                .select(qComputer)
+                .from(qComputer)
+                .leftJoin(qCompany)
+                .on(qCompany.id.eq(qComputer.cy.id))
+                .where(qComputer.cy.name.like(search + "%"))
+                .limit(page.maxNumberOfObject)
+                .offset(page.maxNumberOfObject * page.getIndex())
+                .fetch();
+        return computersResult;
     }
 
 }

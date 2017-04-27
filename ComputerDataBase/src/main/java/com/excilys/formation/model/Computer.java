@@ -24,7 +24,7 @@ public class Computer {
     @Column(name = "discontinued")
     private LocalDate dateDiscontinued;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "company_id")
     private Company cy;
 

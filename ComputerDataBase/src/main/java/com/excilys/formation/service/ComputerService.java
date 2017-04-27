@@ -9,18 +9,24 @@ import org.springframework.stereotype.Service;
 import com.excilys.formation.dto.ComputerDTO;
 import com.excilys.formation.mapper.ComputerMapperService;
 import com.excilys.formation.model.Computer;
-import com.excilys.formation.persistence.ComputerDaoJdbc;
+import com.excilys.formation.persistence.ComputerDao;
 import com.excilys.formation.ui.Page;
 
 @Service
 public class ComputerService {
 
     @Autowired
-    private ComputerDaoJdbc computerDaoJdbc;
+    private ComputerDao computerDao;
 
-    public void setComputerDaoJdbc(ComputerDaoJdbc computerDaoJdbc) {
-        this.computerDaoJdbc = computerDaoJdbc;
+
+    public ComputerDao getComputerDao() {
+        return computerDao;
     }
+
+    public void setComputerDao(ComputerDao computerDao) {
+        this.computerDao = computerDao;
+    }
+
     /**
      */
     ComputerService() {
@@ -32,7 +38,7 @@ public class ComputerService {
      * @return long generatedKey
      */
     public long create(ComputerDTO computerDto) {
-        return computerDaoJdbc.createComputer(ComputerMapperService.INSTANCE.toComputer(computerDto));
+        return computerDao.createComputer(ComputerMapperService.INSTANCE.toComputer(computerDto));
 
     }
 
@@ -40,7 +46,7 @@ public class ComputerService {
      * @param ids ids
      */
     public void delete(List<Long> ids) {
-        computerDaoJdbc.delete(ids);
+        computerDao.delete(ids);
     }
 
     /**
@@ -48,7 +54,7 @@ public class ComputerService {
      */
     public void update(ComputerDTO computerDto) {
 
-        computerDaoJdbc.update(ComputerMapperService.INSTANCE.toComputer(computerDto));
+        computerDao.update(ComputerMapperService.INSTANCE.toComputer(computerDto));
     }
 
     /**
@@ -57,7 +63,7 @@ public class ComputerService {
      */
     public ComputerDTO findById(long id) {
 
-        return ComputerMapperService.INSTANCE.toComputerDto(computerDaoJdbc.findById(id));
+        return ComputerMapperService.INSTANCE.toComputerDto(computerDao.findById(id));
     }
 
     /**
@@ -66,7 +72,7 @@ public class ComputerService {
      */
     public int getNumberOfPageOfAllComputers(Page page) {
 
-        int count = computerDaoJdbc.getCountOfAllComputers();
+        int count = computerDao.getCountOfAllComputers();
         if (count %  page.maxNumberOfObject == 0) {
             return (count / page.maxNumberOfObject) - 1;
         } else {
@@ -80,7 +86,7 @@ public class ComputerService {
      * @return int pageNumber
      */
     public int getNumberOfPageOfComputersByName(String search, Page page) {
-        int count = computerDaoJdbc.getCountOfComputersByName(search);
+        int count = computerDao.getCountOfComputersByName(search);
         if (count %  page.maxNumberOfObject == 0) {
             return count / page.maxNumberOfObject - 1;
         } else {
@@ -94,7 +100,7 @@ public class ComputerService {
      * @return int pageNumber
      */
     public int getNumberOfPageOfComputersByCompanyName(String search, Page page) {
-        int count = computerDaoJdbc.getCountOfComputersByCompanyName(search);
+        int count = computerDao.getCountOfComputersByCompanyName(search);
         if (count % page.maxNumberOfObject == 0) {
             return count / page.maxNumberOfObject - 1;
         } else {
@@ -107,7 +113,7 @@ public class ComputerService {
      * @return int nbComputer
      */
     public int getCountOfAllComputers() {
-        return computerDaoJdbc.getCountOfAllComputers();
+        return computerDao.getCountOfAllComputers();
     }
 
 
@@ -116,7 +122,7 @@ public class ComputerService {
      * @return int nbComputer
      */
     public int getCountOfComputersByName(String search) {
-        return computerDaoJdbc.getCountOfComputersByName(search);
+        return computerDao.getCountOfComputersByName(search);
     }
 
     /**
@@ -124,7 +130,7 @@ public class ComputerService {
      * @return int nbComputer
      */
     public int getCountOfComputersByCompanyName(String search) {
-        return computerDaoJdbc.getCountOfComputersByCompanyName(search);
+        return computerDao.getCountOfComputersByCompanyName(search);
     }
 
     /**
@@ -132,7 +138,7 @@ public class ComputerService {
      * @param page page
      */
     public List<ComputerDTO> getPageOfComputers(Page page) {
-        List<Computer> computers = computerDaoJdbc.getPageOfComputers(page);
+        List<Computer> computers = computerDao.getPageOfComputers(page);
         List<ComputerDTO> computersDto = new ArrayList<>();
         System.out.println();
         for (int i = 0; i < computers.size(); i++) {
@@ -146,7 +152,7 @@ public class ComputerService {
      * @return List<ComputerDTO>
      */
     public List<ComputerDTO> getPageOfComputersByName(String search, Page page) {
-        List<Computer> computers = computerDaoJdbc.getPageOfComputersByName(search, page);
+        List<Computer> computers = computerDao.getPageOfComputersByName(search, page);
         List<ComputerDTO> computersDto = new ArrayList<>();
         for (int i = 0; i < computers.size(); i++) {
             computersDto.add(ComputerMapperService.INSTANCE.toComputerDto(computers.get(i)));
@@ -161,7 +167,7 @@ public class ComputerService {
      * @return List<ComputerDTO>
      */
     public List<ComputerDTO> getPageOfComputersByCompanyName(String search, Page page) {
-        List<Computer> computers = computerDaoJdbc.getPageOfComputersByCompanyName(search, page);
+        List<Computer> computers = computerDao.getPageOfComputersByCompanyName(search, page);
         List<ComputerDTO> computersDto = new ArrayList<>();
         for (int i = 0; i < computers.size(); i++) {
             computersDto.add(ComputerMapperService.INSTANCE.toComputerDto(computers.get(i)));

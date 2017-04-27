@@ -13,10 +13,10 @@ public enum CompanyMapperService {
      * @return CompanyDTO companyDto
      */
     public CompanyDTO toCompanyDto(Company company) throws ComputerDBException {
-        if (company == null) {
+        if (company == null || company.getId() == 0) {
             return new CompanyDTO(0, null);
         } else {
-           return new CompanyDTO(company.getId(), company.getName());
+            return new CompanyDTO(company.getId(), company.getName());
         }
     }
 
@@ -27,8 +27,8 @@ public enum CompanyMapperService {
      */
     public Company toCompany(CompanyDTO companyDto) throws ComputerDBException {
 
-        if (companyDto == null) {
-            return new Company(0, null);
+        if (companyDto == null || companyDto.getId() == 0) {
+            return null;
         } else {
             return new Company(companyDto.getId(), companyDto.getName());
         }
