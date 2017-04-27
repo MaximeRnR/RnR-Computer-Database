@@ -17,13 +17,12 @@ import org.springframework.stereotype.Repository;
 
 import com.excilys.formation.model.Company;
 import com.excilys.formation.model.Computer;
-import com.excilys.formation.persistence.ComputerDao;
 import com.excilys.formation.ui.Page;
 import com.excilys.formation.util.PersistenceException;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Repository
-public class ComputerDaoImpl implements ComputerDao {
+public class ComputerDaoImpl  {
     final String createQuery = "insert into computer(name,introduced,discontinued,company_id)values (?,?,?,?)";
     final String findByIdQuery = "select cp.id, cp.name, cp.introduced, cp.discontinued, cy.id, cy.name from computer cp "
             + "left join company cy on cp.company_id = cy.id where cp.id=?";
@@ -214,8 +213,8 @@ public class ComputerDaoImpl implements ComputerDao {
 
     /**
      * @return nbComputer
+     * @throws PersistenceException p
      */
-    @Override
     public int getCountOfAllComputers() throws PersistenceException {
 
         try (Connection conn = hs.getConnection();
@@ -237,9 +236,10 @@ public class ComputerDaoImpl implements ComputerDao {
     }
 
     /**
+     * @param search search
      * @return nbComputer
+     * @throws PersistenceException p
      */
-    @Override
     public int getCountOfComputersByName(String search) throws PersistenceException {
 
         String sql = "SELECT count(c.id) FROM computer c WHERE c.name LIKE ? ;";
@@ -261,7 +261,11 @@ public class ComputerDaoImpl implements ComputerDao {
     }
 
 
-    @Override
+    /**
+     * @param search s
+     * @return int i
+     * @throws PersistenceException pscexcp
+     */
     public int getCountOfComputersByCompanyName(String search) throws PersistenceException {
 
         String companyQuery = "SELECT c.id FROM company c WHERE c.name LIKE ?";
@@ -305,8 +309,12 @@ public class ComputerDaoImpl implements ComputerDao {
         }
     }
 
-
-    @Override
+    /**
+     * @param search s
+     * @param page p
+     * @return List<Computer>
+     * @throws PersistenceException pscexcp
+     */
     public List<Computer> getPageOfComputersByName(String search, Page page) throws PersistenceException  {
 
         try (Connection conn = hs.getConnection();
@@ -346,8 +354,12 @@ public class ComputerDaoImpl implements ComputerDao {
 
     }
 
-
-    @Override
+    /**
+     * @param search s
+     * @param page p
+     * @return List<Computer>
+     * @throws PersistenceException pscexcp
+     */
     public List<Computer> getPageOfComputersByCompanyName(String search, Page page) throws PersistenceException  {
 
         String companyQuery = "SELECT c.id FROM company c WHERE c.name LIKE ?";

@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.excilys.formation.model.Company;
 import com.excilys.formation.model.Computer;
-import com.excilys.formation.persistence.implementation.querydsl.ComputerDaoQuerydsl;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -30,7 +29,7 @@ public class ComputerDAOTest {
     private Computer cp;
 
     @Autowired
-    private ComputerDaoQuerydsl cpDAOi;
+    private ComputerDao cpDAOi;
 
     /**
      */

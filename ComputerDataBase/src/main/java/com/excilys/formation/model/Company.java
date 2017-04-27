@@ -3,11 +3,12 @@ package com.excilys.formation.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name = "company")
 public class Company {
 
     @Id
     private long id;
+
     private String name;
 
     /**

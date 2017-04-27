@@ -58,13 +58,13 @@ public class ComputerDaoQuerydsl implements ComputerDao {
                 () -> new HibernateQueryFactory(sessionFactory.getCurrentSession());
         QComputer computer = QComputer.computer;
         QCompany company = QCompany.company;
-        System.out.println(
-                queryFactory.get().select(computer, company)
+
+        Computer computerResult = queryFactory.get().select(computer)
         .from(computer)
         .leftJoin(company).on(computer.cy.id.eq(company.id))
         .where(computer.id.eq((Long) id))
-        .fetch().toString());
-
+        .fetchOne();
+        System.out.println(computerResult.toString());
         return null;
     }
 

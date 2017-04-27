@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.Type;
@@ -27,6 +28,7 @@ public class Computer {
     private LocalDate dateDiscontinued;
 
     @ManyToOne()
+    @JoinColumn(name = "company_id")
     private Company cy;
 
     // Constructor
