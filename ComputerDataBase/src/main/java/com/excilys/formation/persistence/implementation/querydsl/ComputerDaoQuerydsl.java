@@ -1,22 +1,26 @@
 package com.excilys.formation.persistence.implementation.querydsl;
 
 import java.util.List;
+import java.util.function.Supplier;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.excilys.formation.model.Computer;
 import com.excilys.formation.model.QCompany;
 import com.excilys.formation.model.QComputer;
 import com.excilys.formation.persistence.ComputerDao;
 import com.excilys.formation.ui.Page;
+import com.querydsl.jpa.hibernate.HibernateQueryFactory;
 import com.querydsl.sql.Configuration;
 import com.querydsl.sql.MySQLTemplates;
-import com.querydsl.sql.SQLQueryFactory;
 import com.querydsl.sql.SQLTemplates;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Repository
+@Transactional
 public class ComputerDaoQuerydsl implements ComputerDao {
 
     @Autowired
@@ -29,6 +33,12 @@ public class ComputerDaoQuerydsl implements ComputerDao {
     SQLTemplates templates = new MySQLTemplates();
     Configuration configuration = new Configuration(templates);
 
+    private SessionFactory sessionFactory;
+
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public long createComputer(Computer computer) {
@@ -39,12 +49,17 @@ public class ComputerDaoQuerydsl implements ComputerDao {
     }
 
     @Override
+    @Transactional
     public Computer findById(long id) {
 
-        SQLQueryFactory queryFactory = new SQLQueryFactory(configuration, hs);
+
+
+        Supplier<HibernateQueryFactory> queryFactory =
+                () -> new HibernateQueryFactory(sessionFactory.getCurrentSession());
         QComputer computer = QComputer.computer;
         QCompany company = QCompany.company;
-        System.out.println(queryFactory.select(computer.id, computer.name, computer.dateIntroduced, computer.dateDiscontinued, company.id, company.name)
+        System.out.println(
+                queryFactory.get().select(computer, company)
         .from(computer)
         .leftJoin(company).on(computer.cy.id.eq(company.id))
         .where(computer.id.eq((Long) id))

@@ -18,16 +18,15 @@ public class Computer {
 
     private String name;
 
-    @Type(type = "LocalDateType")
-    @Column(name = "`introduced`")
+    @Type(type = "java.time.LocalDateTime")
+    @Column(name = "introduced")
     private LocalDate dateIntroduced;
 
-    @Type(type = "LocalDateType")
-    @Column(name = "`discontinued`")
+    @Type(type = "java.time.LocalDateTime")
+    @Column(name = "discontinued")
     private LocalDate dateDiscontinued;
 
     @ManyToOne()
-    @Column(name = "`company_id`")
     private Company cy;
 
     // Constructor

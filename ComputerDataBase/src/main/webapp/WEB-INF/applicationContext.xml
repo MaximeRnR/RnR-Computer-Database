@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/mvc
-    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
 
 	<context:component-scan base-package="com.excilys.formation" />
 
-	<mvc:default-servlet-handler/>
+	<mvc:default-servlet-handler />
+
 	<mvc:resources mapping="/resources/**" location="/resources" />
 
-	
+	<import resource="Hibernate.xml" />
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<tx:annotation-driven />
 
 	<!-- Persistence -->
 	<bean id="HikariConfig" class="com.zaxxer.hikari.HikariConfig">
@@ -42,31 +52,5 @@
 		<constructor-arg ref="HikariConfig" />
 	</bean>
 
-	<!-- <bean id="ComputerDao" class="com.excilys.formation.persistence.ComputerDaoImpl" -->
-	<!-- scope="singleton"> -->
-	<!-- <property name="hs" ref="HikariDataSource"></property> -->
-	<!-- </bean> -->
-
-	<!-- <bean id="CompanyDao" class="com.excilys.formation.persistence.CompanyDaoImpl" -->
-	<!-- scope="singleton"> -->
-	<!-- <property name="hs" ref="HikariDataSource"></property> -->
-	<!-- </bean> -->
-
-	<!-- Service -->
-	<!-- <bean id="ComputerService" class="com.excilys.formation.service.ComputerService" -->
-	<!-- scope="singleton"> -->
-	<!-- <property name="computerDao" ref="ComputerDao"></property> -->
-	<!-- </bean> -->
-
-	<!-- <bean id="CompanyService" class="com.excilys.formation.service.CompanyService" -->
-	<!-- scope="singleton"> -->
-	<!-- <property name="companyDao" ref="CompanyDao"></property> -->
-	<!-- </bean> -->
-
-	<!-- DashBoard -->
-	<!-- <bean id="DashboardServlet" class="com.excilys.formation.servlet.DashboardServlet" -->
-	<!-- scope="prototype"> -->
-	<!-- <property name="computerService" ref="ComputerService"></property> -->
-	<!-- </bean> -->
 
 </beans>
