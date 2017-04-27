@@ -190,15 +190,15 @@ public class ComputerDaoImpl  {
                     computer = new Computer.Builder().build();
                     computer.setId(result.getLong("cp.id"));
                     computer.setName(result.getString("cp.name"));
-                    computer.setdIntroduced(null);
-                    computer.setdDiscontinued(null);
+                    computer.setDateIntroduced(null);
+                    computer.setDateDiscontinued(null);
                     computer.setCy(new Company(result.getInt("cy.id"), result.getString("cy.name")));
 
                     if (result.getTimestamp("cp.introduced") != null) {
-                        computer.setdIntroduced(result.getTimestamp("cp.introduced").toLocalDateTime().toLocalDate());
+                        computer.setDateIntroduced(result.getTimestamp("cp.introduced").toLocalDateTime().toLocalDate());
                     }
                     if (result.getTimestamp("cp.discontinued") != null) {
-                        computer.setdDiscontinued(result.getTimestamp("cp.discontinued").toLocalDateTime().toLocalDate());
+                        computer.setDateDiscontinued(result.getTimestamp("cp.discontinued").toLocalDateTime().toLocalDate());
                     }
                     computers.add(computer);
                 }
@@ -332,15 +332,15 @@ public class ComputerDaoImpl  {
                     computer = new Computer.Builder().build();
                     computer.setId(result.getLong("cp.id"));
                     computer.setName(result.getString("cp.name"));
-                    computer.setdIntroduced(null);
-                    computer.setdDiscontinued(null);
+                    computer.setDateIntroduced(null);
+                    computer.setDateDiscontinued(null);
                     computer.setCy(new Company(result.getInt("cy.id"), result.getString("cy.name")));
 
                     if (result.getTimestamp("cp.introduced") != null) {
-                        computer.setdIntroduced(result.getTimestamp("cp.introduced").toLocalDateTime().toLocalDate());
+                        computer.setDateIntroduced(result.getTimestamp("cp.introduced").toLocalDateTime().toLocalDate());
                     }
                     if (result.getTimestamp("cp.discontinued") != null) {
-                        computer.setdDiscontinued(result.getTimestamp("cp.discontinued").toLocalDateTime().toLocalDate());
+                        computer.setDateDiscontinued(result.getTimestamp("cp.discontinued").toLocalDateTime().toLocalDate());
                     }
                     computers.add(computer);
                 }
@@ -404,15 +404,15 @@ public class ComputerDaoImpl  {
                             computer = new Computer.Builder().build();
                             computer.setId(result2.getLong("cp.id"));
                             computer.setName(result2.getString("cp.name"));
-                            computer.setdIntroduced(null);
-                            computer.setdDiscontinued(null);
+                            computer.setDateIntroduced(null);
+                            computer.setDateDiscontinued(null);
                             computer.setCy(new Company(result2.getInt("cy.id"), result2.getString("cy.name")));
 
                             if (result2.getTimestamp("cp.introduced") != null) {
-                                computer.setdIntroduced(result2.getTimestamp("cp.introduced").toLocalDateTime().toLocalDate());
+                                computer.setDateIntroduced(result2.getTimestamp("cp.introduced").toLocalDateTime().toLocalDate());
                             }
                             if (result2.getTimestamp("cp.discontinued") != null) {
-                                computer.setdDiscontinued(result2.getTimestamp("cp.discontinued").toLocalDateTime().toLocalDate());
+                                computer.setDateDiscontinued(result2.getTimestamp("cp.discontinued").toLocalDateTime().toLocalDate());
                             }
                             computers.add(computer);
                         }
@@ -437,13 +437,13 @@ public class ComputerDaoImpl  {
     private PreparedStatement prepareComputer(Computer computer, PreparedStatement preparedStmt) throws SQLException {
 
         preparedStmt.setString(1, computer.getName());
-        if (computer.getdIntroduced() != null) {
-            preparedStmt.setTimestamp(2, new Timestamp(Date.valueOf(computer.getdIntroduced()).getTime()));
+        if (computer.getDateIntroduced() != null) {
+            preparedStmt.setTimestamp(2, new Timestamp(Date.valueOf(computer.getDateIntroduced()).getTime()));
         } else {
             preparedStmt.setNull(2, java.sql.Types.TIMESTAMP);
         }
-        if (computer.getdDiscontinued() != null) {
-            preparedStmt.setTimestamp(3, new Timestamp(Date.valueOf(computer.getdDiscontinued()).getTime()));
+        if (computer.getDateDiscontinued() != null) {
+            preparedStmt.setTimestamp(3, new Timestamp(Date.valueOf(computer.getDateDiscontinued()).getTime()));
         } else {
             preparedStmt.setNull(3, java.sql.Types.TIMESTAMP);
         }

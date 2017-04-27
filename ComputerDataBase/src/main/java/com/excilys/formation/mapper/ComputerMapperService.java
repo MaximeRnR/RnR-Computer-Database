@@ -30,11 +30,11 @@ public enum ComputerMapperService {
                     .dd(null)
                     .cydtoId(CompanyMapper.toCompanyDto(computer.getCy()).getId())
                     .cydtoName(CompanyMapper.toCompanyDto(computer.getCy()).getName());
-            if (computer.getdIntroduced() != null) {
-                computerDtoB.di(computer.getdIntroduced().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            if (computer.getDateIntroduced() != null) {
+                computerDtoB.di(computer.getDateIntroduced().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             }
-            if (computer.getdDiscontinued() != null) {
-                computerDtoB.dd(computer.getdDiscontinued().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            if (computer.getDateDiscontinued() != null) {
+                computerDtoB.dd(computer.getDateDiscontinued().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             }
             return computerDtoB.build();
         }

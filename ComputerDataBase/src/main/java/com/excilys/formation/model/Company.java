@@ -27,6 +27,11 @@ public class Company {
         this.id = id;
     }
 
+    /**
+     */
+    public Company() {
+    }
+
     @Override
     public String toString() {
         return "Company [id=" + id + ", name=" + name + "]";

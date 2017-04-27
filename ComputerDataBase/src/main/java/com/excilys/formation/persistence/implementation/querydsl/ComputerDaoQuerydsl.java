@@ -14,9 +14,6 @@ import com.excilys.formation.model.QComputer;
 import com.excilys.formation.persistence.ComputerDao;
 import com.excilys.formation.ui.Page;
 import com.querydsl.jpa.hibernate.HibernateQueryFactory;
-import com.querydsl.sql.Configuration;
-import com.querydsl.sql.MySQLTemplates;
-import com.querydsl.sql.SQLTemplates;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Repository
@@ -30,10 +27,13 @@ public class ComputerDaoQuerydsl implements ComputerDao {
         this.hs = hs;
     }
 
-    SQLTemplates templates = new MySQLTemplates();
-    Configuration configuration = new Configuration(templates);
+    private static QCompany company = QCompany.company;
+    private static QComputer computer = QComputer.computer;
 
     private SessionFactory sessionFactory;
+
+    private Supplier<HibernateQueryFactory> queryFactory =
+            () -> new HibernateQueryFactory(sessionFactory.getCurrentSession());
 
     @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -54,18 +54,17 @@ public class ComputerDaoQuerydsl implements ComputerDao {
 
 
 
-        Supplier<HibernateQueryFactory> queryFactory =
-                () -> new HibernateQueryFactory(sessionFactory.getCurrentSession());
-        QComputer computer = QComputer.computer;
-        QCompany company = QCompany.company;
 
-        Computer computerResult = queryFactory.get().select(computer)
+        Computer computerResult = (Computer) queryFactory.get().select(computer)
         .from(computer)
         .leftJoin(company).on(computer.cy.id.eq(company.id))
         .where(computer.id.eq((Long) id))
         .fetchOne();
+
+        System.out.println("flag1");
         System.out.println(computerResult.toString());
-        return null;
+        System.out.println("flag2");
+        return computerResult;
     }
 
     @Override

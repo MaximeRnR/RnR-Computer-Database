@@ -114,8 +114,8 @@ public class ComputerDaoJdbcImpl implements ComputerDaoJdbc {
         jdbcTemplate.update(
                 updateQuery,
                 new Object[] {computer.getName(),
-                        computer.getdIntroduced(),
-                        computer.getdDiscontinued(),
+                        computer.getDateIntroduced(),
+                        computer.getDateDiscontinued(),
                         computer.getCy().getId(),
                         computer.getId()});
     }
@@ -186,13 +186,13 @@ public class ComputerDaoJdbcImpl implements ComputerDaoJdbc {
     private PreparedStatement prepareComputer(Computer computer, PreparedStatement preparedStmt) throws SQLException {
 
         preparedStmt.setString(1, computer.getName());
-        if (computer.getdIntroduced() != null) {
-            preparedStmt.setTimestamp(2, new Timestamp(Date.valueOf(computer.getdIntroduced()).getTime()));
+        if (computer.getDateIntroduced() != null) {
+            preparedStmt.setTimestamp(2, new Timestamp(Date.valueOf(computer.getDateIntroduced()).getTime()));
         } else {
             preparedStmt.setNull(2, java.sql.Types.TIMESTAMP);
         }
-        if (computer.getdDiscontinued() != null) {
-            preparedStmt.setTimestamp(3, new Timestamp(Date.valueOf(computer.getdDiscontinued()).getTime()));
+        if (computer.getDateDiscontinued() != null) {
+            preparedStmt.setTimestamp(3, new Timestamp(Date.valueOf(computer.getDateDiscontinued()).getTime()));
         } else {
             preparedStmt.setNull(3, java.sql.Types.TIMESTAMP);
         }

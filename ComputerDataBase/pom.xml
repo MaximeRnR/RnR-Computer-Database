@@ -94,7 +94,7 @@
 			<version>${mariadb-java.version}</version>
 		</dependency>
 
-		
+
 
 
 		<!-- Spring -->
@@ -166,6 +166,14 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-java8 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/com.querydsl/querydsl-sql -->
 		<dependency>

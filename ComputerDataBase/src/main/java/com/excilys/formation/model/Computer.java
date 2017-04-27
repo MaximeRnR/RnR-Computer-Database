@@ -4,11 +4,10 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import org.hibernate.annotations.Type;
 
 //Model Computer
 @Entity(name = "computer")
@@ -19,15 +18,13 @@ public class Computer {
 
     private String name;
 
-    @Type(type = "java.time.LocalDateTime")
     @Column(name = "introduced")
     private LocalDate dateIntroduced;
 
-    @Type(type = "java.time.LocalDateTime")
     @Column(name = "discontinued")
     private LocalDate dateDiscontinued;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
     private Company cy;
 
@@ -90,28 +87,28 @@ public class Computer {
     /**
      * @return Date intro
      */
-    public LocalDate getdIntroduced() {
+    public LocalDate getDateIntroduced() {
         return dateIntroduced;
     }
 
     /**
      * @param dateIntroduced Date intro
      */
-    public void setdIntroduced(LocalDate dateIntroduced) {
+    public void setDateIntroduced(LocalDate dateIntroduced) {
         this.dateIntroduced = dateIntroduced;
     }
 
     /**
      * @return Date discontinued
      */
-    public LocalDate getdDiscontinued() {
+    public LocalDate getDateDiscontinued() {
         return dateDiscontinued;
     }
 
     /**
      * @param dateDiscontinued Date discontinued
      */
-    public void setdDiscontinued(LocalDate dateDiscontinued) {
+    public void setDateDiscontinued(LocalDate dateDiscontinued) {
         this.dateDiscontinued = dateDiscontinued;
     }
 

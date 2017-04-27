@@ -63,7 +63,7 @@ public class ComputerDAOTest {
         Computer test = cpDAOi.findById(574);
         assertEquals(cp.getId(), test.getId());
         assertEquals(cp.getName(), test.getName());
-        assertEquals(cp.getdDiscontinued(), test.getdDiscontinued());
+        assertEquals(cp.getDateDiscontinued(), test.getDateDiscontinued());
         assertEquals(cp.getCy().getId(), test.getCy().getId());
 
     }
@@ -91,8 +91,8 @@ public class ComputerDAOTest {
     @Test
     public void updateTest() {
         cp.setName("Test");
-        cp.setdIntroduced(LocalDate.now());
-        cp.setdDiscontinued(null);
+        cp.setDateIntroduced(LocalDate.now());
+        cp.setDateDiscontinued(null);
         cp.setCy(new Company(1));
         long generateKey = cpDAOi.createComputer(cp);
         cp.setId(generateKey);
@@ -112,8 +112,8 @@ public class ComputerDAOTest {
     @Test
     public void createComputerTest() {
         cp.setName("Test");
-        cp.setdIntroduced(LocalDate.now());
-        cp.setdDiscontinued(LocalDate.now());
+        cp.setDateIntroduced(LocalDate.now());
+        cp.setDateDiscontinued(LocalDate.now());
         cp.setCy(new Company(1));
         long generateKey = cpDAOi.createComputer(cp);
         assertEquals(generateKey, cpDAOi.findById(generateKey).getId());
