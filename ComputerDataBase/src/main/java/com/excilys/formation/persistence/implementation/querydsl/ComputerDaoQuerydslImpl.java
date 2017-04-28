@@ -18,7 +18,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 @Repository
 @Transactional
-public class ComputerDaoQuerydsl implements ComputerDao {
+public class ComputerDaoQuerydslImpl implements ComputerDao {
 
     @Autowired
     private HikariDataSource hs;
@@ -43,9 +43,9 @@ public class ComputerDaoQuerydsl implements ComputerDao {
     @Override
     public long createComputer(Computer computer) {
 
-        final String createQuery = "insert into computer(name,introduced,discontinued,company_id)values (?,?,?,?)";
+        sessionFactory.getCurrentSession().save(computer);
 
-        return 0;
+        return computer.getId();
     }
 
     @Override
@@ -80,7 +80,7 @@ public class ComputerDaoQuerydsl implements ComputerDao {
         .where(qComputer.id.eq(computer.getId()))
         .set(qComputer.name, computer.getName())
         .set(qComputer.dateIntroduced, computer.getDateIntroduced())
-        .set(qComputer.dateDiscontinued, computer.getDateIntroduced())
+        .set(qComputer.dateDiscontinued, computer.getDateDiscontinued())
         .set(qComputer.cy, computer.getCy())
         .execute();
     }
@@ -108,7 +108,7 @@ public class ComputerDaoQuerydsl implements ComputerDao {
     @Override
     @Transactional
     public int getCountOfComputersByName(String search) {
-        return  (int) queryFactory.get().from(qComputer).fetchCount();
+        return  (int) queryFactory.get().from(qComputer).where(qComputer.name.like(search + "%")).fetchCount();
     }
 
     @Override
@@ -140,7 +140,7 @@ public class ComputerDaoQuerydsl implements ComputerDao {
                 .from(qComputer)
                 .leftJoin(qCompany)
                 .on(qCompany.id.eq(qComputer.cy.id))
-                .where(qComputer.cy.name.like(search + "%"))
+                .where(qCompany.name.like(search + "%"))
                 .limit(page.maxNumberOfObject)
                 .offset(page.maxNumberOfObject * page.getIndex())
                 .fetch();

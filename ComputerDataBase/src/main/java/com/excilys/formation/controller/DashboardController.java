@@ -62,7 +62,6 @@ public class DashboardController {
         model.setViewName("dashboard");
 
 
-        dashboardResponse.getNbPages();
         try {
             Map<String, String> errors = isValid(dashboardRequest, dashboardResponse);
 

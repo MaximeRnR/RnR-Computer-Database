@@ -13,25 +13,25 @@ A 2-month fulltime java training around an incremental project. Java / JSP / Ser
 
 1. Java 8
 2. Maven 3.0.5
-⋅⋅* --- Plugins ---
-⋅⋅* War 3.0.0
-⋅⋅* Checkstyle  2.17
-⋅⋅* Surefire Report 2.19.1
-⋅⋅* Project info 2.7
-⋅⋅* Clean 2.5
-⋅⋅* Javadoc 2.10.4
-⋅⋅* Compiler 3.5.1
+  * --- Plugins ---
+  * War 3.0.0
+  * Checkstyle  2.17
+  * Surefire Report 2.19.1
+  * Project info 2.7
+  * Clean 2.5
+  * Javadoc 2.10.4
+  * Compiler 3.5.1
 3. Spring 4.3.7
-⋅⋅* Core
-⋅⋅* Context
-⋅⋅* Beans
-⋅⋅* AOP
-⋅⋅* Web
-⋅⋅* Web MVC
-⋅⋅* ORM
-⋅⋅* Transactions
-⋅⋅* Jdbc
-⋅⋅* Test
+  * Core
+  * Context
+  * Beans
+  * AOP
+  * Web
+  * Web MVC
+  * ORM
+  * Transactions
+  * Jdbc
+  * Test
 4. Hibernate 5.1.3.Final
 5. MariaDB Connector/J 1.2.0
 6. HikariCP 2.6.1
@@ -39,8 +39,8 @@ A 2-month fulltime java training around an incremental project. Java / JSP / Ser
 8. JSTL
 9. Servlet API
 10. Querydsl 4.06
-⋅⋅* Apt
-⋅⋅* Jpa
+  * Apt
+  * Jpa
 
 
 

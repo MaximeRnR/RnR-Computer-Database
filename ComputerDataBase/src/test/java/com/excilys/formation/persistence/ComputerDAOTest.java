@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,7 +69,6 @@ public class ComputerDAOTest {
 
     /**
      */
-    @Ignore
     @Test
     public void deleteTest() {
         cp.setName("Test_delete");
@@ -87,7 +85,6 @@ public class ComputerDAOTest {
 
     /**
      */
-    @Ignore
     @Test
     public void updateTest() {
         cp.setName("Test");
@@ -108,7 +105,6 @@ public class ComputerDAOTest {
     }
     /**
      */
-    @Ignore
     @Test
     public void createComputerTest() {
         cp.setName("Test");
