@@ -11,25 +11,43 @@ A 2-month fulltime java training around an incremental project. Java / JSP / Ser
 
 ### Dependencies
 
-1. JRE 8
-2. JUnit 4
-3. commons-db-utils1.6
-4. mysql-connector-java-5.1.41
-5. slf4j-api
-6. logback-classic 1.2.2
-7. logback-core 1.2.2
-8. mockito-all
-9. javax.servlet-api
-10. jsp-api
-11. jstl
-12. HikariCP
-13. mariadb-java-client
-14. selenium-server
+1. Java 8
+2. Maven 3.0.5
+⋅⋅* --- Plugins ---
+⋅⋅* War 3.0.0
+⋅⋅* Checkstyle  2.17
+⋅⋅* Surefire Report 2.19.1
+⋅⋅* Project info 2.7
+⋅⋅* Clean 2.5
+⋅⋅* Javadoc 2.10.4
+⋅⋅* Compiler 3.5.1
+3. Spring 4.3.7
+⋅⋅* Core
+⋅⋅* Context
+⋅⋅* Beans
+⋅⋅* AOP
+⋅⋅* Web
+⋅⋅* Web MVC
+⋅⋅* ORM
+⋅⋅* Transactions
+⋅⋅* Jdbc
+⋅⋅* Test
+4. Hibernate 5.1.3.Final
+5. MariaDB Connector/J 1.2.0
+6. HikariCP 2.6.1
+7. Slf4j API 1.7.25
+8. JSTL
+9. Servlet API
+10. Querydsl 4.06
+⋅⋅* Apt
+⋅⋅* Jpa
+
+
 
 
 # Docker 
 
-## Setup des dockers
+## Environment Setup
 
 ```bash
 docker network create --subnet 172.20.0.0/16 --gateway 172.20.0.1 --driver bridge prod_network
@@ -93,13 +111,14 @@ sudo rm -rf /cdb/*
 
 # Docker Cloud
 
-## Setup des dockers
+## Environment Setup
 
 Use images from [maximernr](https://hub.docker.com/r/maximernr/ "MaximeRnr's docker hub") docker hub
 
 Configure containers carefully : Volumes & Ports
 
 Configure jenkins jobs 
+
 
 ## Run in jenkins container
 
