@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+   xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+
+   <context:component-scan base-package="com.excilys.formation" />
+
+   <mvc:default-servlet-handler />
+   <mvc:resources mapping="/resources/**" location="/resources" />
+
+   <import resource="Hibernate.xml" />
+
+   <bean id="transactionManager"
+      class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+      <property name="sessionFactory" ref="sessionFactory" />
+   </bean>
+
+   <tx:annotation-driven />
+
+
+   <!-- Persistence -->
+   <bean id="HikariConfig" class="com.zaxxer.hikari.HikariConfig">
+      <property name="poolName" value="springHikariCP" />
+      <property name="dataSourceClassName" value="org.mariadb.jdbc.MySQLDataSource" />
+      <property name="maximumPoolSize" value="20" />
+      <property name="idleTimeout" value="60000" />
+      <property name="connectionTimeout" value="3000" />
+      <property name="maxLifetime" value="287400" />
+
+      <property name="dataSourceProperties">
+         <props>
+            <prop key="url">jdbc:mysql://localhost/computer-database-db-test?zeroDateTimeBehavior=convertToNull&amp;password=qwerty1234
+            </prop>
+            <prop key="user">admincdb</prop>
+         </props>
+      </property>
+   </bean>
+
+   <!-- HikariCP configuration -->
+   <bean id="HikariDataSource" class="com.zaxxer.hikari.HikariDataSource"
+      destroy-method="close" scope="singleton">
+      <constructor-arg ref="HikariConfig" />
+   </bean>
+
+
+</beans>
