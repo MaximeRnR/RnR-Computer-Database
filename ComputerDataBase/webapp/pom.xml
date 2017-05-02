@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.excilys.formation</groupId>
 		<artifactId>ComputerDatabase</artifactId>
-		<version>0.0.4-SNAPSHOT</version>
+		<version>0.0.4-RELEASE</version>
 	</parent>
 
 	<artifactId>webapp</artifactId>
@@ -17,7 +17,7 @@
 		<dependency>
 			<groupId>com.excilys.formation</groupId>
 			<artifactId>service</artifactId>
-			<version>0.0.4-SNAPSHOT</version>
+			<version>0.0.4-RELEASE</version>
 		</dependency>
 
 		<dependency>
