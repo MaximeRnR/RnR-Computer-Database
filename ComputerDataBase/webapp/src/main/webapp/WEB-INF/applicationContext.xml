@@ -27,7 +27,10 @@
 
    <tx:annotation-driven />
 
-
+	<!--  Spring Security -->
+	
+	<import resource="security.xml" />
+	
    <!-- Persistence -->
    <bean id="HikariConfig" class="com.zaxxer.hikari.HikariConfig">
       <property name="poolName" value="springHikariCP" />

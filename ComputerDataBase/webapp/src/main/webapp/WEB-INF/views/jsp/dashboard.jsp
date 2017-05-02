@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="ex" uri="page"%>
 <%@ page isELIgnored="false"%>
+<%@page session="true"%>
 <!DOCTYPE html>
 <html>
 <head>
