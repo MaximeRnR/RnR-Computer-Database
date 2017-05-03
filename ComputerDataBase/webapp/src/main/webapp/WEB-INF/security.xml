@@ -5,7 +5,19 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<http use-expressions="true">
+
+	<beans:bean id="digestFilter"
+      class="org.springframework.security.web.authentication.www.DigestAuthenticationFilter">
+        <beans:property name="userDetailsService" ref="userService" />
+        <beans:property name="authenticationEntryPoint" ref="digestEntryPoint" />
+    </beans:bean>
+    <beans:bean id="digestEntryPoint" 
+      class="org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint">
+        <beans:property name="realmName" value="Contacts Realm via Digest Authentication" />
+        <beans:property name="key" value="acegi" />
+    </beans:bean>
+    
+	<http use-expressions="true" entry-point-ref="digestEntryPoint">
 		<intercept-url pattern="/login" access="isAnonymous()" />
 		<intercept-url pattern="/*" access="isAuthenticated()" />
 		<form-login login-page='/login'
@@ -16,11 +28,12 @@
 		<!-- enable csrf protection -->
 		<csrf/> 
 		<logout logout-success-url="/login" />
+		<custom-filter ref="digestFilter" after="BASIC_AUTH_FILTER" />
 	</http>
 
 	<authentication-manager>
 		<authentication-provider>
-			<user-service>
+			<user-service id="userService">
 				<user name="admin" password="admin" authorities="ROLE_USER" />
 			</user-service>
 		</authentication-provider>
