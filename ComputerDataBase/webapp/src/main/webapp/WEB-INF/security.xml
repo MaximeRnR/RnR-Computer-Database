@@ -5,9 +5,9 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<http auto-config="true" use-expressions="true">
-		<intercept-url pattern="/login" />
-		<intercept-url pattern="/*" access="hasRole('ROLE_USER')" />
+	<http use-expressions="true">
+		<intercept-url pattern="/login" access="isAnonymous()" />
+		<intercept-url pattern="/*" access="isAuthenticated()" />
 		<form-login login-page='/login'
 		default-target-url="/dashboard"
 		authentication-failure-url="/login?error"

@@ -56,7 +56,8 @@
 											<c:out value="${companydto.name}" /></option>
 									</c:forEach>
                                 </select>
-                            </div>            
+                            </div>
+                            <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>            
                         </fieldset>
                         <c:if test="${success==1}">
 								<div class="alert alert-success pull-left" role="alert">Computer Succesfully Added</div>

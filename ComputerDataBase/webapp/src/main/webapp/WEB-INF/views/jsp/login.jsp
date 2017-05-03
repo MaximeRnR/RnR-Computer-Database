@@ -30,16 +30,12 @@
     	  <div class="modal-dialog">
 				<div class="loginmodal-container">
 					<h1>Login to Your Account</h1><br>
-				  <form action="<c:url value='j_spring_security_check' />" method='POST'>
-					<input type="text" name="username" placeholder="Username"/>
-					<input type="password" name="password" placeholder="Password"/>
+				  <form action="login" method='POST'>
+					<input id="username" type="text" name="username" placeholder="Username"/>
+					<input id="password" type="password" name="password" placeholder="Password"/>
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-					<input type="submit" name="login" class="login loginmodal-submit" value="Login">
+					<input type="submit" name="submit" class="login loginmodal-submit" value="Login">
 				  </form>
-					
-				  <div class="login-help">
-					<a href="#">Register</a> - <a href="#">Forgot Password</a>
-				  </div>
 				</div>
 			</div>
 		  </div>

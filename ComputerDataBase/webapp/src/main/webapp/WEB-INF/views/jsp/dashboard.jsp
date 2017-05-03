@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="ex" uri="page"%>
@@ -20,26 +21,39 @@
 <body>
 	<header class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
-			<a id="dashboard_button" class="navbar-brand" href="dashboard">
-				Application - Computer Database </a>
+			<div>
+				<a id="dashboard_button" class="navbar-brand" href="dashboard">
+					Application - Computer Database </a>
+
+			</div>
+			<div class=" navbar-brand pull-right">
+				<c:url var="logoutUrl" value="/logout" />
+				<form class="form-inline" action="${logoutUrl}" method="post">
+					<input type="submit" class="btn btn-default btn-sm" value="Log out">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				</form>
+			</div>
 		</div>
+
 	</header>
 
 	<section id="main">
 		<div class="container">
-			<h1 id="homeTitle">${model.nbComputers} Computers found </h1>
+			<h1 id="homeTitle">${model.nbComputers}Computersfound</h1>
 
 			<div id="actions" class="form-horizontal">
 				<div class="pull-left">
 					<form id="searchForm" action="#" method="GET" class="form-inline">
 						<input type="search" id="searchbox" name="search"
-							class="form-control" placeholder="Search name" value="${model.search}" />
-						<select class="form-control" name="by">
+							class="form-control" placeholder="Search name"
+							value="${model.search}" /> <select class="form-control"
+							name="by">
 							<option value='cp'
-							<c:if test="${model.by == 'cp'}"> selected</c:if>>
-							Computers</option>
-							<option value='cy' <c:if test="${model.by == 'cy'}"> selected</c:if>>
-							Companies</option>
+								<c:if test="${model.by == 'cp'}"> selected</c:if>>
+								Computers</option>
+							<option value='cy'
+								<c:if test="${model.by == 'cy'}"> selected</c:if>>
+								Companies</option>
 						</select> <input type="submit" id="searchsubmit" value="Filter by name"
 							class="btn btn-primary" />
 
@@ -55,6 +69,7 @@
 
 		<form id="deleteForm" action="dashboard" method="POST">
 			<input type="hidden" name="selection" value="">
+			<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 		</form>
 
 		<div class="container" style="margin-top: 10px;">
@@ -86,8 +101,10 @@
 					<c:forEach items="${model.computersDto}" var="computerDto">
 						<tr>
 							<td class="editMode" style="display: none"><input
-								type="checkbox" class="cb" value="<c:out value="${computerDto.id}"/>" /></td>
-							<td><a id='id' href="edit?id=<c:out value="${computerDto.id}"/>"><c:out
+								type="checkbox" class="cb"
+								value="<c:out value="${computerDto.id}"/>" /></td>
+							<td><a id='id'
+								href="edit?id=<c:out value="${computerDto.id}"/>"><c:out
 										value="${computerDto.name}" /></a></td>
 							<td><c:out value="${computerDto.dateIntroduced}" /></td>
 							<td><c:out value="${computerDto.dateDiscontinued}" /></td>
@@ -104,18 +121,25 @@
 		<div class="container text-center">
 			<ul class="pagination">
 				<li id='first' class="pages"><a id="afirst" position="0"
-					href='?search=${model.search}&by=${model.by}&page=1&maxObj=${model.maxObj}'  aria-label='First'><span position="0"
-						aria-hidden='true'>&laquo;&laquo;</span></a></li>
-				<ex:Page index="${model.index}" nbPage="${model.nbPages}" reSearch="${model.search}" by="${model.by}" maxObj="${model.maxObj}"></ex:Page>
-				<li id='last' class="pages" ><a id="alast" position="${model.nbPages}"
-					href='?search=${model.search}&by=${model.by}&page=${model.nbPages+1}&maxObj=${model.maxObj}' aria-label='Last'><span
-						position="${model.nbPages+1}" aria-hidden='true'>&raquo;&raquo;</span></a></li>
+					href='?search=${model.search}&by=${model.by}&page=1&maxObj=${model.maxObj}'
+					aria-label='First'><span position="0" aria-hidden='true'>&laquo;&laquo;</span></a></li>
+				<ex:Page index="${model.index}" nbPage="${model.nbPages}"
+					reSearch="${model.search}" by="${model.by}"
+					maxObj="${model.maxObj}"></ex:Page>
+				<li id='last' class="pages"><a id="alast"
+					position="${model.nbPages}"
+					href='?search=${model.search}&by=${model.by}&page=${model.nbPages+1}&maxObj=${model.maxObj}'
+					aria-label='Last'><span position="${model.nbPages+1}"
+						aria-hidden='true'>&raquo;&raquo;</span></a></li>
 			</ul>
 
 			<div class="btn-group btn-group-sm pull-right" role="group">
-				<a href='?search=${model.search}&by=${model.by}&page=1&maxObj=10'><button type="button" class="max_obj btn btn-default">10</button></a>
-				<a href='?search=${model.search}&by=${model.by}&page=1&maxObj=50'><button type="button" class="max_obj btn btn-default">50</button></a>
-				<a href='?search=${model.search}&by=${model.by}&page=1&maxObj=100'><button type="button" class="max_obj btn btn-default">100</button></a>
+				<a href='?search=${model.search}&by=${model.by}&page=1&maxObj=10'><button
+						type="button" class="max_obj btn btn-default">10</button></a> <a
+					href='?search=${model.search}&by=${model.by}&page=1&maxObj=50'><button
+						type="button" class="max_obj btn btn-default">50</button></a> <a
+					href='?search=${model.search}&by=${model.by}&page=1&maxObj=100'><button
+						type="button" class="max_obj btn btn-default">100</button></a>
 			</div>
 		</div>
 	</footer>

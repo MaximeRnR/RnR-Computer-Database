@@ -56,6 +56,7 @@
 									</c:forEach>
 								</select>
 							</div>
+							<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 						</fieldset>
 						<c:if test="${success==1}">
 								<div id="success" class="alert alert-success pull-left" role="alert">Computer Succesfully Added</div>
