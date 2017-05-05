@@ -6,38 +6,45 @@
 	http://www.springframework.org/schema/security/spring-security.xsd">
 
 
-	<beans:bean id="digestFilter"
-		class="org.springframework.security.web.authentication.www.DigestAuthenticationFilter">
-		<beans:property name="userDetailsService" ref="userService" />
-		<beans:property name="authenticationEntryPoint" ref="digestEntryPoint" />
-	</beans:bean>
-	<beans:bean id="digestEntryPoint"
-		class="org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint">
-		<beans:property name="realmName"
-			value="Contacts Realm via Digest Authentication" />
-		<beans:property name="key" value="acegi" />
-	</beans:bean>
-	<!-- -->
-	<http use-expressions="true" entry-point-ref="digestEntryPoint">
+<!-- 	<beans:bean id="digestFilter" -->
+<!-- 		class="org.springframework.security.web.authentication.www.DigestAuthenticationFilter"> -->
+<!-- 		<beans:property name="userDetailsService" ref="userService" /> -->
+<!-- 		<beans:property name="authenticationEntryPoint" ref="digestEntryPoint" /> -->
+<!-- 		<beans:property name="passwordAlreadyEncoded" value="true" /> -->
+<!-- 	</beans:bean> -->
+<!-- 	<beans:bean id="digestEntryPoint" -->
+<!-- 		class="org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint"> -->
+<!-- 		<beans:property name="realmName" -->
+<!-- 			value="excilys" /> -->
+<!-- 		<beans:property name="key" value="cdb" /> -->
+<!-- 	</beans:bean> -->
+
+
+	<!-- entry-point-ref="digestEntryPoint" -->
+	<http use-expressions="true">
 		<intercept-url pattern="/login" access="isAnonymous()" />
 		<intercept-url pattern="/*" access="isAuthenticated()" />
 		<form-login login-page='/login' default-target-url="/dashboard"
 			authentication-failure-url="/login?error" username-parameter="username"
 			password-parameter="password" />
 		<!-- enable csrf protection -->
-		<csrf />
+		<csrf request-matcher-ref="csrfSecurityRequestMatcher"/>
 		<logout logout-success-url="/login" />
-		<custom-filter ref="digestFilter" after="BASIC_AUTH_FILTER" />
+<!-- 		<custom-filter ref="digestFilter" after="BASIC_AUTH_FILTER" /> -->
 	</http>
 
+	<!-- Select users and user_roles from database -->
 	<authentication-manager>
-		<authentication-provider>
-				<jdbc-user-service id="userService" data-source-ref="HikariDataSource"
-		  users-by-username-query=
-		    "select username,password, enabled from users where username=?"
-		  authorities-by-username-query=
-		    "select username, role from user_roles where username =?  " />
+
+		<authentication-provider user-service-ref="userService">
+			<password-encoder hash="md5" />
 		</authentication-provider>
+
 	</authentication-manager>
 
+	<jdbc-user-service id="userService" data-source-ref="HikariDataSource"
+		users-by-username-query="select username,password, enabled from users where username=?"
+		authorities-by-username-query="select username, role from user_roles where username =?" />
+		
+		
 </beans:beans>
