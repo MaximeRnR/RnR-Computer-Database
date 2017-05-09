@@ -39,7 +39,7 @@
 
       <property name="dataSourceProperties">
          <props>
-            <prop key="url">jdbc:mysql://localhost/computer-database-db-test?zeroDateTimeBehavior=convertToNull&amp;password=qwerty1234
+            <prop key="url">jdbc:mysql://172.20.0.2/computer-database-db-test?zeroDateTimeBehavior=convertToNull&amp;password=qwerty1234
             </prop>
             <prop key="user">admincdb</prop>
          </props>
