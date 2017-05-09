@@ -20,6 +20,13 @@ public class CompanyDTO {
     public CompanyDTO(long id) {
         this.id = id;
     }
+    
+    /**
+     * Default constructor.
+     */
+    public CompanyDTO() {
+
+    }
 
     @Override
     public String toString() {

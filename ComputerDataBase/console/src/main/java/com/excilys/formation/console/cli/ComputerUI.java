@@ -173,8 +173,8 @@ public class ComputerUI {
         WebTarget base = client.target("http://localhost:8080/webapp/api");
         WebTarget countPages = base.path("computers/pages/count");
         Invocation.Builder builder = countPages.request(MediaType.APPLICATION_JSON_TYPE);
-        int nbPage = builder.get(Integer.class);
-        System.out.println("There are " + nbPage + " pages .");
+        Integer nbPage = builder.get(Integer.class);
+        System.out.println("There are " + nbPage.intValue() + " pages .");
         System.out.print("Enter a page : ");
         System.out.println();
         Scanner scan = new Scanner(System.in);

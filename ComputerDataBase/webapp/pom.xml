@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.excilys.formation</groupId>
 		<artifactId>ComputerDatabase</artifactId>
-		<version>0.0.5-RELEASE</version>
+		<version>0.0.6-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>webapp</artifactId>
@@ -17,27 +17,9 @@
 		<dependency>
 			<groupId>com.excilys.formation</groupId>
 			<artifactId>service</artifactId>
-			<version>0.0.5-RELEASE</version>
+			<version>0.0.6-SNAPSHOT</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
- 
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -54,14 +36,6 @@
 			<artifactId>jstl</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.zaxxer</groupId>
-			<artifactId>HikariCP</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mariadb.jdbc</groupId>
-			<artifactId>mariadb-java-client</artifactId>
-		</dependency>
 
 
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
